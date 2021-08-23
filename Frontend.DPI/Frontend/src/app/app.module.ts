@@ -4,15 +4,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { HomeComponent } from './home/home.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SweetAlert2Module.forRoot(),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
