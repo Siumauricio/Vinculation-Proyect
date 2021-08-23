@@ -1,0 +1,31 @@
+.flex-nowrap a{
+  color: black !important;
+}
+
+.flex-nowrap :hover a{
+  color: #252b64!important;
+}
+
+
+.sidebar-hide{
+  width: 250px;
+  height: 100%;
+  position: fixed;
+  margin-left: -250px;
+  transition: 0.5s !important;
+}
+
+.sidebar-open{
+  margin-left: 0 !important;
+  transition: 0.5s !important;
+}
+
+.active-content{
+  transition: 0.5s !important;
+  margin-left: 250px !important;
+}
+
+.aver{
+  display: flex !important;
+}
+
