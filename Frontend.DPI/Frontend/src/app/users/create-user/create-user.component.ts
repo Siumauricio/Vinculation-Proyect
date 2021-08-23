@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../interfaces/user';
 import { UsersService } from '../users.service';
 
 @Component({
@@ -10,8 +11,18 @@ export class CreateUserComponent implements OnInit {
 
   constructor(private userService:UsersService) { }
 
+  userFilterSelected:User
+  selectedCar: number;
+
+  cars = [
+      { id: 1, name: 'Volvo' },
+      { id: 2, name: 'Saab' },
+      { id: 3, name: 'Opel' },
+      { id: 4, name: 'Audi' },
+  ];
+
   async ngOnInit() {
-    await this.getDataUsers();
+    // await this.getDataUsers();
   }
 
   async getDataUsers(){
