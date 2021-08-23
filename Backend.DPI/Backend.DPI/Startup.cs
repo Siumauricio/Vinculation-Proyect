@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Backend.DPI.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -10,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Microsoft.EntityFrameworkCore;
+using Backend.DPI.Repository;
 
 namespace Backend.DPI
 {
@@ -31,6 +34,9 @@ namespace Backend.DPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Backend.DPI", Version = "v1" });
             });
+            services.AddDbContext<DPIContext>((s, o) => o.UseSqlServer(Configuration.GetSection("ConnectionDBSqlServer").Get<string>()));
+            services.AddScoped<IPrivilegeRepository, PrivilegeRepository>();
+            services.AddScoped<IDepartmentRepository, DepartmentRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

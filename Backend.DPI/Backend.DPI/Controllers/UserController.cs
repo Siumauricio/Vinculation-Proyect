@@ -27,6 +27,8 @@ namespace Backend.DPI.Controllers
             }
             return Ok(Users);
         }
+
+
         [HttpGet("UserById")]
         public async Task<ActionResult<IEnumerable<User>>> GetUsersById(string username)
         {
@@ -73,5 +75,8 @@ namespace Backend.DPI.Controllers
             var User = await _userRepository.DeleteUserAsync(username);
             return Ok(User);
         }
+
+
+
     }
 }

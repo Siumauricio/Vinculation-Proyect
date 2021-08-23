@@ -20,6 +20,12 @@ namespace Backend.DPI.Models
         public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<Privilege> Privileges { get; set; }
         public virtual DbSet<Rol> Rols { get; set; }
+
+        internal object AddAsync(RolPrivilege rolPrivilege)
+        {
+            throw new NotImplementedException();
+        }
+
         public virtual DbSet<RolPrivilege> RolPrivileges { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserRolPrivilege> UserRolPrivileges { get; set; }

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\carlo\\source\\repos\\Backend.DPI\\Backend.DPI\\Backend.DPI.csproj": {}
+    "C:\\Users\\enrik\\Documents\\GitHub\\Proyecto-Vinculacion-DPI\\Backend.DPI\\Backend.DPI\\Backend.DPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\carlo\\source\\repos\\Backend.DPI\\Backend.DPI\\Backend.DPI.csproj": {
+    "C:\\Users\\enrik\\Documents\\GitHub\\Proyecto-Vinculacion-DPI\\Backend.DPI\\Backend.DPI\\Backend.DPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\carlo\\source\\repos\\Backend.DPI\\Backend.DPI\\Backend.DPI.csproj",
+        "projectUniqueName": "C:\\Users\\enrik\\Documents\\GitHub\\Proyecto-Vinculacion-DPI\\Backend.DPI\\Backend.DPI\\Backend.DPI.csproj",
         "projectName": "Backend.DPI",
-        "projectPath": "C:\\Users\\carlo\\source\\repos\\Backend.DPI\\Backend.DPI\\Backend.DPI.csproj",
-        "packagesPath": "C:\\Users\\carlo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\carlo\\source\\repos\\Backend.DPI\\Backend.DPI\\obj\\",
+        "projectPath": "C:\\Users\\enrik\\Documents\\GitHub\\Proyecto-Vinculacion-DPI\\Backend.DPI\\Backend.DPI\\Backend.DPI.csproj",
+        "packagesPath": "C:\\Users\\enrik\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\enrik\\Documents\\GitHub\\Proyecto-Vinculacion-DPI\\Backend.DPI\\Backend.DPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\carlo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\enrik\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -57,6 +57,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[5.0.2, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
