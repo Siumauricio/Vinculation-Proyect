@@ -25,14 +25,7 @@ namespace Backend.DPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-<<<<<<< Updated upstream
 
-=======
-            //
-            services.AddCors(options => {
-                options.AddPolicy("CorsPolicy", builder => builder.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader().AllowCredentials());
-            });
->>>>>>> Stashed changes
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
