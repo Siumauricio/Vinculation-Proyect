@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\carlo\\source\\repos\\Backend.DPI\\Backend.DPI\\Backend.DPI.csproj": {}
+    "D:\\GitHub\\Proyecto-Vinculacion-DPI\\Backend.DPI\\Backend.DPI\\Backend.DPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\carlo\\source\\repos\\Backend.DPI\\Backend.DPI\\Backend.DPI.csproj": {
+    "D:\\GitHub\\Proyecto-Vinculacion-DPI\\Backend.DPI\\Backend.DPI\\Backend.DPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\carlo\\source\\repos\\Backend.DPI\\Backend.DPI\\Backend.DPI.csproj",
+        "projectUniqueName": "D:\\GitHub\\Proyecto-Vinculacion-DPI\\Backend.DPI\\Backend.DPI\\Backend.DPI.csproj",
         "projectName": "Backend.DPI",
-        "projectPath": "C:\\Users\\carlo\\source\\repos\\Backend.DPI\\Backend.DPI\\Backend.DPI.csproj",
+        "projectPath": "D:\\GitHub\\Proyecto-Vinculacion-DPI\\Backend.DPI\\Backend.DPI\\Backend.DPI.csproj",
         "packagesPath": "C:\\Users\\carlo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\carlo\\source\\repos\\Backend.DPI\\Backend.DPI\\obj\\",
+        "outputPath": "D:\\GitHub\\Proyecto-Vinculacion-DPI\\Backend.DPI\\Backend.DPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\carlo\\AppData\\Roaming\\NuGet\\NuGet.Config",
