@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "C2o9WpIz+VHOt6oEhKYsSnqCfXTujGnWxzQgRMptItsX6YMwTTMf76GEyDj0cj5tciHtxVJfWdlelCcfdDlNGw==",
+  "dgSpecHash": "FUHjL8MlkNy7Pgeu+/bl6NZSJ5Z3zvXLpYuOSq1Z7+BDZiH3bAXwYOR7njsz2O6G4lD10uGlp/aSX58nU+wbCw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\carlo\\source\\repos\\Backend.DPI\\Backend.DPI\\Backend.DPI.csproj",
+  "projectFilePath": "D:\\GitHub\\Proyecto-Vinculacion-DPI\\Backend.DPI\\Backend.DPI\\Backend.DPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\carlo\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\carlo\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
