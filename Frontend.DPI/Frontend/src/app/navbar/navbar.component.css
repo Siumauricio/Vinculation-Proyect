@@ -2,8 +2,8 @@
   color: black !important;
 }
 
-.flex-nowrap :hover a{
-  color: #252b64!important;
+.flex-nowrap a:hover{
+  color: #3c5ca4 !important;
 }
 
 

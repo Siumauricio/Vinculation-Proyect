@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { CreateUserModalComponent } from '../create-user-modal/create-user-modal.component';
 import { User } from '../interfaces/user';
 import { UsersService } from '../users.service';
 
@@ -9,17 +10,11 @@ import { UsersService } from '../users.service';
 })
 export class CreateUserComponent implements OnInit {
 
+  @ViewChild('ctlCreateUser', {static:true}) ctlCreateUser:CreateUserModalComponent
+
   constructor(private userService:UsersService) { }
 
   userFilterSelected:User
-  selectedCar: number;
-
-  cars = [
-      { id: 1, name: 'Volvo' },
-      { id: 2, name: 'Saab' },
-      { id: 3, name: 'Opel' },
-      { id: 4, name: 'Audi' },
-  ];
 
   async ngOnInit() {
     // await this.getDataUsers();
@@ -30,6 +25,10 @@ export class CreateUserComponent implements OnInit {
       console.log(resp);
 
     })
+  }
+
+  openControlCreate(){
+    this.ctlCreateUser.buildModal();
   }
 
 }
