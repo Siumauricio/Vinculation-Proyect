@@ -2,30 +2,33 @@
   color: black !important;
 }
 
-.flex-nowrap :hover a{
-  color: #252b64!important;
+.flex-nowrap a:hover{
+  color: #3c5ca4 !important;
 }
 
 
 .sidebar-hide{
-  width: 250px;
-  height: 100%;
+
+  height: 80%;
   position: fixed;
-  margin-left: -250px;
+  margin-left: -280px;
   transition: 0.5s !important;
 }
 
 .sidebar-open{
+
+  height: 80%;
+  position: fixed;
   margin-left: 0 !important;
   transition: 0.5s !important;
 }
 
 .active-content{
   transition: 0.5s !important;
-  margin-left: 250px !important;
+  margin-left: 280px !important;
 }
 
-.aver{
-  display: flex !important;
-}
+.inactive-content{
+  transition: 0.5s !important;
 
+}

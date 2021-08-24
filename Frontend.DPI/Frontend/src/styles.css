@@ -1,15 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 .bg-primary{
   background-color: #252b64 !important ;
+  color: white;
 }
 
 .btn-primary{
   background-color: #252b64 !important ;
+  border-color: #252b64;
 }
 
 .text-primary{
   background-color: #252b64 !important ;
 }
 
-
+@import "~@ng-select/ng-select/themes/default.theme.css";
 

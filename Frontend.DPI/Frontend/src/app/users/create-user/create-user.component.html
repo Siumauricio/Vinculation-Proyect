@@ -1,7 +1,47 @@
 
 
-<div class="row">
-  <div class="col-md">
-<h1>hola</h1>
+<div class="container">
+
+  <div class="row mb-3">
+    <div class="col-md-4">
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+        <select class="form-control" [(ngModel)]="userFilterSelected">
+          <option *ngFor="let user of usersFilter" [value]="user">{{user}}</option>
+        </select>
+      </div>
+
+    </div>
+    <div class="col-md-4">
+      <button class="btn btn-primary btn-block" (click)="openControlCreate()"> Agregar usuario</button>
+    </div>
   </div>
+
+
+
+
+  <table class="table  table-striped">
+    <thead class="bg-primary">
+      <tr>
+        <th>USUARIO</th>
+        <th>FECHA CREACION</th>
+        <th>ROL </th>
+        <th>DEPARTAMENTO</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of userData | userFilter : userFilterSelected">
+        <td>{{user.username}}</td>
+        <td>{{user.creationDatetime}}</td>
+        <td>{{user.rolIdRol}}</td>
+        <td>{{user.departmentIdDepartmentNavigation}}</td>
+        <td>
+          <button class="btn btn-primary" (click)="openControlCreate(user)"><i class="fa fa-edit"></i></button>
+        </td>
+      </tr>
+      </tbody>
+  </table>
 </div>
+
+<app-create-user-modal #ctlCreateUser></app-create-user-modal>
