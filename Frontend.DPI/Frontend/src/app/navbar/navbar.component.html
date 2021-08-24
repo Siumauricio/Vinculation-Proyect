@@ -10,9 +10,6 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" [routerLink]="['/home']">Inicio</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Link
@@ -23,9 +20,6 @@
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Link</a>
         </li>
       </ul>
     </div>
@@ -40,55 +34,28 @@
         <div class="text-center">
           <img src="assets/gobiernoLogo.png" alt="" width="200px" height="120px">
         </div>
+        <hr>
           <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
 
               <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start  sticky-offset" id="menu">
                   <li class="nav-item">
                       <a href="#" class="nav-link align-middle px-0">
-                          <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+                        <i class="fa fa-home"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
                       </a>
-                  </li>
-                  <li>
-                      <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                          <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
-                      <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-                          <li class="w-100">
-                              <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span>  </a>
-                          </li>
-                          <li>
-                              <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2 </a>
-                          </li>
-                      </ul>
-                  </li>
-                  <li>
-                      <a href="#" class="nav-link px-0 align-middle">
-                          <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Orders</span></a>
-                  </li>
-                  <li>
-                      <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                          <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Bootstrap</span></a>
-                      <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
-                          <li class="w-100">
-                              <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1</a>
-                          </li>
-                          <li>
-                              <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2</a>
-                          </li>
-                      </ul>
                   </li>
                   <li>
                       <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
                         <i class="fa fa-user"></i> <span class="ms-1 d-none d-sm-inline">Usuarios</span></a>
                           <ul class="collapse nav flex-column ms-1 " id="submenu3" data-bs-parent="#menu" >
                           <li class="w-100">
-                              <a [routerLink]="['/users/create']"  class="nav-link px-0"> <span class="d-none d-sm-inline"> • Crear usuarios</span></a>
+                              <a [routerLink]="['/users/create']"  class="nav-link px-0"> <span class="d-none d-sm-inline"> • Mantenimiento</span></a>
                           </li>
 
                       </ul>
                   </li>
 
               </ul>
-              <hr>
+              <!-- <hr>
               <div class="dropdown pb-4">
                   <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                       <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
@@ -103,7 +70,7 @@
                       </li>
                       <li><a class="dropdown-item" href="#">Sign out</a></li>
                   </ul>
-              </div>
+              </div> -->
           </div>
       </div>
 
