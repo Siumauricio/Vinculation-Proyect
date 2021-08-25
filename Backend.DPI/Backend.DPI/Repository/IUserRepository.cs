@@ -15,7 +15,7 @@ namespace Backend.DPI.Repository
         Task<bool> UpdateRolUserAsync(string username, int rol);
         Task<bool> UpdateDepartmentUserAsync(string username, int department);
         User GetUserByUsernameAsync(string username);
-        Task<IReadOnlyList<User>> GetUsersAsync();
+        Task<IReadOnlyList<object>> GetUsersAsync();
 
     }
 }
