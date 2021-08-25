@@ -51,6 +51,7 @@ export class CreateUpdateUserModalComponent implements OnInit {
   async getUserByUsername(user:User){
     await this.userService.getUserByUsername(user).then(resp=>{
       this.newUser = resp;
+      this.passwordConfirm = this.newUser.password;
       console.log('resp',resp);
       console.log('newUser',this.newUser);
     })
