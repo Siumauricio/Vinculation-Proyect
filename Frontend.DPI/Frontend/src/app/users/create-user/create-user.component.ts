@@ -16,12 +16,11 @@ export class CreateUserComponent implements OnInit {
 
   userFilterSelected:string = '';
   usersFilter:string[] = [];
-  userData: User[] = [{"username":"enriquecs","password":null,"creationDatetime":"2021-08-22T00:00:00","departmentIdDepartment":1,"rolIdRol":1,"departmentIdDepartmentNavigation":null,"rolIdRolNavigation":null,"userRolPrivileges":[]},{"username":"Mauricio","password":null,"creationDatetime":"2021-08-22T00:00:00","departmentIdDepartment":1,"rolIdRol":1,"departmentIdDepartmentNavigation":null,"rolIdRolNavigation":null,"userRolPrivileges":[]},{"username":"string","password":null,"creationDatetime":"2021-08-22T00:00:00","departmentIdDepartment":1,"rolIdRol":1,"departmentIdDepartmentNavigation":null,"rolIdRolNavigation":null,"userRolPrivileges":[]}];
-
+  userData: User[];
 
   async ngOnInit() {
 
-    // await this.getDataUsers();
+    await this.getDataUsers();
 
   }
 

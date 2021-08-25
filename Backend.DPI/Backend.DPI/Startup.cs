@@ -55,7 +55,7 @@ namespace Backend.DPI
             //Scaffold-DbContext "Data Source=dpi.database.windows.net;Initial Catalog=DPI;User ID=admindpi;Password:dpiadmin1$;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -f
 
             app.UseRouting();
-
+            app.UseCors("CorsPolicy");
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
