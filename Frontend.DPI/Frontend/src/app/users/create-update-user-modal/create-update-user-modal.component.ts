@@ -15,7 +15,7 @@ export class CreateUpdateUserModalComponent implements OnInit {
   @Output() setNewUser = new EventEmitter<boolean>();
 
   newUser:User = {} as User;
-  passwordConfirm:string;
+  passwordConfirm:string='';
   isUpdate:boolean = false;
   correctPassword:boolean=true;
 
@@ -34,8 +34,10 @@ export class CreateUpdateUserModalComponent implements OnInit {
     if(user.username!=null){
       this.isUpdate = true;
       await this.getUserByUsername(user)
-    }else
+    }else{
       this.newUser = user;
+      this.passwordConfirm = ''
+    }
 
     await this.getDataDepartments();
     await this.getDataRols();
