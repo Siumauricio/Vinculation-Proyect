@@ -16,9 +16,8 @@ export class CreateUserModalComponent implements OnInit {
 
   correctPassword:boolean=true;
 
-  rolsData: Rols[] = [{"idRol":1,"name":"Administrador","rolPrivileges":[],"users":[]},{"idRol":3,"name":"Test","rolPrivileges":[],"users":[]}]
-  departmentsData: Departments[] = [{"idDepartment":1,"name":"Estructura Criminal","users":[]},{"idDepartment":2,"name":"Dirección de Análisis Estratégico (DAES)","users":[]},{"idDepartment":3,"name":"Recursos Humanos (RRHH)","users":[]}]
-
+  rolsData: Rols[];
+  departmentsData: Departments[];
   constructor(private userService:UsersService) { }
 
 
@@ -30,8 +29,8 @@ export class CreateUserModalComponent implements OnInit {
 
   async buildModal(user:User= {} as User){
     this.newUser = user;
-    // await this.getDataDepartments();
-    // await this.getDataRols();
+    await this.getDataDepartments();
+    await this.getDataRols();
 
     this.createUserModal.show();
   }
