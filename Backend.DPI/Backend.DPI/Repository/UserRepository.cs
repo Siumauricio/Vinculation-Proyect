@@ -45,15 +45,12 @@ namespace Backend.DPI.Repository
             }
             return result;
         }
-        public async Task<IReadOnlyList<User>> GetUsersAsync()
+        public async Task<IReadOnlyList<object>> GetUsersAsync()
         {
-            var result = await dbContext.Users.Select(user => new User
-            { 
-                Username= user.Username,
-                CreationDatetime=user.CreationDatetime,
-                DepartmentIdDepartment=user.DepartmentIdDepartment,
-                RolIdRol = user.RolIdRol
-            }).ToListAsync();
+            var result = await (from a in dbContext.Users
+                          join b in dbContext.Rols on a.RolIdRol equals b.IdRol
+                          join c in dbContext.Departments on a.DepartmentIdDepartment equals c.IdDepartment
+                          select new { Username = a.Username, FechaCreacion = a.CreationDatetime, NombreRol = b.Name,NombreDepartamento = c.Name }).ToListAsync();
 
             if (result == null)
             {
