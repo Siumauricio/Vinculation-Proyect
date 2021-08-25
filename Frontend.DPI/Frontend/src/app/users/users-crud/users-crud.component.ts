@@ -15,7 +15,6 @@ export class UsersCrudComponent implements OnInit {
   constructor(private userService:UsersService) { }
 
   userFilterSelected:string = '';
-  usersFilter:string[] = [];
   userData: User[];
 
   async ngOnInit() {
@@ -25,14 +24,10 @@ export class UsersCrudComponent implements OnInit {
   }
 
   async getDataUsers(){
-    this.usersFilter = [];
+
     await this.userService.getUsuers().then(resp=>{
       console.log(resp);
       this.userData = resp;
-      this.userData.forEach(user=>{
-        this.usersFilter.push(user.username)
-      })
-      this.usersFilter.push('')
     })
   }
 

@@ -6,14 +6,36 @@ import { User } from '../interfaces/user';
 })
 export class UserFilterPipe implements PipeTransform {
 
-  transform(items: User[], searchText: string): any {
-    if(searchText!=''){
-      console.log(items.filter(user=>user.username == searchText));
-
-      return  items.filter(user=>user.username == searchText);
+  transform(array: any[], query: string): any {
+    try {
+      if (!array[0]){
+        return;
     }
-    else
-      return items;
+    if (query) {
+        var data: any[] = [];
+        var elemnts= [] = query.split(' ');
+        var concatenar:any = "";
+            array.forEach(i => {
+                let valida:any = [];
+                Object.keys(i).forEach(async function(k, v) {
+                    concatenar += String(i[k]) + ' ';
+                });
+                elemnts.forEach(element => {
+                    if(concatenar.toUpperCase().indexOf(element.toUpperCase()) > -1){
+                      valida.push(true);
+                    }
+                });
+                if(elemnts.length == valida.length){
+                  data.push(i);
+                }
+                concatenar = "";
+            });
+         return data;
+    }
+    } catch (error) {
+
+    }
+    return array;
   }
 
 }
