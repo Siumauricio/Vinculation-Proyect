@@ -77,9 +77,11 @@ export class UsersService {
       let body={
         username : user.username,
         password: user.password,
-        departmentIdDepartment: user.departmentIdDepartment,
-        rolIdRol: user.rolIdRol
+        departmentIdDepartment: Number(user.departmentIdDepartment),
+        rolIdRol: Number(user.rolIdRol)
       }
+      console.log(body);
+
       const url =`${WEB_SERVICE}User/AddUser`
       let respuesta:any = {}
       await this.http.post(url, body ).toPromise()
