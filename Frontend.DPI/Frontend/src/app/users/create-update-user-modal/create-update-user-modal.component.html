@@ -69,12 +69,21 @@
             </div>
 
             <div class="row py-3 pull-right">
+
               <button
+              *ngIf="!isUpdate"
               class="btn btn-success"
               (click)="createUser(newUser)"
               [disabled]="newUser.username== '' ||newUser.username== null ||
                           (newUser.password!= passwordConfirm && passwordConfirm!= '') ||
                           newUser.password == null">Crear usuario</button>
+              <button
+              *ngIf="isUpdate"
+              class="btn btn-success"
+              (click)="updateUser(newUser)"
+              [disabled]="newUser.username== '' ||newUser.username== null ||
+                          (newUser.password!= passwordConfirm && passwordConfirm!= '') ||
+                          newUser.password == null">Actualizar datos</button>
             </div>
 
           </div>

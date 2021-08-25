@@ -37,6 +37,9 @@ export interface User {
   username:                         string;
   password:                         string;
   creationDatetime:                 string;
+  fechaCreacion:                    string
+  nombreDepartamento:               string;
+  nombreRol:                        string;
   departmentIdDepartment:           number;
   rolIdRol:                         number;
   departmentIdDepartmentNavigation: Departments;

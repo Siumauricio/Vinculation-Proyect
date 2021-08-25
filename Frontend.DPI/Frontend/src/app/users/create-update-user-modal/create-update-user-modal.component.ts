@@ -1,19 +1,22 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, Output, ViewChild ,EventEmitter} from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
+
 import { Rols, User, Departments } from '../interfaces/user';
 import { UsersService } from '../users.service';
 
 @Component({
-  selector: 'app-create-user-modal',
-  templateUrl: './create-user-modal.component.html',
-  styleUrls: ['./create-user-modal.component.css']
+  selector: 'app-create-update-user-modal',
+  templateUrl: './create-update-user-modal.component.html',
+  styleUrls: [ './create-update-user-modal.component.css']
 })
-export class CreateUserModalComponent implements OnInit {
+export class CreateUpdateUserModalComponent implements OnInit {
 
   @ViewChild('createUserModal', { static: true }) createUserModal: ModalDirective;
+  @Output() setNewUser = new EventEmitter<boolean>();
+
   newUser:User = {} as User;
   passwordConfirm:string;
-
+  isUpdate:boolean = false;
   correctPassword:boolean=true;
 
   rolsData: Rols[];
@@ -28,7 +31,12 @@ export class CreateUserModalComponent implements OnInit {
 
 
   async buildModal(user:User= {} as User){
-    this.newUser = user;
+    if(user.username!=null){
+      this.isUpdate = true;
+      await this.getUserByUsername(user)
+    }else
+      this.newUser = user;
+
     await this.getDataDepartments();
     await this.getDataRols();
 
@@ -38,6 +46,14 @@ export class CreateUserModalComponent implements OnInit {
 
   closeModal(){
     this.createUserModal.hide();
+  }
+
+  async getUserByUsername(user:User){
+    await this.userService.getUserByUsername(user).then(resp=>{
+      this.newUser = resp;
+      console.log('resp',resp);
+      console.log('newUser',this.newUser);
+    })
   }
 
   async getDataRols(){
@@ -66,6 +82,10 @@ export class CreateUserModalComponent implements OnInit {
 
     await this.userService.createUser(newUser).then(resp=>{
       console.log(resp);
+      if(resp){
+        this.setNewUser.emit(true);
+        this.closeModal();
+      }
     })
   }
 

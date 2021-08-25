@@ -12,7 +12,13 @@ export class UsersService {
 ) { }
 
   async getUsuers(){
-
+    Swal.fire({
+      title: 'Espere un momento',
+      html: 'Cargando usuarios',
+      didOpen: () => {
+        Swal.showLoading()
+      }
+    })
     const url =  `${WEB_SERVICE}User/getUsers`;
 
     let respuesta:any
@@ -73,6 +79,13 @@ export class UsersService {
   }
 
   async createUser(user:User){
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Se ha creado el usuario',
+      showConfirmButton: false,
+      timer: 1500
+    })
 
       let body={
         username : user.username,
@@ -97,6 +110,27 @@ export class UsersService {
     return respuesta;
 
   }
+
+  async getUserByUsername(user:User){
+
+    const url =`${WEB_SERVICE}User/UserById?username=${ user.username}`
+    let respuesta:any = {}
+    await this.http.get(url).toPromise()
+    .then(async (respuestaApi:any)=>{
+        Swal.close()
+        respuesta = respuestaApi
+      }).catch(async (error) =>{
+      Swal.close()
+      this.errorCarga()
+      console.log(error);
+  });
+
+  return respuesta;
+
+  }
+
+
+
 
 
   errorCarga(){

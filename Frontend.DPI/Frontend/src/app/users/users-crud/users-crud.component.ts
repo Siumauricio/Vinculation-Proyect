@@ -1,16 +1,16 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { CreateUserModalComponent } from '../create-user-modal/create-user-modal.component';
+import { CreateUpdateUserModalComponent } from '../create-update-user-modal/create-update-user-modal.component';
 import { User, Rols } from '../interfaces/user';
 import { UsersService } from '../users.service';
 
 @Component({
   selector: 'app-create-user',
-  templateUrl: './create-user.component.html',
-  styleUrls: ['./create-user.component.css']
+  templateUrl: './users-crud.component.html',
+  styleUrls: ['./users-crud.component.css']
 })
-export class CreateUserComponent implements OnInit {
+export class UsersCrudComponent implements OnInit {
 
-  @ViewChild('ctlCreateUser', {static:true}) ctlCreateUser:CreateUserModalComponent
+  @ViewChild('ctlCreateUser', {static:true}) ctlCreateUser:CreateUpdateUserModalComponent
 
   constructor(private userService:UsersService) { }
 
@@ -25,6 +25,7 @@ export class CreateUserComponent implements OnInit {
   }
 
   async getDataUsers(){
+    this.usersFilter = [];
     await this.userService.getUsuers().then(resp=>{
       console.log(resp);
       this.userData = resp;

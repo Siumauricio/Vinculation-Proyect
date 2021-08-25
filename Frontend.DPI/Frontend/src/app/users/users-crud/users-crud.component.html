@@ -33,9 +33,9 @@
     <tbody>
       <tr *ngFor="let user of userData | userFilter : userFilterSelected">
         <td>{{user.username}}</td>
-        <td>{{user.creationDatetime}}</td>
-        <td>{{user.rolIdRol}}</td>
-        <td>{{user.departmentIdDepartment}}</td>
+        <td>{{user.fechaCreacion}}</td>
+        <td>{{user.nombreRol}}</td>
+        <td>{{user.nombreDepartamento}}</td>
         <td>
           <button class="btn btn-primary" (click)="openControlCreate(user)"><i class="fa fa-edit"></i></button>
         </td>
@@ -44,4 +44,4 @@
   </table>
 </div>
 
-<app-create-user-modal #ctlCreateUser></app-create-user-modal>
+<app-create-update-user-modal #ctlCreateUser (setNewUser)="getDataUsers()"></app-create-update-user-modal>
