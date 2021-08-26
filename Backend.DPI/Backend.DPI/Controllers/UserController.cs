@@ -32,7 +32,7 @@ namespace Backend.DPI.Controllers
         [HttpGet("UserById")]
         public async Task<ActionResult<IEnumerable<User>>> GetUsersById(string username)
         {
-            var User =  _userRepository.GetUserByUsernameAsync(username);
+            var User =  await _userRepository.GetUserByUsernameAsync(username);
 
             if (User == null)
             {
