@@ -9,13 +9,16 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { LoginComponent } from './login/login.component';
+import { UserAuthenticationGuard } from './user-authentication.guard';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +28,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     FormsModule,
 
   ],
-  providers: [],
+  providers: [UserAuthenticationGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

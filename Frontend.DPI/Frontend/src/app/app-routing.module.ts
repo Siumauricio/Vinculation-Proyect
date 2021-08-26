@@ -3,11 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { UserAuthenticationGuard } from './user-authentication.guard';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
-
-
     path: '',
     children:[
       {
@@ -22,8 +22,10 @@ const routes: Routes = [
         path:'users',
         loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
       }
-    ]
+    ],
+    canActivate: [UserAuthenticationGuard],
   },
+  {path: 'login', component: LoginComponent},
   {path: '**',component: PagenotfoundComponent}
 ];
 
