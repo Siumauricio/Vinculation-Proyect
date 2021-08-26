@@ -11,11 +11,17 @@ export class AuthenticationService {
   public currentUser:Observable<User>;
 
   constructor(private http: HttpClient) { 
-    this.isLoggedIn = false;
+    this.isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
   }
 
-  login() {
-    this.isLoggedIn = true;
+  login(user, password) {
+    if (user === "test" && password === "test") {
+      this.isLoggedIn = true;
+      localStorage.setItem("isLoggedIn", "true");
+    }
+
+    return this.isLoggedIn;
+
   }
 
 }

@@ -3,32 +3,32 @@
         <div class="user_card">
             <div class="d-flex justify-content-center">
                 <div class="brand_logo_container">
-                    <img src="https://cdn.freebiesupply.com/logos/large/2x/pinterest-circle-logo-png-transparent.png" class="brand_logo" alt="Logo">
+                    <img src="assets/dpiLogo.jpg" class="brand_logo" alt="Logo">
                 </div>
             </div>
             <div class="d-flex justify-content-center form_container">
-                <form>
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                     <div class="input-group mb-3">
                         <div class="input-group-append">
-                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            <span class="input-group-text h-100 w-100"><i class="fa fa-user"></i></span>
                         </div>
-                        <input type="text" name="" class="form-control input_user" value="" placeholder="username">
+                        <input type="text" name="" class="form-control input_user" formControlName="user" placeholder="Usuario" [ngClass]="{ 'is-invalid': submitted && f.user.errors }">
+                        <div *ngIf="submitted && f.user.errors" class="invalid-feedback">
+                            <div *ngIf="f.user.errors.required">El campo 'Usuario' es requerido</div>
+                        </div>
                     </div>
                     <div class="input-group mb-2">
                         <div class="input-group-append">
-                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            <span class="input-group-text h-100"><i class="fa fa-key"></i></span>
                         </div>
-                        <input type="password" name="" class="form-control input_pass" value="" placeholder="password">
-                    </div>
-                    <div class="form-group">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customControlInline">
-                            <label class="custom-control-label" for="customControlInline">Remember me</label>
+                        <input type="password" name="" class="form-control input_pass" formControlName="password" placeholder="Contraseña" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                            <div *ngIf="f.password.errors.required">El campo 'Contraseña' es requerido</div>
                         </div>
                     </div>
-                        <div class="d-flex justify-content-center mt-3 login_container">
-                 <button type="button" name="button" class="btn login_btn">Login</button>
-               </div>
+                    <div class="d-flex justify-content-center mt-3 login_container">
+                        <button type="submit" name="button" class="btn login_btn">Iniciar Sesión</button>
+                    </div>
                 </form>
             </div>  
         </div>

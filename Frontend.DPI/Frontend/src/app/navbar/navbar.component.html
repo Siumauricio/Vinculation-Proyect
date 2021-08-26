@@ -1,4 +1,4 @@
-<span *ngIf="this.isLoggedIn">
+<span *ngIf="this.auth.isLoggedIn">
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
       <button class="navbar-brand btn" (click)="openSidebar = !openSidebar">☰</button>
@@ -28,7 +28,7 @@
   <br><br>
 </span>
 
-<span *ngIf="this.isLoggedIn">
+<span *ngIf="this.auth.isLoggedIn">
   <br><br><div class="col-md-3 col-xl-2 px-0   sticky-top" id="mySidebar" [ngClass]="openSidebar?'sidebar-open':'sidebar-hide'">
     <div class="row flex-nowrap">
         <div class="col-auto col-md-12  bg-light">

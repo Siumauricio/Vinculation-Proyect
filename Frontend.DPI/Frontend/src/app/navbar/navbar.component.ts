@@ -9,13 +9,9 @@ import { AuthenticationService } from '../authentication.service';
 export class NavbarComponent implements OnInit {
 
   openSidebar:boolean=false;
-  isLoggedIn:boolean;
 
-  constructor(private auth: AuthenticationService) { }
+  constructor(public auth: AuthenticationService) { }
 
-  ngOnInit(): void {
-    this.isLoggedIn = this.auth.isLoggedIn;
-    console.log(this.isLoggedIn);
-  }
+  ngOnInit(): void {}
 
 }

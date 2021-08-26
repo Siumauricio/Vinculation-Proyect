@@ -7,7 +7,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { LoginComponent } from './login/login.component';
 import { UserAuthenticationGuard } from './user-authentication.guard';
@@ -26,6 +26,7 @@ import { UserAuthenticationGuard } from './user-authentication.guard';
     SweetAlert2Module.forRoot(),
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
 
   ],
   providers: [UserAuthenticationGuard],
