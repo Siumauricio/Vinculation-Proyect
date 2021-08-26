@@ -14,7 +14,7 @@ namespace Backend.DPI.Repository
 
         public async Task<bool> CreateUserAsync(UserDto user)
         {
-            var result =  dbContext.Users.FirstOrDefault(u => u.Username.ToLower() == user.Username.ToLower());
+            var result =  await dbContext.Users.FirstOrDefaultAsync(u => u.Username.ToLower() == user.Username.ToLower());
             if (result!=null)
             {
                 return false;
@@ -26,7 +26,7 @@ namespace Backend.DPI.Repository
         }
         public async Task<bool> DeleteUserAsync(string user)
         {
-            var result = dbContext.Users.FirstOrDefault(u => u.Username.ToLower() == user.ToLower());
+            var result = await dbContext.Users.FirstOrDefaultAsync(u => u.Username.ToLower() == user.ToLower());
             if (result == null)
             {
                 return false;
@@ -36,9 +36,9 @@ namespace Backend.DPI.Repository
             return true;
         }
 
-        public User GetUserByUsernameAsync(string username)
+        public async Task<User> GetUserByUsernameAsync(string username)
         {
-            User result = dbContext.Users.FirstOrDefault(u => u.Username.ToLower() == username.ToLower()) ;
+            User result = await dbContext.Users.FirstOrDefaultAsync(u => u.Username.ToLower() == username.ToLower()) ;
             if (result == null)
             {
                 return null;
@@ -61,7 +61,7 @@ namespace Backend.DPI.Repository
 
         public async Task<bool> UpdatePasswordUserAsync(string username, string password)
         {
-            User result = dbContext.Users.FirstOrDefault(u => u.Username.ToLower() == username.ToLower());
+            User result = await dbContext.Users.FirstOrDefaultAsync(u => u.Username.ToLower() == username.ToLower());
             if (result == null)
             {
                 return false;
@@ -74,8 +74,8 @@ namespace Backend.DPI.Repository
 
         public async Task<bool> UpdateRolUserAsync(string username, int rol)
         {
-            User result = dbContext.Users.FirstOrDefault(u => u.Username.ToLower() == username.ToLower());
-            Rol dp = dbContext.Rols.FirstOrDefault(r => r.IdRol == rol);
+            User result = await dbContext.Users.FirstOrDefaultAsync(u => u.Username.ToLower() == username.ToLower());
+            Rol dp = await dbContext.Rols.FirstOrDefaultAsync(r => r.IdRol == rol);
 
             if (result == null || dp == null)
             {
@@ -87,7 +87,7 @@ namespace Backend.DPI.Repository
         }
         public async Task<bool> UpdateDepartmentUserAsync(string username, int department)
         {
-            User result = dbContext.Users.FirstOrDefault(u => u.Username.ToLower() == username.ToLower());
+            User result = await dbContext.Users.FirstOrDefaultAsync(u => u.Username.ToLower() == username.ToLower());
             Department dp = dbContext.Departments.FirstOrDefault(d => d.IdDepartment == department);
 
             if (result == null || dp == null)
@@ -96,6 +96,21 @@ namespace Backend.DPI.Repository
             }
             
             result.DepartmentIdDepartment = department;
+            await dbContext.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<bool> UpdateUser(UserDto user)
+        {
+            User result = await dbContext.Users.FirstOrDefaultAsync(u => u.Username.ToLower() == user.Username.ToLower());
+
+            if (result == null)
+            {
+                return false;
+            }
+            result.Password = user.Password;
+            result.RolIdRol = user.RolIdRol;
+            result.DepartmentIdDepartment = user.DepartmentIdDepartment;
             await dbContext.SaveChangesAsync();
             return true;
         }

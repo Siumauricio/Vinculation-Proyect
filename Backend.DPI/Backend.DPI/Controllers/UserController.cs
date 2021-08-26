@@ -69,6 +69,12 @@ namespace Backend.DPI.Controllers
             return Ok(User);
         }
 
+        [HttpPost("UpdateUser")]
+        public async Task<ActionResult<IEnumerable<User>>> UpdateUser(UserDto user)
+        {
+            var User = await _userRepository.UpdateUser(user);
+            return Ok(User);
+        }
         [HttpDelete("DeleteUser")]
         public async Task<ActionResult<IEnumerable<User>>> DeleteUser(string username)
         {
@@ -76,6 +82,7 @@ namespace Backend.DPI.Controllers
             return Ok(User);
         }
 
+     
 
 
     }
