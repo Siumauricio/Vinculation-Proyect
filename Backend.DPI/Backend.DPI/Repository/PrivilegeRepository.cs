@@ -71,11 +71,18 @@ namespace Backend.DPI.Repository
             return await dpiContext.Privileges.ToListAsync();
         }
 
-        public async Task<IReadOnlyList<RolPrivilege>> GetRolPrivilegesAsync()
+        public async Task<IReadOnlyList<object>> GetRolPrivilegesAsync()
         {
-            return await dpiContext.RolPrivileges.ToListAsync();
+              var result=  await (from rol_Privileges in dpiContext.RolPrivileges
+                                                         join rols in dpiContext.Rols on rol_Privileges.RolIdRol equals rols.IdRol
+                                                         join privileges in dpiContext.Privileges on rol_Privileges.PrivilegeIdPrivilege equals privileges.IdPrivilege
+                                                         select new { 
+                                                            IdRolPrivilege= rol_Privileges.IdRolPrivilege,
+                                                            Name_Rol= rols.Name,
+                                                            Name_Privilege=privileges.Name
+                                                         }).ToListAsync();
+            return result;
         }
-
 
     }
 }

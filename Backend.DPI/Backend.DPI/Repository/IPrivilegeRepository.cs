@@ -12,7 +12,7 @@ namespace Backend.DPI.Repository
         Task<Privilege> CreatePrivilegeAsync(Privilege Privilege);
 
         Task<IReadOnlyList<Privilege>> GetPrivilegesAsync();
-        Task<IReadOnlyList<RolPrivilege>> GetRolPrivilegesAsync();
+        Task<IReadOnlyList<object>> GetRolPrivilegesAsync();
 
         Task<UserRolPrivilege> AddUserRolPrivilege(UserRolPrivilege UserRolPrivilege);
     }

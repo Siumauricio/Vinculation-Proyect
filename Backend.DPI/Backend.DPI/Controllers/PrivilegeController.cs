@@ -61,12 +61,7 @@ namespace Backend.DPI.Controllers
 
         public async Task<ActionResult<IEnumerable<RolPrivilegeDto>>> GetRolPrivileges() {
             var result = await privilegeRepository.GetRolPrivilegesAsync();
-            return Ok(result.Select(x => new RolPrivilegeDto
-            {
-                IdRolPrivilege = x.IdRolPrivilege,
-                PrivilegeIdPrivilege = x.PrivilegeIdPrivilege,
-                RolIdRol = x.RolIdRol
-            }));
+            return Ok(result);
         }
 
 
