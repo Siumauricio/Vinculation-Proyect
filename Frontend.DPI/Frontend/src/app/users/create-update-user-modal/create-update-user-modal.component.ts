@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, ViewChild ,EventEmitter} from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 
-import { Rols, User, Departments } from '../interfaces/user';
+import { Rol, User, Department, RolPrivilege } from '../interfaces/user';
 import { UsersService } from '../users.service';
 
 @Component({
@@ -19,10 +19,11 @@ export class CreateUpdateUserModalComponent implements OnInit {
   isUpdate:boolean = false;
   correctPassword:boolean=true;
 
-  rolsData: Rols[];
-  departmentsData: Departments[];
+  rolsData: Rol[];
+  departmentsData: Department[];
 
-  asignarPermisos:boolean=false;
+  assignPermissions:boolean=false;
+  rolPrivileges:RolPrivilege[];
   constructor(private userService:UsersService) { }
 
 
@@ -40,7 +41,7 @@ export class CreateUpdateUserModalComponent implements OnInit {
       this.newUser = user;
       this.passwordConfirm = ''
     }
-
+    this.assignPermissions = false;
     await this.getDataDepartments();
     await this.getDataRols();
 
@@ -103,6 +104,24 @@ export class CreateUpdateUserModalComponent implements OnInit {
         this.setNewUser.emit(true);
         this.closeModal();
       }
+    })
+  }
+
+  async getDataRolPriviliges(){
+    this.assignPermissions = !this.assignPermissions
+    if(this.assignPermissions){
+      await this.userService.getRolPriviliges().then(resp=>{
+        console.log(resp);
+        this.rolPrivileges = resp;
+      })
+    }
+  }
+
+  async assignUserPrivileges(idRolPrivilege:number,username:string,specialPrivilege:number =0){
+
+    await this.userService.updtUserPrivilege(idRolPrivilege,username,specialPrivilege).then(resp=>{
+      console.log(resp);
+      this.rolPrivileges = resp;
     })
   }
 

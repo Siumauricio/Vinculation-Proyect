@@ -21,54 +21,54 @@ export class UsersService {
     })
     const url =  `${WEB_SERVICE}User/getUsers`;
 
-    let respuesta:any
+    let answer:any
 
     await this.http.get(url)
     .toPromise()
-    .then(async (respuestaApi:any)=>{
+    .then(async (ApiAnswer:any)=>{
       Swal.close()
-      respuesta = respuestaApi
+      answer = ApiAnswer
 
     })
-    .catch(async respuestaApi =>{
+    .catch(async ApiAnswer =>{
       Swal.close()
       this.errorMessage('Erro extrayendo datos de usuarios');
 
     });
-      return respuesta;
+      return answer;
   }
 
   async getRols(){
     const url =  `${WEB_SERVICE}Roles/GetRols`;
 
-    let respuesta:any
+    let answer:any
 
     await this.http.get(url)
     .toPromise()
-    .then(async (respuestaApi:any)=>{
-      respuesta = respuestaApi
+    .then(async (ApiAnswer:any)=>{
+      answer = ApiAnswer
     })
-    .catch(async respuestaApi =>{
+    .catch(async ApiAnswer =>{
       this.errorMessage('Error extrayendo roles');
     });
-      return respuesta;
+      return answer;
   }
 
   async getDepartments(){
     const url =  `${WEB_SERVICE}Department/GetDepartments`;
 
-    let respuesta:any
+    let answer:any
 
     await this.http.get(url)
     .toPromise()
-    .then(async (respuestaApi:any)=>{
-      respuesta = respuestaApi
+    .then(async (ApiAnswer:any)=>{
+      answer = ApiAnswer
     })
-    .catch(async respuestaApi =>{
+    .catch(async ApiAnswer =>{
       this.errorMessage('Error extrayendo departamentos');
 
     });
-      return respuesta;
+      return answer;
   }
 
   async createUser(user:User){
@@ -82,34 +82,34 @@ export class UsersService {
       console.log(body);
 
       const url =`${WEB_SERVICE}User/AddUser`
-      let respuesta:any = {}
+      let answer:any = {}
       await this.http.post(url, body ).toPromise()
-      .then(async (respuestaApi:any)=>{
-          respuesta = respuestaApi
-          if(respuesta)
+      .then(async (ApiAnswer:any)=>{
+        answer = ApiAnswer
+          if(answer)
           this.succesMessage('¡Se ha creado el usuario con exito!');
         }).catch(async (error) =>{
         this.errorMessage('Error creando un nuevo usuario')
         console.log(error);
     });
 
-    return respuesta;
+    return answer;
 
   }
 
   async getUserByUsername(user:User){
 
     const url =`${WEB_SERVICE}User/UserById?username=${ user.username}`
-    let respuesta:any = {}
+    let answer:any = {}
     await this.http.get(url).toPromise()
-    .then(async (respuestaApi:any)=>{
-        respuesta = respuestaApi
+    .then(async (ApiAnswer:any)=>{
+      answer = ApiAnswer
       }).catch(async (error) =>{
       this.errorMessage('Error estrayendo datos del usuarios')
       console.log(error);
   });
 
-  return respuesta;
+  return answer;
 
   }
 
@@ -125,20 +125,59 @@ export class UsersService {
       console.log(body);
 
       const url =`${WEB_SERVICE}User/UpdateUser`
-      let respuesta:any = {}
+      let answer:any = {}
       await this.http.post(url, body ).toPromise()
-      .then(async (respuestaApi:any)=>{
-          respuesta = respuestaApi
-          if(respuesta)
+      .then(async (ApiAnswer:any)=>{
+        answer = ApiAnswer
+          if(answer)
           this.succesMessage('¡Se ha modificado el usuario con exito!');
         }).catch(async (error) =>{
         this.errorMessage('Error al modificar datos de usuario')
         console.log(error);
     });
 
-    return respuesta;
+    return answer;
   }
 
+  async getRolPriviliges(){
+    const url =  `${WEB_SERVICE}Privilege/GetRolPrivilege`;
+
+    let answer:any
+
+    await this.http.get(url)
+    .toPromise()
+    .then(async (ApiAnswer:any)=>{
+      answer = ApiAnswer
+    })
+    .catch(async respuestaApi =>{
+      this.errorMessage('Error extrayendo departamentos');
+
+    });
+      return answer;
+  }
+
+  async updtUserPrivilege(idRolPrivilege:number,username:string, specialPrivilege:number){
+    let body={
+      userUsername : username,
+      idRolPrivilege: idRolPrivilege,
+      specialPrivilege:specialPrivilege
+    }
+    console.log(body);
+
+    const url =`${WEB_SERVICE}Privilege​/AddUserRolPrivilege`
+    let answer:any = {}
+    await this.http.post(url, body ).toPromise()
+    .then(async (ApiAnswer:any)=>{
+      answer = ApiAnswer
+        if(answer)
+        this.succesMessage('¡Se han asignado los privilegios con exito!');
+      }).catch(async (error) =>{
+      this.errorMessage('Error al asignar privilegios de usuario')
+      console.log(error);
+  });
+
+  return answer;
+  }
 
 
 

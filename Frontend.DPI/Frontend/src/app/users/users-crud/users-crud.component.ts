@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CreateUpdateUserModalComponent } from '../create-update-user-modal/create-update-user-modal.component';
-import { User, Rols } from '../interfaces/user';
+import { User } from '../interfaces/user';
 import { UsersService } from '../users.service';
 
 @Component({
