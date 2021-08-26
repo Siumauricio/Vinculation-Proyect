@@ -32,7 +32,7 @@ export class UsersService {
     })
     .catch(async respuestaApi =>{
       Swal.close()
-      this.errorCarga();
+      this.errorMessage('Erro extrayendo datos de usuarios');
 
     });
       return respuesta;
@@ -46,14 +46,10 @@ export class UsersService {
     await this.http.get(url)
     .toPromise()
     .then(async (respuestaApi:any)=>{
-      Swal.close()
       respuesta = respuestaApi
-
     })
     .catch(async respuestaApi =>{
-      Swal.close()
-      this.errorCarga();
-
+      this.errorMessage('Error extrayendo roles');
     });
       return respuesta;
   }
@@ -66,26 +62,16 @@ export class UsersService {
     await this.http.get(url)
     .toPromise()
     .then(async (respuestaApi:any)=>{
-      Swal.close()
       respuesta = respuestaApi
-
     })
     .catch(async respuestaApi =>{
-      Swal.close()
-      this.errorCarga();
+      this.errorMessage('Error extrayendo departamentos');
 
     });
       return respuesta;
   }
 
   async createUser(user:User){
-    Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Se ha creado el usuario',
-      showConfirmButton: false,
-      timer: 1500
-    })
 
       let body={
         username : user.username,
@@ -99,11 +85,11 @@ export class UsersService {
       let respuesta:any = {}
       await this.http.post(url, body ).toPromise()
       .then(async (respuestaApi:any)=>{
-          Swal.close()
           respuesta = respuestaApi
+          if(respuesta)
+          this.succesMessage('¡Se ha creado el usuario con exito!');
         }).catch(async (error) =>{
-        Swal.close()
-        this.errorCarga()
+        this.errorMessage('Error creando un nuevo usuario')
         console.log(error);
     });
 
@@ -117,11 +103,9 @@ export class UsersService {
     let respuesta:any = {}
     await this.http.get(url).toPromise()
     .then(async (respuestaApi:any)=>{
-        Swal.close()
         respuesta = respuestaApi
       }).catch(async (error) =>{
-      Swal.close()
-      this.errorCarga()
+      this.errorMessage('Error estrayendo datos del usuarios')
       console.log(error);
   });
 
@@ -130,13 +114,49 @@ export class UsersService {
   }
 
 
+  async updtUser(user:User){
+
+      let body={
+        username : user.username,
+        password: user.password,
+        departmentIdDepartment: Number(user.departmentIdDepartment),
+        rolIdRol: Number(user.rolIdRol)
+      }
+      console.log(body);
+
+      const url =`${WEB_SERVICE}User/UpdateUser`
+      let respuesta:any = {}
+      await this.http.post(url, body ).toPromise()
+      .then(async (respuestaApi:any)=>{
+          respuesta = respuestaApi
+          if(respuesta)
+          this.succesMessage('¡Se ha modificado el usuario con exito!');
+        }).catch(async (error) =>{
+        this.errorMessage('Error al modificar datos de usuario')
+        console.log(error);
+    });
+
+    return respuesta;
+  }
 
 
 
-  errorCarga(){
+
+  succesMessage(message){
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: message,
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
+
+
+  errorMessage(message){
     Swal.fire({
       title:'Error',
-      text:'Servicio no disponible',
+      text:message,
       icon:'error'
     })
   }

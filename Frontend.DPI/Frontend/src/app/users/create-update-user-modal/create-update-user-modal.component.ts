@@ -21,6 +21,8 @@ export class CreateUpdateUserModalComponent implements OnInit {
 
   rolsData: Rols[];
   departmentsData: Departments[];
+
+  asignarPermisos:boolean=false;
   constructor(private userService:UsersService) { }
 
 
@@ -84,6 +86,18 @@ export class CreateUpdateUserModalComponent implements OnInit {
     console.log('user',newUser);
 
     await this.userService.createUser(newUser).then(resp=>{
+      console.log(resp);
+      if(resp){
+        this.setNewUser.emit(true);
+        this.closeModal();
+      }
+    })
+  }
+
+  async updateUser(newUser:User){
+    console.log('user',newUser);
+
+    await this.userService.updtUser(newUser).then(resp=>{
       console.log(resp);
       if(resp){
         this.setNewUser.emit(true);
