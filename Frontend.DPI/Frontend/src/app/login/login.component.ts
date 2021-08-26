@@ -33,17 +33,15 @@ export class LoginComponent implements OnInit {
 
   get f() { return this.loginForm.controls; }
 
-  onSubmit() {
+  async onSubmit() {
     this.submitted = true;
-    console.log("test");
     if (this.loginForm.invalid) {
       return;
     }
 
-    const res = this.auth.login(this.f.user.value, this.f.password.value);
-    
+    const res = await this.auth.login(this.f.user.value, this.f.password.value);
+    console.log(res);
     if (res) {
-      console.log(res);
       this.router.navigate(['home']);
     }
 

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { WEB_SERVICE } from './configurations/config';
 import { User } from './users/interfaces/user';
 
 @Injectable({
@@ -8,20 +9,45 @@ import { User } from './users/interfaces/user';
 })
 export class AuthenticationService {
   public isLoggedIn:boolean;
+  private currentUserSubject: BehaviorSubject<User>;
   public currentUser:Observable<User>;
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
     this.isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  login(user, password) {
-    if (user === "test" && password === "test") {
-      this.isLoggedIn = true;
-      localStorage.setItem("isLoggedIn", "true");
+  async login(user, password) {
+    
+    let response:any;
+    try {
+      await this.http.get(`${WEB_SERVICE}User/UserById?username=${user}`)
+        .toPromise()
+        .then(res => {
+          response = res;
+        })
+        .catch(err => {});
+  
+      console.log(response);
+  
+      if (password === response.password) {
+        this.isLoggedIn = true;
+        localStorage.setItem('currentUser', JSON.stringify(response));
+        this.currentUserSubject.next(response);
+        localStorage.setItem("isLoggedIn", "true");
+      }
+  
+      return this.isLoggedIn;
+    } catch (error) {
+      return false;
     }
+  }
 
-    return this.isLoggedIn;
-
+  logout(){
+    this.isLoggedIn = false;
+    localStorage.setItem("isLoggedIn", "flase");
+    localStorage.removeItem('currentUser');
   }
 
 }
