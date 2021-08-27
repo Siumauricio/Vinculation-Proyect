@@ -141,9 +141,9 @@ export class CreateUpdateUserModalComponent implements OnInit {
 
   cleanUser(user:User){
     if(user.username!=null)
-      user.username = user.username.replace(/[^0-9A-Za-z]/g,'')
+      user.username = user.username.replace(/[^0-9A-Za-z-._]/g,'')
     if(user.password!=null)
-      user.password = user.password.replace(/[^0-9A-Za-z]/g,'')
+      user.password = user.password.replace(/[^0-9A-Za-z-._]/g,'')
   }
 
 }
