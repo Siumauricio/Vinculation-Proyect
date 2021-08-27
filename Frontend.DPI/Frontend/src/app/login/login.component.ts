@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { AuthenticationService } from '../authentication.service';
 
 @Component({
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private auth: AuthenticationService,
-  ) { 
+  ) {
     if (this.auth.isLoggedIn) {
       this.router.navigate(['/']);
     }
@@ -43,6 +44,11 @@ export class LoginComponent implements OnInit {
     console.log(res);
     if (res) {
       this.router.navigate(['home']);
+    }else{
+      Swal.fire('Error',
+      'La credenciales no concuerdan con los registros existentes',
+
+    )
     }
 
     // this.authenticationService.login(this.f.username.value, this.f.password.value)
