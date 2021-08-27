@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
+import { User } from '../users/interfaces/user';
 
 @Component({
   selector: 'app-navbar',
@@ -10,10 +11,13 @@ import { AuthenticationService } from '../authentication.service';
 export class NavbarComponent implements OnInit {
 
   openSidebar:boolean=false;
-
+  user:User
   constructor(public auth: AuthenticationService, private router: Router) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+
+  }
 
   logout() {
     this.auth.logout();

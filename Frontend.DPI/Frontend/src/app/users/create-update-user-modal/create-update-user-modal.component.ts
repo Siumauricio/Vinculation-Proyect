@@ -1,8 +1,9 @@
 import { Component, OnInit, Output, ViewChild ,EventEmitter} from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
-
-import { Rols, User, Departments } from '../interfaces/user';
+import { Validators, FormBuilder } from '@angular/forms';
+import { Rol, User, Department, RolPrivilege } from '../interfaces/user';
 import { UsersService } from '../users.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-create-update-user-modal',
@@ -19,10 +20,13 @@ export class CreateUpdateUserModalComponent implements OnInit {
   isUpdate:boolean = false;
   correctPassword:boolean=true;
 
-  rolsData: Rols[];
-  departmentsData: Departments[];
-  constructor(private userService:UsersService) { }
+  rolsData: Rol[];
+  departmentsData: Department[];
 
+  assignPermissions:boolean=false;
+  rolPrivileges:RolPrivilege[];
+  constructor(
+    private userService:UsersService) { }
 
   ngOnInit(): void {
 
@@ -36,9 +40,10 @@ export class CreateUpdateUserModalComponent implements OnInit {
       await this.getUserByUsername(user)
     }else{
       this.newUser = user;
+      this.isUpdate = false;
       this.passwordConfirm = ''
     }
-
+    this.assignPermissions = false;
     await this.getDataDepartments();
     await this.getDataRols();
 
@@ -54,7 +59,7 @@ export class CreateUpdateUserModalComponent implements OnInit {
     await this.userService.getUserByUsername(user).then(resp=>{
       this.newUser = resp;
       this.passwordConfirm = this.newUser.password;
-      console.log('resp',resp);
+
       console.log('newUser',this.newUser);
     })
   }
@@ -68,7 +73,7 @@ export class CreateUpdateUserModalComponent implements OnInit {
 
   async getDataDepartments(){
     await this.userService.getDepartments().then( resp=>{
-      console.log(resp);
+
       this.departmentsData= resp;
     })
   }
@@ -84,12 +89,61 @@ export class CreateUpdateUserModalComponent implements OnInit {
     console.log('user',newUser);
 
     await this.userService.createUser(newUser).then(resp=>{
+
+      if(resp){
+        this.setNewUser.emit(true);
+        this.closeModal();
+      }else{
+        Swal.fire('Error',
+          'El usuario ingresado ya esta siendo utilizado por alguien mas',
+          'error'
+        )
+      }
+
+    })
+  }
+
+  async updateUser(newUser:User){
+    console.log('user',newUser);
+
+    await this.userService.updtUser(newUser).then(resp=>{
       console.log(resp);
       if(resp){
         this.setNewUser.emit(true);
         this.closeModal();
+      }else{
+        Swal.fire('Error',
+          'Ocurrio un problema actualizando el usuario',
+          'error'
+        )
       }
     })
+  }
+
+  async getDataRolPriviliges(){
+    this.assignPermissions = !this.assignPermissions
+    if(this.assignPermissions){
+      await this.userService.getRolPriviliges().then(resp=>{
+        console.log(resp);
+        this.rolPrivileges = resp;
+      })
+    }
+  }
+
+  async assignUserPrivileges(idRolPrivilege:number,username:string,specialPrivilege:number =0){
+
+    await this.userService.updtUserPrivilege(idRolPrivilege,username,specialPrivilege).then(resp=>{
+      console.log(resp);
+      this.rolPrivileges = resp;
+    })
+  }
+
+
+  cleanUser(user:User){
+    if(user.username!=null)
+      user.username = user.username.replace(/[^0-9A-Za-z-._]/g,'')
+    if(user.password!=null)
+      user.password = user.password.replace(/[^0-9A-Za-z-._]/g,'')
   }
 
 }

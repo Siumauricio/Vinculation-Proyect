@@ -1,7 +1,6 @@
 
 
 <div class="container">
-
   <div class="row mb-3">
     <div class="col-md-4">
       <div class="input-group mb-3">
@@ -13,29 +12,32 @@
       <button class="btn btn-primary btn-block" (click)="openControlCreate()"> Agregar usuario</button>
     </div>
   </div>
+  <div class="col-md-12 table-responsive">
 
-  <table class="table  table-striped">
-    <thead class="bg-primary">
-      <tr>
-        <th>USUARIO</th>
-        <th>FECHA DE REGISTRO</th>
-        <th>ROL </th>
-        <th>DEPARTAMENTO</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of userData | userFilter : userFilterSelected">
-        <td>{{user.username}}</td>
-        <td>{{user.fechaCreacion | date: 'dd/MM/yyyy'}}</td>
-        <td>{{user.nombreRol}}</td>
-        <td>{{user.nombreDepartamento}}</td>
-        <td>
-          <button class="btn btn-primary" (click)="openControlCreate(user)"><i class="fa fa-edit"></i></button>
-        </td>
-      </tr>
+    <table class="table  table-striped table-sm">
+      <thead class="bg-primary">
+        <tr>
+          <th>USUARIO</th>
+          <th>FECHA DE REGISTRO</th>
+          <th>ROL </th>
+          <th>DEPARTAMENTO</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of userData | userFilter : userFilterSelected">
+          <td>{{user.username}}</td>
+          <td>{{user.fechaCreacion | date: 'dd/MM/yyyy'}}</td>
+          <td>{{user.nombreRol}}</td>
+          <td>{{user.nombreDepartamento}}</td>
+          <td>
+            <button class="btn" (click)="openControlCreate(user)"><i class="fa fa-edit"></i></button>
+            <button class="btn" (click)="deleteUser(user.username)"> <i class="fa fa-trash text-danger" ></i> </button>
+          </td>
+        </tr>
       </tbody>
-  </table>
+    </table>
+  </div>
 </div>
 
 <app-create-update-user-modal #ctlCreateUser (setNewUser)="getDataUsers()"></app-create-update-user-modal>
