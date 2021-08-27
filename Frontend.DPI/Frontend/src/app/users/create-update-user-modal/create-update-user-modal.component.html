@@ -2,7 +2,12 @@
   <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header bg-primary">
-          CREACION DE USUARIOS
+          <h3 *ngIf="!isUpdate">
+            CREACION DE USUARIO
+          </h3>
+          <h3 *ngIf="isUpdate">
+            EDICION DE USUARIO
+          </h3>
           <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
           </button>
         </div>
@@ -12,7 +17,9 @@
           <div class="container p-4">
             <div class="form-floating mb-3">
               <input type="text"
+              [disabled]="isUpdate"
               [(ngModel)]="newUser.username"
+              (keyup)="cleanUser(newUser)"
               class="form-control"
               id="floatingUser"
               [ngClass]="newUser.username== '' ||newUser.username== null ?'is-invalid':''"
@@ -25,9 +32,10 @@
                 <div class="form-floating ">
                   <input type="password"
                   [(ngModel)]="newUser.password"
+                  (keyup)="cleanUser(newUser)"
                   class="form-control"
                   id="floatingPassword"
-                  [ngClass]="newUser.password!= passwordConfirm && passwordConfirm!= ''?'is-invalid':''"
+                  [ngClass]="newUser.password!= passwordConfirm && passwordConfirm!= '' || newUser.password==null?'is-invalid':''"
                   placeholder="Password">
                   <label for="floatingPassword"  >Contraseña</label>
                 </div>
@@ -39,7 +47,7 @@
                   class="form-control"
                   id="floatingPassword"
                   placeholder="Password"
-                  [ngClass]="newUser.password!= passwordConfirm && passwordConfirm!= ''?'is-invalid':''"
+                  [ngClass]="newUser.password!= passwordConfirm ?'is-invalid':''"
                   (keyup)="checkPasswords()"
                   required>
                   <label  for="floatingPassword"  >Repetir contraseña</label>
@@ -51,7 +59,9 @@
 
               <div class="input-group mb-3">
                 <label class="input-group-text" for="roles">Roles</label>
-                <select class="form-select" id="roles"  [(ngModel)]="newUser.rolIdRol">
+                <select class="form-select" id="roles"
+                [(ngModel)]="newUser.rolIdRol"
+                [ngClass]="newUser.rolIdRol== null ?'is-invalid':''">
                   <option *ngFor="let rol of rolsData" [value]="rol.idRol">{{rol.name}}</option>
                 </select>
               </div>
@@ -61,7 +71,9 @@
 
               <div class="input-group mb-3">
                 <label class="input-group-text" for="departamntos">Dpto.</label>
-                <select class="form-select" id="departamntos"  [(ngModel)]="newUser.departmentIdDepartment">
+                <select class="form-select" id="departamntos"
+                [ngClass]="newUser.departmentIdDepartment== null?'is-invalid':''"
+                 [(ngModel)]="newUser.departmentIdDepartment">
                   <option *ngFor="let department of departmentsData" [value]="department.idDepartment">{{department.name}}</option>
                 </select>
               </div>
@@ -98,20 +110,22 @@
 
             <div class="row py-3 pull-right">
 
+
               <button
-              *ngIf="!isUpdate"
               class="btn btn-success"
-              (click)="createUser(newUser)"
+              (click)="isUpdate?updateUser(newUser):createUser(newUser)"
               [disabled]="newUser.username== '' ||newUser.username== null ||
                           (newUser.password!= passwordConfirm && passwordConfirm!= '') ||
-                          newUser.password == null">Crear usuario</button>
-              <button
-              *ngIf="isUpdate"
-              class="btn btn-success"
-              (click)="updateUser(newUser)"
-              [disabled]="newUser.username== '' ||newUser.username== null ||
-                          (newUser.password!= passwordConfirm && passwordConfirm!= '') ||
-                          newUser.password == null">Actualizar datos</button>
+                          newUser.password == null
+                          || newUser.departmentIdDepartment == null
+                          || newUser.rolIdRol == null">
+                <ng-container *ngIf="isUpdate">
+                  Actualizar datos
+                </ng-container>
+                <ng-container *ngIf="!isUpdate">
+                  Crear usuario
+                </ng-container>
+              </button>
             </div>
 
           </div>

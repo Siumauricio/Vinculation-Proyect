@@ -179,6 +179,22 @@ export class UsersService {
   return answer;
   }
 
+  async DeleteUser(username:string){
+
+    const url =`${WEB_SERVICE}User/DeleteUser?username=${username}`
+    let answer:any = {}
+    await this.http.delete(url).toPromise()
+    .then(async (ApiAnswer:any)=>{
+      answer = ApiAnswer
+        if(answer)
+        this.succesMessage('¡Se han eliminado el usuario con exito!');
+      }).catch(async (error) =>{
+      this.errorMessage('Error al eliminar el usuario')
+      console.log(error);
+  });
+
+  return answer;
+  }
 
 
   succesMessage(message){
