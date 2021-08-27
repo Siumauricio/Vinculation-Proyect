@@ -15,8 +15,7 @@ export class AuthenticationService {
   constructor(private http: HttpClient) {
     this.isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
-    this.currentUser = this.currentUserSubject.asObservable();
-
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
   async login(user, password) {
