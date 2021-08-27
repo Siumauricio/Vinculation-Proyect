@@ -52,8 +52,8 @@ namespace Backend.DPI.Controllers
             var result = await privilegeRepository.GetPrivilegesAsync();
             return Ok(result.Select(x => new PrivilegeDto
             {
-                IdPrivilege=x.IdPrivilege,
-                Name=x.Name
+                IdPrivilege = x.IdPrivilege,
+                Name = x.Name
             }));
         }
 
@@ -67,16 +67,23 @@ namespace Backend.DPI.Controllers
 
         [HttpPost("AddUserRolPrivilege")]
         public async Task<ActionResult<UserRolPrivilegeDto>> AddUserRolPrivilege(UserRolPrivilege UserRolPrivilege) {
-            var result = await privilegeRepository.AddUserRolPrivilege(UserRolPrivilege);
+            var result = await privilegeRepository.AddUserRolPrivilegeAsync(UserRolPrivilege);
             return Ok(result = new UserRolPrivilege
             {
-                
+
                 UserUsername = UserRolPrivilege.UserUsername,
                 IdRolPrivilege = UserRolPrivilege.IdRolPrivilege,
                 SpecialPrivilege = UserRolPrivilege.SpecialPrivilege
             });
         }
 
+        [HttpPost("GetPrivilegesByUser")]
+
+        public async Task<ActionResult<IEnumerable<RolPrivilegeDto>>> GetPrivilegesByUser(string username){
+            var result = await privilegeRepository.GetRolPrivilegeByUserAsync(username);
+            return Ok(result);
+
+        }
 
 
     }
