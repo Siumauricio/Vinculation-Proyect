@@ -1,0 +1,40 @@
+<div class="container">
+    <h1 style="text-align: left;">Eliminacion De Departamento</h1>
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <div class="input-group mb-3">
+          <input  type="text"  class="form-control" [(ngModel)]="userFilterSelected"  />
+        </div>
+      </div>
+      <div class="col-md-4">
+        <button  class="btn btn-primary btn-block"  (click)="getRolbyName(userFilterSelected)"  >
+          Buscar Departamento
+        </button>
+      </div>
+    </div>
+    <div class="col-md-12 table-responsive">
+      <table class="table table-striped table-sm">
+        <thead class="bg-primary">
+          <tr>
+            <th>ID DEPARTAMENTO</th>
+            <th>NOMBRE DEL DEPARTAMENTO</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngIf="DepartmentData">
+            <td *ngIf="DepartmentData.idDepartment">{{ DepartmentData.idDepartment }}</td>
+            <td *ngIf="DepartmentData.name"> {{ DepartmentData.name }} </td>
+            <td *ngIf="DepartmentData.name">
+              <button class="btn" (click)="DeleteRol(DepartmentData.name)">
+                <i class="fa fa-trash text-danger"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+  
+ 

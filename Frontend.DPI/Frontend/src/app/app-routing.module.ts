@@ -23,6 +23,16 @@ const routes: Routes = [
         loadChildren: () =>
           import('./users/users.module').then((m) => m.UsersModule),
       },
+      {
+        path: 'roles',
+        loadChildren: () =>
+          import('./Roles/roles.module').then((m) => m.RolesModule),
+      },
+      {
+        path: 'departamentos',
+        loadChildren: () =>
+          import('./Departamentos/department.module').then((m) => m.DepartmentModule),
+      },
     ],
     canActivate: [UserAuthenticationGuard],
   },

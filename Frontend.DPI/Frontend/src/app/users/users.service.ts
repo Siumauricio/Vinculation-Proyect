@@ -156,6 +156,17 @@ export class UsersService {
       });
     return answer;
   }
+  async GetPrivilegesByUser(username) {
+    const url = `${WEB_SERVICE}Privilege/GetPrivilegesByUser?username=${username}`;
+    let answer: any;
+    await this.http.get(url).toPromise().then(async (ApiAnswer: any) => {
+        answer = ApiAnswer;
+      })
+      .catch(async (respuestaApi) => {
+        this.errorMessage('Error extrayendo departamentos');
+      });
+    return answer;
+  }
 
   async updtUserPrivilege(
     idRolPrivilege: number,

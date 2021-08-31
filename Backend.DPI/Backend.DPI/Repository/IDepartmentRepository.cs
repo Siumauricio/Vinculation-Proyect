@@ -11,5 +11,7 @@ namespace Backend.DPI.Repository
 
         Task<Department> CreateDepartmentAsync(string name);
         Task<IReadOnlyList<Department>> GetDepartmentsAsync();
+        Task<Department> GetDepartmentsByNameAsync(string departmentName);
+        Task<bool> DeleteDepartmentAsync(string departmentName);
     }
 }

@@ -29,6 +29,18 @@ namespace Backend.DPI.Controllers
             return Ok(Roles);
         }
 
+        [HttpGet("GetRolByName")]
+        public async Task<ActionResult<IEnumerable<Rol>>> GetRolByName(string rolName)
+        {
+            var Roles = await _rolesRepository.getRolbyName(rolName);
+
+            if (Roles == null)
+            {
+                return NotFound();
+            }
+            return Ok(Roles);
+        }
+
         [HttpPost("CreateRol")]
         public async Task<ActionResult<IEnumerable<Rol>>> CreateRol(string rolName)
         {
@@ -42,5 +54,6 @@ namespace Backend.DPI.Controllers
             var Roles = await _rolesRepository.DeleteRolAsync(nameRol);
             return Ok(Roles);
         }
+
     }
 }
