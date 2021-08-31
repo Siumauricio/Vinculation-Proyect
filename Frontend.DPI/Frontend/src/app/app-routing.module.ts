@@ -23,11 +23,19 @@ const routes: Routes = [
         loadChildren: () =>
           import('./users/users.module').then((m) => m.UsersModule),
       },
+      
+      {
+        path: 'rolPrivilege',
+        loadChildren: () =>
+          import('./rol_privileges/rol_privilege.module').then((m) => m.RolPrivilegesModule),
+      }
+
     ],
     canActivate: [UserAuthenticationGuard],
   },
   { path: 'login', component: LoginComponent },
   { path: '**', component: PagenotfoundComponent },
+
 ];
 
 @NgModule({

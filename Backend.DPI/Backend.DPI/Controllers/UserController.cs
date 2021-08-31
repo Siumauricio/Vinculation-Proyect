@@ -75,6 +75,7 @@ namespace Backend.DPI.Controllers
             var User = await _userRepository.UpdateUser(user);
             return Ok(User);
         }
+
         [HttpDelete("DeleteUser")]
         public async Task<ActionResult<IEnumerable<User>>> DeleteUser(string username)
         {

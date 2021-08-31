@@ -66,9 +66,34 @@ namespace Backend.DPI.Repository
 
         }
 
+        public async Task<bool> DeleteRolPrivilegeByIdAsync(int IdRolPrivilege)
+        {
+            var result = await dpiContext.RolPrivileges.FirstOrDefaultAsync(x => x.IdRolPrivilege == IdRolPrivilege);
+            if (result == null) return false;
+            dpiContext.RolPrivileges.Remove(result);
+            await dpiContext.SaveChangesAsync();
+            return true;
+        }
+
         public async Task<IReadOnlyList<Privilege>> GetPrivilegesAsync()
         {
             return await dpiContext.Privileges.ToListAsync();
+        }
+
+        public async Task<object> GetRolPrivilegeByIdAsync(int IdRolPrivilege)
+        {
+            var result = await (from rol_Privileges in dpiContext.RolPrivileges
+                                join rols in dpiContext.Rols on rol_Privileges.RolIdRol equals rols.IdRol
+                                join privileges in dpiContext.Privileges on rol_Privileges.PrivilegeIdPrivilege equals privileges.IdPrivilege
+                                where rol_Privileges.IdRolPrivilege== IdRolPrivilege
+                                select new
+                                {
+                                    IdRolPrivilege = rol_Privileges.IdRolPrivilege,
+                                    Name_Rol = rols.Name,
+                                    Name_Privilege = privileges.Name
+                                }).FirstOrDefaultAsync();
+            if (result == null) return null;
+            return result;
         }
 
         public async Task<IReadOnlyList<object>> GetRolPrivilegeByUserAsync(string Username)

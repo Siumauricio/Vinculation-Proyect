@@ -77,6 +77,16 @@ namespace Backend.DPI.Controllers
             });
         }
 
+
+        [HttpGet("GetRolPrivilegeById")]
+
+        public async Task<ActionResult<RolPrivilegeDto>> GetRolPrivilegeById(int IdRolPrivilege) {
+            var result = await privilegeRepository.GetRolPrivilegeByIdAsync(IdRolPrivilege);
+            if (result == null) return NotFound();
+            return Ok(result);
+        }
+
+
         [HttpPost("GetPrivilegesByUser")]
 
         public async Task<ActionResult<IEnumerable<RolPrivilegeDto>>> GetPrivilegesByUser(string username){
@@ -84,6 +94,15 @@ namespace Backend.DPI.Controllers
             return Ok(result);
 
         }
+
+        [HttpDelete("DeleteRolPrivilegeById")]
+
+        public async Task<ActionResult<bool>> DeleteRolPrivilegeById(int IdRolPrivilege) {
+            var result = await privilegeRepository.DeleteRolPrivilegeByIdAsync(IdRolPrivilege);
+            return Ok(result);
+        }
+
+
 
 
     }
