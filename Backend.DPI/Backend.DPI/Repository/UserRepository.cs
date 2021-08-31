@@ -35,10 +35,14 @@ namespace Backend.DPI.Repository
             await dbContext.SaveChangesAsync();
             return true;
         }
-
-        public async Task<User> GetUserByUsernameAsync(string username)
+        //User Data, privilegios
+        public async Task<object> GetUserByUsernameAsync(string username)
         {
-            User result = await dbContext.Users.FirstOrDefaultAsync(u => u.Username.ToLower() == username.ToLower()) ;
+            var result = await (from a in dbContext.Users
+                                join b in dbContext.Rols on a.RolIdRol equals b.IdRol 
+                                join c in dbContext.Departments on a.DepartmentIdDepartment equals c.IdDepartment
+                                where a.Username == username
+                                select new { Username = a.Username, FechaCreacion = a.CreationDatetime, NombreRol = b.Name, NombreDepartamento = c.Name,a.RolIdRol,a.DepartmentIdDepartment,a.Password }).FirstOrDefaultAsync();
             if (result == null)
             {
                 return null;
@@ -113,6 +117,11 @@ namespace Backend.DPI.Repository
             result.DepartmentIdDepartment = user.DepartmentIdDepartment;
             await dbContext.SaveChangesAsync();
             return true;
+        }
+
+        public Task<object> Login(string username)
+        {
+            throw new NotImplementedException();
         }
     }
 }

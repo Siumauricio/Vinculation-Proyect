@@ -7,19 +7,14 @@ import { AuthenticationService } from '../authentication.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
   returnUrl: string;
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
-    private router: Router,
-    private auth: AuthenticationService,
-  ) {
+  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute,private router: Router,private auth: AuthenticationService) {
     if (this.auth.isLoggedIn) {
       this.router.navigate(['/']);
     }
@@ -28,27 +23,28 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       user: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
     });
   }
 
-  get f() { return this.loginForm.controls; }
+  get f() {
+    return this.loginForm.controls;
+  }
 
   async onSubmit() {
     this.submitted = true;
     if (this.loginForm.invalid) {
       return;
     }
-
     const res = await this.auth.login(this.f.user.value, this.f.password.value);
     console.log(res);
     if (res) {
       this.router.navigate(['home']);
-    }else{
-      Swal.fire('Error',
-      'La credenciales no concuerdan con los registros existentes',
-
-    )
+    } else {
+      Swal.fire(
+        'Error',
+        'La credenciales no concuerdan con los registros existentes'
+      );
     }
 
     // this.authenticationService.login(this.f.username.value, this.f.password.value)
@@ -62,5 +58,4 @@ export class LoginComponent implements OnInit {
     //                 this.loading = false;
     //             });
   }
-
 }

@@ -1,36 +1,64 @@
-<br><br><div class="container h-100 mt-5">
-    <div class="d-flex justify-content-center h-100">
-        <div class="user_card">
-            <div class="d-flex justify-content-center">
-                <div class="brand_logo_container">
-                    <img src="assets/dpiLogo.jpg" class="brand_logo" alt="Logo">
-                </div>
-            </div>
-            <div class="d-flex justify-content-center form_container">
-                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                    <div class="input-group mb-3">
-                        <div class="input-group-append">
-                            <span class="input-group-text h-100 w-100"><i class="fa fa-user"></i></span>
-                        </div>
-                        <input type="text" name="" class="form-control input_user" formControlName="user" placeholder="Usuario" [ngClass]="{ 'is-invalid': submitted && f.user.errors }">
-                        <div *ngIf="submitted && f.user.errors" class="invalid-feedback">
-                            <div *ngIf="f.user.errors.required">El campo 'Usuario' es requerido</div>
-                        </div>
-                    </div>
-                    <div class="input-group mb-2">
-                        <div class="input-group-append">
-                            <span class="input-group-text h-100"><i class="fa fa-key"></i></span>
-                        </div>
-                        <input type="password" name="" class="form-control input_pass" formControlName="password" placeholder="Contraseña" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
-                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                            <div *ngIf="f.password.errors.required">El campo 'Contraseña' es requerido</div>
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-center mt-3 login_container">
-                        <button type="submit" name="button" class="btn login_btn">Iniciar Sesión</button>
-                    </div>
-                </form>
-            </div>
+<br /><br />
+<div class="container h-100 mt-5">
+  <div class="d-flex justify-content-center h-100">
+    <div class="user_card">
+      <div class="d-flex justify-content-center">
+        <div class="brand_logo_container">
+          <img src="assets/dpiLogo.jpg" class="brand_logo" alt="Logo" />
         </div>
+      </div>
+      <div class="d-flex justify-content-center form_container">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="input-group mb-3">
+            <div class="input-group-append">
+              <span class="input-group-text h-100 w-100"
+                ><i class="fa fa-user"></i
+              ></span>
+            </div>
+            <input
+              type="text"
+              name=""
+              class="form-control input_user"
+              formControlName="user"
+              placeholder="Usuario"
+              [ngClass]="{ 'is-invalid': submitted && f.user.errors }"
+            />
+            <div *ngIf="submitted && f.user.errors" class="invalid-feedback">
+              <div *ngIf="f.user.errors.required">
+                El campo 'Usuario' es requerido
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-2">
+            <div class="input-group-append">
+              <span class="input-group-text h-100"
+                ><i class="fa fa-key"></i
+              ></span>
+            </div>
+            <input
+              type="password"
+              name=""
+              class="form-control input_pass"
+              formControlName="password"
+              placeholder="Contraseña"
+              [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+            />
+            <div
+              *ngIf="submitted && f.password.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f.password.errors.required">
+                El campo 'Contraseña' es requerido
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-center mt-3 login_container">
+            <button type="submit" name="button" class="btn login_btn">
+              Iniciar Sesión
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
+  </div>
 </div>

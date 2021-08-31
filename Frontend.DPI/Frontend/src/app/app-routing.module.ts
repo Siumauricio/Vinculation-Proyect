@@ -9,28 +9,29 @@ import { LoginComponent } from './login/login.component';
 const routes: Routes = [
   {
     path: '',
-    children:[
+    children: [
       {
-        path:'',
-        component: HomeComponent
+        path: '',
+        component: HomeComponent,
       },
       {
-        path:'home',
-        component: HomeComponent
+        path: 'home',
+        component: HomeComponent,
       },
       {
-        path:'users',
-        loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
-      }
+        path: 'users',
+        loadChildren: () =>
+          import('./users/users.module').then((m) => m.UsersModule),
+      },
     ],
     canActivate: [UserAuthenticationGuard],
   },
-  {path: 'login', component: LoginComponent},
-  {path: '**',component: PagenotfoundComponent}
+  { path: 'login', component: LoginComponent },
+  { path: '**', component: PagenotfoundComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
