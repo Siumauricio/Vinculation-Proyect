@@ -57,7 +57,7 @@ namespace Backend.DPI.Controllers
             }));
         }
 
-        [HttpGet("GetRolPrivilege")]
+        [HttpGet("GetRolPrivileges")]
 
         public async Task<ActionResult<IEnumerable<RolPrivilegeDto>>> GetRolPrivileges() {
             var result = await privilegeRepository.GetRolPrivilegesAsync();
@@ -78,6 +78,13 @@ namespace Backend.DPI.Controllers
         }
 
 
+        [HttpGet("GetUserRolPrivileges")]
+
+        public async Task<ActionResult<IEnumerable<UserRolPrivilegeDto>>> GetUserRolPrivileges() {
+            var result = await privilegeRepository.GetUserRolPrivilegesAsync();
+            return Ok(result);
+        }
+
         [HttpGet("GetRolPrivilegeById")]
 
         public async Task<ActionResult<RolPrivilegeDto>> GetRolPrivilegeById(int IdRolPrivilege) {
@@ -87,10 +94,11 @@ namespace Backend.DPI.Controllers
         }
 
 
-        [HttpPost("GetPrivilegesByUser")]
+        [HttpPost("GetUserRolPrivilegesByUser")]
 
-        public async Task<ActionResult<IEnumerable<RolPrivilegeDto>>> GetPrivilegesByUser(string username){
-            var result = await privilegeRepository.GetRolPrivilegeByUserAsync(username);
+        public async Task<ActionResult<IEnumerable<RolPrivilegeDto>>> GetUserRolPrivilegesByUser(string username){
+            var result = await privilegeRepository.GetUserRolPrivilegesByUserAsync(username);
+            if (result == null) return NotFound();
             return Ok(result);
 
         }
@@ -102,7 +110,11 @@ namespace Backend.DPI.Controllers
             return Ok(result);
         }
 
-
+        [HttpDelete("DeleteUserRolPrivilegeById")]
+        public async Task<ActionResult<bool>> DeleteUserRolPrivilegeById(int IdUserRolPrivilege) {
+            var result = await privilegeRepository.DeleteUserRolPrivilegeByIdAsync(IdUserRolPrivilege);
+            return Ok(result);
+        }
 
 
     }

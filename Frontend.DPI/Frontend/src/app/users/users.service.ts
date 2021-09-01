@@ -30,7 +30,7 @@ export class UsersService {
       })
       .catch(async (ApiAnswer) => {
         Swal.close();
-        this.errorMessage('Erro extrayendo datos de usuarios');
+        this.errorMessage('Error extrayendo datos de usuarios');
       });
     return answer;
   }

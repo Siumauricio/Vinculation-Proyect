@@ -28,6 +28,11 @@ const routes: Routes = [
         path: 'rolPrivilege',
         loadChildren: () =>
           import('./rol_privileges/rol_privilege.module').then((m) => m.RolPrivilegesModule),
+      },
+      {
+        path: 'userRolPrivilege',
+        loadChildren: () =>
+          import('./user-rol-privilege/user-rol-privileges.module').then((m) => m.UserRolPrivilegesModule),
       }
 
     ],

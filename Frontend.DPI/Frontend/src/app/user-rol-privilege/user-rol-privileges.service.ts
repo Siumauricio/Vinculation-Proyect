@@ -1,23 +1,61 @@
 import { Injectable } from '@angular/core';
-import { WEB_SERVICE } from '../configurations/config';
 import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
-import { CreateRolPrivilege } from './interfaces/rol-privilege';
+import { WEB_SERVICE } from 'src/app/configurations/config';
+import { newUserRolPrivilege } from './interfaces/user-rol-privilege';
+import { $$ } from 'protractor';
 
 @Injectable({
   providedIn: 'root',
 })
-export class RolPrivilegeService {
+export class UserRolPrivilegesService {
   constructor(private http: HttpClient) {}
 
-  async getRolPrivileges() {
+  async getUserRolPrivileges() {
     Swal.fire({
       title: 'Espere un momento',
-      html: 'Cargando Roles por privilegios',
+      html: 'Cargando listado de privilegios por usuario',
       didOpen: () => {
         Swal.showLoading();
       },
     });
+    const url = `${WEB_SERVICE}Privilege/GetUserRolPrivileges`;
+
+    let answer: any;
+
+    await this.http
+      .get(url)
+      .toPromise()
+      .then(async (ApiAnswer: any) => {
+        Swal.close();
+        answer = ApiAnswer;
+      })
+      .catch(async (ApiAnswer) => {
+        Swal.close();
+        this.errorMessage('Error extrayendo datos');
+      });
+    return answer;
+  }
+
+  
+  async getUsers() {
+    const url = `${WEB_SERVICE}User/GetUsers`;
+
+    let answer: any;
+
+    await this.http
+      .get(url)
+      .toPromise()
+      .then(async (ApiAnswer: any) => {
+        answer = ApiAnswer;
+      })
+      .catch(async (ApiAnswer) => {
+        this.errorMessage('Error extrayendo usuarios');
+      });
+    return answer;
+  }
+
+  async getRolPrivileges() {
     const url = `${WEB_SERVICE}Privilege/GetRolPrivileges`;
 
     let answer: any;
@@ -26,91 +64,59 @@ export class RolPrivilegeService {
       .get(url)
       .toPromise()
       .then(async (ApiAnswer: any) => {
-        Swal.close();
         answer = ApiAnswer;
       })
       .catch(async (ApiAnswer) => {
-        Swal.close();
-        this.errorMessage('Error extrayendo datos');
+        this.errorMessage('Error extrayendo Privilegios');
       });
     return answer;
   }
 
 
-
-  async getRols() {
-    const url = `${WEB_SERVICE}Roles/GetRols`;
-
-    let answer: any;
-
-    await this.http
-      .get(url)
-      .toPromise()
-      .then(async (ApiAnswer: any) => {
-        answer = ApiAnswer;
-      })
-      .catch(async (ApiAnswer) => {
-        this.errorMessage('Error extrayendo roles');
-      });
-    return answer;
-  }
-
-  async getPrivileges() {
-    const url = `${WEB_SERVICE}Privilege/GetPrivileges`;
-
-    let answer: any;
-
-    await this.http
-      .get(url)
-      .toPromise()
-      .then(async (ApiAnswer: any) => {
-        answer = ApiAnswer;
-      })
-      .catch(async (ApiAnswer) => {
-        this.errorMessage('Error extrayendo privilegios');
-      });
-    return answer;
-  }
-  
-
-  async createRolPrivilege(createRolPrivilege: CreateRolPrivilege) {
-    let body = {
-      rolIdRol: createRolPrivilege.rolIdRol,
-      privilegeIdPrivilege: createRolPrivilege.privilegeIdPrivilege
+  async createUserRolPrivilege(userRolPrivilege ) {
+    let body = <newUserRolPrivilege>{
+      userUsername: userRolPrivilege.username,
+      specialPrivilege: +userRolPrivilege.specialPrivilege,
+      idRolPrivilege: userRolPrivilege.idRolPrivileges
     };
-
-    const url = `${WEB_SERVICE}Privilege/CreateRolPrivilege`;
+    const url = `${WEB_SERVICE}Privilege/AddUserRolPrivilege`;
     let answer: any = {};
     await this.http
       .post(url, body)
       .toPromise()
       .then(async (ApiAnswer: any) => {
         answer = ApiAnswer;
-        if (answer) this.succesMessage('¡Se ha creado el rol por privilegio!');
+        if (answer) this.succesMessage(`¡Se ha agregado el privilegio al usuario ${body.userUsername} con exito!`);
       })
       .catch(async (error) => {
-        this.errorMessage('Error creando rol por privilegio');
+        this.errorMessage(`Error agregando el privilegio al usuario ${body.userUsername}`);
         console.log(error);
       });
-
     return answer;
   }
 
 
-
-
-  async getRolPrivilegeById(idRolPrivilege: number) {
-    const url = `${WEB_SERVICE}Privilege/GetRolPrivilegeById?idRolPrivilege=${idRolPrivilege}`;
+  async getUserRolPrivilegeByUsername(username: string) {
+    Swal.fire({
+      title: 'Espere un momento',
+      html: 'Cargando privilegios del usuario',
+      didOpen: () => {
+        Swal.showLoading();
+      },
+    });
+    const url = `${WEB_SERVICE}Privilege/GetUserRolPrivilegesByUser?username=${username}`;
     let answer: any = {};
     await this.http
-      .get(url)
+      .post(url,username)
       .toPromise()
       .then(async (ApiAnswer: any) => {
+        Swal.close();
         answer = ApiAnswer;
-        this.succesMessage('Rol por privilegio encontrado satisfactoriamente');
+        this.succesMessage('Usuario encontrado satisfactoriamente');
       })
       .catch(async (error) => {
-        this.errorMessage('Error extrayendo datos');
+        Swal.close();
+        this.errorMessage('Error extrayendo datos del usuario');
         console.log(error);
       });
 
@@ -118,8 +124,8 @@ export class RolPrivilegeService {
   }
 
 
-  async deleteRolPrivilege(idRolPrivilege: number) {
-    const url = `${WEB_SERVICE}Privilege/DeleteRolPrivilegeById?idRolPrivilege=${idRolPrivilege}`;
+  async DeleteUserRolPrivilege(IdUserRolPrivilege: number) {
+    const url = `${WEB_SERVICE}Privilege/DeleteUserRolPrivilegeById?IdUserRolPrivilege=${IdUserRolPrivilege}`;
     let answer: any = {};
     await this.http
       .delete(url)
@@ -127,15 +133,16 @@ export class RolPrivilegeService {
       .then(async (ApiAnswer: any) => {
         answer = ApiAnswer;
         if (answer)
-          this.succesMessage('¡Se han eliminado el dato con exito!');
+          this.succesMessage('¡Se ha eliminado el privilegio con exito!');
       })
       .catch(async (error) => {
-        this.errorMessage('Error al eliminar el rol por privilegio');
+        this.errorMessage('Error al eliminar el privilegio');
         console.log(error);
       });
 
     return answer;
   }
+  
 
 
   succesMessage(message) {
@@ -155,6 +162,5 @@ export class RolPrivilegeService {
       icon: 'error',
     });
   }
-
-
+  
 }

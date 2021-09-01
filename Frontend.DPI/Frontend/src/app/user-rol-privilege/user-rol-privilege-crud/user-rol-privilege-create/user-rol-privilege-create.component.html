@@ -1,0 +1,52 @@
+<div class="center"  tabindex="-1"  role="dialog"  aria-labelledby="myModalLabel"  data-backdrop="static"  aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-primary">
+        <h3>Asignar privilegios a usuario</h3>
+      </div>
+      <form [formGroup]="profileForm" (ngSubmit)="onSubmit()"> 
+        <div class="modal-body">
+          <div class="container p-4">
+
+            <div class="row mb-3">
+              <div class="input-group mb-3">
+                <label class="input-group-text" for="username">Usuarios</label>
+                <select class="form-select"  id="username"  formControlName="username">
+              <option value="" selected disabled hidden>Escoge un usuario</option>
+              <option *ngFor="let user of usersData" [value]="user.username">
+                {{ user.username }} - {{user.nombreDepartamento}}
+              </option>
+              </select>
+              </div>
+            </div>
+           
+            <div class="row mb-3">
+              <div class="input-group mb-3">
+                <label class="input-group-text" for="idRolPrivileges">Privilegios</label>
+                <select class="form-select"  id="idRolPrivileges"  formControlName="idRolPrivileges">
+              <option value="" selected disabled hidden>Escoge un Privilegio</option>
+              <option *ngFor="let rolPrivilege of rolPrivilegesData" [value]="rolPrivilege.idRolPrivilege">
+                {{ rolPrivilege.name_Rol}} - {{rolPrivilege.name_Privilege}} 
+              </option>
+              </select>
+              </div>
+            </div>
+
+            <div class="form-check">
+              <input class="form-check-input" formControlName="specialPrivilege" type="checkbox"  id="specialPrivilege">
+              <label class="form-check-label" for="specialPrivilege">
+                Privilegio Especial
+              </label>
+            </div>
+            
+            <div class="row py-3 pull-right">
+              <button  class="btn btn-success" type="submit" [disabled]="profileForm.invalid">
+                <ng-container> Agregar datos </ng-container>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
