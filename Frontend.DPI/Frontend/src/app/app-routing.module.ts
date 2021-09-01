@@ -33,6 +33,16 @@ const routes: Routes = [
         loadChildren: () =>
           import('./Departamentos/department.module').then((m) => m.DepartmentModule),
       },
+      {
+        path: 'privilegios',
+        loadChildren: () =>
+          import('./privilegios/privileges.module').then((m) => m.PrivilegesModule),
+      },
+      {
+        path: 'sospechosos',
+        loadChildren: () =>
+          import('./sospechosos/suspect.module').then((m) => m.SuspectModule),
+      },
     ],
     canActivate: [UserAuthenticationGuard],
   },

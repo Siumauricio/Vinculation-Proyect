@@ -20,7 +20,6 @@ import { UserAuthenticationGuard } from './user-authentication.guard';
     HomeComponent,
     PagenotfoundComponent,
     LoginComponent,
-
   ],
   imports: [
     BrowserModule,

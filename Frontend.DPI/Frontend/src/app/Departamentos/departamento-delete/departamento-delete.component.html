@@ -3,11 +3,11 @@
     <div class="row mb-3">
       <div class="col-md-4">
         <div class="input-group mb-3">
-          <input  type="text"  class="form-control" [(ngModel)]="userFilterSelected"  />
+          <input  type="text"  class="form-control" [(ngModel)]="userFilterSelected"  (keypress)="keyPressAlphanumeric($event)"  />
         </div>
       </div>
       <div class="col-md-4">
-        <button  class="btn btn-primary btn-block"  (click)="getRolbyName(userFilterSelected)"  >
+        <button  class="btn btn-primary btn-block"(click)="getRolbyName(userFilterSelected)"   >
           Buscar Departamento
         </button>
       </div>
