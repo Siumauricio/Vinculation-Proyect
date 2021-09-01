@@ -1,4 +1,5 @@
 ﻿using Backend.DPI.ModelDto;
+using Backend.DPI.Models;
 using Backend.DPI.Repository;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -41,6 +42,24 @@ namespace Backend.DPI.Controllers
             }));
         }
 
+        [HttpGet("GetDepartmentByName")]
+        public async Task<ActionResult<IEnumerable<Department>>> GetDepartmentByName(string departmentName)
+        {
+            var result = await this.departmentRepository.GetDepartmentsByNameAsync(departmentName);
+            if (result == null)
+            {
+                return NotFound();
+            }
+            return Ok(result);
+        }
+
+        [HttpDelete("DeleteDepartment")]
+        public async Task<ActionResult<IEnumerable<User>>> DeleteDepartment(string departmentName)
+        {
+            var result = await departmentRepository.DeleteDepartmentAsync(departmentName);
+       
+            return Ok(result);
+        }
 
     }
 }

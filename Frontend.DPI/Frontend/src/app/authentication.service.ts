@@ -10,7 +10,7 @@ import { User } from './users/interfaces/user';
 export class AuthenticationService {
   public isLoggedIn:boolean;
   private currentUserSubject: BehaviorSubject<User>;
-  public currentUser:Observable<User>;
+  public currentUser:User;
 
   constructor(private http: HttpClient) {
     this.isLoggedIn = localStorage.getItem("isLoggedIn") === "true";

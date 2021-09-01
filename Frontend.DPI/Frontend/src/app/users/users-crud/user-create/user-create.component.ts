@@ -50,10 +50,18 @@ export class UserCreateComponent implements OnInit {
     else 
     this.buttonDisabled=true; true
   }
-  onSubmit(){
 
+  onSubmit(){
      this.userService.createUser(this.profileForm.getRawValue()).then((resp) => {
       if (resp) {
+        this.profileForm.setValue({
+          username:'',
+          password:'',
+          confirmPassword:'',
+          rolIdRol:'',
+          departmentIdDepartment:''
+
+        });
       } else {
         Swal.fire(
           'Error',

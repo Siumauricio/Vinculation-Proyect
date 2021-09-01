@@ -10,23 +10,13 @@ import Swal from 'sweetalert2';
   styleUrls: ['./user-delete.component.css']
 })
 export class UserDeleteComponent implements OnInit {
-  @ViewChild('updateUserModal', { static: true }) updateUserModal: ModalDirective;
   newUser: User = {} as User;
   userFilterSelected: string = 'enriquecs';
   userData: User[];
-  rolsData: Rol[];
-  departmentsData: Department[];
-  profileForm : FormGroup;
   buttonDisabled: boolean;
 
-  constructor(private userService: UsersService,private formBuilder:FormBuilder) {
-    this.profileForm = this.formBuilder.group({
-      username: new FormControl({value:'',disabled:true}),
-      password: new FormControl({value:''},Validators.required),
-      confirmPassword: new FormControl({value:''},Validators.required),
-      rolIdRol: new FormControl(''),
-      departmentIdDepartment: new FormControl(''),
-    })
+  constructor(private userService: UsersService) {
+
   }
 
   async ngOnInit() {
@@ -38,13 +28,6 @@ export class UserDeleteComponent implements OnInit {
       console.log(resp);
       this.userData = resp;
       this.newUser = resp;
-      this.profileForm.setValue({
-        username: this.newUser.username,
-        password: this.newUser.password,
-        confirmPassword: this.newUser.password,
-        rolIdRol: this.newUser.rolIdRol,
-        departmentIdDepartment: this.newUser.departmentIdDepartment,
-      });
     });
   }
     async deleteUser(username: string) {
@@ -61,6 +44,7 @@ export class UserDeleteComponent implements OnInit {
           await this.userService.DeleteUser(username).then((resp) => {
             console.log(resp);
             if (resp == true) {
+              this.userFilterSelected='';
               this.userData = null;
               this.userData.splice(
                 this.userData.findIndex((user) => user.username == username),

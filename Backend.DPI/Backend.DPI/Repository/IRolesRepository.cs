@@ -12,5 +12,6 @@ namespace Backend.DPI.Repository
         Task<IReadOnlyList<Rol>> GetRoles();
         Task<bool> CreateRolAsync(string rolName);
         Task<bool> DeleteRolAsync(string user);
+        Task<Rol> getRolbyName(string rolName);
     }
 }

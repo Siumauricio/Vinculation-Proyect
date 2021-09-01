@@ -194,7 +194,32 @@
     >
       <span class="d-sm-inline"> </span> Eliminar privilegios a usuario</a
     >
+              <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+
+                <li class="w-100" *ngFor="let privilege of privileges ">
+                  <a [routerLink]="['/users/'+privilege.name_Privilege]" class="nav-link px-0">
+                    <span class="d-sm-inline"> </span> {{privilege.name_Privilege}}</a>
+                    
                 </li>
+                <a [routerLink]="['/roles/Listar Rol']" class="nav-link px-0">
+                  <span class="d-sm-inline"> </span> Listar Rol</a>
+                  <a [routerLink]="['/roles/Eliminar Rol']" class="nav-link px-0">
+                    <span class="d-sm-inline"> </span> Eliminar Rol</a>
+                    <a [routerLink]="['/roles/Crear Rol']" class="nav-link px-0">
+                      <span class="d-sm-inline"> </span> Crear Rol</a>
+
+                      <a [routerLink]="['/departamentos/Listar Departamento']" class="nav-link px-0">
+                        <span class="d-sm-inline"> </span> Listar Departamento</a>
+                        <a [routerLink]="['/departamentos/Eliminar Departamento']" class="nav-link px-0">
+                          <span class="d-sm-inline"> </span> Eliminar Departamento</a>
+                          <a [routerLink]="['/departamentos/Crear Departamento']" class="nav-link px-0">
+                            <span class="d-sm-inline"> </span> Crear Departamento</a>
+                            <a [routerLink]="['/privilegios/Listar Privilegios']" class="nav-link px-0">
+                              <span class="d-sm-inline"> </span> Listar Privilegios</a>
+                              <a [routerLink]="['/sospechosos/Listar Sospechosos']" class="nav-link px-0">
+                                <span class="d-sm-inline"> </span> Listar Sospechosos</a>
+                                <a [routerLink]="['/sospechosos/Crear Sospechoso']" class="nav-link px-0">
+                                  <span class="d-sm-inline"> </span> Crear Sospechosos</a>
               </ul>
             </li>
             <li class="nav-item">

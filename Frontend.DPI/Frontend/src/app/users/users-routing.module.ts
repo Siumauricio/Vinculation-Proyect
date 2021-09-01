@@ -1,3 +1,5 @@
+import { RolDeleteComponent } from './../Roles/rol-delete/rol-delete.component';
+import { RolListComponent } from './../Roles/rol-list/rol-list.component';
 import { UserDeleteComponent } from './users-crud/user-delete/user-delete.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -7,7 +9,7 @@ import { UserCreateComponent } from './users-crud/user-create/user-create.compon
 
 const routes: Routes = [
   {
-    path: 'update-user',
+    path: 'Modificar Usuario',
     component: UpdateUserComponent,
     data: { title: 'update' },
   },
@@ -17,17 +19,15 @@ const routes: Routes = [
     data: { title: 'List' },
   },
   {
-    path: 'create-user',
+    path: 'Agregar Usuario',
     component: UserCreateComponent,
     data: { title: 'List' },
   },  
   {
-    path: 'delete-user',
+    path: 'Eliminar Usuario',
     component: UserDeleteComponent,
     data: { title: 'List' },
   },
-
- 
 ];
 
 @NgModule({

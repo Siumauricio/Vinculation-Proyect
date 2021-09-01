@@ -35,7 +35,28 @@ const routes: Routes = [
           import('./user-rol-privilege/user-rol-privileges.module').then((m) => m.UserRolPrivilegesModule),
       }
 
-    ],
+      {
+        path: 'roles',
+        loadChildren: () =>
+          import('./Roles/roles.module').then((m) => m.RolesModule),
+      },
+      {
+        path: 'departamentos',
+        loadChildren: () =>
+          import('./Departamentos/department.module').then((m) => m.DepartmentModule),
+      },
+      {
+        path: 'privilegios',
+        loadChildren: () =>
+          import('./privilegios/privileges.module').then((m) => m.PrivilegesModule),
+      },
+      {
+        path: 'sospechosos',
+        loadChildren: () =>
+          import('./sospechosos/suspect.module').then((m) => m.SuspectModule),
+      },
+  
+],
     canActivate: [UserAuthenticationGuard],
   },
   { path: 'login', component: LoginComponent },

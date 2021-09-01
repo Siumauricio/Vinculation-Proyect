@@ -1,0 +1,27 @@
+<div class="center"  tabindex="-1"  role="dialog"  aria-labelledby="myModalLabel"  data-backdrop="static"  aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-primary">
+          <h3>Creacion De Rol</h3>
+        </div>
+        <form [formGroup]="RolForm" (ngSubmit)="onSubmit()"> 
+          <div class="modal-body">
+            <div class="container p-4">
+              <div class="form-floating mb-3">
+                <input  type="text" formControlName="rolName" (keypress)="keyPressAlphanumeric($event)" autocomplete="off" class="form-control" />
+                <label for="floatingUser">Nombre del Rol</label>
+              </div>
+  
+
+              <div class="row py-3 pull-right">
+                <button  class="btn btn-success" type="submit" [disabled]="RolForm.invalid">
+                  <ng-container> Crear Rol </ng-container>
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

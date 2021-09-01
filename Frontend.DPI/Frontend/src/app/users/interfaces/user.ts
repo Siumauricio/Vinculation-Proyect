@@ -1,12 +1,10 @@
-
-
 export interface Department {
   idDepartment:   number;
   name:           string;
   users:          any[];
 }
 
-export interface PrivilegeIdPrivilegeNavigation {
+export interface Privileges {
   idPrivilege:    number;
   name:           string;
   rolPrivileges:  any[];
@@ -31,6 +29,7 @@ export interface UserRolPrivilege {
   userUsername:       string;
   idRolPrivilege:     number;
 }
+
 
 export interface User {
   username:                         string;

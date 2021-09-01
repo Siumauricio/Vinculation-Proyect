@@ -82,9 +82,5 @@ namespace Backend.DPI.Controllers
             var User = await _userRepository.DeleteUserAsync(username);
             return Ok(User);
         }
-
-     
-
-
     }
 }
