@@ -33,8 +33,7 @@ const routes: Routes = [
         path: 'userRolPrivilege',
         loadChildren: () =>
           import('./user-rol-privilege/user-rol-privileges.module').then((m) => m.UserRolPrivilegesModule),
-      }
-
+      },
       {
         path: 'roles',
         loadChildren: () =>

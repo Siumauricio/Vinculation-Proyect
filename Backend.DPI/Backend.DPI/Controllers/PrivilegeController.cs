@@ -80,7 +80,7 @@ namespace Backend.DPI.Controllers
         [HttpGet("GetPrivilegesByUser")]
 
         public async Task<ActionResult<IEnumerable<RolPrivilegeDto>>> GetPrivilegesByUser(string username){
-            var result = await privilegeRepository.GetRolPrivilegeByUserAsync(username);
+            var result = await privilegeRepository.GetUserRolPrivilegesByUserAsync(username);
             return Ok(result);
 
         }

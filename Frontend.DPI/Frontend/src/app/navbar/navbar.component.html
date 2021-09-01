@@ -118,110 +118,74 @@
                 <span class="ms-1 d-sm-inline">Inicio</span>
               </a>
             </li>
-            <li>
-              <a
-                href="#submenu3"
-                data-bs-toggle="collapse"
-                class="nav-link px-0 align-middle"
-              >
+
+
+
+             <li>
+              <a href="#submenu3"     data-bs-toggle="collapse"   class="nav-link px-0 align-middle"    >
                 <i class="fa fa-user"></i>
                 <span class="ms-1 d-sm-inline">Privilegio</span></a
               >
-              <ul
-                class="collapse nav flex-column ms-1"
-                id="submenu3"
-                data-bs-parent="#menu"
-              >
+              <ul  class="collapse nav flex-column ms-1"    id="submenu3"    data-bs-parent="#menu"   >
                 <li class="w-100">
+
+
                   <a [routerLink]="['/users/Listar Usuario']" class="nav-link px-0">
-                    <span class="d-sm-inline"> </span> Listar Usuarios</a
-                  >
-                  <a
-                    [routerLink]="['/users/update-user']"
-                    class="nav-link px-0"
-                  >
-                    <span class="d-sm-inline"> </span> Modificar Usuarios</a
-                  >
-                  <a
-                    [routerLink]="['/users/create-user']"
-                    class="nav-link px-0"
-                  >
-                    <span class="d-sm-inline"> </span> Crear Usuarios</a
-                  >
-                  <a
-                  [routerLink]="['/users/delete-user']"
-                  class="nav-link px-0"
-                >
-                  <span class="d-sm-inline"> </span> Eliminar Usuarios</a
-                >
+                    <span class="d-sm-inline"> </span> Listar Usuarios</a>
+                  <a  [routerLink]="['/users/Modificar Usuario']"  class="nav-link px-0"  >
+                    <span class="d-sm-inline"> </span> Modificar Usuarios</a >
+                  <a [routerLink]="['/users/Agregar Usuario']"   class="nav-link px-0" >
+                    <span class="d-sm-inline"> </span> Crear Usuarios</a >
+                  <a  [routerLink]="['/users/Eliminar Usuario']"  class="nav-link px-0"  >
+                  <span class="d-sm-inline"> </span> Eliminar Usuarios</a  >
 
-                <a
-                [routerLink]="['/rolPrivilege/Listar roles por privilegios']"
-                class="nav-link px-0"
-              >
-                <span class="d-sm-inline"> </span> Listar roles por privilegios</a
-              >
-              <a
-              [routerLink]="['/rolPrivilege/Crear roles por privilegios']"
-              class="nav-link px-0"
-            >
-              <span class="d-sm-inline"> </span> Crear roles por privilegios</a
-            >
+                <a  [routerLink]="['/rolPrivilege/Listar roles por privilegios']"  class="nav-link px-0"  >
+                <span class="d-sm-inline"> </span> Listar roles por privilegios</a   >
 
-            <a
-            [routerLink]="['/rolPrivilege/Eliminar roles por privilegios']"
-            class="nav-link px-0"
-          >
-            <span class="d-sm-inline"> </span> Eliminar roles por privilegios</a
-          >
+              <a [routerLink]="['/rolPrivilege/Crear roles por privilegios']"  class="nav-link px-0" >
+              <span class="d-sm-inline"> </span> Crear roles por privilegios</a  >
 
-          <a
-          [routerLink]="['/userRolPrivilege/Listar privilegios de los usuarios']"
-          class="nav-link px-0"
-        >
-          <span class="d-sm-inline"> </span> Listar privilegios de los usuarios</a
-        >
+            <a  [routerLink]="['/rolPrivilege/Eliminar roles por privilegios']"  class="nav-link px-0" >
+            <span class="d-sm-inline"> </span> Eliminar roles por privilegios</a >
+
+          <a  [routerLink]="['/userRolPrivilege/Listar privilegios de los usuarios']" class="nav-link px-0" >
+          <span class="d-sm-inline"> </span> Listar privilegios de los usuarios</a  >
         
-        <a
-        [routerLink]="['/userRolPrivilege/Agregar privilegio a usuario']"
-        class="nav-link px-0"
-      >
-        <span class="d-sm-inline"> </span> Agregar privilegio a usuario</a
-      >
-      <a
-      [routerLink]="['/userRolPrivilege/Eliminar privilegios a usuario']"
-      class="nav-link px-0"
-    >
+        <a  [routerLink]="['/userRolPrivilege/Agregar privilegio a usuario']" class="nav-link px-0" >
+        <span class="d-sm-inline"> </span> Agregar privilegio a usuario</a >
+      <a  [routerLink]="['/userRolPrivilege/Eliminar privilegios a usuario']" class="nav-link px-0" >
       <span class="d-sm-inline"> </span> Eliminar privilegios a usuario</a
-    >
-              <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+    > 
 
-                <li class="w-100" *ngFor="let privilege of privileges ">
-                  <a [routerLink]="['/users/'+privilege.name_Privilege]" class="nav-link px-0">
-                    <span class="d-sm-inline"> </span> {{privilege.name_Privilege}}</a>
-                    
-                </li>
-                <a [routerLink]="['/roles/Listar Rol']" class="nav-link px-0">
-                  <span class="d-sm-inline"> </span> Listar Rol</a>
-                  <a [routerLink]="['/roles/Eliminar Rol']" class="nav-link px-0">
-                    <span class="d-sm-inline"> </span> Eliminar Rol</a>
-                    <a [routerLink]="['/roles/Crear Rol']" class="nav-link px-0">
-                      <span class="d-sm-inline"> </span> Crear Rol</a>
+    <li class="w-100" *ngFor="let privilege of privileges ">
+      <a [routerLink]="['/users/'+privilege.name_Privilege]" class="nav-link px-0">
+        <span class="d-sm-inline"> </span> {{privilege.name_Privilege}}</a>
 
-                      <a [routerLink]="['/departamentos/Listar Departamento']" class="nav-link px-0">
-                        <span class="d-sm-inline"> </span> Listar Departamento</a>
-                        <a [routerLink]="['/departamentos/Eliminar Departamento']" class="nav-link px-0">
-                          <span class="d-sm-inline"> </span> Eliminar Departamento</a>
-                          <a [routerLink]="['/departamentos/Crear Departamento']" class="nav-link px-0">
-                            <span class="d-sm-inline"> </span> Crear Departamento</a>
-                            <a [routerLink]="['/privilegios/Listar Privilegios']" class="nav-link px-0">
-                              <span class="d-sm-inline"> </span> Listar Privilegios</a>
-                              <a [routerLink]="['/sospechosos/Listar Sospechosos']" class="nav-link px-0">
-                                <span class="d-sm-inline"> </span> Listar Sospechosos</a>
-                                <a [routerLink]="['/sospechosos/Crear Sospechoso']" class="nav-link px-0">
-                                  <span class="d-sm-inline"> </span> Crear Sospechosos</a>
+        
+        <!-- <a [routerLink]="['/roles/Listar Rol']" class="nav-link px-0">
+          <span class="d-sm-inline"> </span> Listar Rol</a>
+          <a [routerLink]="['/roles/Eliminar Rol']" class="nav-link px-0">
+            <span class="d-sm-inline"> </span> Eliminar Rol</a>
+            <a [routerLink]="['/roles/Crear Rol']" class="nav-link px-0">
+              <span class="d-sm-inline"> </span> Crear Rol</a> -->
+
+              <a [routerLink]="['/departamentos/Listar Departamento']" class="nav-link px-0">
+                <span class="d-sm-inline"> </span> Listar Departamento</a>
+                <a [routerLink]="['/departamentos/Eliminar Departamento']" class="nav-link px-0">
+                  <span class="d-sm-inline"> </span> Eliminar Departamento</a>
+                  <a [routerLink]="['/departamentos/Crear Departamento']" class="nav-link px-0">
+                    <span class="d-sm-inline"> </span> Crear Departamento</a>
+                    <a [routerLink]="['/privilegios/Listar Privilegios']" class="nav-link px-0">
+                      <span class="d-sm-inline"> </span> Listar Privilegios</a>
+                      <a [routerLink]="['/sospechosos/Listar Sospechosos']" class="nav-link px-0">
+                        <span class="d-sm-inline"> </span> Listar Sospechosos</a>
+                        <a [routerLink]="['/sospechosos/Crear Sospechoso']" class="nav-link px-0">
+                          <span class="d-sm-inline"> </span> Crear Sospechosos</a> 
+
+
+
+                  </li>
               </ul>
-            </li>
             <li class="nav-item">
               <a href="#" class="nav-link align-middle px-0">
                 <i class="fa fa-sign-out"></i>

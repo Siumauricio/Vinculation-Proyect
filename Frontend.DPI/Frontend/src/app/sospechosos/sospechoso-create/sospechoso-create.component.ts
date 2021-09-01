@@ -48,8 +48,8 @@ export class SospechosoCreateComponent implements OnInit {
       department: ['',Validators.required],
       municipio: ['',Validators.required],
       recordStatus: [''],
-      usernameRegistryData: ['',Validators.required],
-      departmentIdDepartment: ['',Validators.required],
+      usernameRegistryData: [''],
+      departmentIdDepartment: [''],
     })
     
   }
