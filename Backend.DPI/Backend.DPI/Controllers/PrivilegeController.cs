@@ -22,7 +22,8 @@ namespace Backend.DPI.Controllers
 
         [HttpPost("CreatePrivilege")]
 
-        public async Task<ActionResult<PrivilegeDto>> CreatePrivilege([FromBody] Privilege Privilege) {
+        public async Task<ActionResult<PrivilegeDto>> CreatePrivilege([FromBody] Privilege Privilege)
+        {
 
             var result = await privilegeRepository.CreatePrivilegeAsync(Privilege);
             return Ok(new PrivilegeDto
@@ -35,7 +36,8 @@ namespace Backend.DPI.Controllers
 
         [HttpPost("CreateRolPrivilege")]
 
-        public async Task<ActionResult<RolPrivilegeDto>> CreateRolPrivilege([FromBody] RolPrivilege RolPrivilege) {
+        public async Task<ActionResult<RolPrivilegeDto>> CreateRolPrivilege([FromBody] RolPrivilege RolPrivilege)
+        {
             var result = await privilegeRepository.CreateRolPrivilegeAsync(RolPrivilege);
             return Ok(new RolPrivilegeDto
             {
@@ -48,7 +50,8 @@ namespace Backend.DPI.Controllers
 
         [HttpGet("GetPrivileges")]
 
-        public async Task<ActionResult<IEnumerable<PrivilegeDto>>> GetPrivileges() {
+        public async Task<ActionResult<IEnumerable<PrivilegeDto>>> GetPrivileges()
+        {
             var result = await privilegeRepository.GetPrivilegesAsync();
             return Ok(result.Select(x => new PrivilegeDto
             {
@@ -57,16 +60,18 @@ namespace Backend.DPI.Controllers
             }));
         }
 
-        [HttpGet("GetRolPrivilege")]
+        [HttpGet("GetRolPrivileges")]
 
-        public async Task<ActionResult<IEnumerable<RolPrivilegeDto>>> GetRolPrivileges() {
+        public async Task<ActionResult<IEnumerable<RolPrivilegeDto>>> GetRolPrivileges()
+        {
             var result = await privilegeRepository.GetRolPrivilegesAsync();
             return Ok(result);
         }
 
 
         [HttpPost("AddUserRolPrivilege")]
-        public async Task<ActionResult<UserRolPrivilegeDto>> AddUserRolPrivilege(UserRolPrivilege UserRolPrivilege) {
+        public async Task<ActionResult<UserRolPrivilegeDto>> AddUserRolPrivilege(UserRolPrivilege UserRolPrivilege)
+        {
             var result = await privilegeRepository.AddUserRolPrivilegeAsync(UserRolPrivilege);
             return Ok(result = new UserRolPrivilege
             {
@@ -77,12 +82,48 @@ namespace Backend.DPI.Controllers
             });
         }
 
-        [HttpGet("GetPrivilegesByUser")]
 
-        public async Task<ActionResult<IEnumerable<RolPrivilegeDto>>> GetPrivilegesByUser(string username){
+        [HttpGet("GetUserRolPrivileges")]
+
+        public async Task<ActionResult<IEnumerable<UserRolPrivilegeDto>>> GetUserRolPrivileges()
+        {
+            var result = await privilegeRepository.GetUserRolPrivilegesAsync();
+            return Ok(result);
+        }
+
+        [HttpGet("GetRolPrivilegeById")]
+
+        public async Task<ActionResult<RolPrivilegeDto>> GetRolPrivilegeById(int IdRolPrivilege)
+        {
+            var result = await privilegeRepository.GetRolPrivilegeByIdAsync(IdRolPrivilege);
+            if (result == null) return NotFound();
+            return Ok(result);
+        }
+
+
+        [HttpPost("GetUserRolPrivilegesByUser")]
+
+        public async Task<ActionResult<IEnumerable<RolPrivilegeDto>>> GetUserRolPrivilegesByUser(string username)
+        {
             var result = await privilegeRepository.GetUserRolPrivilegesByUserAsync(username);
+            if (result == null) return NotFound();
             return Ok(result);
 
+        }
+
+        [HttpDelete("DeleteRolPrivilegeById")]
+
+        public async Task<ActionResult<bool>> DeleteRolPrivilegeById(int IdRolPrivilege)
+        {
+            var result = await privilegeRepository.DeleteRolPrivilegeByIdAsync(IdRolPrivilege);
+            return Ok(result);
+        }
+
+        [HttpDelete("DeleteUserRolPrivilegeById")]
+        public async Task<ActionResult<bool>> DeleteUserRolPrivilegeById(int IdUserRolPrivilege)
+        {
+            var result = await privilegeRepository.DeleteUserRolPrivilegeByIdAsync(IdUserRolPrivilege);
+            return Ok(result);
         }
 
 
