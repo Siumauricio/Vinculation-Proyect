@@ -152,7 +152,7 @@ export class UsersService {
         answer = ApiAnswer;
       })
       .catch(async (respuestaApi) => {
-        this.errorMessage('Error extrayendo departamentos');
+        this.errorMessage('Fallo al extraer los Privilegios y roles');
       });
     return answer;
   }
@@ -163,7 +163,7 @@ export class UsersService {
         answer = ApiAnswer;
       })
       .catch(async (respuestaApi) => {
-        this.errorMessage('Error extrayendo departamentos');
+        this.errorMessage('Fallo al obtener los privilegios del usuario');
       });
     return answer;
   }

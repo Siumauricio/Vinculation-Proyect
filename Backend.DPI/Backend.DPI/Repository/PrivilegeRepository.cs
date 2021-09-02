@@ -102,5 +102,40 @@ namespace Backend.DPI.Repository
             return result;
         }
 
+        public async Task<IReadOnlyList<object>> GetUserRolPrivilegesAsync()
+        {
+            var result = await (from users in dpiContext.Users
+                                join user_rol_privilege in dpiContext.UserRolPrivileges on users.Username equals user_rol_privilege.UserUsername
+                                join rol_privilege in dpiContext.RolPrivileges on user_rol_privilege.IdRolPrivilege equals rol_privilege.IdRolPrivilege
+                                join rol in dpiContext.Rols on rol_privilege.RolIdRol equals rol.IdRol
+                                join privilege in dpiContext.Privileges on rol_privilege.PrivilegeIdPrivilege equals privilege.IdPrivilege
+                                select new
+                                {
+                                    IdUserRolPrivilege = user_rol_privilege.IdUserRolPrivilege,
+                                    Username= user_rol_privilege.UserUsername,
+                                    Special_Privilege = user_rol_privilege.SpecialPrivilege,
+                                    Name_Rol = rol.Name,
+                                    Name_Privilege = privilege.Name 
+                                }).ToListAsync();
+            return result;
+        }
+
+        public async Task<IReadOnlyList<object>> GetRolPrivilegeByUserAsync(string Username)
+        {
+            var result = await(from username in dpiContext.Users
+                               join user_rol_privilege in dpiContext.UserRolPrivileges on username.Username equals user_rol_privilege.UserUsername
+                               join rol_privilege in dpiContext.RolPrivileges on user_rol_privilege.IdRolPrivilege equals rol_privilege.IdRolPrivilege
+                               join rol in dpiContext.Rols on rol_privilege.RolIdRol equals rol.IdRol
+                               join privilege in dpiContext.Privileges on rol_privilege.PrivilegeIdPrivilege equals privilege.IdPrivilege
+                               where username.Username == Username
+                               select new
+                               {
+                                   IdRolPrivilege = rol_privilege.IdRolPrivilege,
+                                   Name_Rol = rol.Name,
+                                   Name_Privilege = privilege.Name,
+                                   Special_Privilege = user_rol_privilege.SpecialPrivilege
+                               }).ToListAsync();
+            return result;
+        }
     }
 }
