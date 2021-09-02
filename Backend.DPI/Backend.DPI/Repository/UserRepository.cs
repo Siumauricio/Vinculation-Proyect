@@ -26,11 +26,13 @@ namespace Backend.DPI.Repository
         }
         public async Task<bool> DeleteUserAsync(string user)
         {
+            var deletePrivileges = new PrivilegeRepository(dbContext);
             var result = await dbContext.Users.FirstOrDefaultAsync(u => u.Username.ToLower() == user.ToLower());
             if (result == null)
             {
                 return false;
             }
+            var resultDeletePrivilege = await deletePrivileges.DeleteUserRolPrivilegeByUserAsync(user);
             dbContext.Users.Remove(result);
             await dbContext.SaveChangesAsync();
             return true;

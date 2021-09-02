@@ -167,5 +167,24 @@ namespace Backend.DPI.Repository
             //                   select new { Username = a.Username, FechaCreacion = a.CreationDatetime, NombreRol = b.Name, NombreDepartamento = c.Name, a.RolIdRol, a.DepartmentIdDepartment, a.Password }).FirstOrDefaultAsync();
             return null;
         }
+
+        public async Task<bool> DeleteUserRolPrivilegeByUserAsync(string Username)
+        {
+            var result = await (from username in dpiContext.Users
+                                join user_rol_privilege in dpiContext.UserRolPrivileges on username.Username equals user_rol_privilege.UserUsername
+                                join rol_privilege in dpiContext.RolPrivileges on user_rol_privilege.IdRolPrivilege equals rol_privilege.IdRolPrivilege
+                                join rol in dpiContext.Rols on rol_privilege.RolIdRol equals rol.IdRol
+                                join privilege in dpiContext.Privileges on rol_privilege.PrivilegeIdPrivilege equals privilege.IdPrivilege
+                                where username.Username == Username
+                                select new UserRolPrivilege
+                                {
+                                    IdUserRolPrivilege = user_rol_privilege.IdUserRolPrivilege,
+                            
+                                }).ToListAsync();
+            if (result == null) return false;
+            dpiContext.UserRolPrivileges.RemoveRange(result);
+            await dpiContext.SaveChangesAsync();
+            return true;
+        }
     }
 }
