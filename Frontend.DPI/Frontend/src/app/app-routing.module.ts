@@ -23,6 +23,17 @@ const routes: Routes = [
         loadChildren: () =>
           import('./users/users.module').then((m) => m.UsersModule),
       },
+      
+      {
+        path: 'rolPrivilege',
+        loadChildren: () =>
+          import('./rol_privileges/rol_privilege.module').then((m) => m.RolPrivilegesModule),
+      },
+      {
+        path: 'userRolPrivilege',
+        loadChildren: () =>
+          import('./user-rol-privilege/user-rol-privileges.module').then((m) => m.UserRolPrivilegesModule),
+      },
       {
         path: 'roles',
         loadChildren: () =>
@@ -43,11 +54,13 @@ const routes: Routes = [
         loadChildren: () =>
           import('./sospechosos/suspect.module').then((m) => m.SuspectModule),
       },
-    ],
+  
+],
     canActivate: [UserAuthenticationGuard],
   },
   { path: 'login', component: LoginComponent },
   { path: '**', component: PagenotfoundComponent },
+
 ];
 
 @NgModule({

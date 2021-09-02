@@ -4,23 +4,67 @@
       <button class="navbar-brand btn" (click)="openSidebar = !openSidebar">
         ☰
       </button>
-   
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarScroll"
+        aria-controls="navbarScroll"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <div class="collapse navbar-collapse" id="navbarScroll">
-        <ul  class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"  style="--bs-scroll-height: 100px"  >
+        <ul
+          class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
+          style="--bs-scroll-height: 100px"
+        >
           <li class="nav-item">
-            <a  class="nav-link active"   aria-current="page"    [routerLink]="['/home']"   >Inicio</a >
+            <a
+              class="nav-link active"
+              aria-current="page"
+              [routerLink]="['/home']"
+              >Inicio</a
+            >
           </li>
           <li class="nav-item dropdown"></li>
         </ul>
       </div>
-      <a   href="#" class="d-flex align-items-center text-white text-decoration-none  dropdown-toggle" id="dropdownUser1"data-bs-toggle="dropdown" aria-expanded="false"     >
-        <img  src="https://github.com/mdo.png"  alt="hugenerd"   width="30"  height="30"  class="rounded-circle" />
-        <span class="d-none d-sm-inline mx-1">{{this.auth.currentUser.username }}</span>
+      <a
+        href="#"
+        class="
+          d-flex
+          align-items-center
+          text-white text-decoration-none
+          dropdown-toggle
+        "
+        id="dropdownUser1"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <img
+          src="https://github.com/mdo.png"
+          alt="hugenerd"
+          width="30"
+          height="30"
+          class="rounded-circle"
+        />
+        <span class="d-none d-sm-inline mx-1">{{
+          this.auth.currentUser.username
+        }}</span>
       </a>
-      <ul   class="  dropdown-menu dropdown-menu-end dropdown-menu-light  text-small  shadow">
+      <ul
+        class="
+          dropdown-menu dropdown-menu-end dropdown-menu-light
+          text-small
+          shadow
+        "
+      >
         <li>
           <a class="dropdown-item" (click)="logout()">
-            <i class="fa fa-sign-out"></i> Salir</a>
+            <i class="fa fa-sign-out"></i> Salir</a
+          >
         </li>
       </ul>
     </div>
@@ -28,27 +72,46 @@
   <br /><br />
 </span>
 
-
-
-
-
-<!-- /#wrapper -->
-
-
- <span *ngIf="this.auth.isLoggedIn">
+<span *ngIf="this.auth.isLoggedIn">
   <br /><br />
-  <div class="col-md-3 col-xl-2 px-0 sticky-top "  id="mySidebar" [ngClass]="openSidebar ? 'sidebar-open' : 'sidebar-hide'" >
-    <div class="row flex-nowrap ">
-      <div class="col-auto col-md-10 bg-light overflow-auto vh-100">
+  <div
+    class="col-md-3 col-xl-2 px-0 sticky-top"
+    id="mySidebar"
+    [ngClass]="openSidebar ? 'sidebar-open' : 'sidebar-hide'"
+  >
+    <div class="row flex-nowrap">
+      <div class="col-auto col-md-12 bg-light">
         <br /><br /><br />
         <div class="text-center">
-          <img   src="assets/gobiernoLogo.png"   alt=""   width="200px"  height="120px"  />
+          <img
+            src="assets/gobiernoLogo.png"
+            alt=""
+            width="200px"
+            height="120px"
+          />
         </div>
         <hr />
-        <div  class=" d-flex  flex-column  align-items-center align-items-sm-start  px-3   pt-2   text-white min-vh-100  "   >
-          <ul   class=" nav nav-pills   flex-column   mb-sm-auto mb-0 align-items-center align-items-sm-start  sticky-offset"  id="menu" >
-
-
+        <div
+          class="
+            d-flex
+            flex-column
+            align-items-center align-items-sm-start
+            px-3
+            pt-2
+            text-white
+            min-vh-100
+          "
+        >
+          <ul
+            class="
+              nav nav-pills
+              flex-column
+              mb-sm-auto mb-0
+              align-items-center align-items-sm-start
+              sticky-offset
+            "
+            id="menu"
+          >
             <li class="nav-item">
               <a href="#" class="nav-link align-middle px-0">
                 <i class="fa fa-home"></i>
@@ -58,38 +121,15 @@
 
 
 
-            <li>
-              <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                <i class="fa fa-user"></i> <span class="ms-1 d-none d-sm-inline">Usuarios</span></a>
-                  <ul class="collapse nav flex-column ms-1 " id="submenu3" data-bs-parent="#menu" >
-                  <li class="w-100" *ngFor="let privilege of privileges ; let i = index">
-                    <a [routerLink]="['/users/'+privilege.name_Privilege]" class="nav-link px-0">
-                      <span class="d-sm-inline"> </span>  {{privilege.name_Privilege}}</a>     
-                    </li>
-                    <li>
-                      <a  [routerLink]="['/userRolPrivilege/Agregar privilegio a usuario']" class="nav-link px-0" >
-                        <span class="d-sm-inline"> </span>  &nbsp;&nbsp;&nbsp;&nbsp;Agregar privilegio a usuario</a >
-  
-                      <a  [routerLink]="['/userRolPrivilege/Eliminar privilegios a usuario']" class="nav-link px-0" >
-                      <span class="d-sm-inline"> </span>  &nbsp;&nbsp;&nbsp;&nbsp;Eliminar privilegios a usuario</a > 
-  
-                      <a  [routerLink]="['/privilegios/Listar Privilegios']" class="nav-link px-0" >
-                        <span class="d-sm-inline"> </span>  &nbsp;&nbsp;&nbsp;&nbsp;Listar Privilegios</a >
-                        
-                        <a [routerLink]="['/sospechosos/Listar Sospechosos']" class="nav-link px-0">
-                          <span class="d-sm-inline"> </span>  &nbsp;&nbsp;&nbsp;&nbsp;Listar Sospechosos</a>
-  
-                          <a [routerLink]="['/sospechosos/Crear Sospechoso']" class="nav-link px-0">
-                            <span class="d-sm-inline"> </span>  &nbsp;&nbsp;&nbsp;&nbsp;Crear Sospechosos</a> 
-                    </li>
-                  
-                   
-
-              </ul>
-          </li>
-
-<!-- 
+             <li>
+              <a href="#submenu3"     data-bs-toggle="collapse"   class="nav-link px-0 align-middle"    >
+                <i class="fa fa-user"></i>
+                <span class="ms-1 d-sm-inline">Privilegio</span></a
+              >
+              <ul  class="collapse nav flex-column ms-1"    id="submenu3"    data-bs-parent="#menu"   >
                 <li class="w-100">
+
+
                   <a [routerLink]="['/users/Listar Usuario']" class="nav-link px-0">
                     <span class="d-sm-inline"> </span> Listar Usuarios</a>
                   <a  [routerLink]="['/users/Modificar Usuario']"  class="nav-link px-0"  >
@@ -111,11 +151,41 @@
           <a  [routerLink]="['/userRolPrivilege/Listar privilegios de los usuarios']" class="nav-link px-0" >
           <span class="d-sm-inline"> </span> Listar privilegios de los usuarios</a  >
         
-      -->
-     
+        <a  [routerLink]="['/userRolPrivilege/Agregar privilegio a usuario']" class="nav-link px-0" >
+        <span class="d-sm-inline"> </span> Agregar privilegio a usuario</a >
+      <a  [routerLink]="['/userRolPrivilege/Eliminar privilegios a usuario']" class="nav-link px-0" >
+      <span class="d-sm-inline"> </span> Eliminar privilegios a usuario</a
+    > 
+
+    <li class="w-100" *ngFor="let privilege of privileges ">
+      <a [routerLink]="['/users/'+privilege.name_Privilege]" class="nav-link px-0">
+        <span class="d-sm-inline"> </span> {{privilege.name_Privilege}}</a>
+
+        
+        <!-- <a [routerLink]="['/roles/Listar Rol']" class="nav-link px-0">
+          <span class="d-sm-inline"> </span> Listar Rol</a>
+          <a [routerLink]="['/roles/Eliminar Rol']" class="nav-link px-0">
+            <span class="d-sm-inline"> </span> Eliminar Rol</a>
+            <a [routerLink]="['/roles/Crear Rol']" class="nav-link px-0">
+              <span class="d-sm-inline"> </span> Crear Rol</a> -->
+
+              <a [routerLink]="['/departamentos/Listar Departamento']" class="nav-link px-0">
+                <span class="d-sm-inline"> </span> Listar Departamento</a>
+                <a [routerLink]="['/departamentos/Eliminar Departamento']" class="nav-link px-0">
+                  <span class="d-sm-inline"> </span> Eliminar Departamento</a>
+                  <a [routerLink]="['/departamentos/Crear Departamento']" class="nav-link px-0">
+                    <span class="d-sm-inline"> </span> Crear Departamento</a>
+                    <a [routerLink]="['/privilegios/Listar Privilegios']" class="nav-link px-0">
+                      <span class="d-sm-inline"> </span> Listar Privilegios</a>
+                      <a [routerLink]="['/sospechosos/Listar Sospechosos']" class="nav-link px-0">
+                        <span class="d-sm-inline"> </span> Listar Sospechosos</a>
+                        <a [routerLink]="['/sospechosos/Crear Sospechoso']" class="nav-link px-0">
+                          <span class="d-sm-inline"> </span> Crear Sospechosos</a> 
 
 
 
+                  </li>
+              </ul>
             <li class="nav-item">
               <a href="#" class="nav-link align-middle px-0">
                 <i class="fa fa-sign-out"></i>
@@ -123,53 +193,15 @@
               </a>
             </li>
           </ul>
-          
+        </div>
       </div>
-    </div>
     </div>
   </div>
 </span>
 
-<div [ngClass]="openSidebar ? 'active-content' : 'inactive-content'" class="ml-0">
+<div
+  [ngClass]="openSidebar ? 'active-content' : 'inactive-content'"
+  class="ml-0"
+>
   <router-outlet></router-outlet>
-</div> 
-
-
-
-<!-- <div class="bg-light border-right min-vh-100" id="sidebar-wrapper"  [ngClass]="openSidebar ? 'sidebar-open' : 'sidebar-hide'">
-  <div class="sidebar-heading">Start Bootstrap </div>
-  <div class="list-group list-group-flush overflow-auto vh-100">
-      <a [routerLink]="['/users/Listar Usuario']" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Menu 1</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Menu 2</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Menu 3</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Menu 4</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Menu 5</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Menu 6</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Menu 7</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Menu 8</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Menu 9</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Menu 10</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Menu 11</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Menu 12</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Menu 13</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Menu 14</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Menu 1</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Menu 2</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Menu 3</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Menu 4</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Menu 5</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Menu 14</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Menu 1</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Menu 2</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Menu 3</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Menu 4</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Menu 5</a>
-
-
-
-
-  </div>
-</div> -->
+</div>

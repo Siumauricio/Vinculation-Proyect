@@ -30,7 +30,7 @@ export class UsersService {
       })
       .catch(async (ApiAnswer) => {
         Swal.close();
-        this.errorMessage('Erro extrayendo datos de usuarios');
+        this.errorMessage('Error extrayendo datos de usuarios');
       });
     return answer;
   }
@@ -152,7 +152,7 @@ export class UsersService {
         answer = ApiAnswer;
       })
       .catch(async (respuestaApi) => {
-        this.errorMessage('Fallo al extraer los Privilegios y roles');
+        this.errorMessage('Error extrayendo departamentos');
       });
     return answer;
   }
@@ -163,7 +163,7 @@ export class UsersService {
         answer = ApiAnswer;
       })
       .catch(async (respuestaApi) => {
-        this.errorMessage('Fallo al obtener los privilegios del usuario');
+        this.errorMessage('Error extrayendo departamentos');
       });
     return answer;
   }

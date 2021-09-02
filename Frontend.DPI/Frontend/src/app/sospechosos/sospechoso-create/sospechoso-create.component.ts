@@ -1,10 +1,8 @@
-import { Suspects } from './../interfaces/suspects';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Department, Rol } from '../../users/interfaces/user';
 import { UsersService } from '../../users/users.service';
-import { AuthenticationService } from '../../authentication.service';
 
 @Component({
   selector: 'app-sospechoso-create',
@@ -15,8 +13,8 @@ export class SospechosoCreateComponent implements OnInit {
 
   suspectForm : FormGroup;
   buttonDisabled:boolean =false;
-  suspect:Suspects;
-  constructor(public auth: AuthenticationService,private formBuilder:FormBuilder) { 
+
+  constructor(private userService: UsersService,private formBuilder:FormBuilder) { 
       this.suspectForm = this.formBuilder.group({
       dniSuspect: ['',Validators.required],
       firstName: ['',Validators.required],
@@ -50,8 +48,8 @@ export class SospechosoCreateComponent implements OnInit {
       department: ['',Validators.required],
       municipio: ['',Validators.required],
       recordStatus: [''],
-      usernameRegistryData: ['',Validators.required],
-      departmentIdDepartment: ['',Validators.required],
+      usernameRegistryData: [''],
+      departmentIdDepartment: [''],
     })
     
   }
@@ -60,11 +58,7 @@ export class SospechosoCreateComponent implements OnInit {
   }
 
   onSubmit(){
-    this.suspect = this.suspectForm.getRawValue();
-    this.suspect.usernameRegistryData = this.auth.currentUser.username;
-    this.suspect.departmentIdDepartment = this.auth.currentUser.departmentIdDepartment;
-    console.log( this.suspect)
-    
+     console.log( this.suspectForm.getRawValue());
     //  this.userService.createUser(this.suspectForm.getRawValue()).then((resp) => {
     //   if (resp) {
     //     this.suspectForm.reset();

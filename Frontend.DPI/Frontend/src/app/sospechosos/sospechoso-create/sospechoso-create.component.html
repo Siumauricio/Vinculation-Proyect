@@ -168,16 +168,12 @@
               </div>
 
               <div class="form-floating mb-3">
-                
                 <input  type="text" formControlName="department" (keypress)="keyPressAlphanumeric($event)" maxlength="17" autocomplete="off" class="form-control" />
-                <div class="invalid-feedback">
-                  Please choose a username.
-                </div>
                 <label for="floatingUser">Departamento</label>
               </div>
 
               <div class="form-floating mb-3">
-                <input  type="text" formControlName="municipio" (keypress)="keyPressAlphanumeric($event)" required="true" maxlength="30" autocomplete="off" class="form-control" />
+                <input  type="text" formControlName="municipio" (keypress)="keyPressAlphanumeric($event)" maxlength="30" autocomplete="off" class="form-control" />
                 <label for="floatingUser">Municipio</label>
               </div>
 
