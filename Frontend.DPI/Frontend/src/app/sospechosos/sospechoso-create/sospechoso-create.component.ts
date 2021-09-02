@@ -1,20 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Suspects } from './../interfaces/suspects';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Department, Rol } from '../../users/interfaces/user';
 import { UsersService } from '../../users/users.service';
+import { AuthenticationService } from '../../authentication.service';
+import { SuspectService } from '../suspect.service';
 
 @Component({
   selector: 'app-sospechoso-create',
   templateUrl: './sospechoso-create.component.html',
   styleUrls: ['./sospechoso-create.component.css']
 })
-export class SospechosoCreateComponent implements OnInit {
+export class SospechosoCreateComponent  {
 
   suspectForm : FormGroup;
   buttonDisabled:boolean =false;
-
-  constructor(private userService: UsersService,private formBuilder:FormBuilder) { 
+  suspect:Suspects;
+  constructor(private auth: AuthenticationService,private suspectService:SuspectService,private formBuilder:FormBuilder) { 
       this.suspectForm = this.formBuilder.group({
       dniSuspect: ['',Validators.required],
       firstName: ['',Validators.required],
@@ -42,7 +45,7 @@ export class SospechosoCreateComponent implements OnInit {
       avenue: [''],
       village:[''],
       caserio: [''],
-      houseNumber: [''],
+      houseNumber: ['0'],
       pasaje: [''],
       referenceAddress: [''],
       department: ['',Validators.required],
@@ -53,23 +56,24 @@ export class SospechosoCreateComponent implements OnInit {
     })
     
   }
-  async ngOnInit() {
-   
-  }
+
 
   onSubmit(){
-     console.log( this.suspectForm.getRawValue());
-    //  this.userService.createUser(this.suspectForm.getRawValue()).then((resp) => {
-    //   if (resp) {
-    //     this.suspectForm.reset();
-    //   } else {
-    //     Swal.fire(
-    //       'Error',
-    //       'Este usuario ya existe',
-    //       'error'
-    //     );
-    //   }
-    // });
+    this.suspect = this.suspectForm.getRawValue();
+    this.suspect.usernameRegistryData = this.auth.currentUser.username;
+    this.suspect.departmentIdDepartment = this.auth.currentUser.departmentIdDepartment;
+     console.log( this.suspect);
+     this.suspectService.addSuspect(this.suspect).then((resp) => {
+      if (resp == true) {
+        this.suspectForm.reset();
+      } else {
+        Swal.fire(
+          'Error',
+          'Este usuario ya existe',
+          'error'
+        );
+      }
+    });
   }
 keyPressAlphanumeric(event) {
     var inp = String.fromCharCode(event.keyCode);

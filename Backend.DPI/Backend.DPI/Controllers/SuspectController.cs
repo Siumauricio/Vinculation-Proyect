@@ -26,5 +26,24 @@ namespace Backend.DPI.Controllers
             return Ok(suspects);
         }
 
+
+        [HttpPost("AddSuspect")]
+        public async Task<ActionResult<bool>> AddSuspect(Suspect suspect)
+        {
+            var suspects = await _suspectRepository.AddSuspectAsync(suspect);
+            return suspects;
+        }
+
+
+        [HttpGet("GetRegisterPerDay")]
+        public async Task<ActionResult<IEnumerable<Suspect>>> GetRegisterPerDay(string username)
+        {
+            var suspects = await _suspectRepository.GetSuspectsInsertedByDate(username);
+            if (suspects == null)
+            {
+                return NotFound();
+            }
+            return Ok(suspects);
+        }
     }
 }

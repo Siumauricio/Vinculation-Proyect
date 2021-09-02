@@ -15,7 +15,6 @@ export class DepartamentoDeleteComponent  {
 
   constructor(private departmentService: DepartmentService) {}
   async getRolbyName(rolName: string) {
-    console.log(rolName)
     await this.departmentService.getDepartmentByName(rolName.trim()).then((resp) => {
       this.DepartmentData = resp;
     });

@@ -19,7 +19,6 @@ export class DepartamentoListComponent implements OnInit {
 
   async getDepartments() {
     await this.userService.getDepartments().then((resp) => {
-      console.log(resp);
       this.Departments = resp;
     });
   }

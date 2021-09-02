@@ -6,19 +6,19 @@ import { UserRolPrivilegeListComponent } from './user-rol-privilege-crud/user-ro
 
 const routes: Routes = [
   {
-    path: 'Listar privilegios de los usuarios',
+    path: 'Listar Privilegios Usuarios',
     component: UserRolPrivilegeListComponent,
     data: { title: 'List' },
   },
   
   {
-    path: 'Agregar privilegio a usuario',
+    path: 'Agregar Privilegios Usuarios',
     component: UserAddRolPrivilegeComponent,
     data: { title: 'Add' },
   },
   
   {
-    path: 'Eliminar privilegios a usuario',
+    path: 'Eliminar Privilegios Usuarios',
     component: UserRolPrivilegeDeleteComponent,
     data: { title: 'List' },
   }

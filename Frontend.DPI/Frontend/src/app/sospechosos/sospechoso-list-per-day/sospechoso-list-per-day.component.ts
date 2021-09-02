@@ -1,14 +1,15 @@
-import { FormGroup } from '@angular/forms';
+import { AuthenticationService } from './../../authentication.service';
 import { SuspectService } from './../suspect.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Suspects } from '../interfaces/suspects';
 import { ModalDirective } from 'ngx-bootstrap/modal';
+import { Suspects } from '../interfaces/suspects';
+
 @Component({
-  selector: 'app-suspect-list',
-  templateUrl: './suspect-list.component.html',
-  styleUrls: ['./suspect-list.component.css']
+  selector: 'app-sospechoso-list-per-day',
+  templateUrl: './sospechoso-list-per-day.component.html',
+  styleUrls: ['./sospechoso-list-per-day.component.css']
 })
-export class SuspectListComponent implements OnInit {
+export class SospechosoListPerDayComponent implements OnInit {
   @ViewChild('viewSuspectInfoModal', { static: true }) viewSuspectInfoModal: ModalDirective;
   userFilterSelected: string = '';
   totalRecords :number;
@@ -16,19 +17,19 @@ export class SuspectListComponent implements OnInit {
   Suspects: Suspects[];
   currentSuspect: Suspects;
   modalOpen :boolean=false;
-  constructor(private SuspectService: SuspectService) {}
+  constructor(private suspectService:SuspectService,private authService:AuthenticationService) { }
 
   async ngOnInit() {
-    await this.getSuspects();
+    await this.getRegistersPerDay(this.authService.currentUser.username);
   }
 
-  async getSuspects() {
-    await this.SuspectService.getSuspects().then((resp) => {
-      console.log(resp);
+  async getRegistersPerDay(username){
+    await this.suspectService.getSuspectsInsertedToday(username).then((resp)=>{
       this.Suspects = resp;
       this.totalRecords = this.Suspects.length;
-    });
+    })
   }
+
   ShowModal(suspect:Suspects){
     this.currentSuspect = suspect;
     this.modalOpen=true;
@@ -37,4 +38,5 @@ export class SuspectListComponent implements OnInit {
   closeModal() {
     this.viewSuspectInfoModal.hide();
   }
+
 }

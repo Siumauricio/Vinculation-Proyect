@@ -24,7 +24,6 @@ export class RolPrivilegeDeleteComponent implements OnInit {
 
   async getRolPrivilegeById(idRolPrivilege: string) {
     await this.rolPrivilegeService.getRolPrivilegeById(+idRolPrivilege).then((resp) => {
-      console.log(resp);
       this.rolPrivilegeData = resp;
     });
   }

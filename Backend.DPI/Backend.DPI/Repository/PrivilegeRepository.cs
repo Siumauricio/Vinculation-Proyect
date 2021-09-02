@@ -159,5 +159,13 @@ namespace Backend.DPI.Repository
 
 
 
+        public Task<IReadOnlyList<Privilege>> GetPrivilegesByUserAsync(string username)
+        {
+            //var result = await(from a in dpiContext.prvi
+            //                   join b in dpiContext.Rols on a.RolIdRol equals b.IdRol
+            //                   where a.Username == username
+            //                   select new { Username = a.Username, FechaCreacion = a.CreationDatetime, NombreRol = b.Name, NombreDepartamento = c.Name, a.RolIdRol, a.DepartmentIdDepartment, a.Password }).FirstOrDefaultAsync();
+            return null;
+        }
     }
 }
