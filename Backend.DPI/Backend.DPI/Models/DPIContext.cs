@@ -365,6 +365,11 @@ namespace Backend.DPI.Models
                     .IsUnicode(false)
                     .HasColumnName("colonia");
 
+                entity.Property(e => e.CreationDate)
+                    .HasColumnType("date")
+                    .HasColumnName("creation_date")
+                    .HasDefaultValueSql("('2021-09-02')");
+
                 entity.Property(e => e.DateOfBirth)
                     .HasColumnType("date")
                     .HasColumnName("date_of_birth");

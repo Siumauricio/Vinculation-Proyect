@@ -9,20 +9,20 @@
             <div class="container p-4">
               <div class="form-floating mb-3">
                 <input  type="text" formControlName="dniSuspect" (keypress)="keyPressAlphanumeric($event)" maxlength="16" autocomplete="off" class="form-control" />
-                <label for="floatingUser">DNI</label>
+                <label for="floatingUser">DNI<label style="color: red;">*</label></label>
               </div>
   
               <div class="row mb-3">
                 <div class="col-md">
                   <div class="form-floating">
                     <input  type="text" formControlName="firstName" (keypress)="keyPressAlphanumeric($event)" maxlength="15"  class="form-control" />
-                    <label for="floatingPassword">Primer Nombre</label>
+                    <label for="floatingPassword">Primer Nombre<label style="color: red;">*</label></label>
                   </div>
                 </div>
                 <div class="col-md">
                   <div class="form-floating">
                     <input type="text"  formControlName="middleName" (keypress)="keyPressAlphanumeric($event)" maxlength="15"   class="form-control" />
-                    <label for="floatingPassword">Segundo Nombre</label>
+                    <label for="floatingPassword">Segundo Nombre </label>
                   </div>
                 </div>
               </div>
@@ -31,13 +31,13 @@
                 <div class="col-md">
                   <div class="form-floating">
                     <input  type="text" formControlName="thirdName" (keypress)="keyPressAlphanumeric($event)" maxlength="15"  class="form-control" />
-                    <label for="floatingPassword">Primer Apellido</label>
+                    <label for="floatingPassword">Primer Apellido <label style="color: red;">*</label> </label>
                   </div>
                 </div>
                 <div class="col-md">
                   <div class="form-floating">
                     <input type="text"  formControlName="lastName" (keypress)="keyPressAlphanumeric($event)" maxlength="15"  class="form-control" />
-                    <label for="floatingPassword">Segundo Apellido</label>
+                    <label for="floatingPassword">Segundo Apellido<label style="color: red;">*</label></label>
                   </div>
                 </div>
               </div>
@@ -49,7 +49,7 @@
 
               <div class="row mb-3">
                 <div class="input-group mb-3">
-                  <label class="input-group-text" for="roles">Sexo</label>
+                  <label class="input-group-text" for="roles">Sexo<label style="color: red;">*</label></label>
                   <select class="form-select"  id="roles"  formControlName="sex">
                 <option value="" selected disabled hidden>Escoge un Sexo</option>
                 <option>M</option>
@@ -60,31 +60,31 @@
 
               <div class="form-floating mb-3">
                 <input  type="number" step="0.01" formControlName="height" maxlength="6"  autocomplete="off" class="form-control" />
-                <label for="floatingUser">Altura en Metros</label>
+                <label for="floatingUser">Altura en Metros<label style="color: red;">*</label></label>
               </div>
               <div class="form-floating mb-3">
                 <input  type="number"  formControlName="weight"  maxlength="6" autocomplete="off" class="form-control" />
-                <label for="floatingUser">Peso en LBS</label>
+                <label for="floatingUser">Peso en LBS<label style="color: red;">*</label></label>
               </div>
 
                   <div class="form-floating mb-3">
                 <input  type="text" formControlName="eyesColor" (keypress)="keyPressAlphanumeric($event)" maxlength="15" autocomplete="off" class="form-control" />
-                <label for="floatingUser">Ojos de color</label>
+                <label for="floatingUser">Ojos de color<label style="color: red;">*</label></label>
               </div>
 
               <div class="form-floating mb-3">
                 <input  type="text" formControlName="build" (keypress)="keyPressAlphanumeric($event)" maxlength="20" autocomplete="off" class="form-control" />
-                <label for="floatingUser">Contextura</label>
+                <label for="floatingUser">Contextura<label style="color: red;">*</label></label>
               </div>
 
               <div class="form-floating mb-3">
                 <input  type="text" formControlName="personFrom" (keypress)="keyPressAlphanumeric($event)" maxlength="20" autocomplete="off" class="form-control" />
-                <label for="floatingUser">Lugar de origen</label>
+                <label for="floatingUser">Lugar de origen<label style="color: red;">*</label></label>
               </div>
 
               <div class="form-floating mb-3">
                 <input  type="text" formControlName="ocupattion" (keypress)="keyPressAlphanumeric($event)" maxlength="50" autocomplete="off" class="form-control" />
-                <label for="floatingUser">Ocupacion</label>
+                <label for="floatingUser">Ocupacion<label style="color: red;">*</label></label>
               </div>
 
               <div class="form-floating mb-3">
@@ -94,7 +94,7 @@
 
               <div class="form-floating mb-3">
                 <input  type="text" formControlName="particularSign" (keypress)="keyPressAlphanumeric($event)" maxlength="50" autocomplete="off" class="form-control" />
-                <label for="floatingUser">Señas particulares del cuerpo</label>
+                <label for="floatingUser">Señas particulares del cuerpo<label style="color: red;">*</label></label>
               </div>
 
               <div class="form-floating mb-3">
@@ -109,22 +109,22 @@
 
               <div class="form-floating mb-3">
                 <input  type="date" formControlName="dateOfBirth" (keypress)="keyPressAlphanumeric($event)" autocomplete="off" class="form-control" />
-                <label for="floatingUser">Fecha de nacimiento</label>
+                <label for="floatingUser">Fecha de nacimiento<label style="color: red;">*</label></label>
               </div>
 
               <div class="form-floating mb-3">
                 <input  type="text" formControlName="nationaliy" (keypress)="keyPressAlphanumeric($event)" maxlength="20" autocomplete="off" class="form-control" />
-                <label for="floatingUser">Nacionalidad</label>
+                <label for="floatingUser">Nacionalidad<label style="color: red;">*</label></label>
               </div>
 
               <div class="form-floating mb-3">
                 <input  type="number" formControlName="age"  maxlength="3" autocomplete="off" class="form-control" />
-                <label for="floatingUser">Edad</label>
+                <label for="floatingUser">Edad<label style="color: red;">*</label></label>
               </div>
 
               <div class="form-floating mb-3">
                 <input  type="text" formControlName="civilStatus" (keypress)="keyPressAlphanumeric($event)" maxlength="30" autocomplete="off" class="form-control" />
-                <label for="floatingUser">Estado Civil</label>
+                <label for="floatingUser">Estado Civil<label style="color: red;">*</label></label>
               </div>
 
               <div class="form-floating mb-3">
@@ -169,12 +169,12 @@
 
               <div class="form-floating mb-3">
                 <input  type="text" formControlName="department" (keypress)="keyPressAlphanumeric($event)" maxlength="17" autocomplete="off" class="form-control" />
-                <label for="floatingUser">Departamento</label>
+                <label for="floatingUser">Departamento<label style="color: red;">*</label></label>
               </div>
 
               <div class="form-floating mb-3">
                 <input  type="text" formControlName="municipio" (keypress)="keyPressAlphanumeric($event)" maxlength="30" autocomplete="off" class="form-control" />
-                <label for="floatingUser">Municipio</label>
+                <label for="floatingUser">Municipio<label style="color: red;">*</label></label>
               </div>
 
               <div class="row py-3 pull-right">

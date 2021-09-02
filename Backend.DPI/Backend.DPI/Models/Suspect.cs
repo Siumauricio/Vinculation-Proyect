@@ -48,6 +48,7 @@ namespace Backend.DPI.Models
         public string RecordStatus { get; set; }
         public string UsernameRegistryData { get; set; }
         public int DepartmentIdDepartment { get; set; }
+        public DateTime CreationDate { get; set; }
 
         public virtual Department DepartmentIdDepartmentNavigation { get; set; }
         public virtual ICollection<CriminalDatum> CriminalData { get; set; }

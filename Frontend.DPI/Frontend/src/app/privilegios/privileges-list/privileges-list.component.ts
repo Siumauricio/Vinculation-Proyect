@@ -20,7 +20,6 @@ export class PrivilegesListComponent implements OnInit {
 
   async getRoles() {
     await this.privilegesService.getPrivileges().then((resp) => {
-      console.log(resp);
       this.privileges = resp;
     });
   }

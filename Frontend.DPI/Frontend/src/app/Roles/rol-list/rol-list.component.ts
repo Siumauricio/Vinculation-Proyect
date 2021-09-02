@@ -20,7 +20,6 @@ export class RolListComponent implements OnInit {
 
   async getRoles() {
     await this.userService.getRols().then((resp) => {
-      console.log(resp);
       this.Roles = resp;
     });
   }

@@ -16,7 +16,6 @@ export class RolDeleteComponent {
 
   constructor(private rolesService: RolesService) {}
   async getRolbyName(rolName: string) {
-    console.log(rolName)
     await this.rolesService.getRolByName(rolName.trim()).then((resp) => {
       this.rolsData = resp;
     });
@@ -33,7 +32,6 @@ export class RolDeleteComponent {
       }).then(async (result) => {
         if (result.isConfirmed) {
           await this.rolesService.DeleteRol(username).then((resp) => {
-            console.log(resp);
             if (resp == true) {
               this.rolsData = null;
               this.userFilterSelected ='';

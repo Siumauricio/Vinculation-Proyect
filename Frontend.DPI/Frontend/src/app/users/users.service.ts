@@ -163,7 +163,6 @@ export class UsersService {
         answer = ApiAnswer;
       })
       .catch(async (respuestaApi) => {
-        this.errorMessage('Error extrayendo departamentos 3');
       });
     return answer;
   }

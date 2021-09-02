@@ -1,3 +1,4 @@
+import { SospechosoListPerDayComponent } from './sospechoso-list-per-day/sospechoso-list-per-day.component';
 import { SospechosoCreateComponent } from './sospechoso-create/sospechoso-create.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -15,10 +16,18 @@ const routes: Routes = [
     data: { title: 'List' },
   },
   {
-    path: 'Agregar Sospechoso',
+    path: 'Agregar Sospechosos',
      component: SospechosoCreateComponent,
     data: { title: 'List' },
   },
+  {
+    path: 'Listar Sospechosos Ingresados Hoy',
+     component: SospechosoListPerDayComponent,
+    data: { title: 'List' },
+  },
+
+  
+  
  
 ];
 

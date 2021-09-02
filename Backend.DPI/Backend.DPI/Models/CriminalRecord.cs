@@ -14,6 +14,7 @@ namespace Backend.DPI.Models
         public string PenitentiaryCenter { get; set; }
         public string ModuleCellPrison { get; set; }
         public string SuspectDni { get; set; }
+
         public virtual Suspect SuspectDniNavigation { get; set; }
     }
 }
