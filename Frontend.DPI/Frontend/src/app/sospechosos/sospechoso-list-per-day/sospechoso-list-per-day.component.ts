@@ -26,6 +26,7 @@ export class SospechosoListPerDayComponent implements OnInit {
   async getRegistersPerDay(username){
     await this.suspectService.getSuspectsInsertedToday(username).then((resp)=>{
       this.Suspects = resp;
+      console.log(this.Suspects)
       this.totalRecords = this.Suspects.length;
     })
   }

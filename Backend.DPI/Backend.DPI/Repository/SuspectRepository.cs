@@ -30,7 +30,7 @@ namespace Backend.DPI.Repository
         {
             var result = await (from a in dpiContext.Suspects
                                 join b in dpiContext.Departments on a.DepartmentIdDepartment equals b.IdDepartment
-                                select new {a.Age,a.Alias,a.Avenue,a.UsernameRegistryData,a.DepartmentIdDepartment,a.Department,a.Build,a.Caserio,a.CivilStatus,a.Colonia,a.DateOfBirth,a.DniSuspect,a.EyesColor,a.FirstName,a.Height,a.HouseNumber,a.LastName,a.MiddleName,a.Municipio,a.Nationaliy,a.Ocupattion,a.OperationPlace,a.ParticularSign,a.Pasaje,a.PassportNumber,a.PersonFrom,a.RecordStatus,a.ReferenceAddress,a.Sex,a.Street,a.Tattoo,a.ThirdName,a.Village,a.Weight,b.Name }).ToListAsync();
+                                select new {a.Age,a.Alias,a.Avenue,a.CreationDate,a.UsernameRegistryData,a.DepartmentIdDepartment,a.Department,a.Build,a.Caserio,a.CivilStatus,a.Colonia,a.DateOfBirth,a.DniSuspect,a.EyesColor,a.FirstName,a.Height,a.HouseNumber,a.LastName,a.MiddleName,a.Municipio,a.Nationaliy,a.Ocupattion,a.OperationPlace,a.ParticularSign,a.Pasaje,a.PassportNumber,a.PersonFrom,a.RecordStatus,a.ReferenceAddress,a.Sex,a.Street,a.Tattoo,a.ThirdName,a.Village,a.Weight,b.Name }).ToListAsync();
             return  result;
         }
 
@@ -39,7 +39,7 @@ namespace Backend.DPI.Repository
             var result = await (from a in dpiContext.Suspects
                                 join b in dpiContext.Departments on a.DepartmentIdDepartment equals b.IdDepartment 
                                 where a.UsernameRegistryData == username && a.CreationDate.Year == DateTime.Now.Year && a.CreationDate.Month == DateTime.Now.Month && a.CreationDate.Day == DateTime.Now.Day
-                                select new { a.Age, a.Alias, a.Avenue, a.UsernameRegistryData, a.DepartmentIdDepartment, a.Department, a.Build, a.Caserio, a.CivilStatus, a.Colonia, a.DateOfBirth, a.DniSuspect, a.EyesColor, a.FirstName, a.Height, a.HouseNumber, a.LastName, a.MiddleName, a.Municipio, a.Nationaliy, a.Ocupattion, a.OperationPlace, a.ParticularSign, a.Pasaje, a.PassportNumber, a.PersonFrom, a.RecordStatus, a.ReferenceAddress, a.Sex, a.Street, a.Tattoo, a.ThirdName, a.Village, a.Weight, b.Name }).ToListAsync();
+                                select new { a.Age, a.Alias, a.Avenue, a.UsernameRegistryData,a.CreationDate ,a.DepartmentIdDepartment, a.Department, a.Build, a.Caserio, a.CivilStatus, a.Colonia, a.DateOfBirth, a.DniSuspect, a.EyesColor, a.FirstName, a.Height, a.HouseNumber, a.LastName, a.MiddleName, a.Municipio, a.Nationaliy, a.Ocupattion, a.OperationPlace, a.ParticularSign, a.Pasaje, a.PassportNumber, a.PersonFrom, a.RecordStatus, a.ReferenceAddress, a.Sex, a.Street, a.Tattoo, a.ThirdName, a.Village, a.Weight, b.Name }).ToListAsync();
             if (result ==null)
             {
                 return null;
