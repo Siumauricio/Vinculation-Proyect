@@ -11,7 +11,6 @@ import { RolPrivilege, User } from '../users/interfaces/user';
 })
 export class NavbarComponent implements OnInit {
 
-  openSidebar:boolean=false;
   user:User
   privileges:RolPrivilege;
   constructor(public auth: AuthenticationService, private router: Router,private userService :UsersService) { }
@@ -27,6 +26,7 @@ export class NavbarComponent implements OnInit {
   }
 
   logout() {
+    this.auth.openSidebar=false;
     this.auth.logout();
     this.router.navigate(['login'])
     

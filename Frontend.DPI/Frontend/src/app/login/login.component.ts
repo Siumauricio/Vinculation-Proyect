@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AuthenticationService } from '../authentication.service';
+import { User } from '../users/interfaces/user';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
   returnUrl: string;
+  newUser: User = {} as User;
 
   constructor(private formBuilder: FormBuilder, private route: ActivatedRoute,private router: Router,private auth: AuthenticationService) {
     if (this.auth.isLoggedIn) {
@@ -39,6 +41,7 @@ export class LoginComponent implements OnInit {
     const res = await this.auth.login(this.f.user.value, this.f.password.value);
     console.log(res);
     if (res) {
+      this.succesMessage('Bienvenido');
       this.router.navigate(['home']);
     } else {
       Swal.fire(
@@ -57,5 +60,16 @@ export class LoginComponent implements OnInit {
     //                 this.alertService.error(error);
     //                 this.loading = false;
     //             });
+  }
+
+  succesMessage(message) {
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: message,
+      showConfirmButton: false,
+      timer: 1500,
+    });
+
   }
 }

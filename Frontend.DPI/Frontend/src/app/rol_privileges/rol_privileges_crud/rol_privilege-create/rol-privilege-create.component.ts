@@ -46,6 +46,7 @@ export class RolPrivilegeCreateComponent implements OnInit {
   onSubmit(){
     this.rolPrivilegeService.createRolPrivilege(this.profileForm.getRawValue()).then((resp) => {
       if (resp) {
+        
       } else {
         Swal.fire(
           'Error',
