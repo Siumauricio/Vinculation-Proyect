@@ -24,6 +24,10 @@ namespace Backend.DPI.Repository
         Task<IReadOnlyList<object>> GetUserRolPrivilegesAsync();
 
         Task<bool> DeleteUserRolPrivilegeByIdAsync(int IdUserRolPrivilege);
+        Task<IReadOnlyList<object>> GetRolPrivilegeByUserAsync(string Username);
+
+    }
+
 
     }
 }
