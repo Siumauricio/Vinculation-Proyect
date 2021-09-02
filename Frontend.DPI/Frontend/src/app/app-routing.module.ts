@@ -19,38 +19,38 @@ const routes: Routes = [
         component: HomeComponent,
       },
       {
-        path: 'users',
+        path: 'privileges',
         loadChildren: () =>
           import('./users/users.module').then((m) => m.UsersModule),
       },
       
       {
-        path: 'rolPrivilege',
+        path: 'privileges',
         loadChildren: () =>
           import('./rol_privileges/rol_privilege.module').then((m) => m.RolPrivilegesModule),
       },
       {
-        path: 'userRolPrivilege',
+        path: 'privileges',
         loadChildren: () =>
           import('./user-rol-privilege/user-rol-privileges.module').then((m) => m.UserRolPrivilegesModule),
       },
       {
-        path: 'roles',
+        path: 'privileges',
         loadChildren: () =>
           import('./Roles/roles.module').then((m) => m.RolesModule),
       },
       {
-        path: 'departamentos',
+        path: 'privileges',
         loadChildren: () =>
           import('./Departamentos/department.module').then((m) => m.DepartmentModule),
       },
       {
-        path: 'privilegios',
+        path: 'privileges',
         loadChildren: () =>
           import('./privilegios/privileges.module').then((m) => m.PrivilegesModule),
       },
       {
-        path: 'sospechosos',
+        path: 'privileges',
         loadChildren: () =>
           import('./sospechosos/suspect.module').then((m) => m.SuspectModule),
       },

@@ -101,7 +101,7 @@ namespace Backend.DPI.Controllers
         }
 
 
-        [HttpPost("GetUserRolPrivilegesByUser")]
+        [HttpGet("GetUserRolPrivilegesByUser")]
 
         public async Task<ActionResult<IEnumerable<RolPrivilegeDto>>> GetUserRolPrivilegesByUser(string username)
         {

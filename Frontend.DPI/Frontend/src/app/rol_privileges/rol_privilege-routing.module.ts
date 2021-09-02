@@ -7,19 +7,19 @@ import { RolPrivilegeListComponent } from './rol_privileges_crud/rol_privilege-l
 const routes: Routes = [
 
   {
-    path: 'Listar roles por privilegios',
+    path: 'Listar Roles Privilegios',
     component: RolPrivilegeListComponent,
     data: { title: 'List' },
   },
  
   {
-    path: 'Crear roles por privilegios',
+    path: 'Crear Roles Privilegios',
     component: RolPrivilegeCreateComponent,
     data: { title: 'Create' },
   },  
   
   {
-    path: 'Eliminar roles por privilegios',
+    path: 'Eliminar Roles Privilegios',
     component: RolPrivilegeDeleteComponent,
     data: { title: 'List' },
   },

@@ -15,7 +15,7 @@ const routes: Routes = [
     data: { title: 'List' },
   },
   {
-    path: 'Crear Sospechoso',
+    path: 'Agregar Sospechoso',
      component: SospechosoCreateComponent,
     data: { title: 'List' },
   },

@@ -6,17 +6,17 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'Listar Departamento',
+    path: 'Listar Departamentos',
     component: DepartamentoListComponent,
     data: { title: 'List' },
   },
   {
-    path: 'Eliminar Departamento',
+    path: 'Eliminar Departamentos',
     component: DepartamentoDeleteComponent,
     data: { title: 'List' },
   },
   {
-    path: 'Crear Departamento',
+    path: 'Crear Departamentos',
     component: DepartamentoCreateComponent,
     data: { title: 'List' },
   },

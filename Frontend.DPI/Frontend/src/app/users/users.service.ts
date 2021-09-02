@@ -64,7 +64,7 @@ export class UsersService {
         answer = ApiAnswer;
       })
       .catch(async (ApiAnswer) => {
-        this.errorMessage('Error extrayendo departamentos');
+        this.errorMessage('Error extrayendo departamentos 1');
       });
     return answer;
   }
@@ -152,18 +152,18 @@ export class UsersService {
         answer = ApiAnswer;
       })
       .catch(async (respuestaApi) => {
-        this.errorMessage('Error extrayendo departamentos');
+        this.errorMessage('Error extrayendo departamentos 2');
       });
     return answer;
   }
   async GetPrivilegesByUser(username) {
-    const url = `${WEB_SERVICE}Privilege/GetPrivilegesByUser?username=${username}`;
+    const url = `${WEB_SERVICE}Privilege/GetUserRolPrivilegesByUser?username=${username}`;
     let answer: any;
-    await this.http.get(url).toPromise().then(async (ApiAnswer: any) => {
+    await this.http.post(url,username).toPromise().then(async (ApiAnswer: any) => {
         answer = ApiAnswer;
       })
       .catch(async (respuestaApi) => {
-        this.errorMessage('Error extrayendo departamentos');
+        this.errorMessage('Error extrayendo departamentos 3');
       });
     return answer;
   }
