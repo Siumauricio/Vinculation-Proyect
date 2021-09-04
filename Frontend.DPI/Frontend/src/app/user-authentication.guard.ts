@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
 import { AuthenticationService } from './authentication.service';
 
@@ -7,16 +8,24 @@ import { AuthenticationService } from './authentication.service';
   providedIn: 'root'
 })
 export class UserAuthenticationGuard implements CanActivate {
-  constructor(private router: Router, private auth: AuthenticationService){}
+  constructor(private router: Router, 
+              private jwtHelper: JwtHelperService,
+              private auth: AuthenticationService){}
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      const isAuthenticated = this.auth.isLoggedIn;
-      if (!isAuthenticated) {
-        this.router.navigate(['/login']);
+      const token=localStorage.getItem('Token');
+      const isAuthenticated = localStorage.getItem('isLoggedIn');
+      if (isAuthenticated=='true' && token && !this.jwtHelper.isTokenExpired(token) ) {
+      return true;
       }
-      return isAuthenticated;
+      this.auth.logout();
+      
+      this.router.navigate(['/login']);
+      return false;
   }
   
+
+
 }

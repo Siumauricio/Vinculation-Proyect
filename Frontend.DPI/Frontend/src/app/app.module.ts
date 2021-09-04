@@ -11,7 +11,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { LoginComponent } from './login/login.component';
 import { UserAuthenticationGuard } from './user-authentication.guard';
+import { AuthenticationService } from './authentication.service';
+import { JwtModule } from '@auth0/angular-jwt';
 
+
+export function tokenGetter(){
+  return localStorage.getItem("Token");
+} 
 
 @NgModule({
   declarations: [
@@ -20,6 +26,7 @@ import { UserAuthenticationGuard } from './user-authentication.guard';
     HomeComponent,
     PagenotfoundComponent,
     LoginComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -28,9 +35,15 @@ import { UserAuthenticationGuard } from './user-authentication.guard';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ["http://localhost:4200"],
+        disallowedRoutes: [],
+      }
+    })
   ],
-  providers: [UserAuthenticationGuard],
+  providers: [UserAuthenticationGuard,AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

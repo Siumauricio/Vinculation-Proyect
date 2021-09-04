@@ -82,5 +82,13 @@ namespace Backend.DPI.Controllers
             var User = await _userRepository.DeleteUserAsync(username);
             return Ok(User);
         }
+
+
+        [HttpPost("Login")]
+        public async Task<ActionResult<object>> Login(UserDto user) {
+            var result = await _userRepository.LoginAsync(user.Username, user.Password);
+            if (result == null) return NotFound();
+            return Ok(result);
+        }
     }
 }

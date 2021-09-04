@@ -20,43 +20,50 @@ const routes: Routes = [
       },
       {
         path: 'privileges',
+        canActivate: [UserAuthenticationGuard],
         loadChildren: () =>
           import('./users/users.module').then((m) => m.UsersModule),
       },
       
       {
         path: 'privileges',
+        canActivate: [UserAuthenticationGuard],
         loadChildren: () =>
           import('./rol_privileges/rol_privilege.module').then((m) => m.RolPrivilegesModule),
       },
       {
         path: 'privileges',
+        canActivate: [UserAuthenticationGuard],
         loadChildren: () =>
           import('./user-rol-privilege/user-rol-privileges.module').then((m) => m.UserRolPrivilegesModule),
       },
       {
         path: 'privileges',
+        canActivate: [UserAuthenticationGuard],
         loadChildren: () =>
           import('./Roles/roles.module').then((m) => m.RolesModule),
       },
       {
         path: 'privileges',
+        canActivate: [UserAuthenticationGuard],
         loadChildren: () =>
           import('./Departamentos/department.module').then((m) => m.DepartmentModule),
       },
       {
         path: 'privileges',
+        canActivate: [UserAuthenticationGuard],
         loadChildren: () =>
           import('./privilegios/privileges.module').then((m) => m.PrivilegesModule),
       },
       {
         path: 'privileges',
+        canActivate: [UserAuthenticationGuard],
         loadChildren: () =>
           import('./sospechosos/suspect.module').then((m) => m.SuspectModule),
       },
   
 ],
-    canActivate: [UserAuthenticationGuard],
+   
   },
   { path: 'login', component: LoginComponent },
   { path: '**', component: PagenotfoundComponent },

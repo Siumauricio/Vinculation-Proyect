@@ -18,15 +18,16 @@ export class NavbarComponent implements OnInit {
   async ngOnInit() {
     await this.getPrivilegesUser();
   }
+
  async getPrivilegesUser(){
    await  this.userService.GetPrivilegesByUser(this.auth.currentUser.username).then((resp)=>{
      this.privileges = resp;
       console.log('Privilegios: ',this.privileges)
     });
+  
   }
 
   logout() {
-    this.auth.openSidebar=false;
     this.auth.logout();
     this.router.navigate(['login'])
     

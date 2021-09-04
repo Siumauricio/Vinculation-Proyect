@@ -44,3 +44,8 @@ export interface User {
   rolIdRolNavigation:               Rol;
   userRolPrivileges:                UserRolPrivilege[];
 }
+
+export interface UserLogin{
+  username:string,
+  password:string
+}

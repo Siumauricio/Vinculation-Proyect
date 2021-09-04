@@ -5,6 +5,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Backend.DPI.ModelDto;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace Backend.DPI.Repository
 {
@@ -121,9 +126,40 @@ namespace Backend.DPI.Repository
             return true;
         }
 
-        public Task<object> Login(string username)
+        public async Task<object> LoginAsync(string Username,string Password)
         {
-            throw new NotImplementedException();
+            var data = await (from user in dbContext.Users
+                                join department in dbContext.Departments on user.DepartmentIdDepartment equals department.IdDepartment
+                                join rol in dbContext.Rols on user.RolIdRol equals rol.IdRol
+                                where user.Username == Username && user.Password==Password
+                                select new
+                                {
+                                    Username = user.Username,
+                                    Rol = rol.Name,
+                                    Department= department.Name
+                                }).FirstOrDefaultAsync();
+            if (data == null) return null;
+
+            return new {
+                Username = data.Username,
+                Rol = data.Rol,
+                Department = data.Department,
+                TokenString = await GetToken()
+            };
         }
+
+        private async Task<string> GetToken() {
+            await Task.Delay(100);
+            var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
+            var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
+            var tokeOptions = new JwtSecurityToken(
+                issuer: "http://localhost:4200",
+                audience: "http://localhost:4200",
+                claims: new List<Claim>(),
+                expires: DateTime.Now.AddMinutes(30),
+                signingCredentials: signinCredentials
+            );
+            return new JwtSecurityTokenHandler().WriteToken(tokeOptions);
+        }  
     }
 }

@@ -38,38 +38,20 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-    const res = await this.auth.login(this.f.user.value, this.f.password.value);
-    console.log(res);
-    if (res) {
-      this.succesMessage('Bienvenido');
-      this.router.navigate(['home']);
-    } else {
-      Swal.fire(
-        'Error',
-        'La credenciales no concuerdan con los registros existentes'
-      );
-    }
-
-    // this.authenticationService.login(this.f.username.value, this.f.password.value)
-    //         .pipe(first())
-    //         .subscribe(
-    //             data => {
-    //                 this.router.navigate([this.returnUrl]);
-    //             },
-    //             error => {
-    //                 this.alertService.error(error);
-    //                 this.loading = false;
-    //             });
-  }
-
-  succesMessage(message) {
-    Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: message,
-      showConfirmButton: false,
-      timer: 1500,
+    await this.auth.login(this.f.user.value, this.f.password.value).then((resp)=>{
+      if (resp) {
+        this.router.navigate(['home']);
+      } else {
+        Swal.fire(
+          'Error',
+          'La credenciales no concuerdan con los registros existentes'
+        );
+      }
     });
 
   }
+
+  
+
+
 }

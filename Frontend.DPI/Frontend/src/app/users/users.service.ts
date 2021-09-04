@@ -121,7 +121,6 @@ export class UsersService {
       rolIdRol: Number(user.rolIdRol),
     };
     console.log(body);
-
     const url = `${WEB_SERVICE}User/UpdateUser`;
     let answer: any = {};
     await this.http
@@ -156,6 +155,7 @@ export class UsersService {
       });
     return answer;
   }
+
   async GetPrivilegesByUser(username) {
     const url = `${WEB_SERVICE}Privilege/GetUserRolPrivilegesByUser?username=${username}`;
     let answer: any;
