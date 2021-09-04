@@ -62,6 +62,42 @@ export class SuspectService {
         return answer;
       }
 
+      async getSuspectByDNI(dni:string){
+        const url = `${WEB_SERVICE}Suspect/GetSuspectByDNI?dni=${dni}`;
+        let answer: any = {};
+        await this.http
+          .get(url)
+          .toPromise()
+          .then(async (ApiAnswer: any) => {
+            answer = ApiAnswer;
+          })
+          .catch(async (error) => {
+            this.errorMessage('Error Al Obtener Sospechosos');
+            console.log(error);
+          });
+          return answer;
+        }
+
+
+      async deleteSuspect(dni:string){
+        const url = `${WEB_SERVICE}Suspect/DeleteSuspect?DNI=${dni}`;
+        let answer: any = {};
+        await this.http
+          .delete(url)
+          .toPromise()
+          .then(async (ApiAnswer: any) => {
+            answer = ApiAnswer;
+            if (ApiAnswer) {
+              this.succesMessage('Usuario Eliminado Correctamente!');
+            }
+          })
+          .catch(async (error) => {
+            this.errorMessage('Error Al Eliminar Sospechoso2');
+            console.log(error);
+          });
+          return answer;
+        }
+
     
 
   succesMessage(message) {

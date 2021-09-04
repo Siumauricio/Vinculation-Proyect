@@ -10,8 +10,8 @@ namespace Backend.DPI.Repository
     {
         Task<IReadOnlyList<object>> GetSuspectsAsync();
         Task<bool> AddSuspectAsync(Suspect s);
-        //Task<IReadOnlyList<CriminalDatum>> GetDepartmentsAsync();
-        //Task<CriminalDatum> GetDepartmentsByNameAsync(string departmentName);
+       Task<bool> DeleteSuspect(string DNI);
+        Task<Suspect> GetSuspectByDni(string DNI);
         //Task<bool> DeleteDepartmentAsync(string departmentName);
     }
 }

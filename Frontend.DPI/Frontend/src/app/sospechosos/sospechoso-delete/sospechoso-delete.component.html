@@ -1,0 +1,46 @@
+<div class="container">
+    <h1 style="text-align: left;">Eliminacion De Sospechoso</h1>
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <div class="input-group mb-3">
+          <input  type="text"  class="form-control" [(ngModel)]="userFilterSelected"  placeholder="DNI" />
+        </div>
+      </div>
+      <div class="col-md-4">
+        <button  class="btn btn-primary btn-block"  (click)="getSuspectByDni(userFilterSelected)"  >
+          Buscar Sospechoso
+        </button>
+      </div>
+    </div>
+    <div class="col-md-12 table-responsive">
+      <table class="table table-striped table-sm">
+        <thead class="bg-primary">
+          <tr>
+            <th>DNI</th>
+            <th>NOMBRE COMPLETO SOSPECHOSO</th>
+            <th>FECHA NACIMIENTO</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngIf="suspectData">
+            <td *ngIf="suspectData.dniSuspect">{{ suspectData.dniSuspect }}</td>
+            <td *ngIf="suspectData.firstName"> {{suspectData.firstName}} {{suspectData.middleName}} {{suspectData.thirdName}} {{suspectData.lastName}} </td>
+            <td *ngIf="suspectData.dateOfBirth"> {{ suspectData.dateOfBirth | date: "dd/MM/yyyy" }} </td>
+
+            
+            <td *ngIf="suspectData.dniSuspect">
+              <button class="btn" (click)="DeleteSuspect(suspectData.dniSuspect)">
+                <i class="fa fa-trash text-danger"></i>
+              </button>
+            </td>
+
+
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+  
+ 

@@ -45,5 +45,24 @@ namespace Backend.DPI.Controllers
             }
             return Ok(suspects);
         }
+
+        [HttpGet("GetSuspectByDNI")]
+        public async Task<ActionResult<IEnumerable<Suspect>>> GetSuspectByDNI(string dni)
+        {
+            var suspects = await _suspectRepository.GetSuspectByDni(dni);
+            if (suspects == null)
+            {
+                return NotFound();
+            }
+            return Ok(suspects);
+        }
+
+        [HttpDelete("DeleteSuspect")]
+        public async Task<ActionResult<IEnumerable<bool>>> DeleteSuspect(string DNI)
+        {
+            var suspects = await _suspectRepository.DeleteSuspect(DNI);
+
+            return Ok(suspects);
+        }
     }
 }

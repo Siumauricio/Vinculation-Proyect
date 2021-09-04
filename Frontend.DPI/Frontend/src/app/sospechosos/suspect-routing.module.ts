@@ -1,3 +1,5 @@
+import { SospechosoDeleteComponent } from './sospechoso-delete/sospechoso-delete.component';
+import { SospechosoUpdateComponent } from './sospechoso-update/sospechoso-update.component';
 import { SospechosoListPerDayComponent } from './sospechoso-list-per-day/sospechoso-list-per-day.component';
 import { SospechosoCreateComponent } from './sospechoso-create/sospechoso-create.component';
 import { NgModule } from '@angular/core';
@@ -11,11 +13,6 @@ const routes: Routes = [
     data: { title: 'List' },
   },
   {
-    path: 'Modificar Sospechosos',
-    // component: RolDeleteComponent,
-    data: { title: 'List' },
-  },
-  {
     path: 'Agregar Sospechosos',
      component: SospechosoCreateComponent,
     data: { title: 'List' },
@@ -26,9 +23,16 @@ const routes: Routes = [
     data: { title: 'List' },
   },
 
-  
-  
- 
+  {
+    path: 'Modificar Sospechosos',
+     component: SospechosoUpdateComponent,
+    data: { title: 'List' },
+  },
+  {
+    path: 'Eliminar Sospechosos',
+     component: SospechosoDeleteComponent,
+    data: { title: 'List' },
+  },
 ];
 
 @NgModule({
