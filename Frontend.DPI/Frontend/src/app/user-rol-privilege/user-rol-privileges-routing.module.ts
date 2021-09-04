@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { UserAuthenticationGuard } from '../user-authentication.guard';
 import { UserAddRolPrivilegeComponent } from './user-rol-privilege-crud/user-rol-privilege-create/user-rol-privilege-create.component';
 import { UserRolPrivilegeDeleteComponent } from './user-rol-privilege-crud/user-rol-privilege-delete/user-rol-privilege-delete.component';
 import { UserRolPrivilegeListComponent } from './user-rol-privilege-crud/user-rol-privilege-list/user-rol-privileges-list.component';

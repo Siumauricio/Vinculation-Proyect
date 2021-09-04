@@ -65,6 +65,8 @@ export class AuthenticationService {
     this.isLoggedIn = false;
     localStorage.removeItem('currentUser');
     localStorage.removeItem('Token');
+    localStorage.removeItem('Privileges');
+    localStorage.removeItem('SizePrivileges');
     localStorage.setItem("isLoggedIn", "false");
 
   }

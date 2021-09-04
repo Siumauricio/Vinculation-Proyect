@@ -13,14 +13,17 @@ const routes: Routes = [
       {
         path: '',
         component: HomeComponent,
+        canActivate: [UserAuthenticationGuard],
       },
       {
         path: 'home',
         component: HomeComponent,
+        canActivate: [UserAuthenticationGuard]
       },
       {
         path: 'privileges',
         canActivate: [UserAuthenticationGuard],
+        canActivateChild:[UserAuthenticationGuard],
         loadChildren: () =>
           import('./users/users.module').then((m) => m.UsersModule),
       },
@@ -28,36 +31,42 @@ const routes: Routes = [
       {
         path: 'privileges',
         canActivate: [UserAuthenticationGuard],
+        canActivateChild:[UserAuthenticationGuard],
         loadChildren: () =>
           import('./rol_privileges/rol_privilege.module').then((m) => m.RolPrivilegesModule),
       },
       {
         path: 'privileges',
         canActivate: [UserAuthenticationGuard],
+        canActivateChild:[UserAuthenticationGuard],
         loadChildren: () =>
           import('./user-rol-privilege/user-rol-privileges.module').then((m) => m.UserRolPrivilegesModule),
       },
       {
         path: 'privileges',
         canActivate: [UserAuthenticationGuard],
+        canActivateChild:[UserAuthenticationGuard],
         loadChildren: () =>
           import('./Roles/roles.module').then((m) => m.RolesModule),
       },
       {
         path: 'privileges',
         canActivate: [UserAuthenticationGuard],
+        canActivateChild:[UserAuthenticationGuard],
         loadChildren: () =>
           import('./Departamentos/department.module').then((m) => m.DepartmentModule),
       },
       {
         path: 'privileges',
         canActivate: [UserAuthenticationGuard],
+        canActivateChild:[UserAuthenticationGuard],
         loadChildren: () =>
           import('./privilegios/privileges.module').then((m) => m.PrivilegesModule),
       },
       {
         path: 'privileges',
         canActivate: [UserAuthenticationGuard],
+        canActivateChild:[UserAuthenticationGuard],
         loadChildren: () =>
           import('./sospechosos/suspect.module').then((m) => m.SuspectModule),
       },

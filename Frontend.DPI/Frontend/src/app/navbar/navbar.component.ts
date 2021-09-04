@@ -26,6 +26,8 @@ export class NavbarComponent implements OnInit {
  async getPrivilegesUser(){
    await  this.userService.GetPrivilegesByUser(this.auth.currentUser.username).then((resp)=>{
      this.privileges = resp;
+     localStorage.setItem("Privileges",JSON.stringify(resp));
+     localStorage.setItem("SizePrivileges",resp.length);
       console.log('Privilegios: ',this.privileges)
     });
   
@@ -33,7 +35,7 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     this.auth.logout();
-    this.router.navigate(['login'])
+    this.router.navigate(['/login'])
 
   }
 
