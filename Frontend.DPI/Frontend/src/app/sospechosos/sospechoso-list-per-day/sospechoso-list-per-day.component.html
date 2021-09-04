@@ -17,10 +17,7 @@
         <thead class="bg-primary">
           <tr>
             <th>IDENTIDAD</th>
-            <th>PRIMER NOMBRE</th>
-            <th>SEGUNDO NOMBRE</th>
-            <th>PRIMER APELLIDO</th>
-            <th>SEGUNDO APELLIDO</th>
+            <th>NOMBRE COMPLETO SOSPECHOSO</th>
             <th>ALIAS</th>
             <th></th>
           </tr>
@@ -28,10 +25,7 @@
         <tbody>
           <tr *ngFor="let suspect of Suspects | userFilter: userFilterSelected | paginate: {  itemsPerPage:10, currentPage:page, totalItems:totalRecords }">
             <td>{{ suspect.dniSuspect }}</td>
-            <td>{{ suspect.firstName  }}</td>
-            <td>{{ suspect.middleName  }}</td>
-            <td>{{ suspect.thirdName  }}</td>
-            <td>{{ suspect.lastName  }}</td>
+            <td>{{ suspect.firstName  }} {{ suspect.middleName  }} {{ suspect.thirdName  }} {{ suspect.lastName  }}</td>
             <td>{{ suspect.alias  }}</td>
             <td>
                 <button type="button" class="btn btn-success" (click)="ShowModal(suspect)">Ver Informacion</button>
@@ -189,6 +183,11 @@
                                                         <div class="col-sm-6">
                                                             <p class="m-b-10 f-w-600">Fecha Creacion de este Registro</p>
                                                             <h6 class="text-muted f-w-400">{{currentSuspect.creationDate | date: "yyyy/MM/dd"}}</h6>
+                                                        </div>
+
+                                                        <div class="col-sm-6">
+                                                            <p class="m-b-10 f-w-600">Persona que modifico este registro por ultima vez</p>
+                                                            <h6 class="text-muted f-w-400">{{currentSuspect.lastModificationUser != null ? currentSuspect.lastModificationUser:'No se ha modificado este registro todavia'}}</h6>
                                                         </div>
 
                                                     </div>

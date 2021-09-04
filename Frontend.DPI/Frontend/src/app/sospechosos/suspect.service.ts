@@ -98,6 +98,25 @@ export class SuspectService {
           return answer;
         }
 
+
+        async updateSuspect(dniLast,suspect){
+          const url = `${WEB_SERVICE}Suspect/UpdateSuspect?lastDNI=${dniLast}`;
+          let answer: any = {};
+          await this.http
+            .post(url,suspect)
+            .toPromise()
+            .then(async (ApiAnswer: any) => {
+              answer = ApiAnswer;
+              if (ApiAnswer) {
+                this.succesMessage('Sospechoso Modificado Correctamente!');
+              }
+            })
+            .catch(async (error) => {
+              this.errorMessage('Error Al Modificar Sospechoso');
+              console.log(error);
+            });
+            return answer;
+        }
     
 
   succesMessage(message) {

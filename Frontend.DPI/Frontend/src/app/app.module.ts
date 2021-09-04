@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { LoginComponent } from './login/login.component';
 import { UserAuthenticationGuard } from './user-authentication.guard';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({

@@ -7,6 +7,8 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 import { FormControl, FormGroup, Validators, FormBuilder, AbstractControl } from '@angular/forms';
 import { Department, Rol, User } from '../../users/interfaces/user';
 import { Suspects } from '../interfaces/suspects';
+import { AuthenticationService } from '../../authentication.service';
+import { DatePipe, formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-sospechoso-update',
@@ -16,69 +18,153 @@ import { Suspects } from '../interfaces/suspects';
 export class SospechosoUpdateComponent implements OnInit {
   @ViewChild('updateUserModal', { static: true }) updateUserModal: ModalDirective;
   newSuspect: Suspects = {} as Suspects;
-  userFilterSelected: string = '';
-  profileForm : FormGroup;
+  userFilterSelected: string = '0805';
+  suspectForm : FormGroup;
   buttonDisabled: boolean;
   suspectData: Suspects ;
+  isDirty:boolean=false;
 
-  constructor(private suspectService: SuspectService,private formBuilder:FormBuilder) {
-    this.profileForm = this.formBuilder.group({
-      username: new FormControl({value:'',disabled:true}),
-      password: new FormControl({value:''},Validators.required),
-      confirmPassword: new FormControl({value:''},Validators.required),
-      rolIdRol: new FormControl(''),
-      departmentIdDepartment: new FormControl(''),
+  constructor(private suspectService: SuspectService,private formBuilder:FormBuilder,private auth: AuthenticationService,public datepipe: DatePipe) {
+    this.suspectForm = this.formBuilder.group({
+      dniSuspect: ['',Validators.required],
+      firstName: ['',Validators.required],
+      middleName:'',
+      thirdName: ['',Validators.required],
+      lastName: ['',Validators.required],
+      alias: [''],
+      sex: ['',Validators.required],
+      height: ['',Validators.required],
+      weight: ['',Validators.required],
+      eyesColor: ['',Validators.required],
+      build: ['',Validators.required],
+      personFrom: ['',Validators.required],
+      ocupattion: ['',Validators.required],
+      passportNumber: [''],
+      particularSign: ['',Validators.required],
+      tattoo: [''],
+      operationPlace: [''],
+      dateOfBirth: ['',Validators.required],
+      nationaliy: ['',Validators.required],
+      age: ['',Validators.required],
+      civilStatus: ['',Validators.required],
+      colonia: [''],
+      street: [''],
+      avenue: [''],
+      village:[''],
+      caserio: [''],
+      houseNumber: ['0'],
+      pasaje: [''],
+      referenceAddress: [''],
+      department: ['',Validators.required],
+      municipio: ['',Validators.required],
+      recordStatus: [''],
+      usernameRegistryData: [''],
+      departmentIdDepartment: [''],
     })
   }
-
   async ngOnInit() {
     this.buttonDisabled=false;
   }
 
+  onChange(newValue) {
+    console.log(newValue);
+    this.updateUserModal = newValue; 
 
+    this.suspectForm.controls.dateOfBirth.setValue(newValue);
+    this.suspectForm.controls['dateOfBirth'].markAsDirty();
+    console.log(this.suspectForm.getRawValue())
+}
   async getSuspectByDni(dniSuspect: string) {
     await this.suspectService.getSuspectByDNI(dniSuspect.trim()).then((resp) => {
       if (resp) {
         console.log(resp)
         this.suspectData = resp;
         this.newSuspect = resp;
-        this.profileForm.setValue({
-          username: this.newSuspect.dniSuspect,
-          password: this.newSuspect.firstName,
-          confirmPassword: this.newSuspect.thirdName,
-          rolIdRol: this.newSuspect.middleName,
-          departmentIdDepartment: this.newSuspect.middleName,
-        });
+        
       }
     });
   }
 
-  checkPasswords() {
-    if (this.profileForm.get('password').value != this.profileForm.get('confirmPassword').value || this.profileForm.get('password').value=='' ){
-      this.buttonDisabled=false;
-      return 'is-invalid'
+  keyPressAlphanumeric(event) {
+    var inp = String.fromCharCode(event.keyCode);
+    if (/[a-zA-Z0-9_ ]/.test(inp)) {
+      return true;
+    } else {
+      event.preventDefault();
+      return false;
     }
-    else 
-    this.buttonDisabled=true; true
+  }
+  isValid(){
+    return !this.suspectForm.dirty || this.suspectForm.invalid ; 
+  }
+
+  checkPasswords() {
+    // if (this.suspectForm.get('password').value != this.suspectForm.get('confirmPassword').value || this.profileForm.get('password').value=='' ){
+    //   this.buttonDisabled=false;
+    //   return 'is-invalid'
+    // }
+    // else 
+    // this.buttonDisabled=true; true
   }
 
    ShowModal() {
+
+    // this.suspectForm.controls.dateOfBirth.setValue(formatDate(this.newSuspect.dateOfBirth,'yyyy-MM-dd','en'));
+    this.suspectForm.setValue({
+      dniSuspect: this.newSuspect.dniSuspect,
+      firstName: this.newSuspect.firstName,
+      middleName: this.newSuspect.middleName,
+      thirdName: this.newSuspect.thirdName,
+      lastName: this.newSuspect.lastName,
+      alias : this.newSuspect.alias,
+      sex: this.newSuspect.sex,
+      height: this.newSuspect.height,
+      weight: this.newSuspect.weight,
+      eyesColor: this.newSuspect.eyesColor,
+      build: this.newSuspect.build,
+      personFrom: this.newSuspect.personFrom,
+      ocupattion: this.newSuspect.ocupattion,
+      passportNumber: this.newSuspect.passportNumber,
+      particularSign: this.newSuspect.particularSign,
+      tattoo: this.newSuspect.tattoo,
+      operationPlace: this.newSuspect.operationPlace,
+      dateOfBirth: this.newSuspect.dateOfBirth,
+      nationaliy:this.newSuspect.nationaliy,
+      age: this.newSuspect.age,
+      civilStatus: this.newSuspect.civilStatus,
+      colonia: this.newSuspect.colonia,
+      street: this.newSuspect.street,
+      avenue: this.newSuspect.avenue,
+      village:this.newSuspect.village,
+      caserio: this.newSuspect.caserio,
+      houseNumber: this.newSuspect.houseNumber,
+      pasaje: this.newSuspect.pasaje,
+      referenceAddress: this.newSuspect.referenceAddress,
+      department: this.newSuspect.department,
+      municipio: this.newSuspect.municipio,
+      recordStatus: this.newSuspect.recordStatus,
+      usernameRegistryData: this.newSuspect.usernameRegistryData,
+      departmentIdDepartment: this.newSuspect.departmentIdDepartment,
+    });
+
     this.updateUserModal.show();
   }
   closeModal() {
     this.updateUserModal.hide();
   }
 
-   onSubmit() {
-    //console.warn(this.profileForm.getRawValue());
-    console.log(this.profileForm.getRawValue())
-  //  await this.updateSuspect(this.profileForm.getRawValue())
+  async onSubmit() {
+    console.log(this.suspectForm.getRawValue());
+    let Suspect :Suspects = this.suspectForm.getRawValue();
+    Suspect.lastModificationUser = this.auth.currentUser.username;
+    console.log(Suspect)
+    await this.updateSuspect(this.suspectData.dniSuspect,Suspect);
     
   }
-  async updateSuspect(newSuspect) {
-    // await this.suspectService.updateSuspect(newSuspect).then((resp) => {
-    //   console.log(resp);
-    // });
+  async updateSuspect(dni,Suspect) {
+    await this.suspectService.updateSuspect(dni,Suspect).then((resp) => {
+      console.log(resp);
+    });
   }
   cleanUser(user: User) {
     if (user.username != null)
@@ -88,3 +174,4 @@ export class SospechosoUpdateComponent implements OnInit {
   }
 
 }
+

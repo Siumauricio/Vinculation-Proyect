@@ -61,7 +61,17 @@ namespace Backend.DPI.Controllers
         public async Task<ActionResult<IEnumerable<bool>>> DeleteSuspect(string DNI)
         {
             var suspects = await _suspectRepository.DeleteSuspect(DNI);
+            return Ok(suspects);
+        }
 
+        [HttpPost("UpdateSuspect")]
+        public async Task<ActionResult<IEnumerable<bool>>> UpdateSuspect(string lastDNI, Suspect suspectModified)
+        {
+            var suspects = await _suspectRepository.ModifySuspect(lastDNI,suspectModified);
+            if (suspects == false)
+            {
+                return NotFound();
+            }
             return Ok(suspects);
         }
     }

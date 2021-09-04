@@ -5,6 +5,7 @@ import { SospechosoCreateComponent } from './sospechoso-create/sospechoso-create
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SuspectListComponent } from './sospechoso-list/suspect-list.component';
+import { DatePipe } from '@angular/common';
 
 const routes: Routes = [
   {
@@ -38,5 +39,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
+  providers: [DatePipe]
 })
 export class SuspectRoutingModule {}

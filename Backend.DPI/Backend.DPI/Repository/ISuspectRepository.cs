@@ -12,6 +12,7 @@ namespace Backend.DPI.Repository
         Task<bool> AddSuspectAsync(Suspect s);
        Task<bool> DeleteSuspect(string DNI);
         Task<Suspect> GetSuspectByDni(string DNI);
+        Task<bool> ModifySuspect(string lastDni, Suspect suspectModified);
         //Task<bool> DeleteDepartmentAsync(string departmentName);
     }
 }

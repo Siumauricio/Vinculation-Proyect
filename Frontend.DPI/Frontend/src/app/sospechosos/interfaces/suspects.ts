@@ -16,11 +16,12 @@ export interface Suspects{
     particularSign: string;
     tattoo: string;
     operationPlace: string;
-    dateOfBirth: string;
+    dateOfBirth: Date;
     nationaliy: string
     age:number;
     civilStatus: string;
     colonia: string;
+    lastModificationUser:string;
     street: string;
     avenue: string;
     village: string;
