@@ -90,7 +90,7 @@
         </div>
         <hr />
 
-        <div  class="d-flex  flex-column  align-items-center align-items-sm-start  px-3   pt-2 text-white  min-vh-100 " >
+        <div  class="d-flex  flex-column  align-items-center align-items-sm-start  px-3   pt-2 text-white" >
           <ul class=" nav nav-pills   flex-column  mb-sm-auto mb-0  align-items-center align-items-sm-start  sticky-offset "  id="menu" >
             <li class="nav-item">
               <a href="#" class="nav-link align-middle px-0">
@@ -100,43 +100,39 @@
             </li>
 
 
-
-             <li>
               <a href="#submenu3"     data-bs-toggle="collapse"   class="nav-link px-0 align-middle"    >
                 <i class="fa fa-user"></i>
-                <span class="ms-1 d-sm-inline">Privilegio</span></a>
+                <span class="ms-1 d-sm-inline">Privilegio</span>
+              </a>
               <ul  class="collapse nav flex-column ms-1"    id="submenu3"    data-bs-parent="#menu"   >
-                <li class="w-100">
-
                   <li class="w-100" *ngFor="let privilege of privileges ">
                     <a [routerLink]="['privileges/'+privilege.name_Privilege]" class="nav-link px-0">
-                      <span class="d-sm-inline"> </span> {{privilege.name_Privilege}}</a>
+                      <span class="d-sm-inline"> </span> {{privilege.name_Privilege}}
+                    </a>
                   </li>
-                   <div style="color: black;">-------------------------</div> 
+                   <div style="color: black;">-------------------------</div>
                   <li>
-      
+                    <a  [routerLink]="['/privileges/Listar Privilegios Usuarios']" class="nav-link px-0" >
+                      <span class="d-sm-inline"> </span> Listar privilegios de los usuarios
+                    </a>
+                    <a  [routerLink]="['/privileges/Agregar Privilegios Usuarios']" class="nav-link px-0" >
+                      <span class="d-sm-inline"> </span> Agregar privilegio a usuario</a >
 
+                    <a  [routerLink]="['/privileges/Eliminar Privilegios Usuarios']" class="nav-link px-0" >
+                      <span class="d-sm-inline"> </span> Eliminar privilegios a usuario
+                    </a>
 
-                <a  [routerLink]="['/privileges/Listar Privilegios Usuarios']" class="nav-link px-0" >
-                <span class="d-sm-inline"> </span> Listar privilegios de los usuarios</a  >
-              
-              <a  [routerLink]="['/privileges/Agregar Privilegios Usuarios']" class="nav-link px-0" >
-              <span class="d-sm-inline"> </span> Agregar privilegio a usuario</a >
-
-            <a  [routerLink]="['/privileges/Eliminar Privilegios Usuarios']" class="nav-link px-0" >
-            <span class="d-sm-inline"> </span> Eliminar privilegios a usuario</a> 
-      
-            <a  [routerLink]="['/privileges/Crear Roles Privilegios']" class="nav-link px-0" >
-              <span class="d-sm-inline"> </span> Agregar Rol Por Privilegio</a >
-
+                    <a  [routerLink]="['/privileges/Crear Roles Privilegios']" class="nav-link px-0" >
+                      <span class="d-sm-inline"> </span> Agregar Rol Por Privilegio
+                    </a >
                   </li>
               </ul>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a href="#" class="nav-link align-middle px-0">
                 <i class="fa fa-sign-out"></i>
                 <span class="ms-1 d-sm-inline">Salir</span>
               </a>
-            </li>
+            </li> -->
           </ul>
         </div>
       </div>

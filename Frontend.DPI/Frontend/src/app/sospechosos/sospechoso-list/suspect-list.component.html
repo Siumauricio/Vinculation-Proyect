@@ -1,6 +1,6 @@
 <div class="container">
     <h1 style="text-align: left;">Listado De Sospechosos</h1>
-  
+
     <div class="row mb-3">
       <div class="col-md-4">
         <div class="input-group mb-3">
@@ -34,8 +34,8 @@
             <td>{{ suspect.lastName  }}</td>
             <td>{{ suspect.alias  }}</td>
             <td>
-                <button type="button" class="btn btn-success" (click)="ShowModal(suspect)">Ver Informacion</button>
-
+                <a class="pointer text-success m-4" (click)="ShowModal(suspect)"><i class="fa fa-eye"></i></a>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -43,7 +43,7 @@
         <pagination-controls (pageChange)="page = $event"></pagination-controls>
 
     </div>
-  
+
   </div>
 
     <div bsModal #viewSuspectInfoModal="bs-modal"class="modal fade fondomodall" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"data-backdrop="static"aria-hidden="true">
@@ -59,10 +59,10 @@
                                 <div class="col-xl-16 col-md-14">
                                     <div class="card user-card-full">
                                         <div class="row m-l-0 m-r-0">
-                    
+
                                             <div class="col-sm-4 ">
                                                 <div class="card-block text-center text-white">
-                                                    <div class="m-b-25"> <img src= "assets/Enrique_Convicto.png" width="300" height="200" class="img-radius" alt="User-Profile-Image"> </div>
+                                                    <div class="m-b-25"> <img src= "assets/Enrique_Convicto.png" class="img-radius" height="150vh" alt="User-Profile-Image"> </div>
                                                     <h5 class="f-w-600" style="color: black;" >  {{currentSuspect.firstName}} {{currentSuspect.middleName}} {{currentSuspect.thirdName}} {{currentSuspect.lastName}} </h5>
                                                     <h6 class="f-w-600" style="color: black;" >  Alias: {{  currentSuspect.alias != "" ? currentSuspect.alias : 'No se conoce'}}  </h6>
                                                     <h6 class="b-b-default"></h6>
@@ -75,10 +75,10 @@
                                                     <p>Web Designer</p> <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
                                                 </div>
                                             </div>
-                    
+
                                             <div class="col-sm-8">
                                                 <div class="card-block">
-                    
+
                                                     <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Datos Personales</h6>
                                                     <div class="row">
                                                         <div class="col-sm-6">
@@ -136,8 +136,8 @@
                                                         </div>
 
                                                     </div>
-                    
-                    
+
+
                                                     <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Caractesticas</h6>
                                                     <div class="row">
                                                         <div class="col-sm-6">
@@ -160,14 +160,14 @@
                                                             <p class="m-b-10 f-w-600">Ocupacion</p>
                                                             <h6 class="text-muted f-w-400">{{currentSuspect.ocupattion}}</h6>
                                                         </div>
-                                                        
+
                                                         <div class="col-sm-6">
                                                             <p class="m-b-10 f-w-600">Señas Particulares</p>
                                                             <h6 class="text-muted f-w-400">{{currentSuspect.particularSign}}</h6>
                                                         </div>
-                                            
+
                                                     </div>
-                    
+
                                                     <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Informacion de Operacion </h6>
                                                     <div class="row">
                                                         <div class="col-sm-6">

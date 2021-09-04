@@ -13,7 +13,11 @@ export class NavbarComponent implements OnInit {
 
   user:User
   privileges:RolPrivilege;
-  constructor(public auth: AuthenticationService, private router: Router,private userService :UsersService) { }
+  constructor(
+      public auth: AuthenticationService,
+      private router: Router,
+      private userService :UsersService
+      ) { }
 
   async ngOnInit() {
     await this.getPrivilegesUser();
@@ -30,7 +34,7 @@ export class NavbarComponent implements OnInit {
   logout() {
     this.auth.logout();
     this.router.navigate(['login'])
-    
+
   }
 
 }
