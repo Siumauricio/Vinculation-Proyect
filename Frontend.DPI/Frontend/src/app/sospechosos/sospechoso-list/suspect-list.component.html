@@ -184,6 +184,10 @@
                                                             <p class="m-b-10 f-w-600">Fecha Creacion de este Registro</p>
                                                             <h6 class="text-muted f-w-400">{{currentSuspect.creationDate | date: "yyyy/MM/dd"}}</h6>
                                                         </div>
+                                                        <div class="col-sm-6">
+                                                            <p class="m-b-10 f-w-600">Persona que modifico este registro por ultima vez</p>
+                                                            <h6 class="text-muted f-w-400">{{currentSuspect.lastModificationUser != null ? currentSuspect.lastModificationUser:'No se ha modificado este registro todavia'}}</h6>
+                                                        </div>
 
                                                     </div>
                                         </div>

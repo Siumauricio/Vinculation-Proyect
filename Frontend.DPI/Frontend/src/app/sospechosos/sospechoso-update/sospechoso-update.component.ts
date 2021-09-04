@@ -18,12 +18,12 @@ import { DatePipe, formatDate } from '@angular/common';
 export class SospechosoUpdateComponent implements OnInit {
   @ViewChild('updateUserModal', { static: true }) updateUserModal: ModalDirective;
   newSuspect: Suspects = {} as Suspects;
-  userFilterSelected: string = '0805';
+  userFilterSelected: string = '0501';
   suspectForm : FormGroup;
   buttonDisabled: boolean;
   suspectData: Suspects ;
   isDirty:boolean=false;
-
+data:any
   constructor(private suspectService: SuspectService,private formBuilder:FormBuilder,private auth: AuthenticationService,public datepipe: DatePipe) {
     this.suspectForm = this.formBuilder.group({
       dniSuspect: ['',Validators.required],
@@ -67,9 +67,6 @@ export class SospechosoUpdateComponent implements OnInit {
   }
 
   onChange(newValue) {
-    console.log(newValue);
-    this.updateUserModal = newValue; 
-
     this.suspectForm.controls.dateOfBirth.setValue(newValue);
     this.suspectForm.controls['dateOfBirth'].markAsDirty();
     console.log(this.suspectForm.getRawValue())
@@ -80,7 +77,7 @@ export class SospechosoUpdateComponent implements OnInit {
         console.log(resp)
         this.suspectData = resp;
         this.newSuspect = resp;
-        
+       
       }
     });
   }
@@ -98,18 +95,8 @@ export class SospechosoUpdateComponent implements OnInit {
     return !this.suspectForm.dirty || this.suspectForm.invalid ; 
   }
 
-  checkPasswords() {
-    // if (this.suspectForm.get('password').value != this.suspectForm.get('confirmPassword').value || this.profileForm.get('password').value=='' ){
-    //   this.buttonDisabled=false;
-    //   return 'is-invalid'
-    // }
-    // else 
-    // this.buttonDisabled=true; true
-  }
 
    ShowModal() {
-
-    // this.suspectForm.controls.dateOfBirth.setValue(formatDate(this.newSuspect.dateOfBirth,'yyyy-MM-dd','en'));
     this.suspectForm.setValue({
       dniSuspect: this.newSuspect.dniSuspect,
       firstName: this.newSuspect.firstName,
@@ -146,7 +133,6 @@ export class SospechosoUpdateComponent implements OnInit {
       usernameRegistryData: this.newSuspect.usernameRegistryData,
       departmentIdDepartment: this.newSuspect.departmentIdDepartment,
     });
-
     this.updateUserModal.show();
   }
   closeModal() {
@@ -157,14 +143,22 @@ export class SospechosoUpdateComponent implements OnInit {
     console.log(this.suspectForm.getRawValue());
     let Suspect :Suspects = this.suspectForm.getRawValue();
     Suspect.lastModificationUser = this.auth.currentUser.username;
-    console.log(Suspect)
     await this.updateSuspect(this.suspectData.dniSuspect,Suspect);
-    
   }
+
   async updateSuspect(dni,Suspect) {
     await this.suspectService.updateSuspect(dni,Suspect).then((resp) => {
-      console.log(resp);
-    });
+      if (resp) {
+        this.newSuspect = Suspect;
+        this.suspectData =Suspect;
+        this.suspectForm.reset();
+      }
+    });  
+    setTimeout(()=>{
+      this.closeModal();
+    },1200); 
+
+
   }
   cleanUser(user: User) {
     if (user.username != null)
