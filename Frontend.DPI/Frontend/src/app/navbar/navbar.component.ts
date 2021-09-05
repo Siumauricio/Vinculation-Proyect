@@ -26,6 +26,7 @@ export class NavbarComponent implements OnInit {
  async getPrivilegesUser(){
    await  this.userService.GetPrivilegesByUser(this.auth.currentUser.username).then((resp)=>{
      this.privileges = resp;
+     this.auth.privileges=resp;
      localStorage.setItem("Privileges",JSON.stringify(resp));
      localStorage.setItem("SizePrivileges",resp.length);
       console.log('Privilegios: ',this.privileges)

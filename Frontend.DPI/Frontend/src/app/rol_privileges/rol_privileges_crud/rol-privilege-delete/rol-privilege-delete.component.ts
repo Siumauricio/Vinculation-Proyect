@@ -22,8 +22,8 @@ export class RolPrivilegeDeleteComponent implements OnInit {
     this.buttonDisabled=false;
   }
 
-  async getRolPrivilegeById(idRolPrivilege: string) {
-    await this.rolPrivilegeService.getRolPrivilegeById(+idRolPrivilege).then((resp) => {
+  async getRolPrivilegeByName(nameRolPrivilege: string) {
+    await this.rolPrivilegeService.getRolPrivilegeByName(nameRolPrivilege).then((resp) => {
       this.rolPrivilegeData = resp;
     });
   }

@@ -105,26 +105,10 @@
                 <span class="ms-1 d-sm-inline">Privilegio</span>
               </a>
               <ul  class="collapse nav flex-column ms-1"    id="submenu3"    data-bs-parent="#menu"   >
-                  <li class="w-100" *ngFor="let privilege of privileges ">
+                  <li class="w-100" *ngFor="let privilege of this.auth.privileges ">
                     <a [routerLink]="['privileges/'+privilege.name_Privilege]" class="nav-link px-0">
                       <span class="d-sm-inline"> </span> {{privilege.name_Privilege}}
                     </a>
-                  </li>
-                   <div style="color: black;">-------------------------</div>
-                  <li>
-                    <a  [routerLink]="['/privileges/Listar Privilegios Usuarios']" class="nav-link px-0" >
-                      <span class="d-sm-inline"> </span> Listar privilegios de los usuarios
-                    </a>
-                    <a  [routerLink]="['/privileges/Agregar Privilegios Usuarios']" class="nav-link px-0" >
-                      <span class="d-sm-inline"> </span> Agregar privilegio a usuario</a >
-
-                    <a  [routerLink]="['/privileges/Eliminar Privilegios Usuarios']" class="nav-link px-0" >
-                      <span class="d-sm-inline"> </span> Eliminar privilegios a usuario
-                    </a>
-
-                    <a  [routerLink]="['/privileges/Crear Roles Privilegios']" class="nav-link px-0" >
-                      <span class="d-sm-inline"> </span> Agregar Rol Por Privilegio
-                    </a >
                   </li>
               </ul>
             <!-- <li class="nav-item">

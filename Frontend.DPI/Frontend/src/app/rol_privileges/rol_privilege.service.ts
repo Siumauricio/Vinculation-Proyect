@@ -97,10 +97,8 @@ export class RolPrivilegeService {
   }
 
 
-
-
-  async getRolPrivilegeById(idRolPrivilege: number) {
-    const url = `${WEB_SERVICE}Privilege/GetRolPrivilegeById?idRolPrivilege=${idRolPrivilege}`;
+  async getRolPrivilegeByName(nameRolPrivilege: string) {
+    const url = `${WEB_SERVICE}Privilege/GetRolPrivilegeByName?NameRolPrivilege=${nameRolPrivilege}`;
     let answer: any = {};
     await this.http
       .get(url)

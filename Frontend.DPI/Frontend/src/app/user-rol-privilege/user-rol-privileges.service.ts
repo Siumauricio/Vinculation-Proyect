@@ -87,6 +87,7 @@ export class UserRolPrivilegesService {
       .then(async (ApiAnswer: any) => {
         answer = ApiAnswer;
         if (answer) this.succesMessage(`¡Se ha agregado el privilegio al usuario ${body.userUsername} con exito!`);
+//es aqui
       })
       .catch(async (error) => {
         this.errorMessage(`Error agregando el privilegio al usuario ${body.userUsername}`);
@@ -143,6 +144,7 @@ export class UserRolPrivilegesService {
     return answer;
   }
   
+
 
 
   succesMessage(message) {

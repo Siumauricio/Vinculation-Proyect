@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import Swal from 'sweetalert2';
 import { WEB_SERVICE } from './configurations/config';
-import { User, UserLogin } from './users/interfaces/user';
+import { RolPrivilege, User, UserLogin } from './users/interfaces/user';
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { Router } from '@angular/router';
 
@@ -17,6 +17,7 @@ export class AuthenticationService {
   public currentUser:User;
   openSidebar:boolean=false;
   public isLoggedIn:boolean;
+  public privileges:RolPrivilege;
 
   constructor(private http: HttpClient,
               private jwtHelper: JwtHelperService) {

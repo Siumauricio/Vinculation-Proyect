@@ -13,7 +13,7 @@ import { FormControl, FormGroup, Validators, FormBuilder, AbstractControl } from
 export class UpdateUserComponent implements OnInit {
   @ViewChild('updateUserModal', { static: true }) updateUserModal: ModalDirective;
   newUser: User = {} as User;
-  userFilterSelected: string = 'enriquecs';
+  userFilterSelected: string = '';
   userData: User[];
   rolsData: Rol[];
   departmentsData: Department[];
@@ -83,6 +83,7 @@ export class UpdateUserComponent implements OnInit {
   async updateUser(newUser) {
 
     await this.userService.updtUser(newUser).then((resp) => {
+      this.closeModal();
       console.log(resp);
     });
   }

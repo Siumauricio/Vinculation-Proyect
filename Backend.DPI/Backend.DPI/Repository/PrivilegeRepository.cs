@@ -89,12 +89,12 @@ namespace Backend.DPI.Repository
             return await dpiContext.Privileges.ToListAsync();
         }
 
-        public async Task<object> GetRolPrivilegeByIdAsync(int IdRolPrivilege)
+        public async Task<object> GetRolPrivilegeByNameAsync(string NameRolPrivilege)
         {
             var result = await (from rol_Privileges in dpiContext.RolPrivileges
                                 join rols in dpiContext.Rols on rol_Privileges.RolIdRol equals rols.IdRol
                                 join privileges in dpiContext.Privileges on rol_Privileges.PrivilegeIdPrivilege equals privileges.IdPrivilege
-                                where rol_Privileges.IdRolPrivilege== IdRolPrivilege
+                                where privileges.Name.ToLower()== NameRolPrivilege.ToLower()
                                 select new
                                 {
                                     IdRolPrivilege = rol_Privileges.IdRolPrivilege,

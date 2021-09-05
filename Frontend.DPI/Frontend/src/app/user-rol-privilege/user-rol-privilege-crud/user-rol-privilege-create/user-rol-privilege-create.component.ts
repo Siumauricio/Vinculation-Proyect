@@ -4,6 +4,8 @@ import Swal from 'sweetalert2';
 import { UserRolPrivilegesService } from '../../user-rol-privileges.service';
 import { RolPrivilege, User } from '../../interfaces/user-rol-privilege';
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
+import { UsersService } from 'src/app/users/users.service';
+import { AuthenticationService } from 'src/app/authentication.service';
 
 @Component({
   selector: 'app-user-rol-privilege-create',
@@ -18,7 +20,10 @@ export class UserAddRolPrivilegeComponent implements OnInit {
   profileForm : FormGroup;
   buttonDisabled:boolean =false;
 
-  constructor(private userRolPrivilegeService: UserRolPrivilegesService,private formBuilder:FormBuilder) { 
+  constructor(private userRolPrivilegeService: UserRolPrivilegesService,
+              private formBuilder:FormBuilder,
+              private userService: UsersService,
+              private auth: AuthenticationService) { 
     
       this.profileForm = this.formBuilder.group({
       username: ['',Validators.required],
@@ -47,8 +52,9 @@ export class UserAddRolPrivilegeComponent implements OnInit {
 
 
   onSubmit(){
-     this.userRolPrivilegeService.createUserRolPrivilege(this.profileForm.getRawValue()).then((resp) => {
+     this.userRolPrivilegeService.createUserRolPrivilege(this.profileForm.getRawValue()).then(async (resp) => {
       if (resp) {
+        await this.getPrivilegesUser();
       } else {
         Swal.fire(
           'Error',
@@ -59,6 +65,16 @@ export class UserAddRolPrivilegeComponent implements OnInit {
     });
 
   }
+
+  async getPrivilegesUser(){
+    await  this.userService.GetPrivilegesByUser(this.auth.currentUser.username).then((resp)=>{
+      this.auth.privileges=resp;
+      localStorage.setItem("Privileges",JSON.stringify(resp));
+      localStorage.setItem("SizePrivileges",resp.length);
+     });
+   
+   }
+
 
 keyPressAlphanumeric(event) {
     var inp = String.fromCharCode(event.keyCode);

@@ -6,6 +6,7 @@
         <div class="input-group mb-3">
 
           <input
+            placeholder="Nombre"
             type="text"
             class="form-control"
             [(ngModel)]="rolPrivilegeFilterSelected"
@@ -18,7 +19,7 @@
 
         <button
           class="btn btn-primary btn-block"
-          (click)="getRolPrivilegeById(rolPrivilegeFilterSelected)"
+          (click)="getRolPrivilegeByName(rolPrivilegeFilterSelected)"
         >
           Buscar
         </button>

@@ -91,11 +91,11 @@ namespace Backend.DPI.Controllers
             return Ok(result);
         }
 
-        [HttpGet("GetRolPrivilegeById")]
+        [HttpGet("GetRolPrivilegeByName")]
 
-        public async Task<ActionResult<RolPrivilegeDto>> GetRolPrivilegeById(int IdRolPrivilege)
+        public async Task<ActionResult<RolPrivilegeDto>> GetRolPrivilegeByName(string NameRolPrivilege)
         {
-            var result = await privilegeRepository.GetRolPrivilegeByIdAsync(IdRolPrivilege);
+            var result = await privilegeRepository.GetRolPrivilegeByNameAsync(NameRolPrivilege);
             if (result == null) return NotFound();
             return Ok(result);
         }
