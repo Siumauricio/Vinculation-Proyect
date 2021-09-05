@@ -1,19 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-#nullable disable
-
-namespace Backend.DPI.Models
+namespace Backend.DPI.ModelDto
 {
-    public partial class Suspect
+    public class SuspectDto
     {
-        public Suspect()
-        {
-            CriminalData = new HashSet<CriminalDatum>();
-            CriminalRecords = new HashSet<CriminalRecord>();
-            PoliceRecords = new HashSet<PoliceRecord>();
-        }
-
         public string DniSuspect { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
@@ -50,10 +43,5 @@ namespace Backend.DPI.Models
         public int DepartmentIdDepartment { get; set; }
         public DateTime CreationDate { get; set; }
         public string LastModificationUser { get; set; }
-
-        public virtual Department DepartmentIdDepartmentNavigation { get; set; }
-        public virtual ICollection<CriminalDatum> CriminalData { get; set; }
-        public virtual ICollection<CriminalRecord> CriminalRecords { get; set; }
-        public virtual ICollection<PoliceRecord> PoliceRecords { get; set; }
     }
 }

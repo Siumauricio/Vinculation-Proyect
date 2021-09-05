@@ -57,7 +57,6 @@ export class SospechosoCreateComponent  {
     
   }
 
-
   onSubmit(){
     this.suspect = this.suspectForm.getRawValue();
     this.suspect.usernameRegistryData = this.auth.currentUser.username;
@@ -74,6 +73,7 @@ export class SospechosoCreateComponent  {
         );
       }
     });
+
   }
 keyPressAlphanumeric(event) {
     var inp = String.fromCharCode(event.keyCode);
@@ -83,6 +83,7 @@ keyPressAlphanumeric(event) {
       event.preventDefault();
       return false;
     }
+
   }
 
 }

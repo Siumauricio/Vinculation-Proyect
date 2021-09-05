@@ -398,6 +398,11 @@ namespace Backend.DPI.Models
 
                 entity.Property(e => e.HouseNumber).HasColumnName("house_number");
 
+                entity.Property(e => e.LastModificationUser)
+                    .HasMaxLength(30)
+                    .IsUnicode(false)
+                    .HasColumnName("last_modification_user");
+
                 entity.Property(e => e.LastName)
                     .IsRequired()
                     .HasMaxLength(15)

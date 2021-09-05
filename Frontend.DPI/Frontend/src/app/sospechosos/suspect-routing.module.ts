@@ -1,18 +1,16 @@
+import { SospechosoDeleteComponent } from './sospechoso-delete/sospechoso-delete.component';
+import { SospechosoUpdateComponent } from './sospechoso-update/sospechoso-update.component';
 import { SospechosoListPerDayComponent } from './sospechoso-list-per-day/sospechoso-list-per-day.component';
 import { SospechosoCreateComponent } from './sospechoso-create/sospechoso-create.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SuspectListComponent } from './sospechoso-list/suspect-list.component';
+import { DatePipe } from '@angular/common';
 
 const routes: Routes = [
   {
     path: 'Listar Sospechosos',
     component: SuspectListComponent,
-    data: { title: 'List' },
-  },
-  {
-    path: 'Modificar Sospechosos',
-    // component: RolDeleteComponent,
     data: { title: 'List' },
   },
   {
@@ -26,13 +24,21 @@ const routes: Routes = [
     data: { title: 'List' },
   },
 
-  
-  
- 
+  {
+    path: 'Modificar Sospechosos',
+     component: SospechosoUpdateComponent,
+    data: { title: 'List' },
+  },
+  {
+    path: 'Eliminar Sospechosos',
+     component: SospechosoDeleteComponent,
+    data: { title: 'List' },
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
+  providers: [DatePipe]
 })
 export class SuspectRoutingModule {}

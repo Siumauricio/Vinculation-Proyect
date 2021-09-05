@@ -9,6 +9,8 @@ import { SuspectRoutingModule } from './suspect-routing.module';
 import { SospechosoCreateComponent } from './sospechoso-create/sospechoso-create.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SospechosoListPerDayComponent } from './sospechoso-list-per-day/sospechoso-list-per-day.component';
+import { SospechosoUpdateComponent } from './sospechoso-update/sospechoso-update.component';
+import { SospechosoDeleteComponent } from './sospechoso-delete/sospechoso-delete.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { SospechosoListPerDayComponent } from './sospechoso-list-per-day/sospech
     SuspectListComponent,
     SospechosoCreateComponent,
     SospechosoListPerDayComponent,
+    SospechosoUpdateComponent,
+    SospechosoDeleteComponent,
   ],
   imports: [
     CommonModule,

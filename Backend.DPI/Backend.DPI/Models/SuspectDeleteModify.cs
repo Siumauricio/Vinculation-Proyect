@@ -5,15 +5,9 @@ using System.Collections.Generic;
 
 namespace Backend.DPI.Models
 {
-    public partial class Suspect
+    public partial class SuspectDeleteModify
     {
-        public Suspect()
-        {
-            CriminalData = new HashSet<CriminalDatum>();
-            CriminalRecords = new HashSet<CriminalRecord>();
-            PoliceRecords = new HashSet<PoliceRecord>();
-        }
-
+        public int Id { get; set; }
         public string DniSuspect { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
@@ -49,11 +43,7 @@ namespace Backend.DPI.Models
         public string UsernameRegistryData { get; set; }
         public int DepartmentIdDepartment { get; set; }
         public DateTime CreationDate { get; set; }
-        public string LastModificationUser { get; set; }
-
-        public virtual Department DepartmentIdDepartmentNavigation { get; set; }
-        public virtual ICollection<CriminalDatum> CriminalData { get; set; }
-        public virtual ICollection<CriminalRecord> CriminalRecords { get; set; }
-        public virtual ICollection<PoliceRecord> PoliceRecords { get; set; }
+        public string Operacion { get; set; }
+        public string UsernameAction { get; set; }
     }
 }
