@@ -136,7 +136,8 @@ namespace Backend.DPI.Repository
                                 {
                                     Username = user.Username,
                                     Rol = rol.Name,
-                                    Department= department.Name
+                                    Department= department.Name,
+                                    idDepartment = department.IdDepartment
                                 }).FirstOrDefaultAsync();
             if (data == null) return null;
 
@@ -144,6 +145,7 @@ namespace Backend.DPI.Repository
                 Username = data.Username,
                 Rol = data.Rol,
                 Department = data.Department,
+                idDepartment = data.idDepartment,
                 TokenString = await GetToken()
             };
         }

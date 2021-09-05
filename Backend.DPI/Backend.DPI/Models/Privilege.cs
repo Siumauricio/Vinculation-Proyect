@@ -14,6 +14,7 @@ namespace Backend.DPI.Models
 
         public int IdPrivilege { get; set; }
         public string Name { get; set; }
+        public string TipoPrivilegio { get; set; }
 
         public virtual ICollection<RolPrivilege> RolPrivileges { get; set; }
     }

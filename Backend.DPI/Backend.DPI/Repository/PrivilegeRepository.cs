@@ -120,7 +120,8 @@ namespace Backend.DPI.Repository
                                     Username=username.Username,
                                     Name_Rol = rol.Name,
                                     Name_Privilege = privilege.Name,
-                                    Special_Privilege = user_rol_privilege.SpecialPrivilege
+                                    Special_Privilege = user_rol_privilege.SpecialPrivilege,
+                                    tipo_privilegio = privilege.TipoPrivilegio
                                 }).ToListAsync();
             if (result.Count == 0) return null;
             return result;

@@ -14,6 +14,7 @@ export interface RolPrivilege {
   idRolPrivilege:                 number;
   name_Privilege:                 string;
   name_Rol:                       string;
+  tipo_privilegio:string;
 }
 
 export interface Rol {

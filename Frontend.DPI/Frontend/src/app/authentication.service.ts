@@ -47,7 +47,8 @@ export class AuthenticationService {
         let userLog={
           username:response.username,
           rol:response.rol,
-          department: response.department
+          department: response.department,
+          departmentIdDepartment : response.idDepartment
         }
         this.isLoggedIn = true;
         localStorage.setItem('currentUser', JSON.stringify(userLog));

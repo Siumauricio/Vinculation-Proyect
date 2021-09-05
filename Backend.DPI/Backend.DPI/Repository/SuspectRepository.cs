@@ -85,6 +85,7 @@ namespace Backend.DPI.Repository
             {
                 return false;
             }
+            suspectModified.CreationDate = result.CreationDate;
             dpiContext.Suspects.Remove(result);
             dpiContext.Suspects.Add(suspectModified);
             await dpiContext.SaveChangesAsync();

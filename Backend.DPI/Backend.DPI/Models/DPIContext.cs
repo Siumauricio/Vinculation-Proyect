@@ -276,6 +276,11 @@ namespace Backend.DPI.Models
                     .HasMaxLength(40)
                     .IsUnicode(false)
                     .HasColumnName("name");
+
+                entity.Property(e => e.TipoPrivilegio)
+                    .HasMaxLength(30)
+                    .IsUnicode(false)
+                    .HasColumnName("tipo_privilegio");
             });
 
             modelBuilder.Entity<Rol>(entity =>
