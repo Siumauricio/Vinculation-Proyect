@@ -4,14 +4,14 @@
         <div class="modal-header bg-primary">
           <h3>Creacion De Sospechoso</h3>
         </div>
-        <form [formGroup]="suspectForm" (ngSubmit)="onSubmit()"> 
+        <form [formGroup]="suspectForm" (ngSubmit)="onSubmit()">
           <div class="modal-body">
             <div class="container p-4">
               <div class="form-floating mb-3">
                 <input  type="text" formControlName="dniSuspect" (keypress)="keyPressAlphanumeric($event)" maxlength="16" autocomplete="off" class="form-control" />
                 <label for="floatingUser">DNI<label style="color: red;">*</label></label>
               </div>
-  
+
               <div class="row mb-3">
                 <div class="col-md">
                   <div class="form-floating">
@@ -58,16 +58,24 @@
                 </div>
               </div>
 
-              <div class="form-floating mb-3">
-                <input  type="number" step="0.01" formControlName="height" maxlength="6"  autocomplete="off" class="form-control" />
-                <label for="floatingUser">Altura en Metros<label style="color: red;">*</label></label>
-              </div>
-              <div class="form-floating mb-3">
-                <input  type="number"  formControlName="weight"  maxlength="6" autocomplete="off" class="form-control" />
-                <label for="floatingUser">Peso en LBS<label style="color: red;">*</label></label>
+              <div class="row mb-3">
+                <div class="col-md">
+                  <div class="form-floating">
+                    <input  type="number" step="0.01" formControlName="height" maxlength="6"  autocomplete="off" class="form-control" />
+                    <label for="floatingUser">Altura en Metros<label style="color: red;">*</label></label>
+                  </div>
+                </div>
+                <div class="col-md">
+                  <div class="form-floating">
+                    <input  type="number"  formControlName="weight"  maxlength="6" autocomplete="off" class="form-control" />
+                    <label for="floatingUser">Peso en LBS<label style="color: red;">*</label></label>
+                  </div>
+                </div>
               </div>
 
-                  <div class="form-floating mb-3">
+
+
+              <div class="form-floating mb-3">
                 <input  type="text" formControlName="eyesColor" (keypress)="keyPressAlphanumeric($event)" maxlength="15" autocomplete="off" class="form-control" />
                 <label for="floatingUser">Ojos de color<label style="color: red;">*</label></label>
               </div>
@@ -156,7 +164,7 @@
                 <input  type="number" formControlName="houseNumber"  maxlength="8" autocomplete="off" class="form-control" />
                 <label for="floatingUser">Numero De Casa</label>
               </div>
-              
+
               <div class="form-floating mb-3">
                 <input  type="text" formControlName="pasaje" (keypress)="keyPressAlphanumeric($event)" maxlength="25" autocomplete="off" class="form-control" />
                 <label for="floatingUser">Pasaje</label>
@@ -188,4 +196,3 @@
       </div>
     </div>
   </div>
-  

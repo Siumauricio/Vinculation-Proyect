@@ -1,0 +1,26 @@
+<div class="center"  tabindex="-1"  role="dialog"  aria-labelledby="myModalLabel"  data-backdrop="static"  aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-primary">
+        <h3>Creacion De Departamento</h3>
+      </div>
+      <form [formGroup]="CaracteristicaForm" (ngSubmit)="onSubmit()">
+        <div class="modal-body">
+          <div class="container p-4">
+            <div class="form-floating mb-3">
+              <input  type="text" formControlName="departmentName" autocomplete="off" class="form-control" />
+              <label for="floatingUser">Nombre del Departamento</label>
+            </div>
+
+
+            <div class="row py-3 pull-right">
+              <button  class="btn btn-success" type="submit" [disabled]="CaracteristicaForm.invalid">
+                <ng-container> Crear Departamento </ng-container>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
