@@ -99,16 +99,17 @@
               </a>
             </li>
 
-
-            <li *ngFor="let privilege of privilegeType;let i = index">
+            <li *ngFor="let privilege of this.userService.privilegeType;let i = index"  >
               <a href="#submenu{{i}}" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
                 <i class="fa fa-user"></i> 
-                <span class="ms-1 d-none d-sm-inline">{{privilege.privilegeType}}</span>
+                <span  class="ms-1 d-none d-sm-inline">{{privilege.privilegeType}}</span>
               </a>
-                  <ul class="collapse nav flex-column ms-1 "  *ngFor="let namePrivilege of privilege.privilege"  id="submenu{{i}}" data-bs-parent="#menu" >
-                  <li class="w-100" >
-                      <a [routerLink]="['/privileges/'+namePrivilege]"  class="nav-link px-0"> <span class="d-none d-sm-inline"> {{namePrivilege}}</span></a>
-                  </li>
+                  <ul class="collapse  flex-column ms-1 "  *ngFor="let namePrivilege of privilege.privilege" id="submenu{{i}}" >
+                    <li class="w-100">
+
+                      <a [routerLink]="['/privileges/'+namePrivilege]"  class="nav-link px-0" style="text-decoration: none;" >{{namePrivilege}}</a>
+
+                    </li>
 
                   </ul>
           </li>

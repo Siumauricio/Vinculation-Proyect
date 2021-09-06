@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { WEB_SERVICE } from '../configurations/config';
+import { AuthenticationService } from '../authentication.service';
 import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
 import { User } from './interfaces/user';
@@ -7,7 +8,8 @@ import { User } from './interfaces/user';
   providedIn: 'root',
 })
 export class UsersService {
-  constructor(private http: HttpClient) {}
+  privilegeType:any[]
+  constructor(private http: HttpClient,private auth:AuthenticationService) {}
 
   async getUsuers() {
     Swal.fire({
@@ -76,7 +78,6 @@ export class UsersService {
       departmentIdDepartment: Number(user.departmentIdDepartment),
       rolIdRol: Number(user.rolIdRol),
     };
-    console.log(body);
 
     const url = `${WEB_SERVICE}User/AddUser`;
     let answer: any = {};
@@ -89,7 +90,6 @@ export class UsersService {
       })
       .catch(async (error) => {
         this.errorMessage('Error creando un nuevo usuario');
-        console.log(error);
       });
 
     return answer;
@@ -107,7 +107,6 @@ export class UsersService {
       })
       .catch(async (error) => {
         this.errorMessage('Error estrayendo datos del usuarios');
-        console.log(error);
       });
 
     return answer;
@@ -120,7 +119,6 @@ export class UsersService {
       departmentIdDepartment: Number(user.departmentIdDepartment),
       rolIdRol: Number(user.rolIdRol),
     };
-    console.log(body);
     const url = `${WEB_SERVICE}User/UpdateUser`;
     let answer: any = {};
     await this.http
@@ -133,7 +131,6 @@ export class UsersService {
       })
       .catch(async (error) => {
         this.errorMessage('Error al modificar datos de usuario');
-        console.log(error);
       });
 
     return answer;
@@ -166,6 +163,38 @@ export class UsersService {
       });
     return answer;
   }
+  async loadPrivilegesUser(){
+    await  this.GetPrivilegesByUser(this.auth.currentUser.username).then((resp)=>{
+      this.auth.privileges=resp;
+      localStorage.setItem("Privileges",JSON.stringify(resp));
+      localStorage.setItem("SizePrivileges",resp.length);
+     });
+     this.privilegeType = this.getUniqueValuesFromPrivilegeType();
+     console.log(this.privilegeType)
+     return this.privilegeType;
+  }
+  
+  getUniqueValuesFromPrivilegeType(){
+    const unique = [...new Set(this.auth.privileges.map(item => item.tipo_privilegio))];
+    let privileges = [];
+    for (let i = 0; i < unique.length; i++) {
+      let namePrivileges = [];
+      for (let j = 0; j < this.auth.privileges.length; j++) {
+        if (this.auth.privileges[j].tipo_privilegio == unique[i]) {
+          namePrivileges.push(this.auth.privileges[j].name_Privilege);
+        }
+    }
+        const object = {
+          privilegeType : unique[i],
+          privilege : namePrivileges
+        }
+        privileges.push(object);
+    }
+  
+    return privileges;
+   }
+
+  
 
   async updtUserPrivilege(
     idRolPrivilege: number,
@@ -177,7 +206,6 @@ export class UsersService {
       idRolPrivilege: idRolPrivilege,
       specialPrivilege: specialPrivilege,
     };
-    console.log(body);
 
     const url = `${WEB_SERVICE}Privilege​/AddUserRolPrivilege`;
     let answer: any = {};
@@ -191,7 +219,6 @@ export class UsersService {
       })
       .catch(async (error) => {
         this.errorMessage('Error al asignar privilegios de usuario');
-        console.log(error);
       });
 
     return answer;
@@ -210,7 +237,6 @@ export class UsersService {
       })
       .catch(async (error) => {
         this.errorMessage('Error al eliminar el usuario');
-        console.log(error);
       });
 
     return answer;

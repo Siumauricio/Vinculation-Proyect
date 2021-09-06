@@ -62,6 +62,7 @@ export class AuthenticationService {
   }
 
 
+
   logout(){
     this.openSidebar=false;
     this.isLoggedIn = false;

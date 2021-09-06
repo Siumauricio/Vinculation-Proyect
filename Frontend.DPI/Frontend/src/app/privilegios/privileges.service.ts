@@ -21,7 +21,7 @@ export class PrivilegesService {
       })
       .catch(async (error) => {
         this.errorMessage('Fallo al Obtener Privilegios');
-        console.log(error);
+        
       });
       return answer;
     }

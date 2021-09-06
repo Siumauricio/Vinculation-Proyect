@@ -51,10 +51,10 @@ export class UserAddRolPrivilegeComponent implements OnInit {
   }
 
 
-  onSubmit(){
-     this.userRolPrivilegeService.createUserRolPrivilege(this.profileForm.getRawValue()).then(async (resp) => {
+  async onSubmit(){
+    await this.userRolPrivilegeService.createUserRolPrivilege(this.profileForm.getRawValue()).then(async (resp) => {
       if (resp) {
-        await this.getPrivilegesUser();
+        await this.userService.loadPrivilegesUser();
       } else {
         Swal.fire(
           'Error',
@@ -65,15 +65,6 @@ export class UserAddRolPrivilegeComponent implements OnInit {
     });
 
   }
-
-  async getPrivilegesUser(){
-    await  this.userService.GetPrivilegesByUser(this.auth.currentUser.username).then((resp)=>{
-      this.auth.privileges=resp;
-      localStorage.setItem("Privileges",JSON.stringify(resp));
-      localStorage.setItem("SizePrivileges",resp.length);
-     });
-   
-   }
 
 
 keyPressAlphanumeric(event) {

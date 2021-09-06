@@ -38,7 +38,6 @@ export class UpdateUserComponent implements OnInit {
 
   async getUserByUsername(username: string) {
     await this.userService.getUserByUsername(username).then((resp) => {
-      console.log(resp);
       this.userData = resp;
       this.newUser = resp;
       this.profileForm.setValue({
@@ -84,7 +83,6 @@ export class UpdateUserComponent implements OnInit {
 
     await this.userService.updtUser(newUser).then((resp) => {
       this.closeModal();
-      console.log(resp);
     });
   }
   cleanUser(user: User) {

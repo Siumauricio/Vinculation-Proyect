@@ -18,7 +18,6 @@ export class UserRolPrivilegeListComponent implements OnInit {
 
   async getDataUserRolPrivileges() {
     await this.userRolPrivilegesService.getUserRolPrivileges().then((resp) => {
-      console.log(resp);
       this.userRolPrivilegesData = resp;
     });
   }

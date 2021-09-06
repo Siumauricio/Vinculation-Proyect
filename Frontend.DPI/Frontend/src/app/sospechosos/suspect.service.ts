@@ -13,8 +13,6 @@ export class SuspectService {
   async addSuspect(suspect:Suspects){
       const url = `${WEB_SERVICE}Suspect/AddSuspect`;
       let answer: any = {};
-      console.log(url)
-      console.log(suspect)
       await this.http
         .post(url, suspect)
         .toPromise()
@@ -24,7 +22,6 @@ export class SuspectService {
         })
         .catch(async (error) => {
           this.errorMessage('Error asegurese que este sospechoso no existe');
-          console.log(error);
         });
   
       return answer;
@@ -41,7 +38,6 @@ export class SuspectService {
       })
       .catch(async (error) => {
         this.errorMessage('Error Al Obtener Sospechosos');
-        console.log(error);
       });
       return answer;
     }
@@ -57,7 +53,6 @@ export class SuspectService {
         })
         .catch(async (error) => {
           this.errorMessage('Error Al Obtener Sospechosos');
-          console.log(error);
         });
         return answer;
       }
@@ -73,7 +68,6 @@ export class SuspectService {
           })
           .catch(async (error) => {
             this.errorMessage('Error Al Obtener Sospechosos');
-            console.log(error);
           });
           return answer;
         }
@@ -93,7 +87,6 @@ export class SuspectService {
           })
           .catch(async (error) => {
             this.errorMessage('Error Al Eliminar Sospechoso2');
-            console.log(error);
           });
           return answer;
         }
@@ -113,7 +106,6 @@ export class SuspectService {
             })
             .catch(async (error) => {
               this.errorMessage('Error Al Modificar Sospechoso');
-              console.log(error);
             });
             return answer;
         }

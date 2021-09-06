@@ -25,7 +25,6 @@ export class UserDeleteComponent implements OnInit {
 
   async getUserByUsername(username: string) {
     await this.userService.getUserByUsername(username).then((resp) => {
-      console.log(resp);
       this.userData = resp;
       this.newUser = resp;
     });
@@ -42,7 +41,6 @@ export class UserDeleteComponent implements OnInit {
       }).then(async (result) => {
         if (result.isConfirmed) {
           await this.userService.DeleteUser(username).then((resp) => {
-            console.log(resp);
             if (resp == true) {
               this.userFilterSelected='';
               this.userData = null;

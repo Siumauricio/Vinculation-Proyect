@@ -40,7 +40,7 @@ export class RolPrivilegeDeleteComponent implements OnInit {
       }).then(async (result) => {
         if (result.isConfirmed) {
           await this.rolPrivilegeService.deleteRolPrivilege(idRolPrivilege).then((resp) => {
-            console.log(resp);
+           
             if (resp == true) {
               this.rolPrivilegeData = null;
               this.rolPrivilegeData.splice(

@@ -18,7 +18,6 @@ export class UserListComponent implements OnInit {
 
   async getDataUsers() {
     await this.userService.getUsuers().then((resp) => {
-      console.log(resp);
       this.userData = resp;
     });
   }

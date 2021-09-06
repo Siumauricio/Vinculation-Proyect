@@ -20,7 +20,6 @@ export class SospechosoDeleteComponent {
   async getSuspectByDni(dniSuspect: string) {
     await this.suspectService.getSuspectByDNI(dniSuspect.trim()).then((resp) => {
       if (resp) {
-        console.log(resp)
         this.suspectData = resp;
       }
     });

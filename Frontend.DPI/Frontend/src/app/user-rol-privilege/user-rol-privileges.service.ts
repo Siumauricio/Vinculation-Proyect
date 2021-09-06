@@ -91,7 +91,6 @@ export class UserRolPrivilegesService {
       })
       .catch(async (error) => {
         this.errorMessage(`Error agregando el privilegio al usuario ${body.userUsername}`);
-        console.log(error);
       });
     return answer;
   }
@@ -118,7 +117,6 @@ export class UserRolPrivilegesService {
       .catch(async (error) => {
         Swal.close();
         this.errorMessage('Error extrayendo datos del usuario');
-        console.log(error);
       });
 
     return answer;
@@ -138,7 +136,6 @@ export class UserRolPrivilegesService {
       })
       .catch(async (error) => {
         this.errorMessage('Error al eliminar el privilegio');
-        console.log(error);
       });
 
     return answer;

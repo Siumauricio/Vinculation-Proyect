@@ -24,7 +24,6 @@ export class SuspectListComponent implements OnInit {
 
   async getSuspects() {
     await this.SuspectService.getSuspects().then((resp) => {
-      console.log(resp);
       this.Suspects = resp;
       this.totalRecords = this.Suspects.length;
     });
