@@ -100,23 +100,27 @@
             </li>
 
 
-              <a href="#submenu3"     data-bs-toggle="collapse"   class="nav-link px-0 align-middle"    >
-                <i class="fa fa-user"></i>
-                <span class="ms-1 d-sm-inline">Privilegio</span>
+            <li *ngFor="let privilege of privilegeType;let i = index">
+              <a href="#submenu{{i}}" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                <i class="fa fa-user"></i> 
+                <span class="ms-1 d-none d-sm-inline">{{privilege.privilegeType}}</span>
               </a>
-              <ul  class="collapse nav flex-column ms-1"    id="submenu3"    data-bs-parent="#menu"   >
-                  <li class="w-100" *ngFor="let privilege of this.auth.privileges ">
-                    <a [routerLink]="['privileges/'+privilege.name_Privilege]" class="nav-link px-0">
-                      <span class="d-sm-inline"> </span> {{privilege.name_Privilege}}
-                    </a>
+                  <ul class="collapse nav flex-column ms-1 "  *ngFor="let namePrivilege of privilege.privilege"  id="submenu{{i}}" data-bs-parent="#menu" >
+                  <li class="w-100" >
+                      <a [routerLink]="['/privileges/'+namePrivilege]"  class="nav-link px-0"> <span class="d-none d-sm-inline"> {{namePrivilege}}</span></a>
                   </li>
-              </ul>
-            <!-- <li class="nav-item">
+
+                  </ul>
+          </li>
+
+            <li class="nav-item">
               <a href="#" class="nav-link align-middle px-0">
                 <i class="fa fa-sign-out"></i>
                 <span class="ms-1 d-sm-inline">Salir</span>
               </a>
-            </li> -->
+            </li>
+
+
           </ul>
         </div>
       </div>
