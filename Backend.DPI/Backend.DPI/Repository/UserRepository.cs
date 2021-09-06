@@ -1,15 +1,14 @@
-﻿using Backend.DPI.Models;
+﻿using Backend.DPI.ModelDto;
+using Backend.DPI.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Backend.DPI.ModelDto;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Backend.DPI.Repository
 {
@@ -17,6 +16,9 @@ namespace Backend.DPI.Repository
     {
         private readonly DPIContext dbContext = new DPIContext();
 
+        public SecurityKey DefaultX509Key_Public_2048 { get; private set; }
+
+        private readonly string ServerFrontEnd = "http://localhost:4200";
         public async Task<bool> CreateUserAsync(UserDto user)
         {
             var result =  await dbContext.Users.FirstOrDefaultAsync(u => u.Username.ToLower() == user.Username.ToLower());
@@ -155,13 +157,53 @@ namespace Backend.DPI.Repository
             var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
             var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
             var tokeOptions = new JwtSecurityToken(
-                issuer: "http://localhost:4200",
-                audience: "http://localhost:4200",
+                issuer: ServerFrontEnd,
+                audience: ServerFrontEnd,
                 claims: new List<Claim>(),
                 expires: DateTime.Now.AddMinutes(30),
                 signingCredentials: signinCredentials
             );
             return new JwtSecurityTokenHandler().WriteToken(tokeOptions);
-        }  
+        }
+
+
+
+        public async Task<object> UpdateTokenAsync(string Token) {
+            var validateToken = await ValidateTokenAsync(Token);
+            if (!validateToken) {
+                return null;
+            }
+            var result =  await GetToken();
+            if (result == null) return null;
+            return new  {Token = result } ;
+        }
+
+
+        private async Task<bool> ValidateTokenAsync(string Token) {
+            await Task.Delay(100);
+            var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
+            var myIssuer = ServerFrontEnd;
+            var myAudience = ServerFrontEnd;
+            var tokenHandler = new JwtSecurityTokenHandler();
+            try
+            {
+                tokenHandler.ValidateToken(Token, new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidIssuer = myIssuer,
+                    ValidAudience = myAudience,
+                    IssuerSigningKey = secretKey
+                }, out SecurityToken validatedToken);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+          
+        }
+
     }
 }

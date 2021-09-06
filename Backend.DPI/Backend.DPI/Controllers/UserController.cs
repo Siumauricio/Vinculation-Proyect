@@ -90,5 +90,12 @@ namespace Backend.DPI.Controllers
             if (result == null) return NotFound();
             return Ok(result);
         }
+
+        [HttpGet("UpdateToken")]
+        public async Task<ActionResult<object>> UpdateToken(string Token) {
+            var result = await _userRepository.UpdateTokenAsync(Token);
+            if (result == null) return NotFound();
+            return Ok(result);
+        }
     }
 }

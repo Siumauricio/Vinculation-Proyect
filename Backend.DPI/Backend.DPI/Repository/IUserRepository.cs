@@ -19,5 +19,8 @@ namespace Backend.DPI.Repository
         Task<object> LoginAsync(string Username, string Password);
         Task<IReadOnlyList<object>> GetUsersAsync();
 
+        Task<object> UpdateTokenAsync(string Token);
+
+
     }
 }

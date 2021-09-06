@@ -27,6 +27,8 @@ namespace Backend.DPI.Repository
         Task<bool> DeleteUserRolPrivilegeByIdAsync(int IdUserRolPrivilege);
 
         Task<bool> DeleteUserRolPrivilegeByUserAsync(string Username);
+
+
     }
 
 

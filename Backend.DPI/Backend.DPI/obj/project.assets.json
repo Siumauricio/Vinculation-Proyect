@@ -7333,19 +7333,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\carlo\\.nuget\\packages\\": {}
+    "C:\\Users\\enrik\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GitHub\\Proyecto-Vinculacion-DPI\\Backend.DPI\\Backend.DPI\\Backend.DPI.csproj",
+      "projectUniqueName": "C:\\Users\\enrik\\Documents\\GitHub\\Proyecto-Vinculacion-DPI\\Backend.DPI\\Backend.DPI\\Backend.DPI.csproj",
       "projectName": "Backend.DPI",
-      "projectPath": "D:\\GitHub\\Proyecto-Vinculacion-DPI\\Backend.DPI\\Backend.DPI\\Backend.DPI.csproj",
-      "packagesPath": "C:\\Users\\carlo\\.nuget\\packages\\",
-      "outputPath": "D:\\GitHub\\Proyecto-Vinculacion-DPI\\Backend.DPI\\Backend.DPI\\obj\\",
+      "projectPath": "C:\\Users\\enrik\\Documents\\GitHub\\Proyecto-Vinculacion-DPI\\Backend.DPI\\Backend.DPI\\Backend.DPI.csproj",
+      "packagesPath": "C:\\Users\\enrik\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\enrik\\Documents\\GitHub\\Proyecto-Vinculacion-DPI\\Backend.DPI\\Backend.DPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\carlo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\enrik\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

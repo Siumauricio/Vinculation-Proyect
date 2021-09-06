@@ -73,6 +73,24 @@ export class AuthenticationService {
 
   }
 
+  async updateToken(token:string){
+    let response:any;
+      await this.http.get(`${WEB_SERVICE}User/UpdateToken?Token=${token}`)
+        .toPromise()
+        .then(async (res) => {
+          response=res;
+        })
+        .catch(async (err) => {
+          this.errorMessage('No se pudo validar el inicio de sesion');
+        });
+      if (response) {
+        localStorage.setItem('Token',response.token);
+        return true;
+      }
+      return false;
+  }
+
+
   succesMessage(message) {
     Swal.fire({
       position: 'center',

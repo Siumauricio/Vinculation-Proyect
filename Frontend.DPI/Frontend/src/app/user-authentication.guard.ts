@@ -1,11 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { count } from 'console';
 import { Observable } from 'rxjs';
 import { AuthenticationService } from './authentication.service';
-import { NavbarComponent } from './navbar/navbar.component';
-import { Privilege } from './rol_privileges/interfaces/rol-privilege';
 import { RolPrivilege } from './users/interfaces/user';
 
 @Injectable({
@@ -18,18 +15,40 @@ export class UserAuthenticationGuard implements CanActivate, CanActivateChild {
 
  privileges:Array<RolPrivilege>;
   privilegesSize:number;
+
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       const token=localStorage.getItem('Token');
       const isAuthenticated = localStorage.getItem('isLoggedIn');
-      if (isAuthenticated=='true' && token && !this.jwtHelper.isTokenExpired(token) ) {
-        return true;
+      if (isAuthenticated=='true' && token && !this.jwtHelper.isTokenExpired(token)) {
+          console.log(this.jwtHelper.getTokenExpirationDate());
+          console.log(token);//quitar
+          return true;
       }
-      this.auth.logout();
-      this.router.navigate(['/login']);
-      return false;
+      if (isAuthenticated=='true' && token && this.jwtHelper.isTokenExpired(token)) {
+        return this.ValidateToken(token);
+      }
+      return this.FailedAccess();
   }
+
+async ValidateToken(token:string){
+  let response:any;
+  await this.auth.updateToken(token).then(async (resp)=>{
+    response=resp;
+   });
+   if(response){
+     return true;
+   }
+return this.FailedAccess();
+}
+
+
+FailedAccess(){
+ this.auth.logout();
+ this.router.navigate(['/login']); 
+ return false;
+}
 
   canActivateChild(
     route: ActivatedRouteSnapshot,

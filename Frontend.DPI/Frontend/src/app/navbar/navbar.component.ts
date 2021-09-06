@@ -29,9 +29,7 @@ export class NavbarComponent implements OnInit {
      this.auth.privileges=resp;
      localStorage.setItem("Privileges",JSON.stringify(resp));
      localStorage.setItem("SizePrivileges",resp.length);
-      console.log('Privilegios: ',this.privileges)
     });
-  
   }
 
   logout() {
