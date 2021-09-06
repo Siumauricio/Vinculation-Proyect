@@ -1,11 +1,11 @@
+import { RolPrivilege } from './../../../users/interfaces/user';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder} from '@angular/forms';
 import Swal from 'sweetalert2';
 import { UserRolPrivilegesService } from '../../user-rol-privileges.service';
 import { UserRolPrivilge } from '../../interfaces/user-rol-privilege';
-import { RolPrivilege, User } from 'src/app/users/interfaces/user';
-import { UsersService } from 'src/app/users/users.service';
-import { AuthenticationService } from 'src/app/authentication.service';
+import { UsersService } from '../../../users/users.service';
+import { AuthenticationService } from '../../../authentication.service';
 
 @Component({
   selector: 'app-user-rol-privilege-delete',

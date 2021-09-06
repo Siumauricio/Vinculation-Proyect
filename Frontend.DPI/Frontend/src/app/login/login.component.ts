@@ -53,6 +53,17 @@ export class LoginComponent implements OnInit {
 
   }
 
+  keyPressAlphanumeric(event) {
+    var inp = String.fromCharCode(event.keyCode);
+    if (/[a-zA-Z0-9_]/.test(inp)) {
+      return true;
+    } else {
+      event.preventDefault();
+      return false;
+    }
+
+  }
+
   
 
 

@@ -18,7 +18,7 @@ import { DatePipe, formatDate } from '@angular/common';
 export class SospechosoUpdateComponent implements OnInit {
   @ViewChild('updateUserModal', { static: true }) updateUserModal: ModalDirective;
   newSuspect: Suspects = {} as Suspects;
-  userFilterSelected: string = '0501';
+  userFilterSelected: string = '';
   suspectForm : FormGroup;
   buttonDisabled: boolean;
   suspectData: Suspects ;

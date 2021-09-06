@@ -164,13 +164,16 @@ export class UsersService {
     return answer;
   }
   async loadPrivilegesUser(){
-    await  this.GetPrivilegesByUser(this.auth.currentUser.username).then((resp)=>{
-      this.auth.privileges=resp;
-      localStorage.setItem("Privileges",JSON.stringify(resp));
-      localStorage.setItem("SizePrivileges",resp.length);
-     });
-     this.privilegeType = this.getUniqueValuesFromPrivilegeType();
-     console.log(this.privilegeType)
+    if (this.auth.isLoggedIn) {
+      await  this.GetPrivilegesByUser(this.auth.currentUser.username).then((resp)=>{
+        this.auth.privileges=resp;
+        localStorage.setItem("Privileges",JSON.stringify(resp));
+        localStorage.setItem("SizePrivileges",resp.length);
+       });
+       this.privilegeType = this.getUniqueValuesFromPrivilegeType();
+       console.log(this.privilegeType)
+    }
+
      return this.privilegeType;
   }
   

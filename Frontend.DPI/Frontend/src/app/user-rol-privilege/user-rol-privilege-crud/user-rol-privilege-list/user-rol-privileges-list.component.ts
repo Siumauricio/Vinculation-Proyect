@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserRolPrivilege } from 'src/app/users/interfaces/user';
+import { UserRolPrivilege } from '../../../users/interfaces/user';
 import { UserRolPrivilegesService } from '../../user-rol-privileges.service';
 
 @Component({
