@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\enrik\\Documents\\GitHub\\Proyecto-Vinculacion-DPI\\Backend.DPI\\Backend.DPI\\Backend.DPI.csproj": {}
+    "C:\\Users\\alberto jose lopez\\Desktop\\uni\\tri 15\\ingenieria de software 2\\DPI-bakup\\Proyecto-Vinculacion-DPI\\Backend.DPI\\Backend.DPI\\Backend.DPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\enrik\\Documents\\GitHub\\Proyecto-Vinculacion-DPI\\Backend.DPI\\Backend.DPI\\Backend.DPI.csproj": {
+    "C:\\Users\\alberto jose lopez\\Desktop\\uni\\tri 15\\ingenieria de software 2\\DPI-bakup\\Proyecto-Vinculacion-DPI\\Backend.DPI\\Backend.DPI\\Backend.DPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\enrik\\Documents\\GitHub\\Proyecto-Vinculacion-DPI\\Backend.DPI\\Backend.DPI\\Backend.DPI.csproj",
+        "projectUniqueName": "C:\\Users\\alberto jose lopez\\Desktop\\uni\\tri 15\\ingenieria de software 2\\DPI-bakup\\Proyecto-Vinculacion-DPI\\Backend.DPI\\Backend.DPI\\Backend.DPI.csproj",
         "projectName": "Backend.DPI",
-        "projectPath": "C:\\Users\\enrik\\Documents\\GitHub\\Proyecto-Vinculacion-DPI\\Backend.DPI\\Backend.DPI\\Backend.DPI.csproj",
-        "packagesPath": "C:\\Users\\enrik\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\enrik\\Documents\\GitHub\\Proyecto-Vinculacion-DPI\\Backend.DPI\\Backend.DPI\\obj\\",
+        "projectPath": "C:\\Users\\alberto jose lopez\\Desktop\\uni\\tri 15\\ingenieria de software 2\\DPI-bakup\\Proyecto-Vinculacion-DPI\\Backend.DPI\\Backend.DPI\\Backend.DPI.csproj",
+        "packagesPath": "C:\\Users\\alberto jose lopez\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\alberto jose lopez\\Desktop\\uni\\tri 15\\ingenieria de software 2\\DPI-bakup\\Proyecto-Vinculacion-DPI\\Backend.DPI\\Backend.DPI\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\enrik\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\alberto jose lopez\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -89,7 +92,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
