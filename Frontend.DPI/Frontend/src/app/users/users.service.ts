@@ -189,7 +189,8 @@ export class UsersService {
     }
         const object = {
           privilegeType : unique[i],
-          privilege : namePrivileges
+          privilege : namePrivileges,
+          icon : Icons[unique[i]]
         }
         privileges.push(object);
     }
@@ -263,3 +264,15 @@ export class UsersService {
     });
   }
 }
+
+
+const Icons =  {
+    'Departamentos' : 'fa fa-building',
+    "Privilegios" : 'fa fa-key',
+    'Privilegios de Usuarios' : 'fa fa-id-badge',
+    'Roles a Privilegios' : 'fa fa-cogs',
+    'Sospechosos' : 'fa fa-user-secret',
+    'Usuarios' : 'fa fa-user',
+    'Roles' : 'fa fa-users',
+    'Grupos Criminales' : 'fa fa-users-slash'
+  }
