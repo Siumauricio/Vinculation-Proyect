@@ -1,6 +1,8 @@
 ﻿using Backend.DPI.ModelDto;
 using Backend.DPI.Models;
 using Backend.DPI.Repository;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,6 +13,7 @@ namespace Backend.DPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class PrivilegeController : Controller
     {
         private readonly IPrivilegeRepository privilegeRepository;
@@ -46,7 +49,6 @@ namespace Backend.DPI.Controllers
             });
 
         }
-
 
         [HttpGet("GetPrivileges")]
 

@@ -7,11 +7,13 @@ using Microsoft.Extensions.Logging;
 using Backend.DPI.Models;
 using Backend.DPI.Services;
 using Backend.DPI.ModelDto;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Backend.DPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class RolesController : ControllerBase
     {
         private readonly RolesRepository _rolesRepository = new RolesRepository();

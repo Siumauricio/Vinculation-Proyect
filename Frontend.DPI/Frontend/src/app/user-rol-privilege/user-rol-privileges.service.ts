@@ -3,13 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
 import { WEB_SERVICE } from 'src/app/configurations/config';
 import { newUserRolPrivilege } from './interfaces/user-rol-privilege';
-import { $$ } from 'protractor';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserRolPrivilegesService {
   constructor(private http: HttpClient) {}
+  token:any;
 
   async getUserRolPrivileges() {
     Swal.fire({
@@ -20,9 +20,7 @@ export class UserRolPrivilegesService {
       },
     });
     const url = `${WEB_SERVICE}Privilege/GetUserRolPrivileges`;
-
     let answer: any;
-
     await this.http
       .get(url)
       .toPromise()
@@ -97,6 +95,7 @@ export class UserRolPrivilegesService {
   }
 
 
+
   async getUserRolPrivilegeByUsername(username: string) {
     Swal.fire({
       title: 'Espere un momento',
@@ -105,6 +104,7 @@ export class UserRolPrivilegesService {
         Swal.showLoading();
       },
     });
+    let header = new Headers();
     const url = `${WEB_SERVICE}Privilege/GetUserRolPrivilegesByUser?username=${username}`;
     let answer: any = {};
     await this.http
@@ -123,6 +123,7 @@ export class UserRolPrivilegesService {
 
     return answer;
   }
+
 
 
   async DeleteUserRolPrivilege(IdUserRolPrivilege: number) {

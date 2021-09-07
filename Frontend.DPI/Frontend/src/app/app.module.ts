@@ -13,6 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { UserAuthenticationGuard } from './user-authentication.guard';
 import { AuthenticationService } from './authentication.service';
 import { JwtModule } from '@auth0/angular-jwt';
+import { TokenInterceptorProviders } from './TokenInterceptor.service';
 
 
 export function tokenGetter(){
@@ -44,7 +45,7 @@ export function tokenGetter(){
       }
     })
   ],
-  providers: [UserAuthenticationGuard,AuthenticationService],
+  providers: [UserAuthenticationGuard,AuthenticationService,TokenInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,18 +1,21 @@
 import { User, Rol } from '../users/interfaces/user';
 import { Injectable } from '@angular/core';
 import { WEB_SERVICE } from '../configurations/config';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import Swal from 'sweetalert2';
 @Injectable({
   providedIn: 'root',
 })
 export class PrivilegesService {
   constructor(private http: HttpClient) {}
-
+  token:any;
 
   async getPrivileges(){
-    const url = `${WEB_SERVICE}Privilege/GetPrivileges`;
+    
+    const url = `${WEB_SERVICE}Privilege/GetPrivileges` ;
     let answer: any = {};
+  this.token = JSON.parse(localStorage.getItem('Token'));
+
     await this.http
       .get(url)
       .toPromise()

@@ -1,5 +1,6 @@
 ﻿using Backend.DPI.ModelDto;
 using Backend.DPI.Models;
+using Backend.DPI.TokenUser;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -15,10 +16,9 @@ namespace Backend.DPI.Repository
     public class UserRepository : IUserRepository
     {
         private readonly DPIContext dbContext = new DPIContext();
+        private readonly TokenUserService tokenUserService=new TokenUserService();
 
-        public SecurityKey DefaultX509Key_Public_2048 { get; private set; }
 
-        private readonly string ServerFrontEnd = "http://localhost:4200";
         public async Task<bool> CreateUserAsync(UserDto user)
         {
             var result =  await dbContext.Users.FirstOrDefaultAsync(u => u.Username.ToLower() == user.Username.ToLower());
@@ -148,62 +148,21 @@ namespace Backend.DPI.Repository
                 Rol = data.Rol,
                 Department = data.Department,
                 idDepartment = data.idDepartment,
-                TokenString = await GetToken()
+                TokenString = await tokenUserService.GetTokenAsync()
             };
         }
 
-        private async Task<string> GetToken() {
-            await Task.Delay(100);
-            var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
-            var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
-            var tokeOptions = new JwtSecurityToken(
-                issuer: ServerFrontEnd,
-                audience: ServerFrontEnd,
-                claims: new List<Claim>(),
-                expires: DateTime.Now.AddMinutes(30),
-                signingCredentials: signinCredentials
-            );
-            return new JwtSecurityTokenHandler().WriteToken(tokeOptions);
-        }
-
-
 
         public async Task<object> UpdateTokenAsync(string Token) {
-            var validateToken = await ValidateTokenAsync(Token);
+            var validateToken = await tokenUserService.TokenValidationUserAsync(Token);
             if (!validateToken) {
                 return null;
             }
-            var result =  await GetToken();
+            var result =  await tokenUserService.GetTokenAsync();
             if (result == null) return null;
             return new  {Token = result } ;
         }
 
-
-        private async Task<bool> ValidateTokenAsync(string Token) {
-            await Task.Delay(100);
-            var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
-            var myIssuer = ServerFrontEnd;
-            var myAudience = ServerFrontEnd;
-            var tokenHandler = new JwtSecurityTokenHandler();
-            try
-            {
-                tokenHandler.ValidateToken(Token, new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidIssuer = myIssuer,
-                    ValidAudience = myAudience,
-                    IssuerSigningKey = secretKey
-                }, out SecurityToken validatedToken);
-            }
-            catch
-            {
-                return false;
-            }
-            return true;
-          
-        }
 
     }
 }

@@ -22,8 +22,6 @@ export class UserAuthenticationGuard implements CanActivate, CanActivateChild {
       const token=localStorage.getItem('Token');
       const isAuthenticated = localStorage.getItem('isLoggedIn');
       if (isAuthenticated=='true' && token && !this.jwtHelper.isTokenExpired(token)) {
-          console.log(this.jwtHelper.getTokenExpirationDate());
-          console.log(token);//quitar
           return true;
       }
       if (isAuthenticated=='true' && token && this.jwtHelper.isTokenExpired(token)) {
@@ -60,6 +58,7 @@ FailedAccess(){
    checkAccessToPrivilege(incomingUrl){
     this.privileges=JSON.parse(localStorage.getItem("Privileges"));
     this.privilegesSize=+localStorage.getItem("SizePrivileges");
+    if(this.privilegesSize==null) return false;
     for(let i=0; i<this.privilegesSize; i++){
       if(this.privileges[i].name_Privilege==incomingUrl){
         return true;  
