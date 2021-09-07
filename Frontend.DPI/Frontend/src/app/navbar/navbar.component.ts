@@ -1,5 +1,5 @@
 import { UsersService } from './../users/users.service';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
 import { RolPrivilege, User } from '../users/interfaces/user';
@@ -12,25 +12,18 @@ import { RolPrivilege, User } from '../users/interfaces/user';
 export class NavbarComponent implements OnInit {
 
   user:User
-  privileges:RolPrivilege;
+  privileges:RolPrivilege[];
   constructor(
       public auth: AuthenticationService,
       private router: Router,
-      private userService :UsersService
+      private userService :UsersService,private cd: ChangeDetectorRef
       ) { }
 
   async ngOnInit() {
-    await this.getPrivilegesUser();
+    await this.userService.loadPrivilegesUser();
+    this.cd.detectChanges();
   }
 
- async getPrivilegesUser(){
-   await  this.userService.GetPrivilegesByUser(this.auth.currentUser.username).then((resp)=>{
-     this.privileges = resp;
-     this.auth.privileges=resp;
-     localStorage.setItem("Privileges",JSON.stringify(resp));
-     localStorage.setItem("SizePrivileges",resp.length);
-    });
-  }
 
   logout() {
     this.auth.logout();

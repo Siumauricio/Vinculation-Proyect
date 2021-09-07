@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AuthenticationService } from '../authentication.service';
 import { User } from '../users/interfaces/user';
+import { UsersService } from '../users/users.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
   returnUrl: string;
   newUser: User = {} as User;
 
-  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute,private router: Router,private auth: AuthenticationService) {
+  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute,private router: Router,private auth: AuthenticationService,private userService :UsersService  ) {
     if (this.auth.isLoggedIn) {
       this.router.navigate(['/']);
     }
@@ -38,8 +39,9 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-    await this.auth.login(this.f.user.value, this.f.password.value).then((resp)=>{
+    await this.auth.login(this.f.user.value, this.f.password.value).then(async (resp)=>{
       if (resp) {
+        await this.userService.loadPrivilegesUser();
         this.router.navigate(['home']);
       } else {
         Swal.fire(
@@ -48,6 +50,17 @@ export class LoginComponent implements OnInit {
         );
       }
     });
+
+  }
+
+  keyPressAlphanumeric(event) {
+    var inp = String.fromCharCode(event.keyCode);
+    if (/[a-zA-Z0-9_]/.test(inp)) {
+      return true;
+    } else {
+      event.preventDefault();
+      return false;
+    }
 
   }
 

@@ -1,11 +1,11 @@
+import { RolPrivilege } from './../../../users/interfaces/user';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder} from '@angular/forms';
 import Swal from 'sweetalert2';
 import { UserRolPrivilegesService } from '../../user-rol-privileges.service';
 import { UserRolPrivilge } from '../../interfaces/user-rol-privilege';
-import { RolPrivilege, User } from 'src/app/users/interfaces/user';
-import { UsersService } from 'src/app/users/users.service';
-import { AuthenticationService } from 'src/app/authentication.service';
+import { UsersService } from '../../../users/users.service';
+import { AuthenticationService } from '../../../authentication.service';
 
 @Component({
   selector: 'app-user-rol-privilege-delete',
@@ -33,7 +33,6 @@ export class UserRolPrivilegeDeleteComponent implements OnInit {
 
   async getUserRolPrivilegeByUsername(username: string) {
     await this.userRolPrivilegeService.getUserRolPrivilegeByUsername(username).then((resp) => {
-      console.log(resp);
       this.userRolPrivilegeData = resp;
       this.userRolPrivilegeSingle = resp;
     });
@@ -52,29 +51,18 @@ export class UserRolPrivilegeDeleteComponent implements OnInit {
       }).then(async (result) => {
         if (result.isConfirmed) {
           await this.userRolPrivilegeService.DeleteUserRolPrivilege(idUserRolPrivilege).then(async (resp) => { 
-            console.log(resp);
             if (resp == true) {
+              await this.userService.loadPrivilegesUser();
               this.userRolPrivilegeSingle[index] = null;
               this.userRolPrivilegeSingle.splice(
-                this.userRolPrivilegeSingle.findIndex((userRolPrivilege) => userRolPrivilege.idUserRolPrivilege ==idUserRolPrivilege ),
-                1
-              );
-               await this.getPrivilegesUser();
+                this.userRolPrivilegeSingle.findIndex((userRolPrivilege) => userRolPrivilege.idUserRolPrivilege ==idUserRolPrivilege ), 1);
+              
             }
           });
         }
       });
 
     }
-
-    async getPrivilegesUser(){
-      await  this.userService.GetPrivilegesByUser(this.auth.currentUser.username).then((resp)=>{
-        this.auth.privileges=resp;
-        localStorage.setItem("Privileges",JSON.stringify(resp));
-        localStorage.setItem("SizePrivileges",resp.length);
-       });
-     
-     }
 
 
 }

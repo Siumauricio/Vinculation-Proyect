@@ -4,8 +4,8 @@ import Swal from 'sweetalert2';
 import { UserRolPrivilegesService } from '../../user-rol-privileges.service';
 import { RolPrivilege, User } from '../../interfaces/user-rol-privilege';
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
-import { UsersService } from 'src/app/users/users.service';
-import { AuthenticationService } from 'src/app/authentication.service';
+import { UsersService } from '../../../users/users.service';
+import { AuthenticationService } from '../../../authentication.service';
 
 @Component({
   selector: 'app-user-rol-privilege-create',
@@ -51,10 +51,10 @@ export class UserAddRolPrivilegeComponent implements OnInit {
   }
 
 
-  onSubmit(){
-     this.userRolPrivilegeService.createUserRolPrivilege(this.profileForm.getRawValue()).then(async (resp) => {
+  async onSubmit(){
+    await this.userRolPrivilegeService.createUserRolPrivilege(this.profileForm.getRawValue()).then(async (resp) => {
       if (resp) {
-        await this.getPrivilegesUser();
+        await this.userService.loadPrivilegesUser();
       } else {
         Swal.fire(
           'Error',
@@ -65,15 +65,6 @@ export class UserAddRolPrivilegeComponent implements OnInit {
     });
 
   }
-
-  async getPrivilegesUser(){
-    await  this.userService.GetPrivilegesByUser(this.auth.currentUser.username).then((resp)=>{
-      this.auth.privileges=resp;
-      localStorage.setItem("Privileges",JSON.stringify(resp));
-      localStorage.setItem("SizePrivileges",resp.length);
-     });
-   
-   }
 
 
 keyPressAlphanumeric(event) {

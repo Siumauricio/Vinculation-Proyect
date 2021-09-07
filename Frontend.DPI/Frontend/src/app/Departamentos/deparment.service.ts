@@ -22,7 +22,7 @@ export class DepartmentService {
         })
         .catch(async (error) => {
           this.errorMessage('Error creando un nuevo Departamento');
-          console.log(error);
+         
         });
       return answer;
   }
@@ -39,7 +39,7 @@ export class DepartmentService {
       })
       .catch(async (error) => {
         this.errorMessage('Este Departamento No Existe');
-        console.log(error);
+      
       });
       return answer;
     }

@@ -18,7 +18,7 @@ import { DatePipe, formatDate } from '@angular/common';
 export class SospechosoUpdateComponent implements OnInit {
   @ViewChild('updateUserModal', { static: true }) updateUserModal: ModalDirective;
   newSuspect: Suspects = {} as Suspects;
-  userFilterSelected: string = '0501';
+  userFilterSelected: string = '';
   suspectForm : FormGroup;
   buttonDisabled: boolean;
   suspectData: Suspects ;
@@ -69,12 +69,10 @@ data:any
   onChange(newValue) {
     this.suspectForm.controls.dateOfBirth.setValue(newValue);
     this.suspectForm.controls['dateOfBirth'].markAsDirty();
-    console.log(this.suspectForm.getRawValue())
 }
   async getSuspectByDni(dniSuspect: string) {
     await this.suspectService.getSuspectByDNI(dniSuspect.trim()).then((resp) => {
       if (resp) {
-        console.log(resp)
         this.suspectData = resp;
         this.newSuspect = resp;
        
@@ -140,7 +138,6 @@ data:any
   }
 
   async onSubmit() {
-    console.log(this.suspectForm.getRawValue());
     let Suspect :Suspects = this.suspectForm.getRawValue();
     Suspect.lastModificationUser = this.auth.currentUser.username;
     await this.updateSuspect(this.suspectData.dniSuspect,Suspect);

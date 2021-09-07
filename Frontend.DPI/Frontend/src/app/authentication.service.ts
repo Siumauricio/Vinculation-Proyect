@@ -17,7 +17,7 @@ export class AuthenticationService {
   public currentUser:User;
   openSidebar:boolean=false;
   public isLoggedIn:boolean;
-  public privileges:RolPrivilege;
+  public privileges:RolPrivilege[];
 
   constructor(private http: HttpClient,
               private jwtHelper: JwtHelperService) {
@@ -60,6 +60,7 @@ export class AuthenticationService {
       }
       return false;
   }
+
 
 
   logout(){

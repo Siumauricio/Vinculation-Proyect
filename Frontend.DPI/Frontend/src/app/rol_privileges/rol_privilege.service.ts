@@ -90,7 +90,7 @@ export class RolPrivilegeService {
       })
       .catch(async (error) => {
         this.errorMessage('Error creando rol por privilegio');
-        console.log(error);
+       
       });
 
     return answer;
@@ -109,7 +109,7 @@ export class RolPrivilegeService {
       })
       .catch(async (error) => {
         this.errorMessage('Error extrayendo datos');
-        console.log(error);
+        
       });
 
     return answer;
@@ -129,7 +129,7 @@ export class RolPrivilegeService {
       })
       .catch(async (error) => {
         this.errorMessage('Error al eliminar el rol por privilegio');
-        console.log(error);
+        
       });
 
     return answer;

@@ -36,7 +36,6 @@ export class CreateUpdateUserModalComponent implements OnInit {
   ngOnInit(): void {}
 
   async buildModal(user: User) {
-    console.log(user.username);
     if (user.username != null) {
       this.isUpdate = true;
       await this.getUserByUsername(user);

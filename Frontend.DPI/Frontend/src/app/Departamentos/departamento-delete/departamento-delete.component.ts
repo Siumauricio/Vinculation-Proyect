@@ -31,7 +31,6 @@ export class DepartamentoDeleteComponent  {
       }).then(async (result) => {
         if (result.isConfirmed) {
           await this.departmentService.DeleteDepartment(username).then((resp) => {
-            console.log(resp);
             if (resp == true) {
               this.DepartmentData = null;
               this.userFilterSelected ='';

@@ -61,8 +61,7 @@ export class SospechosoCreateComponent  {
   onSubmit(){
     this.suspect = this.suspectForm.getRawValue();
     this.suspect.usernameRegistryData = this.auth.currentUser.username;
-    this.suspect.departmentIdDepartment = +this.auth.currentUser.departmentIdDepartment;
-     console.log( this.suspect);
+    this.suspect.departmentIdDepartment = this.auth.currentUser.departmentIdDepartment;
      this.suspectService.addSuspect(this.suspect).then((resp) => {
       if (resp == true) {
         this.suspectForm.reset();
@@ -74,7 +73,6 @@ export class SospechosoCreateComponent  {
         );
       }
     });
-
   }
 keyPressAlphanumeric(event) {
     var inp = String.fromCharCode(event.keyCode);

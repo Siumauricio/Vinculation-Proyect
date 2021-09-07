@@ -122,7 +122,7 @@ namespace Backend.DPI.Repository
                                     Name_Privilege = privilege.Name,
                                     Special_Privilege = user_rol_privilege.SpecialPrivilege,
                                     tipo_privilegio = privilege.TipoPrivilegio
-                                }).ToListAsync();
+                                }).OrderBy(q => q.tipo_privilegio).ToListAsync();
             if (result.Count == 0) return null;
             return result;
         }

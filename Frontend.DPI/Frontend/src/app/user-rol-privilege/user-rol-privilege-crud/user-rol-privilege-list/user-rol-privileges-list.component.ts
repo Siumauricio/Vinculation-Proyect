@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserRolPrivilege } from 'src/app/users/interfaces/user';
+import { UserRolPrivilege } from '../../../users/interfaces/user';
 import { UserRolPrivilegesService } from '../../user-rol-privileges.service';
 
 @Component({
@@ -18,7 +18,6 @@ export class UserRolPrivilegeListComponent implements OnInit {
 
   async getDataUserRolPrivileges() {
     await this.userRolPrivilegesService.getUserRolPrivileges().then((resp) => {
-      console.log(resp);
       this.userRolPrivilegesData = resp;
     });
   }

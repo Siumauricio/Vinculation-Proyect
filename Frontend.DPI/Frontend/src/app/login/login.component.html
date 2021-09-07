@@ -21,11 +21,14 @@
             <div class="card-body p-4 p-sm-5">           
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
               <div class="form-floating mb-4">
-                <input [(ngModel)]="newUser.username"
-                 [ngClass]="
+                <input 
+                (keypress)="keyPressAlphanumeric($event)"
+                [(ngModel)]="newUser.username"
+                [ngClass] ="
                 newUser.username == '' || newUser.username == null && loginForm.controls.user?.touched
                   ? 'is-invalid'
                   : ''"
+                 
                    type="text" class="form-control" formControlName="user" id="user" placeholder="Usuario">
                 <label for="floatingInput">Usuario</label>
               </div>
