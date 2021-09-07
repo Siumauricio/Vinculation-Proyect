@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { RolesRoutingModule } from './roles-routing.module';
 import { RolesFilterPipe } from './pipes/roles-filter.pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { RolesFilterPipe } from './pipes/roles-filter.pipe';
     FormsModule,
     ModalModule.forRoot(),
     ReactiveFormsModule,
+    NgxPaginationModule
   ],
 })
 export class RolesModule {}

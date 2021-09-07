@@ -10,6 +10,8 @@ import { RolPrivilegeService } from '../../rol_privilege.service';
 export class RolPrivilegeListComponent implements OnInit {
   rolPrivilegeFilterSelected: string = '';
   rolPrivilegeData: RolPrivilege[];
+  totalRecords :number;
+  page:number =1;
   constructor(private rolPrivilegeService: RolPrivilegeService) {}
 
   async ngOnInit() {

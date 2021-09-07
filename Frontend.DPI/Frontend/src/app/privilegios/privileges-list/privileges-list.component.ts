@@ -9,16 +9,17 @@ import { UsersService } from '../../users/users.service';
   styleUrls: ['./privileges-list.component.css']
 })
 export class PrivilegesListComponent implements OnInit {
-
+  totalRecords :number;
+  page:number =1;
   userFilterSelected: string = '';
   privileges: Privileges[];
   constructor(private privilegesService: PrivilegesService) {}
 
   async ngOnInit() {
-    await this.getRoles();
+    await this.getPrivileges();
   }
 
-  async getRoles() {
+  async getPrivileges() {
     await this.privilegesService.getPrivileges().then((resp) => {
       this.privileges = resp;
     });

@@ -22,13 +22,15 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let rolPrivilege of rolPrivilegeData | rolPrivilegeFilter: rolPrivilegeFilterSelected">
+        <tr *ngFor="let rolPrivilege of rolPrivilegeData | rolPrivilegeFilter: rolPrivilegeFilterSelected  | paginate: {  itemsPerPage:10, currentPage:page, totalItems:totalRecords }">
           <td>{{ rolPrivilege.idRolPrivilege }}</td>
           <td>{{ rolPrivilege.name_Rol }}</td>
           <td>{{ rolPrivilege.name_Privilege }}</td>
         </tr>
       </tbody>
     </table>
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+
   </div>
 </div>
 
