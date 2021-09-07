@@ -18,7 +18,7 @@ namespace Backend.DPI.Models
         }
 
         public virtual DbSet<CriminalDatum> CriminalData { get; set; }
-        public virtual DbSet<CriminalGroup> CriminalGroups { get; set; }
+        public virtual DbSet<CriminalGroupDto> CriminalGroups { get; set; }
         public virtual DbSet<CriminalRecord> CriminalRecords { get; set; }
         public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<PoliceRecord> PoliceRecords { get; set; }
@@ -105,7 +105,7 @@ namespace Backend.DPI.Models
                     .HasConstraintName("criminal_data_suspect_fk");
             });
 
-            modelBuilder.Entity<CriminalGroup>(entity =>
+            modelBuilder.Entity<CriminalGroupDto>(entity =>
             {
                 entity.HasKey(e => e.IdCg)
                     .HasName("criminal_group_pk");

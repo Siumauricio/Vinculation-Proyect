@@ -63,6 +63,8 @@ namespace Backend.DPI
             services.AddDbContext<DPIContext>((s, o) => o.UseSqlServer(Configuration.GetSection("ConnectionDBSqlServer").Get<string>()));
             services.AddScoped<IPrivilegeRepository, PrivilegeRepository>();
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+            services.AddScoped<ICriminalDataRepository, CriminalDataRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

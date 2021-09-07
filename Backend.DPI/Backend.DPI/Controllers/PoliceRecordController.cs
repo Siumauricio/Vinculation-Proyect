@@ -15,35 +15,35 @@ namespace Backend.DPI.Controllers
         private readonly PoliceRecordRepository _policeRecordRepository = new PoliceRecordRepository();
 
 
-        [HttpGet("GetRols")]
-        public async Task<ActionResult<IEnumerable<Rol>>> Get()
-        {
-            var Roles = await _rolesRepository.GetRoles();
+        //[HttpGet("GetRols")]
+        //public async Task<ActionResult<IEnumerable<Rol>>> Get()
+        //{
+        //    var Roles = await _rolesRepository.GetRoles();
 
-            if (Roles == null)
-            {
-                return NotFound();
-            }
-            return Ok(Roles);
-        }
+        //    if (Roles == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return Ok(Roles);
+        //}
 
-        [HttpGet("GetRolByName")]
-        public async Task<ActionResult<IEnumerable<Rol>>> GetRolByName(string rolName)
-        {
-            var Roles = await _rolesRepository.getRolbyName(rolName);
+        //[HttpGet("GetRolByName")]
+        //public async Task<ActionResult<IEnumerable<Rol>>> GetRolByName(string rolName)
+        //{
+        //    var Roles = await _rolesRepository.getRolbyName(rolName);
 
-            if (Roles == null)
-            {
-                return NotFound();
-            }
-            return Ok(Roles);
-        }
+        //    if (Roles == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return Ok(Roles);
+        //}
 
-        [HttpPost("CreateRol")]
-        public async Task<ActionResult<IEnumerable<Rol>>> CreateRol(string rolName)
-        {
-            var Roles = await _rolesRepository.CreateRolAsync(rolName);
-            return Ok(Roles);
-        }
+        //[HttpPost("CreateRol")]
+        //public async Task<ActionResult<IEnumerable<Rol>>> CreateRol(string rolName)
+        //{
+        //    var Roles = await _rolesRepository.CreateRolAsync(rolName);
+        //    return Ok(Roles);
+        //}
     }
 }

@@ -85,6 +85,12 @@ export class UpdateUserComponent implements OnInit {
       this.closeModal();
     });
   }
+
+  isValid(){
+    return !this.profileForm.dirty || this.profileForm.invalid ; 
+  }
+
+
   cleanUser(user: User) {
     if (user.username != null)
       user.username = user.username.replace(/[^0-9A-Za-z-._]/g, '');

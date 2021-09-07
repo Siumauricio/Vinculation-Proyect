@@ -108,7 +108,6 @@ namespace Backend.DPI.Controllers
         public async Task<ActionResult<IEnumerable<RolPrivilegeDto>>> GetUserRolPrivilegesByUser(string username)
         {
             var result = await privilegeRepository.GetUserRolPrivilegesByUserAsync(username);
-            if (result == null) return NotFound();
             return Ok(result);
 
         }

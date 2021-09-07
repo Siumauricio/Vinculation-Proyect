@@ -8,20 +8,20 @@
         <div class="modal-body">
           <div class="container p-4">
             <div class="form-floating mb-3">
-              <input  type="text" formControlName="username" (keypress)="keyPressAlphanumeric($event)" autocomplete="off" class="form-control" />
+              <input maxlength="30"  type="text" formControlName="username" (keypress)="keyPressAlphanumeric($event)" autocomplete="off" class="form-control" />
               <label for="floatingUser">Usuario</label>
             </div>
 
             <div class="row mb-3">
               <div class="col-md">
                 <div class="form-floating">
-                  <input  type="password" formControlName="password" (keypress)="keyPressAlphanumeric($event)" [ngClass]="checkPasswords()" class="form-control" />
+                  <input maxlength="16" type="password" formControlName="password" (keypress)="keyPressAlphanumeric($event)" [ngClass]="checkPasswords()" class="form-control" />
                   <label for="floatingPassword">Contraseña</label>
                 </div>
               </div>
               <div class="col-md">
                 <div class="form-floating">
-                  <input type="password"  formControlName="confirmPassword" (keypress)="keyPressAlphanumeric($event)"   [ngClass]="checkPasswords()" class="form-control" />
+                  <input maxlength="16" type="password"  formControlName="confirmPassword" (keypress)="keyPressAlphanumeric($event)"   [ngClass]="checkPasswords()" class="form-control" />
                   <label for="floatingPassword">Repetir contraseña</label>
                 </div>
               </div>

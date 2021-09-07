@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,11 +27,25 @@ namespace Backend.DPI.Repository
             {
                 return false;
             }
-            User uf = new User { Username = user.Username.ToLower(), Password = user.Password, RolIdRol = user.RolIdRol, DepartmentIdDepartment = user.DepartmentIdDepartment, CreationDatetime = DateTime.Now };
+            var encryptedPassword = await GetSHA256(user.Password);
+            User uf = new User { Username = user.Username.ToLower(), Password = encryptedPassword, RolIdRol = user.RolIdRol, DepartmentIdDepartment = user.DepartmentIdDepartment, CreationDatetime = DateTime.Now };
             await dbContext.Users.AddAsync(uf);
             await dbContext.SaveChangesAsync();
             return true;
         }
+
+        private async Task<string> GetSHA256(string str)
+        {
+            await Task.Delay(100);
+            SHA256 sha256 = SHA256Managed.Create();
+            ASCIIEncoding encoding = new ASCIIEncoding();
+            byte[] stream = null;
+            StringBuilder sb = new StringBuilder();
+            stream = sha256.ComputeHash(encoding.GetBytes(str));
+            for (int i = 0; i < stream.Length; i++) sb.AppendFormat("{0:x2}", stream[i]);
+            return sb.ToString();
+        }
+
         public async Task<bool> DeleteUserAsync(string user)
         {
             var deletePrivileges = new PrivilegeRepository(dbContext);
@@ -121,7 +136,8 @@ namespace Backend.DPI.Repository
             {
                 return false;
             }
-            result.Password = user.Password;
+            var encryptedPassword = await GetSHA256(user.Password);
+            result.Password = encryptedPassword;
             result.RolIdRol = user.RolIdRol;
             result.DepartmentIdDepartment = user.DepartmentIdDepartment;
             await dbContext.SaveChangesAsync();
@@ -130,11 +146,12 @@ namespace Backend.DPI.Repository
 
         public async Task<object> LoginAsync(string Username,string Password)
         {
+            var encryptedPassword = await GetSHA256(Password);
             var data = await (from user in dbContext.Users
                                 join department in dbContext.Departments on user.DepartmentIdDepartment equals department.IdDepartment
                                 join rol in dbContext.Rols on user.RolIdRol equals rol.IdRol
-                                where user.Username == Username && user.Password==Password
-                                select new
+                                where user.Username == Username && user.Password== encryptedPassword
+                              select new
                                 {
                                     Username = user.Username,
                                     Rol = rol.Name,

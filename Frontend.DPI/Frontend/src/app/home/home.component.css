@@ -1,4 +1,10 @@
-.image-home-bg{
+
+
+body{
+  margin-left: 531px;
+  margin-right: 531px;  
   opacity: 0.7;
   filter: alpha(opacity=50);
 }
+
+
