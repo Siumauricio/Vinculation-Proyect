@@ -1,7 +1,6 @@
 ﻿using Backend.DPI.ModelDto;
 using Backend.DPI.Models;
 using Backend.DPI.Repository;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
