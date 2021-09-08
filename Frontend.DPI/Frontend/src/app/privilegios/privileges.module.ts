@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { PrivilegesRoutingModule } from './privileges-routing.module';
 import { PrivilegesFilterPipe } from './pipes/privileges-filter.pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { PrivilegesFilterPipe } from './pipes/privileges-filter.pipe';
     FormsModule,
     ModalModule.forRoot(),
     ReactiveFormsModule,
+    NgxPaginationModule
   ],
 })
 export class PrivilegesModule {}

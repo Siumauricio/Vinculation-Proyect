@@ -9,7 +9,8 @@ import { UsersService } from '../../users/users.service';
   styleUrls: ['./rol-list.component.css']
 })
 export class RolListComponent implements OnInit {
-
+  totalRecords :number;
+  page:number =1;
   userFilterSelected: string = '';
   Roles: Rol[];
   constructor(private userService: UsersService) {}

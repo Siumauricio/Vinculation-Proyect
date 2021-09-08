@@ -8,7 +8,8 @@ import { UsersService } from '../../users/users.service';
   styleUrls: ['./departamento-list.component.css']
 })
 export class DepartamentoListComponent implements OnInit {
-
+  totalRecords :number;
+  page:number =1;
   userFilterSelected: string = '';
   Departments: Department[];
   constructor(private userService: UsersService) {}

@@ -101,7 +101,7 @@
 
             <li *ngFor="let privilege of this.userService.privilegeType;let i = index"  >
               <a href="#submenu{{i}}" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                <i class="fa fa-user"></i> 
+                <i class="{{privilege.icon}}"></i> 
                 <span  class="ms-1 d-none d-sm-inline">{{privilege.privilegeType}}</span>
               </a>
                   <ul class="collapse  flex-column ms-1 "  *ngFor="let namePrivilege of privilege.privilege" id="submenu{{i}}" >

@@ -24,7 +24,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let userRolPrivileges of userRolPrivilegesData | UserRolPrivilegeFilter: userRolPriviligeFilterSelected">
+        <tr *ngFor="let userRolPrivileges of userRolPrivilegesData | UserRolPrivilegeFilter: userRolPriviligeFilterSelected | paginate: {  itemsPerPage:10, currentPage:page, totalItems:totalRecords }">
           <td>{{ userRolPrivileges.idUserRolPrivilege }}</td>
           <td>{{ userRolPrivileges.username}}</td>
           <td>{{ userRolPrivileges.name_Rol }}</td>
@@ -34,5 +34,7 @@
         </tr>
       </tbody>
     </table>
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+
   </div>
 </div>

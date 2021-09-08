@@ -1,5 +1,5 @@
 import { UsersService } from './../users/users.service';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import {  Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
 import { RolPrivilege, User } from '../users/interfaces/user';
@@ -16,12 +16,11 @@ export class NavbarComponent implements OnInit {
   constructor(
       public auth: AuthenticationService,
       private router: Router,
-      private userService :UsersService,private cd: ChangeDetectorRef
+      private userService :UsersService
       ) { }
 
   async ngOnInit() {
     await this.userService.loadPrivilegesUser();
-    this.cd.detectChanges();
   }
 
 

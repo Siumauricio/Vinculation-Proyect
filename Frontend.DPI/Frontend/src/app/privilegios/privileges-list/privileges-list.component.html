@@ -18,16 +18,16 @@
           <tr>
             <th>ID PRIVILEGIO</th>
             <th>NOMBRE DEL PRIVILEGIO</th>
-            <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let privilege of privileges | userFilter: userFilterSelected">
+          <tr *ngFor="let privilege of privileges | userFilter: userFilterSelected | paginate: {  itemsPerPage:10, currentPage:page, totalItems:totalRecords }">
             <td>{{ privilege.idPrivilege }}</td>
             <td>{{ privilege.name  }}</td>
           </tr>
         </tbody>
       </table>
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
     </div>
   </div>
   

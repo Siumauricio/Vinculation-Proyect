@@ -18,16 +18,17 @@
           <tr>
             <th>ID ROL</th>
             <th>NOMBRE DEL ROL</th>
-            <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let rol of Roles | userFilter: userFilterSelected">
+          <tr *ngFor="let rol of Roles | userFilter: userFilterSelected | paginate: {  itemsPerPage:10, currentPage:page, totalItems:totalRecords }">
             <td>{{ rol.idRol }}</td>
             <td>{{ rol.name  }}</td>
           </tr>
         </tbody>
       </table>
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+
     </div>
   </div>
   

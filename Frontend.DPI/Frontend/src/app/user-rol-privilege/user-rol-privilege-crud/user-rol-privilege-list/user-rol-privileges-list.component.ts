@@ -10,6 +10,8 @@ import { UserRolPrivilegesService } from '../../user-rol-privileges.service';
 export class UserRolPrivilegeListComponent implements OnInit {
   userRolPriviligeFilterSelected: string = '';
   userRolPrivilegesData: UserRolPrivilege[];
+  totalRecords :number;
+  page:number =1;
   constructor(private userRolPrivilegesService: UserRolPrivilegesService) {}
 
   async ngOnInit() {

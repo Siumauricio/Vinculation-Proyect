@@ -23,7 +23,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of userData | userFilter: userFilterSelected">
+        <tr *ngFor="let user of userData | userFilter: userFilterSelected  | paginate: {  itemsPerPage:10, currentPage:page, totalItems:totalRecords }">
           <td>{{ user.username }}</td>
           <td>{{ user.fechaCreacion | date: "dd/MM/yyyy" }}</td>
           <td>{{ user.nombreRol }}</td>
@@ -31,5 +31,7 @@
         </tr>
       </tbody>
     </table>
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+
   </div>
 </div>

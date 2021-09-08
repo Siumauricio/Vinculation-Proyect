@@ -8,7 +8,7 @@ namespace Backend.DPI.Repository
 {
     public class PoliceRecordRepository : IPoliceRecordRepository
     {
-        private readonly DPIContext dpiContext;
+        private readonly DPIContext dpiContext =  new DPIContext();
 
         public async Task<bool> CreatePoliceRecord(PoliceRecord policeRecord)
         {
@@ -29,6 +29,7 @@ namespace Backend.DPI.Repository
                 return false;
             }
             this.dpiContext.PoliceRecords.Remove(result);
+            await dpiContext.SaveChangesAsync();
             return true;
         }
 

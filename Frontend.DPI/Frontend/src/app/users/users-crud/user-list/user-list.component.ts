@@ -10,6 +10,8 @@ import { UsersService } from '../../users.service';
 export class UserListComponent implements OnInit {
   userFilterSelected: string = '';
   userData: User[];
+  totalRecords :number;
+  page:number =1;
   constructor(private userService: UsersService) {}
 
   async ngOnInit() {

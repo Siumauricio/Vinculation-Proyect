@@ -1,5 +1,6 @@
 ﻿using Backend.DPI.Models;
 using Backend.DPI.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,40 +11,44 @@ namespace Backend.DPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
+
     public class PoliceRecordController : Controller
     {
         private readonly PoliceRecordRepository _policeRecordRepository = new PoliceRecordRepository();
 
+        [HttpGet("GetPoliceRecords")]
+        public async Task<ActionResult<IEnumerable<PoliceRecord>>> Get()
+        {
+            var result = await _policeRecordRepository.GetPoliceRecord();
+            return Ok(result);
+        }
 
-        //[HttpGet("GetRols")]
-        //public async Task<ActionResult<IEnumerable<Rol>>> Get()
-        //{
-        //    var Roles = await _rolesRepository.GetRoles();
+        [HttpGet("GetPoliceRecordsByDNI")]
+        public async Task<ActionResult<IEnumerable<PoliceRecord>>> GetPoliceRecordsByDNI(string dniSuspect)
+        {
+            var result = await _policeRecordRepository.GetPoliceRecordByDNISuspect(dniSuspect);
+            return Ok(result);
+        }
 
-        //    if (Roles == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return Ok(Roles);
-        //}
+        [HttpPost("CreatePoliceRecord")]
+        public async Task<ActionResult<IEnumerable<PoliceRecord>>> CreatePoliceRecord(PoliceRecord policeRecord)
+        {
+            var result = await _policeRecordRepository.CreatePoliceRecord(policeRecord);
+            return Ok(result);
+        }
 
-        //[HttpGet("GetRolByName")]
-        //public async Task<ActionResult<IEnumerable<Rol>>> GetRolByName(string rolName)
-        //{
-        //    var Roles = await _rolesRepository.getRolbyName(rolName);
-
-        //    if (Roles == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return Ok(Roles);
-        //}
-
-        //[HttpPost("CreateRol")]
-        //public async Task<ActionResult<IEnumerable<Rol>>> CreateRol(string rolName)
-        //{
-        //    var Roles = await _rolesRepository.CreateRolAsync(rolName);
-        //    return Ok(Roles);
-        //}
+        [HttpDelete("DeletePoliceRecord")]
+        public async Task<ActionResult<IEnumerable<PoliceRecord>>> DeletePoliceRecord(int idPoliceRecord)
+        {
+            var result = await _policeRecordRepository.DeletePoliceRecord(idPoliceRecord);
+            return Ok(result);
+        }
+        [HttpPost("ModifyPoliceRecord")]
+        public async Task<ActionResult<IEnumerable<PoliceRecord>>> ModifyPoliceRecord(PoliceRecord policeRecord)
+        {
+            var result = await _policeRecordRepository.ModifyPoliceRecord(policeRecord);
+            return Ok(result);
+        }
     }
 }

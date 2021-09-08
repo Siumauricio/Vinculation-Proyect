@@ -9,6 +9,7 @@ import { UserFilterPipe } from './pipes/user-filter.pipe';
 import { UserListComponent } from './users-crud/user-list/user-list.component';
 import { UserCreateComponent } from './users-crud/user-create/user-create.component';
 import { UserDeleteComponent } from './users-crud/user-delete/user-delete.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { UserDeleteComponent } from './users-crud/user-delete/user-delete.compon
     FormsModule,
     ModalModule.forRoot(),
     ReactiveFormsModule,
+    NgxPaginationModule
   ],
 })
 export class UsersModule {}

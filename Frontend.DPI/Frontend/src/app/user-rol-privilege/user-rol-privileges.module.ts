@@ -1,3 +1,4 @@
+import { NgxPaginationModule } from 'ngx-pagination';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -23,6 +24,7 @@ import { UserRolPrivilegeDeleteComponent } from './user-rol-privilege-crud/user-
     FormsModule,
     ModalModule.forRoot(),
     ReactiveFormsModule,
+    NgxPaginationModule
   ],
 })
 export class UserRolPrivilegesModule {}

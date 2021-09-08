@@ -18,16 +18,17 @@
           <tr>
             <th>ID DEPARTAMENTO</th>
             <th>NOMBRE DEL DEPARTAMENTO</th>
-            <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let Department of Departments | userFilter: userFilterSelected">
+          <tr *ngFor="let Department of Departments | userFilter: userFilterSelected | paginate: {  itemsPerPage:10, currentPage:page, totalItems:totalRecords }">
             <td>{{ Department.idDepartment }}</td>
             <td>{{ Department.name  }}</td>
           </tr>
         </tbody>
       </table>
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+
     </div>
   </div>
   
