@@ -8,14 +8,11 @@ import Swal from 'sweetalert2';
 })
 export class PrivilegesService {
   constructor(private http: HttpClient) {}
-  token:any;
 
   async getPrivileges(){
     
     const url = `${WEB_SERVICE}Privilege/GetPrivileges` ;
     let answer: any = {};
-  this.token = JSON.parse(localStorage.getItem('Token'));
-
     await this.http
       .get(url)
       .toPromise()

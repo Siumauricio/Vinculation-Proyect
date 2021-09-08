@@ -1,6 +1,7 @@
 ﻿using Backend.DPI.ModelDto;
 using Backend.DPI.Models;
 using Backend.DPI.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -13,6 +14,7 @@ namespace Backend.DPI.Controllers
 
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class CriminalDatumController : Controller
     {
         private readonly ICriminalDataRepository _criminalDataRepository;
