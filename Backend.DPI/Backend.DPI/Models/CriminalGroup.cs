@@ -5,9 +5,9 @@ using System.Collections.Generic;
 
 namespace Backend.DPI.Models
 {
-    public partial class CriminalGroupDto
+    public partial class CriminalGroup
     {
-        public CriminalGroupDto()
+        public CriminalGroup()
         {
             CriminalData = new HashSet<CriminalDatum>();
         }

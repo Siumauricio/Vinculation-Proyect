@@ -52,7 +52,7 @@ namespace Backend.DPI
 
 
             services.AddCors(options => {
-                options.AddPolicy("CorsPolicy", builder => builder.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader().AllowCredentials());
+                options.AddPolicy("CorsPolicy", builder => builder.WithOrigins(Configuration["Front-Server"]).AllowAnyMethod().AllowAnyHeader().AllowCredentials());
             });
             services.AddControllers();
          
@@ -64,6 +64,7 @@ namespace Backend.DPI
             services.AddScoped<IPrivilegeRepository, PrivilegeRepository>();
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
             services.AddScoped<ICriminalDataRepository, CriminalDataRepository>();
+            services.AddScoped<ICriminalGroupRepository, CriminalGroupRepository>();
 
         }
 

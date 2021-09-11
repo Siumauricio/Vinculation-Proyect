@@ -17,7 +17,7 @@ namespace Backend.DPI.Models
         public string SuspectDni { get; set; }
         public int CriminalGroupIdCg { get; set; }
 
-        public virtual CriminalGroupDto CriminalGroupIdCgNavigation { get; set; }
+        public virtual CriminalGroup CriminalGroupIdCgNavigation { get; set; }
         public virtual Suspect SuspectDniNavigation { get; set; }
     }
 }
