@@ -1,0 +1,101 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header bg-primary">
+      AGREGAR REGISTROS CRIMINALES
+    </div>
+    <div class="card-body">
+      <form [formGroup]="criminalForm" (ngSubmit)="onSubmit()" [ngClass]=" !this.validForm?'was-validated':''">
+        <div class="modal-body">
+          <div class="container p-4">
+
+            <div class="form-floating mb-3">
+              <input id="floatingDNI" type="text" formControlName="suspectDni"
+              (keypress)="keyPressAlphanumeric($event)" minlength="13" autocomplete="off" class="form-control"
+              maxlength="13" pattern="[0-9]+" required/>
+              <label for="floatingDNI">DNI<label style="color: red;">*</label></label>
+              <div class="invalid-feedback">
+                campo identidad requerido
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="input-group mb-3">
+                <label class="input-group-text" for="roles">Tipo de incidencia </label>
+                <select class="form-select"  id="roles"  formControlName="incidenceType">
+                  <option value="" selected disabled hidden>Escoge un tipo</option>
+                  <option value="No aplica" selected>No aplica</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="input-group mb-3">
+                <label class="input-group-text" for="roles">Zona de Incidencia</label>
+                <select class="form-select"  id="roles" formControlName="incidenceZone">
+                  <option value="" selected disabled hidden>Escoge una zona</option>
+                  <option value="No aplica" selected>No aplica</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+
+              <div class="col-md">
+                <div class="form-floating">
+                  <input  type="number" formControlName="periodBelong" (keypress)="keyPressAlphanumeric($event)"
+                  class="form-control" required />
+                  <label for="floatingPassword">Periodo de duracion (meses)<label style="color: red;">*</label> </label>
+                </div>
+                <div class="invalid-feedback">
+                  duracion requerida
+                </div>
+              </div>
+
+            </div>
+
+
+            <div class="form-floating mb-3">
+              <input type="text"  formControlName="operationPlace" (keypress)="keyPressAlphanumeric($event)"
+                class="form-control" required/>
+              <label for="floatingPassword">Lugar de oparaciones<label style="color: red;">*</label></label>
+            </div>
+
+
+            <div class="form-floating mb-3">
+              <input  type="text" formControlName="tatooType" (keypress)="keyPressAlphanumeric($event)" maxlength="20" autocomplete="off" class="form-control" />
+              <label for="floatingUser">Tipo de tatuaje</label>
+            </div>
+
+            <div class="row mb-3">
+              <div class="input-group mb-3">
+                <label class="input-group-text" for="rgrupo">Grupo criminal</label>
+                <select class="form-select"  id="grupo" required formControlName="criminalGroupIdCg">
+              <option *ngFor="let group of criminalGroups" [value]="group.idCg">
+                {{ group.nombreGrupoCriminal }}
+              </option>
+              </select>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="input-group mb-3">
+                <label class="input-group-text" for="roles">Jerarquía</label>
+                <select class="form-select"  id="roles"  formControlName="hierarchyCriminalGroup">
+                  <option value="" selected disabled hidden>Escoge una jerarquia</option>
+                  <option value="No aplica" selected>No aplica</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row py-3 pull-right">
+              <button  class="btn btn-success" type="submit"  >
+               Registrar datos
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>

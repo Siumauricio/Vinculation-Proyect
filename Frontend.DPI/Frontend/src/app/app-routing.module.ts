@@ -27,7 +27,7 @@ const routes: Routes = [
         loadChildren: () =>
           import('./users/users.module').then((m) => m.UsersModule),
       },
-      
+
       {
         path: 'privileges',
         canActivate: [UserAuthenticationGuard],
@@ -70,9 +70,15 @@ const routes: Routes = [
         loadChildren: () =>
           import('./sospechosos/suspect.module').then((m) => m.SuspectModule),
       },
-  
+      {
+        path: 'privileges',
+        canActivate: [UserAuthenticationGuard],
+        loadChildren: () =>
+          import('./criminals/criminals.module').then((m)=> m.CriminalsModule),
+      }
+
 ],
-   
+
   },
   { path: 'login', component: LoginComponent },
   { path: '**', component: PagenotfoundComponent },

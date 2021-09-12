@@ -1,0 +1,37 @@
+<div class="container">
+  <h1 style="text-align: left;">LISTADO DE REGISTROS CRIMINALES</h1>
+
+  <div class="row my-3">
+    <div class="col-md-4">
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1"
+          ><i class="fa fa-filter"></i
+        ></span>
+        <input  type="text"  class="form-control" [(ngModel)]="criminalsFilter"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12 table-responsive">
+    <table class="table table-striped table-sm">
+      <thead class="bg-primary">
+        <tr>
+          <th>DNI</th>
+          <th>Grupo criminal</th>
+          <th>Lugar de operacion</th>
+          <th>Periodo de duracion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let criminal of criminals |criminalFilter: criminalsFilter | paginate: {  itemsPerPage:10, currentPage:page, totalItems:totalRecords }">
+          <td>{{ criminal.suspectDni }}</td>
+          <td>{{ criminal.criminalGroupName}}</td>
+          <td>{{ criminal.operationPlace }}</td>
+          <td>{{ criminal.periodBelong }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+
+  </div>
+</div>

@@ -78,7 +78,7 @@
 <span *ngIf="this.auth.isLoggedIn">
   <br /><br />
   <div
-    class="col-md-3 col-xl-2 px-0 sticky-top"
+    class="col-md-4 col-xl-3 px-0 sticky-top"
     id="mySidebar"
     [ngClass]="this.auth.openSidebar ? 'sidebar-open' : 'sidebar-hide'"
   >
@@ -101,14 +101,13 @@
 
             <li *ngFor="let privilege of this.userService.privilegeType;let i = index"  >
               <a href="#submenu{{i}}" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                <i class="{{privilege.icon}}"></i> 
+                <i class="{{privilege.icon}}"></i>
+                <i class="fa fa-users-slash"></i>
                 <span  class="ms-1 d-none d-sm-inline">{{privilege.privilegeType}}</span>
               </a>
                   <ul class="collapse  flex-column ms-1 "  *ngFor="let namePrivilege of privilege.privilege" id="submenu{{i}}" >
                     <li class="w-100">
-
-                      <a [routerLink]="['/privileges/'+namePrivilege]"  class="nav-link px-0" style="text-decoration: none;" >{{namePrivilege}}</a>
-
+                      <a [routerLink]="['/privileges/'+namePrivilege]"  class="nav-link px-0" style="text-decoration: none;" >•{{namePrivilege}}</a>
                     </li>
 
                   </ul>

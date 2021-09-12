@@ -58,7 +58,7 @@ namespace Backend.DPI.Repository
         {
             var result = await (from criminal_data in _dpiContext.CriminalData
                                 join criminal_group in _dpiContext.CriminalGroups on criminal_data.CriminalGroupIdCg equals criminal_group.IdCg
-                                where criminal_data.SuspectDni == DNI
+                                where criminal_data.SuspectDni.Contains(DNI)
                                 select new
                                 {
                                     IdCriminalData = criminal_data.IdCriminalData,
@@ -68,7 +68,8 @@ namespace Backend.DPI.Repository
                                     PeriodBelong = criminal_data.PeriodBelong,
                                     TatooType = criminal_data.TatooType,
                                     SuspectDni = criminal_data.SuspectDni,
-                                    CriminalGroupName = criminal_group.NombreGrupoCriminal
+                                    CriminalGroupName = criminal_group.NombreGrupoCriminal,
+                                    CriminalGroupIdCg = criminal_data.CriminalGroupIdCg
                                 }).ToListAsync();
             if (result == null) return null;
             return result;
@@ -77,7 +78,14 @@ namespace Backend.DPI.Repository
         public async Task<bool> UpdateCriminalDataByIdAsync(CriminalDatum CriminalData)
         {
             var result = await _dpiContext.CriminalData.FirstOrDefaultAsync(x => x.IdCriminalData == CriminalData.IdCriminalData);
-            if (result == null) return false;
+            if (result == null) 
+                return false;
+
+            result.CriminalGroupIdCg = CriminalData.CriminalGroupIdCg;
+            result.PeriodBelong = CriminalData.PeriodBelong;
+            result.TatooType = CriminalData.TatooType;
+            result.OperationPlace = CriminalData.OperationPlace;
+            await _dpiContext.SaveChangesAsync();
             return true;
         }
     }

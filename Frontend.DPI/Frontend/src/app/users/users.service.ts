@@ -177,7 +177,7 @@ export class UsersService {
     }
     return null;
   }
-  
+
   getUniqueValuesFromPrivilegeType(){
     const unique = [...new Set(this.auth.privileges.map(item => item.tipo_privilegio))];
     let privileges = [];
@@ -195,11 +195,11 @@ export class UsersService {
         }
         privileges.push(object);
     }
-  
+
     return privileges;
    }
 
-  
+
 
   async updtUserPrivilege(
     idRolPrivilege: number,
@@ -275,5 +275,6 @@ const Icons =  {
     'Sospechosos' : 'fa fa-user-secret',
     'Usuarios' : 'fa fa-user',
     'Roles' : 'fa fa-users',
-    'Grupos Criminales' : 'fa fa-users-slash'
+    'Grupos Criminales' : 'fa fa-users-slash',
+    'Caractersiticas Personales': 'fa fa-users'
   }

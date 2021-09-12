@@ -540,3 +540,4 @@ C:\Users\alberto jose lopez\Desktop\uni\tri 15\ingenieria de software 2\Proyecto
 C:\Users\alberto jose lopez\Desktop\uni\tri 15\ingenieria de software 2\Proyecto-Vinculacion-DPI\Backend.DPI\Backend.DPI\obj\Debug\net5.0\Backend.DPI.genruntimeconfig.cache
 C:\Users\enrik\Documents\GitHub\Proyecto-Vinculacion-DPI\Backend.DPI\Backend.DPI\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\GitHub\Proyecto-Vinculacion-DPI\Backend.DPI\Backend.DPI\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\alberto jose lopez\Desktop\uni\tri 15\ingenieria de software 2\Proyecto-Vinculacion-DPI\Backend.DPI\Backend.DPI\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
