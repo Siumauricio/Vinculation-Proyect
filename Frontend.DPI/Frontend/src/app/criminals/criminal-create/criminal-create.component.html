@@ -24,6 +24,7 @@
                 <select class="form-select"  id="roles"  formControlName="incidenceType">
                   <option value="" selected disabled hidden>Escoge un tipo</option>
                   <option value="No aplica" selected>No aplica</option>
+                  
                 </select>
               </div>
             </div>
@@ -57,7 +58,7 @@
             <div class="form-floating mb-3">
               <input type="text"  formControlName="operationPlace" (keypress)="keyPressAlphanumeric($event)"
                 class="form-control" required/>
-              <label for="floatingPassword">Lugar de oparaciones<label style="color: red;">*</label></label>
+              <label for="floatingPassword">Lugar de operaciones<label style="color: red;">*</label></label>
             </div>
 
 

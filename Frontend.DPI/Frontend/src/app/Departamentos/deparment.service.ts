@@ -43,6 +43,7 @@ export class DepartmentService {
       });
       return answer;
     }
+    
     async DeleteDepartment(Departmentname:string){
       const url = `${WEB_SERVICE}Department/DeleteDepartment?departmentName=${Departmentname}`;
       let answer: any = {};
