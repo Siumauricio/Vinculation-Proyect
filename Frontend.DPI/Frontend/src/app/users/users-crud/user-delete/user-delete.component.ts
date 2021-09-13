@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class UserDeleteComponent implements OnInit {
   newUser: User = {} as User;
-  userFilterSelected: string = 'enriquecs';
+  userFilterSelected: string = '';
   userData: User[];
   buttonDisabled: boolean;
 

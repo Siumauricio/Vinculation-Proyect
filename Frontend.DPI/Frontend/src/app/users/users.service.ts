@@ -276,7 +276,7 @@ const Icons =  {
     'Roles a Privilegios' : 'fa fa-cogs',
     'Sospechosos' : 'fa fa-user-secret',
     'Usuarios' : 'fa fa-user',
-    'Roles' : 'fa fa-users',
-    'Grupos Criminales' : 'fa fa-users-slash',
+    'Roles' : 'fa fa-sitemap',
+    'Grupos Criminales' : 'fa fa-users',
     'Caracteristicas Personales': 'fa fa-address-book'
   }
