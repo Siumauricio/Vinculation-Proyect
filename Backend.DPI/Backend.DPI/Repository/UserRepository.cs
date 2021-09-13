@@ -66,7 +66,7 @@ namespace Backend.DPI.Repository
                                 join b in dbContext.Rols on a.RolIdRol equals b.IdRol 
                                 join c in dbContext.Departments on a.DepartmentIdDepartment equals c.IdDepartment
                                 where a.Username == username
-                                select new { Username = a.Username, FechaCreacion = a.CreationDatetime, NombreRol = b.Name, NombreDepartamento = c.Name,a.RolIdRol,a.DepartmentIdDepartment,a.Password }).FirstOrDefaultAsync();
+                                select new { Username = a.Username, FechaCreacion = a.CreationDatetime, NombreRol = b.Name, NombreDepartamento = c.Name,a.RolIdRol,a.DepartmentIdDepartment }).FirstOrDefaultAsync();
             if (result == null)
             {
                 return null;
@@ -136,8 +136,11 @@ namespace Backend.DPI.Repository
             {
                 return false;
             }
-            var encryptedPassword = await GetSHA256(user.Password);
-            result.Password = encryptedPassword;
+            if (user.Password != null)
+            {
+                var encryptedPassword = await GetSHA256(user.Password);
+                result.Password = encryptedPassword;
+            }
             result.RolIdRol = user.RolIdRol;
             result.DepartmentIdDepartment = user.DepartmentIdDepartment;
             await dbContext.SaveChangesAsync();

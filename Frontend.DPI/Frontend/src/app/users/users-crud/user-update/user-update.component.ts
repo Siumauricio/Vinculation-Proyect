@@ -4,7 +4,7 @@ import { UsersService } from '../../users.service';
 import { stringify } from 'querystring';
 import { InvokeFunctionExpr } from '@angular/compiler';
 import { ModalDirective } from 'ngx-bootstrap/modal';
-import { FormControl, FormGroup, Validators, FormBuilder, AbstractControl } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormBuilder, AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
 @Component({
   selector: 'app-user-update',
   templateUrl: './user-update.component.html',
@@ -13,7 +13,7 @@ import { FormControl, FormGroup, Validators, FormBuilder, AbstractControl } from
 export class UpdateUserComponent implements OnInit {
   @ViewChild('updateUserModal', { static: true }) updateUserModal: ModalDirective;
   newUser: User = {} as User;
-  userFilterSelected: string = '';
+  userFilterSelected: string = 'mauricio2';
   userData: User[];
   rolsData: Rol[];
   departmentsData: Department[];
@@ -23,8 +23,8 @@ export class UpdateUserComponent implements OnInit {
   constructor(private userService: UsersService,private formBuilder:FormBuilder) {
     this.profileForm = this.formBuilder.group({
       username: new FormControl({value:'',disabled:true}),
-      password: new FormControl({value:''},Validators.required),
-      confirmPassword: new FormControl({value:''},Validators.required),
+      password: new FormControl(''),
+      confirmPassword: new FormControl(''),
       rolIdRol: new FormControl(''),
       departmentIdDepartment: new FormControl(''),
     })
@@ -40,18 +40,27 @@ export class UpdateUserComponent implements OnInit {
     await this.userService.getUserByUsername(username).then((resp) => {
       this.userData = resp;
       this.newUser = resp;
+      console.log(this.newUser.password);
       this.profileForm.setValue({
         username: this.newUser.username,
-        password: this.newUser.password,
-        confirmPassword: this.newUser.password,
+        password: '',
+        confirmPassword: '',
         rolIdRol: this.newUser.rolIdRol,
         departmentIdDepartment: this.newUser.departmentIdDepartment,
       });
     });
   }
   checkPasswords() {
-    if (this.profileForm.get('password').value != this.profileForm.get('confirmPassword').value || this.profileForm.get('password').value=='' ){
+    if (!this.profileForm.controls.password.dirty) {
+        return;
+    }
+    if (this.profileForm.get('password').value == '' && this.profileForm.get('confirmPassword').value =='') {
+      this.profileForm.setErrors(null);
+        return ''
+    }
+    if (this.profileForm.get('password').value != this.profileForm.get('confirmPassword').value || this.profileForm.get('password').value == '' ) {
       this.buttonDisabled=false;
+      this.profileForm.setErrors({required:true}) 
       return 'is-invalid'
     }
     else 
@@ -80,7 +89,12 @@ export class UpdateUserComponent implements OnInit {
     
   }
   async updateUser(newUser) {
-
+    if (newUser.password == null || newUser.password == '') {
+      console.log('no hay')
+      delete newUser.password;
+      delete newUser.confirmPassword;
+    }
+    console.log(newUser)
     await this.userService.updtUser(newUser).then((resp) => {
       this.closeModal();
     });
@@ -90,11 +104,22 @@ export class UpdateUserComponent implements OnInit {
     return !this.profileForm.dirty || this.profileForm.invalid ; 
   }
 
-
   cleanUser(user: User) {
     if (user.username != null)
       user.username = user.username.replace(/[^0-9A-Za-z-._]/g, '');
     if (user.password != null)
       user.password = user.password.replace(/[^0-9A-Za-z-._]/g, '');
   }
+
+  keyPressAlphanumeric(event) {
+    var inp = String.fromCharCode(event.keyCode);
+    if (/[a-zA-Z0-9_ ]/.test(inp)) {
+      return true;
+    } else {
+      event.preventDefault();
+      return false;
+    }
+}
+
+
 }

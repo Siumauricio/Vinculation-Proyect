@@ -84,6 +84,7 @@
                 formControlName="username"
                 class="form-control"
                 placeholder="Usuarios"
+                (keypress)="keyPressAlphanumeric($event)"
               />
               <label for="floatingUser">Usuario</label>
             </div>
@@ -96,6 +97,7 @@
                     class="form-control"
                     placeholder="Password"
                     id="floatingPassword"
+                    (keypress)="keyPressAlphanumeric($event)"
                   [ngClass]="checkPasswords()"
                   />
                   <label for="floatingPassword">Contraseña</label>
@@ -108,6 +110,7 @@
                     formControlName="confirmPassword"
                     class="form-control"
                     placeholder="Password"
+                    (keypress)="keyPressAlphanumeric($event)"
                     [ngClass]="
                     checkPasswords()
                   "
