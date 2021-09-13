@@ -13,7 +13,7 @@ import { FormControl, FormGroup, Validators, FormBuilder, AbstractControl, Valid
 export class UpdateUserComponent implements OnInit {
   @ViewChild('updateUserModal', { static: true }) updateUserModal: ModalDirective;
   newUser: User = {} as User;
-  userFilterSelected: string = 'mauricio2';
+  userFilterSelected: string = '';
   userData: User[];
   rolsData: Rol[];
   departmentsData: Department[];
@@ -94,7 +94,6 @@ export class UpdateUserComponent implements OnInit {
       delete newUser.password;
       delete newUser.confirmPassword;
     }
-    console.log(newUser)
     await this.userService.updtUser(newUser).then((resp) => {
       this.closeModal();
     });
