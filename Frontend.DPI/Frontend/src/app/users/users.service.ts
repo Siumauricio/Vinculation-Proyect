@@ -276,5 +276,5 @@ const Icons =  {
     'Usuarios' : 'fa fa-user',
     'Roles' : 'fa fa-users',
     'Grupos Criminales' : 'fa fa-users-slash',
-    'Caractersiticas Personales': 'fa fa-users'
+    'Caracteristicas Personales': 'fa fa-address-book'
   }
