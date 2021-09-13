@@ -173,6 +173,8 @@ export class UsersService {
         localStorage.setItem("SizePrivileges",this.auth.privileges.length.toString());
         this.privilegeType = this.getUniqueValuesFromPrivilegeType();
         return this.privilegeType;
+       }else{
+         this.privilegeType = null;
        }
     }
     return null;
