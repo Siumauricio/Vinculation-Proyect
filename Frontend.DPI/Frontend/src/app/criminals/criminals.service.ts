@@ -34,7 +34,7 @@ export class CriminalsService {
         if (answer) this.succesMessage('¡Se han ingresado los datos con exito!');
       })
       .catch(async (error) => {
-        this.errorMessage('Ocurrio un error al ingresar los datos');
+        this.errorMessage('DNI de sospechoso aun no existe');
       });
 
     return answer;

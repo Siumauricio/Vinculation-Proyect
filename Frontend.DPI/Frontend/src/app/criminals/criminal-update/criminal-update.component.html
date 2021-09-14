@@ -80,7 +80,7 @@
             <div class="form-floating mb-3">
               <input id="floatingDNI" type="text" formControlName="suspectDni"
               (keypress)="keyPressAlphanumeric($event)" minlength="13" autocomplete="off" class="form-control"
-              maxlength="13" pattern="[0-9]+" disabled/>
+              maxlength="13" pattern="[0-9]+" />
               <label for="floatingDNI">DNI<label style="color: red;">*</label></label>
               <div class="invalid-feedback">
                 campo identidad requerido
@@ -182,7 +182,7 @@
 
             <div class="row py-3 pull-right">
               <button  class="btn btn-success" type="submit"  >
-               Registrar datos
+               Actualizar datos
               </button>
             </div>
           </div>

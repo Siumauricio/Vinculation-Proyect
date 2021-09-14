@@ -21,7 +21,7 @@ export class CriminalCreateComponent implements OnInit {
       this.criminalForm = this.formBuilder.group({
         incidenceType: [''],
         incidenceZone: [''],
-        hierarchyCriminalGroup: [''],
+        hierarchyCriminalGroup: ['',Validators.required],
         periodBelong: ['',Validators.required],
         operationPlace: ['',Validators.required],
         tatooType: [''],

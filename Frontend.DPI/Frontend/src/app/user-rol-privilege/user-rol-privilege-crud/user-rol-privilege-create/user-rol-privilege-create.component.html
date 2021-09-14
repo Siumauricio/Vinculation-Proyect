@@ -14,7 +14,7 @@
                 <select class="form-select"  id="username"  formControlName="username">
               <option value="" selected disabled hidden>Escoge un usuario</option>
               <option *ngFor="let user of usersData" [value]="user.username">
-                {{ user.username }} - {{user.nombreDepartamento}}
+                {{ user.username }} - {{user.nombreRol}} - {{user.nombreDepartamento}}
               </option>
               </select>
               </div>

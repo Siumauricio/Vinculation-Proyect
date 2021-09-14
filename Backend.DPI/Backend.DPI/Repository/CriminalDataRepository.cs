@@ -19,10 +19,9 @@ namespace Backend.DPI.Repository
 
         public async Task<bool> AddCriminalDataAsync(CriminalDatum CriminalData)
         {
-            var result = await _dpiContext.CriminalData.AddAsync(CriminalData);
-            if (result == null) return false;
-            await _dpiContext.SaveChangesAsync();
-            return true;
+            await _dpiContext.CriminalData.AddAsync(CriminalData);
+            if (await _dpiContext.SaveChangesAsync()>0) return true;
+            return false;
         }
 
         public async Task<bool> DeleteCriminalDataByIdAsync(int IdCriminalData)
@@ -83,7 +82,7 @@ namespace Backend.DPI.Repository
         var result = await _dpiContext.CriminalData.FirstOrDefaultAsync(x => x.IdCriminalData == CriminalData.IdCriminalData);
         if (result == null)
             return false;
-
+        result.SuspectDni = CriminalData.SuspectDni;
         result.CriminalGroupIdCg = CriminalData.CriminalGroupIdCg;
         result.PeriodBelong = CriminalData.PeriodBelong;
         result.TatooType = CriminalData.TatooType;
