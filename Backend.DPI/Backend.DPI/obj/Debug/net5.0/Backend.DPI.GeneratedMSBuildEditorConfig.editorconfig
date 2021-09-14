@@ -6,5 +6,3 @@ build_property.ProjectTypeGuids =
 build_property.PublishSingleFile = 
 build_property.IncludeAllContentForSelfExtract = 
 build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
-build_property.RootNamespace = Backend.DPI
-build_property.ProjectDir = C:\Users\alberto jose lopez\Desktop\uni\tri 15\ingenieria de software 2\Proyecto-Vinculacion-DPI\Backend.DPI\Backend.DPI\
