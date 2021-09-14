@@ -14,7 +14,7 @@ namespace Backend.DPI.Controllers
 
     [ApiController]
     [Route("[controller]")]
-    //[Authorize]
+    [Authorize]
     public class CriminalDatumController : Controller
     {
         private readonly ICriminalDataRepository _criminalDataRepository;

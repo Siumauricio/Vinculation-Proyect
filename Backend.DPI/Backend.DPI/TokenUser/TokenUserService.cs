@@ -51,7 +51,7 @@ namespace Backend.DPI.TokenUser
                 issuer: ServerFrontEnd,
                 audience: ServerFrontEnd,
                 claims: new List<Claim>(),
-                expires: DateTime.Now.AddMinutes(60),
+                expires: DateTime.Now.AddMinutes(480),
                 signingCredentials: signinCredentials
             );
             return new JwtSecurityTokenHandler().WriteToken(tokeOptions);
