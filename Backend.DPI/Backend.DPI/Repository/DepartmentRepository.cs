@@ -44,7 +44,7 @@ namespace Backend.DPI.Repository
 
         public async Task<IReadOnlyList<Department>> GetDepartmentsAsync()
         {
-            return await dpiContext.Departments.ToListAsync();
+            return await dpiContext.Departments.OrderBy(departments=>departments.Name).ToListAsync();
         }
 
         public async Task<Department> GetDepartmentsByNameAsync(string departmentName)

@@ -7,7 +7,7 @@
           <span class="input-group-text" id="basic-addon1"
             ><i class="fa fa-filter"></i
           ></span>
-          <input  type="text"  class="form-control" [(ngModel)]="userFilterSelected"
+          <input  type="text"  class="form-control" [(ngModel)]="privilegeFilterSelected"
           />
         </div>
       </div>
@@ -21,7 +21,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let privilege of privileges | userFilter: userFilterSelected | paginate: {  itemsPerPage:10, currentPage:page, totalItems:totalRecords }">
+          <tr *ngFor="let privilege of privileges | privilegeFilter: privilegeFilterSelected | paginate: {  itemsPerPage:10, currentPage:page, totalItems:totalRecords }">
             <td>{{ privilege.idPrivilege }}</td>
             <td>{{ privilege.name  }}</td>
           </tr>

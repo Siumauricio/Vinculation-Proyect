@@ -43,7 +43,7 @@ export class SuspectService {
     }
 
     async getSuspectsInsertedToday(username:string){
-      const url = `${WEB_SERVICE}Suspect/GetRegisterPerDay?username=${username}`;
+      const url = `${WEB_SERVICE}Suspect/GetRegisterPerDayPerUser?username=${username}`;
       let answer: any = {};
       await this.http
         .get(url)

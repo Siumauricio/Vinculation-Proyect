@@ -35,7 +35,7 @@ namespace Backend.DPI.Services
 
         public async Task<IReadOnlyList<Rol>> GetRoles()
         {
-            return await dbContext.Rols.ToListAsync();
+            return await dbContext.Rols.OrderBy(rols=>rols.Name).ToListAsync();
         }
 
         public async Task<Rol> getRolbyName(string rolName)

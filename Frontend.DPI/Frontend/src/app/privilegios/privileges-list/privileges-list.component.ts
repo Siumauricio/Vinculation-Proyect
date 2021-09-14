@@ -1,7 +1,6 @@
 import { PrivilegesService } from './../privileges.service';
 import { Component, OnInit } from '@angular/core';
 import { Privileges } from '../../users/interfaces/user';
-import { UsersService } from '../../users/users.service';
 
 @Component({
   selector: 'app-privileges-list',
@@ -11,7 +10,7 @@ import { UsersService } from '../../users/users.service';
 export class PrivilegesListComponent implements OnInit {
   totalRecords :number;
   page:number =1;
-  userFilterSelected: string = '';
+  privilegeFilterSelected: string = '';
   privileges: Privileges[];
   constructor(private privilegesService: PrivilegesService) {}
 

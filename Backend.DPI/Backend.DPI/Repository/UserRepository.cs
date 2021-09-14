@@ -78,7 +78,7 @@ namespace Backend.DPI.Repository
             var result = await (from a in dbContext.Users
                           join b in dbContext.Rols on a.RolIdRol equals b.IdRol
                           join c in dbContext.Departments on a.DepartmentIdDepartment equals c.IdDepartment
-                          select new { Username = a.Username, FechaCreacion = a.CreationDatetime, NombreRol = b.Name,NombreDepartamento = c.Name }).ToListAsync();
+                          select new { Username = a.Username, FechaCreacion = a.CreationDatetime, NombreRol = b.Name,NombreDepartamento = c.Name }).OrderBy(users => users.Username).ToListAsync();
 
             if (result == null)
             {
