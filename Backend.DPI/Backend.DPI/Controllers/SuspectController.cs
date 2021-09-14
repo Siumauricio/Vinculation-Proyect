@@ -37,16 +37,29 @@ namespace Backend.DPI.Controllers
         }
 
 
-        [HttpGet("GetRegisterPerDay")]
-        public async Task<ActionResult<IEnumerable<Suspect>>> GetRegisterPerDay(string username)
+        [HttpGet("GetRegisterPerDayPerUser")]
+        public async Task<ActionResult<IEnumerable<Suspect>>> GetRegisterPerDayPerUser(string username)
         {
-            var suspects = await _suspectRepository.GetSuspectsInsertedByDate(username);
+            var suspects = await _suspectRepository.GetSuspectsInsertedByDateByUserAsync(username);
             if (suspects == null)
             {
                 return NotFound();
             }
             return Ok(suspects);
         }
+
+
+        [HttpGet("GetRegisterPerDay")]
+        public async Task<ActionResult<IEnumerable<Suspect>>> GetRegisterPerDay()
+        {
+            var suspects = await _suspectRepository.GetSuspectsInsertedByDateAsync();
+            if (suspects == null)
+            {
+                return NotFound();
+            }
+            return Ok(suspects);
+        }
+
 
         [HttpGet("GetSuspectByDNI")]
         public async Task<ActionResult<IEnumerable<Suspect>>> GetSuspectByDNI(string dni)

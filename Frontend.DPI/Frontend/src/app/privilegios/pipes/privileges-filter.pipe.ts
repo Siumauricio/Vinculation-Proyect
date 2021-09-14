@@ -2,7 +2,7 @@ import { User } from '../../users/interfaces/user';
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'userFilter'
+  name: 'privilegeFilter'
 })
 export class PrivilegesFilterPipe implements PipeTransform {
 

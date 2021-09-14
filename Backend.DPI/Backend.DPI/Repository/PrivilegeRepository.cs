@@ -86,7 +86,7 @@ namespace Backend.DPI.Repository
 
         public async Task<IReadOnlyList<Privilege>> GetPrivilegesAsync()
         {
-            return await dpiContext.Privileges.ToListAsync();
+            return await dpiContext.Privileges.OrderBy(privileges => privileges.TipoPrivilegio).ToListAsync();
         }
 
         public async Task<object> GetRolPrivilegeByNameAsync(string NameRolPrivilege)
@@ -136,7 +136,7 @@ namespace Backend.DPI.Repository
                                                             IdRolPrivilege= rol_Privileges.IdRolPrivilege,
                                                             Name_Rol= rols.Name,
                                                             Name_Privilege=privileges.Name
-                                                         } ).ToListAsync();
+                                                         } ).OrderBy(rol_privileges=>rol_privileges.Name_Rol).ToListAsync();
             return result;
         }
 
@@ -153,8 +153,9 @@ namespace Backend.DPI.Repository
                                     Username= user_rol_privilege.UserUsername,
                                     Special_Privilege = user_rol_privilege.SpecialPrivilege,
                                     Name_Rol = rol.Name,
-                                    Name_Privilege = privilege.Name 
-                                }).ToListAsync();
+                                    Name_Privilege = privilege.Name,
+                                    Type_Privilege=privilege.TipoPrivilegio
+                                }).OrderBy(users_rol_privileges=>users_rol_privileges.Username).OrderBy(users_rol_privileges=>users_rol_privileges.Type_Privilege).ToListAsync();
             return result;
         }
 

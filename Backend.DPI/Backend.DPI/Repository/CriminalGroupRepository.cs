@@ -17,7 +17,7 @@ namespace Backend.DPI.Repository
 
         public async Task<IReadOnlyList<CriminalGroup>> GetCriminalGroupsAsync()
         {
-            return await this._dpiContext.CriminalGroups.ToListAsync();
+            return await this._dpiContext.CriminalGroups.OrderBy(criminalGroup=>criminalGroup.NombreGrupoCriminal).ToListAsync();
         }
     }
 }
