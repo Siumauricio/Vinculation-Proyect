@@ -124,10 +124,10 @@ export class CriminalsService {
       .then(async (ApiAnswer: any) => {
         answer = ApiAnswer;
         if (answer)
-          this.succesMessage('¡Se han asignado los privilegios con exito!');
+          this.succesMessage('¡Se han modificado los datos con exito!');
       })
       .catch(async (error) => {
-        this.errorMessage('Error al asignar privilegios de usuario');
+        this.errorMessage('Erro al modificar los datos');
       });
 
     return answer;

@@ -19,15 +19,22 @@
           <th>DNI</th>
           <th>Grupo criminal</th>
           <th>Lugar de operacion</th>
+          <th>Zona de incidencia</th>
           <th>Periodo de duracion</th>
+          <th>Tipo de incidencia</th>
+          <th>Jerarquia</th>
+
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let criminal of criminals |criminalFilter: criminalsFilter | paginate: {  itemsPerPage:10, currentPage:page, totalItems:totalRecords }">
           <td>{{ criminal.suspectDni }}</td>
-          <td>{{ criminal.criminalGroupName}}</td>
-          <td>{{ criminal.operationPlace }}</td>
-          <td>{{ criminal.periodBelong }}</td>
+          <td>{{ criminal.criminalGroupName | uppercase}}</td>
+          <td>{{ criminal.operationPlace | uppercase}}</td>
+          <td>{{ criminal.incidenceZone | uppercase}} </td>
+          <td>{{ criminal.periodBelong | uppercase}}</td>
+          <td>{{ criminal.incidenceType | uppercase}}</td>
+          <td>{{ criminal.hierarchyCriminalGroup | uppercase}}</td>
         </tr>
       </tbody>
     </table>
