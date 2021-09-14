@@ -1,0 +1,36 @@
+<div class="container">
+  <h1 style="text-align: left;">Listado De Roles Por Privilegios</h1>
+
+  <div class="row mb-3">
+    <div class="col-md-4">
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1"
+          ><i class="fa fa-filter"></i
+        ></span>
+        <input  type="text"  class="form-control" [(ngModel)]="rolPrivilegeFilterSelected"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12 table-responsive">
+    <table class="table table-striped table-sm">
+      <thead class="bg-primary">
+        <tr>
+          <th>Codigo</th>
+          <th>Nombre del rol</th>
+          <th>Nombre del Privilegio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rolPrivilege of rolPrivilegeData | rolPrivilegeFilter: rolPrivilegeFilterSelected  | paginate: {  itemsPerPage:10, currentPage:page, totalItems:totalRecords }">
+          <td>{{ rolPrivilege.idRolPrivilege }}</td>
+          <td>{{ rolPrivilege.name_Rol }}</td>
+          <td>{{ rolPrivilege.name_Privilege }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+
+  </div>
+</div>
+

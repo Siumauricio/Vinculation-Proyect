@@ -12,10 +12,15 @@ namespace Backend.DPI.Repository
         Task<bool> CreateUserAsync(UserDto user);
         Task<bool> DeleteUserAsync(string user);
         Task<bool> UpdatePasswordUserAsync(string username,string newUser);
+        Task<bool> UpdateUser(UserDto user);
         Task<bool> UpdateRolUserAsync(string username, int rol);
         Task<bool> UpdateDepartmentUserAsync(string username, int department);
-        User GetUserByUsernameAsync(string username);
-        Task<IReadOnlyList<User>> GetUsersAsync();
+        Task<object> GetUserByUsernameAsync(string username);
+        Task<object> LoginAsync(string Username, string Password);
+        Task<IReadOnlyList<object>> GetUsersAsync();
+
+        Task<object> UpdateTokenAsync(string Token);
+
 
     }
 }

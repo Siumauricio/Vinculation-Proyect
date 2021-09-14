@@ -1,24 +1,31 @@
+import { UpdateUserComponent } from './users-crud/user-update/user-update.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { UsersRoutingModule } from './users-routing.module';
-import { CreateUserComponent } from './create-user/create-user.component';
-import { FormsModule } from '@angular/forms';
-import { CreateUserModalComponent } from './create-user-modal/create-user-modal.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
-
-
+import { UserFilterPipe } from './pipes/user-filter.pipe';
+import { UserListComponent } from './users-crud/user-list/user-list.component';
+import { UserCreateComponent } from './users-crud/user-create/user-create.component';
+import { UserDeleteComponent } from './users-crud/user-delete/user-delete.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
-    CreateUserComponent,
-    CreateUserModalComponent
+    UserFilterPipe,
+    UserListComponent,
+    UpdateUserComponent,
+    UserCreateComponent,
+    UserDeleteComponent,
   ],
   imports: [
     CommonModule,
     UsersRoutingModule,
     FormsModule,
-    ModalModule.forRoot()
-  ]
+    ModalModule.forRoot(),
+    ReactiveFormsModule,
+    NgxPaginationModule
+  ],
 })
-export class UsersModule { }
+export class UsersModule {}

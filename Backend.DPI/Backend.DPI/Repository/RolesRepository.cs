@@ -23,7 +23,7 @@ namespace Backend.DPI.Services
 
         public async Task<bool> DeleteRolAsync(string rol)
         {
-            var result = dbContext.Rols.FirstOrDefault(u => u.Name.ToLower() == rol.ToLower());
+            var result = await dbContext.Rols.FirstOrDefaultAsync(u => u.Name.ToLower() == rol.ToLower());
             if (result == null)
             {
                 return false;
@@ -35,8 +35,17 @@ namespace Backend.DPI.Services
 
         public async Task<IReadOnlyList<Rol>> GetRoles()
         {
-            return await dbContext.Rols.ToListAsync();
+            return await dbContext.Rols.OrderBy(rols=>rols.Name).ToListAsync();
+        }
 
+        public async Task<Rol> getRolbyName(string rolName)
+        {
+            var result = await dbContext.Rols.FirstOrDefaultAsync(u => u.Name.ToLower() == rolName.ToLower());
+            if (result == null)
+            {
+                return null;
+            }
+            return result;
         }
     }
 }

@@ -1,0 +1,40 @@
+<div class="container">
+    <h1 style="text-align: left;">Eliminacion De Rol</h1>
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <div class="input-group mb-3">
+          <input  type="text"  class="form-control" [(ngModel)]="userFilterSelected"  placeholder="Nombre del Rol"/>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <button  class="btn btn-primary btn-block"  (click)="getRolbyName(userFilterSelected)"  >
+          Buscar Rol
+        </button>
+      </div>
+    </div>
+    <div class="col-md-12 table-responsive">
+      <table class="table table-striped table-sm">
+        <thead class="bg-primary">
+          <tr>
+            <th>ID ROL</th>
+            <th>NOMBRE DEL ROL</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngIf="rolsData">
+            <td *ngIf="rolsData.idRol">{{ rolsData.idRol }}</td>
+            <td *ngIf="rolsData.name"> {{ rolsData.name }} </td>
+            <td *ngIf="rolsData.name">
+              <button class="btn" (click)="DeleteRol(rolsData.name)">
+                <i class="fa fa-trash text-danger"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+  
+ 

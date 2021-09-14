@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { UsersService } from './../users/users.service';
+import {  Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthenticationService } from '../authentication.service';
+import { RolPrivilege, User } from '../users/interfaces/user';
 
 @Component({
   selector: 'app-navbar',
@@ -7,10 +11,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  openSidebar:boolean=false;
-  constructor() { }
+  user:User
+  privileges:RolPrivilege[];
+  constructor(
+      public auth: AuthenticationService,
+      private router: Router,
+      private userService :UsersService
+      ) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    await this.userService.loadPrivilegesUser();
+  }
+
+
+
+  logout() {
+    this.auth.logout();
+    this.router.navigate(['/login'])
+
   }
 
 }

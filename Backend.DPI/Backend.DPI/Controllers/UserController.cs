@@ -1,6 +1,7 @@
 ﻿using Backend.DPI.ModelDto;
 using Backend.DPI.Models;
 using Backend.DPI.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace Backend.DPI.Controllers
     {
         private readonly UserRepository _userRepository = new UserRepository();
 
-
+        [Authorize]
         [HttpGet("GetUsers")]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
@@ -27,10 +28,12 @@ namespace Backend.DPI.Controllers
             }
             return Ok(Users);
         }
+
+        [Authorize]
         [HttpGet("UserById")]
         public async Task<ActionResult<IEnumerable<User>>> GetUsersById(string username)
         {
-            var User =  _userRepository.GetUserByUsernameAsync(username);
+            var User =  await _userRepository.GetUserByUsernameAsync(username);
 
             if (User == null)
             {
@@ -39,6 +42,7 @@ namespace Backend.DPI.Controllers
             return Ok(User);
         }
 
+        [Authorize]
         [HttpPost("AddUser")]
         public async Task<ActionResult<IEnumerable<User>>> AddUser(UserDto user)
         {
@@ -46,6 +50,7 @@ namespace Backend.DPI.Controllers
             return Ok(User);
         }
 
+        [Authorize]
         [HttpPost("UpdatePassword")]
         public async Task<ActionResult<IEnumerable<User>>> UpdatePassword(string username,string password)
         {
@@ -53,6 +58,7 @@ namespace Backend.DPI.Controllers
             return Ok(User);
         }
 
+        [Authorize]
         [HttpPost("UpdateRol")]
         public async Task<ActionResult<IEnumerable<User>>> UpdateRol(string username, int rol)
         {
@@ -60,6 +66,7 @@ namespace Backend.DPI.Controllers
             return Ok(User);
         }
 
+        [Authorize]
         [HttpPost("UpdateDepartment")]
         public async Task<ActionResult<IEnumerable<User>>> UpdateDepartment(string username, int department)
         {
@@ -67,11 +74,36 @@ namespace Backend.DPI.Controllers
             return Ok(User);
         }
 
+        [Authorize]
+        [HttpPost("UpdateUser")]
+        public async Task<ActionResult<IEnumerable<User>>> UpdateUser(UserDto user)
+        {
+            var User = await _userRepository.UpdateUser(user);
+            return Ok(User);
+        }
+
+        [Authorize]
         [HttpDelete("DeleteUser")]
         public async Task<ActionResult<IEnumerable<User>>> DeleteUser(string username)
         {
             var User = await _userRepository.DeleteUserAsync(username);
             return Ok(User);
+        }
+
+
+        [HttpPost("Login")]
+        public async Task<ActionResult<object>> Login(UserDto user) {
+            var result = await _userRepository.LoginAsync(user.Username, user.Password);
+            if (result == null) return NotFound();
+            return Ok(result);
+        }
+
+        [Authorize]
+        [HttpGet("UpdateToken")]
+        public async Task<ActionResult<object>> UpdateToken(string Token) {
+            var result = await _userRepository.UpdateTokenAsync(Token);
+            if (result == null) return NotFound();
+            return Ok(result);
         }
     }
 }

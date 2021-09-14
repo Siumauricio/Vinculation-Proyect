@@ -1,0 +1,56 @@
+<div class="container">
+    <h1 style="text-align: left;">Eliminacion De Rol por Privilegio</h1>
+
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <div class="input-group mb-3">
+
+          <input
+            placeholder="Nombre"
+            type="text"
+            class="form-control"
+            [(ngModel)]="rolPrivilegeFilterSelected"
+            placeholder="Nombre Privilegio"
+          />
+          
+        </div>
+
+      </div>
+      <div class="col-md-4">
+
+        <button
+          class="btn btn-primary btn-block"
+          (click)="getRolPrivilegeByName(rolPrivilegeFilterSelected)"
+        >
+          Buscar
+        </button>
+      </div>
+    </div>
+    <div class="col-md-12 table-responsive">
+      <table class="table table-striped table-sm">
+        <thead class="bg-primary">
+          <tr>
+            <th>Codigo</th>
+            <th>Rol</th>
+            <th>Privilegio</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="rolPrivilegeData">
+            <td *ngIf="rolPrivilegeData.idRolPrivilege">{{ rolPrivilegeData.idRolPrivilege }}</td>
+            <td *ngIf="rolPrivilegeData.name_Rol">{{ rolPrivilegeData.name_Rol }}</td>
+            <td *ngIf="rolPrivilegeData.name_Privilege"> {{ rolPrivilegeData.name_Privilege }}</td>
+            <td *ngIf="rolPrivilegeData.idRolPrivilege">
+              <button class="btn" (click)="deleteRolPrivilege(rolPrivilegeData.idRolPrivilege)">
+                <i class="fa fa-trash text-danger"></i>
+
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+ 

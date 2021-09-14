@@ -4,6 +4,7 @@
 
 .flex-nowrap a:hover{
   color: #3c5ca4 !important;
+
 }
 
 
@@ -11,7 +12,7 @@
 
   height: 80%;
   position: fixed;
-  margin-left: -280px;
+  margin-left: -350px;
   transition: 0.5s !important;
 }
 
@@ -25,10 +26,11 @@
 
 .active-content{
   transition: 0.5s !important;
-  margin-left: 280px !important;
+  margin-left: 350px !important;
 }
 
 .inactive-content{
   transition: 0.5s !important;
 
 }
+

@@ -7,11 +7,13 @@ using Microsoft.Extensions.Logging;
 using Backend.DPI.Models;
 using Backend.DPI.Services;
 using Backend.DPI.ModelDto;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Backend.DPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class RolesController : ControllerBase
     {
         private readonly RolesRepository _rolesRepository = new RolesRepository();
@@ -23,6 +25,18 @@ namespace Backend.DPI.Controllers
             var Roles = await _rolesRepository.GetRoles();
 
             if (Roles==null)
+            {
+                return NotFound();
+            }
+            return Ok(Roles);
+        }
+
+        [HttpGet("GetRolByName")]
+        public async Task<ActionResult<IEnumerable<Rol>>> GetRolByName(string rolName)
+        {
+            var Roles = await _rolesRepository.getRolbyName(rolName);
+
+            if (Roles == null)
             {
                 return NotFound();
             }
@@ -42,5 +56,6 @@ namespace Backend.DPI.Controllers
             var Roles = await _rolesRepository.DeleteRolAsync(nameRol);
             return Ok(Roles);
         }
+
     }
 }

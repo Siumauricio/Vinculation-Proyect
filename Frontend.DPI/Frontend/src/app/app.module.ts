@@ -7,23 +7,45 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { LoginComponent } from './login/login.component';
+import { UserAuthenticationGuard } from './user-authentication.guard';
+import { AuthenticationService } from './authentication.service';
+import { JwtModule } from '@auth0/angular-jwt';
+import { TokenInterceptorProviders } from './TokenInterceptor.service';
+
+
+export function tokenGetter(){
+  return localStorage.getItem("Token");
+} 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    PagenotfoundComponent,
+    LoginComponent,
+    
   ],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,
     SweetAlert2Module.forRoot(),
     HttpClientModule,
     FormsModule,
-
+    ReactiveFormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ["http://localhost:4200"],
+        disallowedRoutes: [],
+      }
+    })
   ],
-  providers: [],
+  providers: [UserAuthenticationGuard,AuthenticationService,TokenInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

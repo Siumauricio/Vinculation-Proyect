@@ -9,9 +9,24 @@
   border-color: #252b64;
 }
 
+.btn-primary:hover{
+  background-color: #1d224d !important ;
+  border-color: #1d224d !important;
+}
+
 .text-primary{
   background-color: #252b64 !important ;
 }
 
+.btn-outline-primary{
+  border-color: #252b64 !important;
+  color: #252b64 !important;
+}
+
+.btn-outline-primary:hover{
+  border-color: #252b64 !important;
+  color: white !important;
+  background-color: #252b64 !important;
+}
 @import "~@ng-select/ng-select/themes/default.theme.css";
 

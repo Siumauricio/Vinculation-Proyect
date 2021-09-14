@@ -1,0 +1,57 @@
+<div class="container">
+    <h1 style="text-align: left;">Eliminacion De Usuarios</h1>
+
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <div class="input-group mb-3">
+
+          <input type="text" class="form-control" [(ngModel)]="userFilterSelected" placeholder="Usuario"/>
+          
+           
+        </div>
+
+      </div>
+      <div class="col-md-4">
+
+        <button
+          class="btn btn-primary btn-block"
+          (click)="getUserByUsername(userFilterSelected)"
+        >
+          Buscar Usuario
+        </button>
+      </div>
+    </div>
+    <div class="col-md-12 table-responsive">
+      <table class="table table-striped table-sm">
+        <thead class="bg-primary">
+          <tr>
+            <th>USUARIO</th>
+            <th>FECHA DE REGISTRO</th>
+            <th>ROL</th>
+            <th>DEPARTAMENTO</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="userData">
+            <td *ngIf="userData.username">{{ userData.username }}</td>
+            <td *ngIf="userData.fechaCreacion">
+              {{ userData.fechaCreacion | date: "dd/MM/yyyy" }}
+            </td>
+            <td *ngIf="userData.nombreRol">{{ userData.nombreRol }}</td>
+            <td *ngIf="userData.nombreDepartamento">
+              {{ userData.nombreDepartamento }}
+            </td>
+            <td *ngIf="userData.username">
+              <button class="btn" (click)="deleteUser(userData.username)">
+                <i class="fa fa-trash text-danger"></i>
+
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+ 
