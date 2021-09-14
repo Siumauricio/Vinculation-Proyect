@@ -42,7 +42,7 @@ export class SuspectService {
       return answer;
     }
 
-    async getSuspectsInsertedToday(username:string){
+    async getSuspectsInsertedTodayByUser(username:string){
       const url = `${WEB_SERVICE}Suspect/GetRegisterPerDayPerUser?username=${username}`;
       let answer: any = {};
       await this.http
@@ -57,6 +57,21 @@ export class SuspectService {
         return answer;
       }
 
+      async getSuspectsInsertedToday(){
+        const url = `${WEB_SERVICE}Suspect/GetRegisterPerDay`;
+        let answer: any = {};
+        await this.http
+          .get(url)
+          .toPromise()
+          .then(async (ApiAnswer: any) => {
+            answer = ApiAnswer;
+          })
+          .catch(async (error) => {
+            this.errorMessage('Error Al Obtener Sospechosos');
+          });
+          return answer;
+        }
+     
       async getSuspectByDNI(dni:string){
         const url = `${WEB_SERVICE}Suspect/GetSuspectByDNI?dni=${dni}`;
         let answer: any = {};

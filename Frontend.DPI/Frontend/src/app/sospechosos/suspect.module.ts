@@ -11,6 +11,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { SospechosoListPerDayComponent } from './sospechoso-list-per-day/sospechoso-list-per-day.component';
 import { SospechosoUpdateComponent } from './sospechoso-update/sospechoso-update.component';
 import { SospechosoDeleteComponent } from './sospechoso-delete/sospechoso-delete.component';
+import { SospechosoListPerDayChiefComponent } from './sospechoso-list-per-day-chief/sospechoso-list-per-day-chief.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { SospechosoDeleteComponent } from './sospechoso-delete/sospechoso-delete
     SospechosoListPerDayComponent,
     SospechosoUpdateComponent,
     SospechosoDeleteComponent,
+    SospechosoListPerDayChiefComponent
   ],
   imports: [
     CommonModule,

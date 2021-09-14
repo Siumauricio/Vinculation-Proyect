@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SuspectListComponent } from './sospechoso-list/suspect-list.component';
 import { DatePipe } from '@angular/common';
+import { SospechosoListPerDayChiefComponent } from './sospechoso-list-per-day-chief/sospechoso-list-per-day-chief.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,12 @@ const routes: Routes = [
   {
     path: 'Listar Sospechosos Ingresados Hoy',
      component: SospechosoListPerDayComponent,
+    data: { title: 'List' },
+  },
+
+  {
+    path: 'Sospechosos Ingresados Hoy Nacional',
+     component: SospechosoListPerDayChiefComponent,
     data: { title: 'List' },
   },
 
