@@ -23,7 +23,6 @@ export class CriminalsService {
       suspectDni: criminal.suspectDni,
       criminalGroupIdCg: Number(criminal.criminalGroupIdCg),
     };
-    console.log(JSON.stringify(body));
 
     const url = `${WEB_SERVICE}CriminalDatum/AddCriminalData`;
     let answer: any = {};
@@ -85,7 +84,7 @@ export class CriminalsService {
 
   async getCriminalGroups(){
 
-    const url = `${WEB_SERVICE}GetCriminalGroups`;
+    const url = `${WEB_SERVICE}CriminalGroup/GetCriminalGroups`;
 
     let answer: any;
 

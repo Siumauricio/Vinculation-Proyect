@@ -36,10 +36,10 @@
       </thead>
       <tbody>
         <tr *ngFor="let criminal of criminalData" >
-          <td>{{criminal.suspectDni}}</td>
-          <td>{{criminal.criminalGroupName}}</td>
-          <td>{{criminal.operationPlace }}</td>
-          <td>{{criminal.periodBelong }}</td>
+          <td>{{criminal.suspectDni | uppercase}}</td>
+          <td>{{criminal.criminalGroupName | uppercase}}</td>
+          <td>{{criminal.operationPlace | uppercase}}</td>
+          <td>{{criminal.periodBelong | uppercase}}</td>
           <td>
             <button class="btn" (click)="ShowModal(criminal)">
               <i class="fa fa-edit"></i>
