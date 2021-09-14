@@ -23,7 +23,6 @@ export class CriminalsService {
       suspectDni: criminal.suspectDni,
       criminalGroupIdCg: Number(criminal.criminalGroupIdCg),
     };
-    console.log(JSON.stringify(body));
 
     const url = `${WEB_SERVICE}CriminalDatum/AddCriminalData`;
     let answer: any = {};
@@ -85,7 +84,7 @@ export class CriminalsService {
 
   async getCriminalGroups(){
 
-    const url = `${WEB_SERVICE}GetCriminalGroups`;
+    const url = `${WEB_SERVICE}CriminalGroup/GetCriminalGroups`;
 
     let answer: any;
 
@@ -124,10 +123,10 @@ export class CriminalsService {
       .then(async (ApiAnswer: any) => {
         answer = ApiAnswer;
         if (answer)
-          this.succesMessage('¡Se han asignado los privilegios con exito!');
+          this.succesMessage('¡Se han modificado los datos con exito!');
       })
       .catch(async (error) => {
-        this.errorMessage('Error al asignar privilegios de usuario');
+        this.errorMessage('Erro al modificar los datos');
       });
 
     return answer;

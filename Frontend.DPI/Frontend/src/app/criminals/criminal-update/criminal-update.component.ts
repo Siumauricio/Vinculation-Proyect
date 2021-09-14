@@ -52,14 +52,11 @@ export class CriminalUpdateComponent implements OnInit {
   async getCriminalDataByDNI(dni:string){
    await  this.criminalService.getCriminalByDNI(dni).then(resp=>{
       this.criminalData = resp;
-      console.log(this.criminalData);
-
     })
   }
 
 
   async ShowModal(criminal:Criminal){
-    console.log(criminal);
 
     await this.getCriminalGroups();
 
@@ -84,7 +81,6 @@ export class CriminalUpdateComponent implements OnInit {
       if(resp){
         this.criminalGroups = resp;
       }
-
     })
   }
 
