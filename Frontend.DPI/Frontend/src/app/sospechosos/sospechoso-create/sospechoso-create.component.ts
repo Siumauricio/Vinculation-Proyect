@@ -1,4 +1,4 @@
-import { Suspects } from './../interfaces/suspects';
+import { Departamentos, Nacionalidades, Suspects, EstadoCivil, Municipios } from './../interfaces/suspects';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
@@ -17,6 +17,10 @@ export class SospechosoCreateComponent  {
   suspectForm : FormGroup;
   buttonDisabled:boolean =false;
   suspect:Suspects;
+  Nacionalidades = Nacionalidades;
+  Departamentos = Departamentos;
+  EstadoCivil = EstadoCivil;
+  Municipios = Municipios;
   constructor(private auth: AuthenticationService,private suspectService:SuspectService,private formBuilder:FormBuilder) { 
       this.suspectForm = this.formBuilder.group({
       dniSuspect: ['',Validators.required],
@@ -54,7 +58,6 @@ export class SospechosoCreateComponent  {
       usernameRegistryData: [''],
       departmentIdDepartment: [''],
     })
-    
   }
 
 
@@ -76,7 +79,7 @@ export class SospechosoCreateComponent  {
   }
 keyPressAlphanumeric(event) {
     var inp = String.fromCharCode(event.keyCode);
-    if (/[a-zA-Z0-9_ ]/.test(inp)) {
+    if (/[a-zA-Z0-9\u00F1A_ ]/.test(inp)) {
       return true;
     } else {
       event.preventDefault();

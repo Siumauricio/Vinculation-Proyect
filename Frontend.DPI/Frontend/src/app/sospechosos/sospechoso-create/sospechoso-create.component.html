@@ -112,19 +112,47 @@
                 <label for="floatingUser">Fecha de nacimiento<label style="color: red;">*</label></label>
               </div>
 
-              <div class="form-floating mb-3">
-                <input  type="text" formControlName="nationaliy" (keypress)="keyPressAlphanumeric($event)" maxlength="20" autocomplete="off" class="form-control" />
-                <label for="floatingUser">Nacionalidad<label style="color: red;">*</label></label>
+              <div class="row mb-3">
+                <div class="input-group mb-3">
+                  <label class="input-group-text" for="roles">Nacionalidad<label style="color: red;">*</label></label>
+                  <select class="form-select"  formControlName="nationaliy">
+                <option value="" selected disabled hidden>Escoge una opcion</option>
+                <option *ngFor="let Nacionalidad of Nacionalidades" >
+                  {{ Nacionalidad }}
+                </option>
+                </select>
+                </div>
               </div>
+
+
+
+              <!-- <div class="form-floating mb-3">
+                <input  type="text" formControlName="nationaliy" (keypress)="keyPressAlphanumeric($event)" maxlength="20" autocomplete="off" class="form-control" />
+    
+
+                <label for="floatingUser">Nacionalidad<label style="color: red;">*</label></label>
+              </div> -->
 
               <div class="form-floating mb-3">
                 <input  type="number" formControlName="age"  maxlength="3" autocomplete="off" class="form-control" />
                 <label for="floatingUser">Edad<label style="color: red;">*</label></label>
               </div>
 
-              <div class="form-floating mb-3">
+              <!-- <div class="form-floating mb-3">
                 <input  type="text" formControlName="civilStatus" (keypress)="keyPressAlphanumeric($event)" maxlength="30" autocomplete="off" class="form-control" />
                 <label for="floatingUser">Estado Civil<label style="color: red;">*</label></label>
+              </div> -->
+
+              <div class="row mb-3">
+                <div class="input-group mb-3">
+                  <label class="input-group-text" for="roles">Estado Civil<label style="color: red;">*</label></label>
+                  <select class="form-select"  formControlName="civilStatus">
+                <option value="" selected disabled hidden>Escoge una opcion</option>
+                <option *ngFor="let estadocivi of EstadoCivil" >
+                  {{ estadocivi }}
+                </option>
+                </select>
+                </div>
               </div>
 
               <div class="form-floating mb-3">
@@ -167,15 +195,43 @@
                 <label for="floatingUser">Direccion de Referencia</label>
               </div>
 
-              <div class="form-floating mb-3">
+              <!-- <div class="form-floating mb-3">
                 <input  type="text" formControlName="department" (keypress)="keyPressAlphanumeric($event)" maxlength="17" autocomplete="off" class="form-control" />
                 <label for="floatingUser">Departamento<label style="color: red;">*</label></label>
+              </div> -->
+
+
+              <div class="row mb-3">
+                <div class="input-group mb-3">
+                  <label class="input-group-text" for="roles">Departamento<label style="color: red;">*</label></label>
+                  <select class="form-select"  formControlName="department">
+                <option value="" selected disabled hidden>Escoge una opcion</option>
+                <option *ngFor="let Departamento of Departamentos" >
+                  {{ Departamento }}
+                </option>
+                </select>
+                </div>
               </div>
 
-              <div class="form-floating mb-3">
+
+              <!-- <div class="form-floating mb-3">
                 <input  type="text" formControlName="municipio" (keypress)="keyPressAlphanumeric($event)" maxlength="30" autocomplete="off" class="form-control" />
                 <label for="floatingUser">Municipio<label style="color: red;">*</label></label>
+              </div> -->
+
+
+              <div class="row mb-3">
+                <div class="input-group mb-3">
+                  <label class="input-group-text" for="roles">Municipio<label style="color: red;">*</label></label>
+                  <select class="form-select"  formControlName="municipio">
+                <option value="" selected disabled hidden>Escoge una opcion</option>
+                <option *ngFor="let Municipio of Municipios" >
+                  {{ Municipio }}
+                </option>
+                </select>
+                </div>
               </div>
+
 
               <div class="row py-3 pull-right">
                 <button  class="btn btn-success" type="submit" [disabled]="suspectForm.invalid">

@@ -6,7 +6,7 @@ import { InvokeFunctionExpr } from '@angular/compiler';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { FormControl, FormGroup, Validators, FormBuilder, AbstractControl } from '@angular/forms';
 import { Department, Rol, User } from '../../users/interfaces/user';
-import { Suspects } from '../interfaces/suspects';
+import { Departamentos, EstadoCivil, Municipios, Nacionalidades, Suspects } from '../interfaces/suspects';
 import { AuthenticationService } from '../../authentication.service';
 import { DatePipe, formatDate } from '@angular/common';
 
@@ -24,6 +24,11 @@ export class SospechosoUpdateComponent implements OnInit {
   suspectData: Suspects ;
   isDirty:boolean=false;
 data:any
+
+Nacionalidades = Nacionalidades;
+Departamentos = Departamentos;
+EstadoCivil = EstadoCivil;
+Municipios = Municipios;
   constructor(private suspectService: SuspectService,private formBuilder:FormBuilder,private auth: AuthenticationService,public datepipe: DatePipe) {
     this.suspectForm = this.formBuilder.group({
       dniSuspect: ['',Validators.required],
@@ -82,7 +87,7 @@ data:any
 
   keyPressAlphanumeric(event) {
     var inp = String.fromCharCode(event.keyCode);
-    if (/[a-zA-Z0-9_ ]/.test(inp)) {
+    if (/[a-zA-Z0-9_\u00F1A ]/.test(inp)) {
       return true;
     } else {
       event.preventDefault();

@@ -167,20 +167,36 @@
                 <label for="floatingUser">Fecha de nacimiento<label style="color: red;">*</label></label>
               </div>
 
-              <div class="form-floating mb-3">
-                <input  type="text" formControlName="nationaliy" (keypress)="keyPressAlphanumeric($event)" maxlength="20" autocomplete="off" class="form-control" />
-                <label for="floatingUser">Nacionalidad<label style="color: red;">*</label></label>
+
+              <div class="row mb-3">
+                <div class="input-group mb-3">
+                  <label class="input-group-text" for="roles">Nacionalidad<label style="color: red;">*</label></label>
+                  <select    class="form-select"  id="roles"  formControlName="nationaliy" >
+                    <option *ngFor="let nationaliy of Nacionalidades" [value]="nationaliy">
+                      {{ nationaliy }}
+                    </option>
+                  </select>
+                </div>
               </div>
+
 
               <div class="form-floating mb-3">
                 <input  type="number" formControlName="age"  maxlength="3" autocomplete="off" class="form-control" />
                 <label for="floatingUser">Edad<label style="color: red;">*</label></label>
               </div>
 
-              <div class="form-floating mb-3">
-                <input  type="text" formControlName="civilStatus" (keypress)="keyPressAlphanumeric($event)" maxlength="30" autocomplete="off" class="form-control" />
-                <label for="floatingUser">Estado Civil<label style="color: red;">*</label></label>
+
+              <div class="row mb-3">
+                <div class="input-group mb-3">
+                  <label class="input-group-text" for="roles">Estado Civil<label style="color: red;">*</label></label>
+                  <select    class="form-select"  id="roles"  formControlName="civilStatus" >
+                    <option *ngFor="let civilStatus of EstadoCivil" [value]="civilStatus">
+                      {{ civilStatus }}
+                    </option>
+                  </select>
+                </div>
               </div>
+
 
               <div class="form-floating mb-3">
                 <input  type="text" formControlName="colonia" (keypress)="keyPressAlphanumeric($event)" maxlength="30" autocomplete="off" class="form-control" />
@@ -222,16 +238,30 @@
                 <label for="floatingUser">Direccion de Referencia</label>
               </div>
 
-              <div class="form-floating mb-3">
-                <input  type="text" formControlName="department" (keypress)="keyPressAlphanumeric($event)" maxlength="17" autocomplete="off" class="form-control" />
-                <label for="floatingUser">Departamento<label style="color: red;">*</label></label>
+
+              <div class="row mb-3">
+                <div class="input-group mb-3">
+                  <label class="input-group-text" for="roles">Departamento<label style="color: red;">*</label></label>
+                  <select    class="form-select"  id="roles"  formControlName="department" >
+                    <option *ngFor="let department of Departamentos" [value]="department">
+                      {{ department }}
+                    </option>
+                  </select>
+                </div>
               </div>
 
-              <div class="form-floating mb-3">
-                <input  type="text" formControlName="municipio" (keypress)="keyPressAlphanumeric($event)" maxlength="30" autocomplete="off" class="form-control" />
-                <label for="floatingUser">Municipio<label style="color: red;">*</label></label>
-              </div>
 
+
+              <div class="row mb-3">
+                <div class="input-group mb-3">
+                  <label class="input-group-text" for="roles">Municipio<label style="color: red;">*</label></label>
+                  <select    class="form-select"  id="roles"  formControlName="municipio" >
+                    <option *ngFor="let municipio of Municipios" [value]="municipio">
+                      {{ municipio }}
+                    </option>
+                  </select>
+                </div>
+              </div>
               <!-- <div class="row mb-3">
                 <div class="input-group mb-3">
                   <label class="input-group-text" for="roles">Roles</label>

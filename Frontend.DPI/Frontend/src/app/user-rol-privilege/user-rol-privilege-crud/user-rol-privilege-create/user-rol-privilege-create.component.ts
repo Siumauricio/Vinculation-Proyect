@@ -69,7 +69,7 @@ export class UserAddRolPrivilegeComponent implements OnInit {
 
 keyPressAlphanumeric(event) {
     var inp = String.fromCharCode(event.keyCode);
-    if (/[a-zA-Z0-9]/.test(inp)) {
+    if (/[a-zA-Z0-9\u00F1A_ ]/.test(inp)) {
       return true;
     } else {
       event.preventDefault();
