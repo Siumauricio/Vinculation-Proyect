@@ -2,19 +2,22 @@ import { HTTP_INTERCEPTORS, HttpEvent, HttpErrorResponse } from '@angular/common
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AuthenticationService } from './authentication.service';
 
 const TOKEN_HEADER_KEY = 'Authorization';  // for .net back-end
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
-
-  constructor() { }
+token:any;
+  constructor(private authService: AuthenticationService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let authReq = req;
-    const token = localStorage.getItem("Token");
+    const token = this.authService.getToken();
     if (token != null) {
       authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + token) });
+    }else{
+        console.log("Error al extraer el token");
     }
     return next.handle(authReq);
   }

@@ -21,6 +21,7 @@ export class SospechosoCreateComponent  {
   Departamentos = Departamentos;
   EstadoCivil = EstadoCivil;
   Municipios = Municipios;
+  MunicipiosLst:any;
   constructor(private auth: AuthenticationService,private suspectService:SuspectService,private formBuilder:FormBuilder) { 
       this.suspectForm = this.formBuilder.group({
       dniSuspect: ['',Validators.required],
@@ -57,7 +58,10 @@ export class SospechosoCreateComponent  {
       recordStatus: [''],
       usernameRegistryData: [''],
       departmentIdDepartment: [''],
+      
     })
+  //  console.log(Municipios.length);
+
   }
 
 
@@ -71,12 +75,17 @@ export class SospechosoCreateComponent  {
       } else {
         Swal.fire(
           'Error',
-          'Este usuario ya existe',
+          'Error al ingresar sospechoso',
           'error'
         );
       }
     });
   }
+
+  getDepartment(){
+ this.MunicipiosLst=Municipios[this.suspectForm.controls.department.value];
+}
+
 keyPressAlphanumeric(event) {
     var inp = String.fromCharCode(event.keyCode);
     if (/[a-zA-Z0-9\u00F1A_ ]/.test(inp)) {

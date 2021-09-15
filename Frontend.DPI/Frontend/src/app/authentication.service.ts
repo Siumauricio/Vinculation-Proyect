@@ -91,6 +91,10 @@ export class AuthenticationService {
       return false;
   }
 
+getToken(){
+    return localStorage.getItem("Token");
+}
+
 
   succesMessage(message) {
     Swal.fire({
