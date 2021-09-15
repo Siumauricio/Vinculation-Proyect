@@ -39,7 +39,7 @@
                 {{suspectData.firstName}} {{suspectData.middleName}} {{suspectData.thirdName}} {{suspectData.lastName}}
             </td>
             <td *ngIf="suspectData.dateOfBirth">{{ suspectData.dateOfBirth | date: "dd/MM/yyyy" }}</td>
-
+            <td *ngIf="suspectData.dateOfBirth">{{ suspectData.alias}}</td>
             <td *ngIf="suspectData.firstName">
               <button class="btn" (click)="ShowModal()">
                 <i class="fa fa-edit"></i>
@@ -242,7 +242,7 @@
               <div class="row mb-3">
                 <div class="input-group mb-3">
                   <label class="input-group-text" for="roles">Departamento<label style="color: red;">*</label></label>
-                  <select    class="form-select"  id="roles"  formControlName="department" >
+                  <select    class="form-select"  id="roles"  formControlName="department" (click)="getDepartment()" >
                     <option *ngFor="let department of Departamentos" [value]="department">
                       {{ department }}
                     </option>
@@ -251,12 +251,11 @@
               </div>
 
 
-
               <div class="row mb-3">
                 <div class="input-group mb-3">
                   <label class="input-group-text" for="roles">Municipio<label style="color: red;">*</label></label>
                   <select    class="form-select"  id="roles"  formControlName="municipio" >
-                    <option *ngFor="let municipio of Municipios" [value]="municipio">
+                    <option *ngFor="let municipio of MunicipiosLst" [value]="municipio">
                       {{ municipio }}
                     </option>
                   </select>

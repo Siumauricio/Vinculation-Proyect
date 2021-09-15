@@ -95,6 +95,14 @@ export class UpdateUserComponent implements OnInit {
       delete newUser.confirmPassword;
     }
     await this.userService.updtUser(newUser).then((resp) => {
+    /*  this.profileForm.setValue({
+        username: this.newUser.username,
+        password: '',
+        confirmPassword: '',
+        rolIdRol: this.newUser.rolIdRol,
+        departmentIdDepartment: this.newUser.departmentIdDepartment,
+      });*/
+     // this.userData[0]=newUser;
       this.closeModal();
     });
   }

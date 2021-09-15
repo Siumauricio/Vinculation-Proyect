@@ -23,7 +23,8 @@ export class SospechosoUpdateComponent implements OnInit {
   buttonDisabled: boolean;
   suspectData: Suspects ;
   isDirty:boolean=false;
-data:any
+data:any;
+MunicipiosLst:any;
 
 Nacionalidades = Nacionalidades;
 Departamentos = Departamentos;
@@ -80,7 +81,6 @@ Municipios = Municipios;
       if (resp) {
         this.suspectData = resp;
         this.newSuspect = resp;
-       
       }
     });
   }
@@ -138,6 +138,7 @@ Municipios = Municipios;
       departmentIdDepartment: this.newSuspect.departmentIdDepartment,
     });
     this.updateUserModal.show();
+    this.getDepartment();
   }
   closeModal() {
     this.updateUserModal.hide();
@@ -160,9 +161,13 @@ Municipios = Municipios;
     setTimeout(()=>{
       this.closeModal();
     },1200); 
-
-
   }
+
+  getDepartment(){
+    this.MunicipiosLst=Municipios[this.suspectForm.controls.department.value];
+   }
+
+
   cleanUser(user: User) {
     if (user.username != null)
       user.username = user.username.replace(/[^0-9A-Za-z-._]/g, '');

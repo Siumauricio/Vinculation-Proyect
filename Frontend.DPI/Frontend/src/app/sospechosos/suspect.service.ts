@@ -9,7 +9,6 @@ import Swal from 'sweetalert2';
 export class SuspectService {
   constructor(private http: HttpClient) {}
 
-
   async addSuspect(suspect:Suspects){
       const url = `${WEB_SERVICE}Suspect/AddSuspect`;
       let answer: any = {};
@@ -97,11 +96,11 @@ export class SuspectService {
           .then(async (ApiAnswer: any) => {
             answer = ApiAnswer;
             if (ApiAnswer) {
-              this.succesMessage('Usuario Eliminado Correctamente!');
+              this.succesMessage('Sospechoso Eliminado Correctamente!');
             }
           })
           .catch(async (error) => {
-            this.errorMessage('Error Al Eliminar Sospechoso2');
+            this.errorMessage('Error Al Eliminar Sospechoso');
           });
           return answer;
         }
