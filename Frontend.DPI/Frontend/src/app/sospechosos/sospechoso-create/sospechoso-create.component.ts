@@ -25,7 +25,7 @@ export class SospechosoCreateComponent  {
       this.suspectForm = this.formBuilder.group({
       dniSuspect: ['',Validators.required],
       firstName: ['',Validators.required],
-      middleName:'',
+      middleName:[''],
       thirdName: ['',Validators.required],
       lastName: ['',Validators.required],
       alias: [''],
@@ -65,6 +65,8 @@ export class SospechosoCreateComponent  {
     this.suspect = this.suspectForm.getRawValue();
     this.suspect.usernameRegistryData = this.auth.currentUser.username;
     this.suspect.departmentIdDepartment = this.auth.currentUser.departmentIdDepartment;
+    console.log(this.suspect)
+    console.log(this.suspectForm.getRawValue())
      this.suspectService.addSuspect(this.suspect).then((resp) => {
       if (resp == true) {
         this.suspectForm.reset();
