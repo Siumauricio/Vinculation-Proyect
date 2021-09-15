@@ -82,7 +82,8 @@ export class AuthenticationService {
           response=res;
         })
         .catch(async (err) => {
-          this.errorMessage('No se pudo validar el inicio de sesion');
+          console.log('No se pudo validar el inicio de sesion');
+         // this.errorMessage('No se pudo validar el inicio de sesion');
         });
       if (response) {
         localStorage.setItem('Token',response.token);

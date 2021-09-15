@@ -273,7 +273,7 @@ const Icons =  {
     'Departamentos' : 'fa fa-building',
     "Privilegios" : 'fa fa-key',
     'Privilegios de Usuarios' : 'fa fa-id-badge',
-    'Roles a Privilegios' : 'fa fa-cogs',
+    'Privilegios a Roles' : 'fa fa-cogs',
     'Sospechosos' : 'fa fa-user-secret',
     'Usuarios' : 'fa fa-user',
     'Roles' : 'fa fa-sitemap',
