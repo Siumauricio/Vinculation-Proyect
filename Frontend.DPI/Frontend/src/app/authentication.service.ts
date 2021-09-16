@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser:User;
+  public actualUser:any;
   openSidebar:boolean=false;
   public isLoggedIn:boolean;
   public privileges:RolPrivilege[];
@@ -36,11 +37,11 @@ export class AuthenticationService {
     let response:any;
       await this.http.post(`${WEB_SERVICE}User/Login`,body)
         .toPromise()
-        .then(async res => {
+        .then( res => {
           if (res) this.succesMessage('Bienvenido');
           response = res;
         })
-        .catch(async (err) => {
+        .catch( (err) => {
           this.errorMessage('La credenciales no concuerdan con los registros existentes');
         });
       if (response) {
@@ -56,6 +57,7 @@ export class AuthenticationService {
         this.currentUserSubject.next(response);
         localStorage.setItem("isLoggedIn", "true");
         this.currentUser = response;
+        this.actualUser = response;
         return this.isLoggedIn
       }
       return false;

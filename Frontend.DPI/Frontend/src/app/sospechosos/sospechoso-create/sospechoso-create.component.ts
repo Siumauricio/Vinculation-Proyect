@@ -67,10 +67,8 @@ export class SospechosoCreateComponent  {
 
   onSubmit(){
     this.suspect = this.suspectForm.getRawValue();
-    this.suspect.usernameRegistryData = this.auth.currentUser.username;
-    this.suspect.departmentIdDepartment = this.auth.currentUser.departmentIdDepartment;
-    console.log(this.suspect)
-    console.log(this.suspectForm.getRawValue())
+    this.suspect.usernameRegistryData = this.auth.actualUser.username;
+    this.suspect.departmentIdDepartment = this.auth.actualUser.idDepartment;
      this.suspectService.addSuspect(this.suspect).then((resp) => {
       if (resp == true) {
         this.suspectForm.reset();

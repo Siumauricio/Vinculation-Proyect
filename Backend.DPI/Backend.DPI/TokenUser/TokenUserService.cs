@@ -18,7 +18,7 @@ namespace Backend.DPI.TokenUser
 
         public async Task<bool> TokenValidationUserAsync(string Token) {
             await Task.Delay(100);
-            var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Si puedes sonarlo, puedes programarlo"));
+            var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("$2a$12$zibJIlLQcdX1gL1NF7tRj.YFYblBzXqAzLe105eFmAfS/oUE7Bk62"));
             var myIssuer = ServerFrontEnd;
             var myAudience = ServerFrontEnd;
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -45,13 +45,13 @@ namespace Backend.DPI.TokenUser
         public async Task<string> GetTokenAsync()
         {
             await Task.Delay(100);
-            var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Si puedes sonarlo, puedes programarlo"));
+            var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("$2a$12$zibJIlLQcdX1gL1NF7tRj.YFYblBzXqAzLe105eFmAfS/oUE7Bk62"));
             var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
             var tokeOptions = new JwtSecurityToken(
                 issuer: ServerFrontEnd,
                 audience: ServerFrontEnd,
                 claims: new List<Claim>(),
-                expires: DateTime.Now.AddMinutes(480),
+                expires: DateTime.Now.AddMinutes(60),
                 signingCredentials: signinCredentials
             );
             return new JwtSecurityTokenHandler().WriteToken(tokeOptions);

@@ -16,8 +16,6 @@ token:any;
     const token = this.authService.getToken();
     if (token != null) {
       authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + token) });
-    }else{
-        console.log("Error al extraer el token");
     }
     return next.handle(authReq);
   }

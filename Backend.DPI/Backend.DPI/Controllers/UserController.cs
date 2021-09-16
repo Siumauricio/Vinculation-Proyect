@@ -35,10 +35,6 @@ namespace Backend.DPI.Controllers
         {
             var User =  await _userRepository.GetUserByUsernameAsync(username);
 
-            if (User == null)
-            {
-                return NotFound();
-            }
             return Ok(User);
         }
 
