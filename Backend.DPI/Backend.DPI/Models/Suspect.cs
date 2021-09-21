@@ -45,7 +45,6 @@ namespace Backend.DPI.Models
         public string ReferenceAddress { get; set; }
         public string Department { get; set; }
         public string Municipio { get; set; }
-        public string RecordStatus { get; set; }
         public string UsernameRegistryData { get; set; }
         public int DepartmentIdDepartment { get; set; }
         public DateTime CreationDate { get; set; }

@@ -55,7 +55,7 @@ export class SospechosoCreateComponent  {
       referenceAddress: [''],
       department: ['',Validators.required],
       municipio: ['',Validators.required],
-      recordStatus: [''],
+     // recordStatus: [''],
       usernameRegistryData: [''],
       departmentIdDepartment: [''],
       

@@ -464,11 +464,6 @@ namespace Backend.DPI.Models
                     .IsUnicode(false)
                     .HasColumnName("person_from");
 
-                entity.Property(e => e.RecordStatus)
-                    .HasMaxLength(20)
-                    .IsUnicode(false)
-                    .HasColumnName("record_status");
-
                 entity.Property(e => e.ReferenceAddress)
                     .HasMaxLength(40)
                     .IsUnicode(false)
