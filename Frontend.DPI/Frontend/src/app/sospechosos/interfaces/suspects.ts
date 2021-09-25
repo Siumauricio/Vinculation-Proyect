@@ -6,8 +6,8 @@ export interface Suspects{
     lastName:string;
     alias: string;
     sex: number;
-    height: number;
-    weight: number;
+    height?: number;
+    weight?: number;
     eyesColor: string;
     build: string;
     personFrom: string;
@@ -16,7 +16,7 @@ export interface Suspects{
     particularSign: string;
     tattoo: string;
     operationPlace: string;
-    dateOfBirth: Date;
+    dateOfBirth?:  Date,
     nationaliy: string
     age:number;
     civilStatus: string;
@@ -31,7 +31,7 @@ export interface Suspects{
     referenceAddress: string;
     department: string;
     municipio: string;
-    recordStatus:string;
+    deleted?:number,
     usernameRegistryData: string;
     departmentIdDepartment: number;
 }

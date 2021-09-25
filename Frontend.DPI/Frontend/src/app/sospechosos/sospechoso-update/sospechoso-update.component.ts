@@ -36,11 +36,11 @@ Municipios = Municipios;
       firstName: ['',Validators.required],
       middleName:'',
       thirdName: ['',Validators.required],
-      lastName: ['',Validators.required],
+      lastName: [''],
       alias: [''],
       sex: ['',Validators.required],
-      height: ['',Validators.required],
-      weight: ['',Validators.required],
+      height: [''],
+      weight: [''],
       eyesColor: ['',Validators.required],
       build: ['',Validators.required],
       personFrom: ['',Validators.required],
@@ -48,8 +48,8 @@ Municipios = Municipios;
       passportNumber: [''],
       particularSign: ['',Validators.required],
       tattoo: [''],
-      operationPlace: [''],
-      dateOfBirth: ['',Validators.required],
+      operationPlace: ['',Validators.required],
+      dateOfBirth: [''],
       nationaliy: ['',Validators.required],
       age: ['',Validators.required],
       civilStatus: ['',Validators.required],
@@ -63,7 +63,6 @@ Municipios = Municipios;
       referenceAddress: [''],
       department: ['',Validators.required],
       municipio: ['',Validators.required],
-      recordStatus: [''],
       usernameRegistryData: [''],
       departmentIdDepartment: [''],
     })
@@ -133,7 +132,6 @@ Municipios = Municipios;
       referenceAddress: this.newSuspect.referenceAddress,
       department: this.newSuspect.department,
       municipio: this.newSuspect.municipio,
-      recordStatus: this.newSuspect.recordStatus,
       usernameRegistryData: this.newSuspect.usernameRegistryData,
       departmentIdDepartment: this.newSuspect.departmentIdDepartment,
     });
@@ -146,11 +144,26 @@ Municipios = Municipios;
 
   async onSubmit() {
     let Suspect :Suspects = this.suspectForm.getRawValue();
+    
+    if (Suspect.dateOfBirth?.toString() == "") {
+      delete Suspect.dateOfBirth;
+    }
+    if (Suspect.houseNumber.toString() == "") {
+      delete Suspect.houseNumber;
+    }
+    if (Suspect.weight.toString() == "") {
+      delete Suspect.weight;
+    }
+    if (Suspect.height.toString() == "") {
+      delete Suspect.height;
+    }
+    console.log( this.suspectForm.getRawValue())
     Suspect.lastModificationUser = this.auth.currentUser.username;
     await this.updateSuspect(this.suspectData.dniSuspect,Suspect);
   }
 
   async updateSuspect(dni,Suspect) {
+   console.log(Suspect)
     await this.suspectService.updateSuspect(dni,Suspect).then((resp) => {
       if (resp) {
         this.newSuspect = Suspect;

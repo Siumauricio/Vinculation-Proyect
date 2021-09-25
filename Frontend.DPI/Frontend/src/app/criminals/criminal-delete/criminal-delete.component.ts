@@ -7,7 +7,7 @@ import { Criminal } from '../Interfaces/criminal-interface';
   templateUrl: './criminal-delete.component.html',
   styleUrls: ['./criminal-delete.component.css']
 })
-export class CriminalDeleteComponent implements OnInit {
+export class  HistorialCriminalDeleteComponent implements OnInit {
 
   criminalData: Criminal[];
   dniCriminal: string;

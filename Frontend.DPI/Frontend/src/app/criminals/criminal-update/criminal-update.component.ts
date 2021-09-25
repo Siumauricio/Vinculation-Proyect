@@ -9,7 +9,7 @@ import { Criminal, CriminalGroup } from '../Interfaces/criminal-interface';
   templateUrl: './criminal-update.component.html',
   styleUrls: ['./criminal-update.component.css']
 })
-export class CriminalUpdateComponent implements OnInit {
+export class  HistorialCriminalUpdateComponent implements OnInit {
   @ViewChild('updateCriminalModal', { static: true }) updateCriminalModal: ModalDirective;
   criminalData: Criminal[];
   dniCriminal: string;

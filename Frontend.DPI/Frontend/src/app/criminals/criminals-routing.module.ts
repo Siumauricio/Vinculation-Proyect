@@ -1,28 +1,29 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CriminalCreateComponent } from './criminal-create/criminal-create.component';
-import { CriminalListComponent } from './criminal-list/criminal-list.component';
-import { CriminalUpdateComponent } from './criminal-update/criminal-update.component';
+import { HistorialCriminalCreateComponent } from './criminal-create/criminal-create.component';
+import { HistorialCriminalDeleteComponent } from './criminal-delete/criminal-delete.component';
+import { HistorialCriminalListComponent } from './criminal-list/criminal-list.component';
+import { HistorialCriminalUpdateComponent } from './criminal-update/criminal-update.component';
 
 const routes: Routes = [
   {
-    path: 'Agregar Caracteristicas Personales',
-    component: CriminalCreateComponent,
+    path: 'Agregar Historial Delictivo',
+    component:  HistorialCriminalCreateComponent,
     data: { title: 'update' },
   },
   {
-    path: 'Listar Caracteristicas Personales',
-    component: CriminalListComponent,
+    path: 'Listar Historial Delictivo',
+    component:  HistorialCriminalListComponent,
     data: { title: 'update' },
   },
   {
-    path: 'Modificar Caracteristicas Personales',
-    component: CriminalUpdateComponent,
+    path: 'Modificar Historial Delictivo',
+    component:  HistorialCriminalUpdateComponent,
     data: { title: 'update' },
   },
   {
-    path: 'Eliminar Criminales',
-    component: CriminalUpdateComponent,
+    path: 'Eliminar Historial Delictivo',
+    component: HistorialCriminalDeleteComponent,
     data: { title: 'update' },
   },
 ];

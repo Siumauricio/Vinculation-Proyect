@@ -12,7 +12,7 @@ namespace Backend.DPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-   // [Authorize]
+    //[Authorize]
     public class SuspectController : Controller
     {
         private readonly SuspectRepository _suspectRepository = new SuspectRepository();

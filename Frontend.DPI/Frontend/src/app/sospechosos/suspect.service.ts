@@ -9,17 +9,20 @@ import Swal from 'sweetalert2';
 export class SuspectService {
   constructor(private http: HttpClient) {}
 
-  async addSuspect(suspect:Suspects){
+  async addSuspect(suspect){
       const url = `${WEB_SERVICE}Suspect/AddSuspect`;
       let answer: any = {};
+      console.log(suspect);
       await this.http
         .post(url, suspect)
         .toPromise()
-        .then(async (ApiAnswer: any) => {
+        .then((ApiAnswer: any) => {
+         
           answer = ApiAnswer;
           if (answer) this.succesMessage('¡Se ha agregado el sospechos con exito!');
         })
-        .catch(async (error) => {
+        .catch((error) => {
+          console.log(url)
           this.errorMessage('Error asegurese que este sospechoso no existe');
         });
   

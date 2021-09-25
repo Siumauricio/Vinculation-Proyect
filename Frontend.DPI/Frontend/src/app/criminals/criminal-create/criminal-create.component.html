@@ -1,7 +1,7 @@
 <div class="container">
   <div class="card">
     <div class="card-header bg-primary">
-      AGREGAR CARACTERÍSTICAS PERSONALES
+      AGREGAR HISTORIAL DELICTIVO
     </div>
     <div class="card-body">
       <form [formGroup]="criminalForm" (ngSubmit)="onSubmit()" [ngClass]=" !this.validForm?'was-validated':''">
@@ -51,7 +51,7 @@
                 <div class="form-floating">
                   <input  type="number" formControlName="periodBelong" (keypress)="keyPressAlphanumeric($event)"
                   class="form-control" required />
-                  <label for="floatingPassword">Periodo de duracion (meses)<label style="color: red;">*</label> </label>
+                  <label for="floatingPassword">Periodo de Permanencia (meses)<label style="color: red;">*</label> </label>
                 </div>
                 <div class="invalid-feedback">
                   duracion requerida

@@ -37,7 +37,7 @@
                 <div class="col-md">
                   <div class="form-floating">
                     <input type="text"  formControlName="lastName" (keypress)="keyPressAlphanumeric($event)" maxlength="15"  class="form-control" />
-                    <label for="floatingPassword">Segundo Apellido<label style="color: red;">*</label></label>
+                    <label for="floatingPassword">Segundo Apellido</label>
                   </div>
                 </div>
               </div>
@@ -60,11 +60,11 @@
 
               <div class="form-floating mb-3">
                 <input  type="number" step="0.01" formControlName="height" maxlength="6"  autocomplete="off" class="form-control" />
-                <label for="floatingUser">Altura en Metros<label style="color: red;">*</label></label>
+                <label for="floatingUser">Altura en Metros</label>
               </div>
               <div class="form-floating mb-3">
                 <input  type="number"  formControlName="weight"  maxlength="6" autocomplete="off" class="form-control" />
-                <label for="floatingUser">Peso en LBS<label style="color: red;">*</label></label>
+                <label for="floatingUser">Peso en LBS</label>
               </div>
 
                   <div class="form-floating mb-3">
@@ -104,12 +104,12 @@
 
               <div class="form-floating mb-3">
                 <input  type="text" formControlName="operationPlace" (keypress)="keyPressAlphanumeric($event)" maxlength="60" autocomplete="off" class="form-control" />
-                <label for="floatingUser">Lugar de operacion</label>
+                <label for="floatingUser">Lugar de operacion<label style="color: red;">*</label></label>
               </div>
 
               <div class="form-floating mb-3">
                 <input  type="date" formControlName="dateOfBirth" (keypress)="keyPressAlphanumeric($event)" autocomplete="off" class="form-control" />
-                <label for="floatingUser">Fecha de nacimiento<label style="color: red;">*</label></label>
+                <label for="floatingUser">Fecha de nacimiento</label>
               </div>
 
               <div class="row mb-3">
@@ -203,7 +203,7 @@
 
               <div class="row mb-3">
                 <div class="input-group mb-3">
-                  <label class="input-group-text" for="roles">Departamento<label style="color: red;">*</label></label>
+                  <label class="input-group-text" for="roles">Departamento De Residencia<label style="color: red;">*</label></label>
                   <select class="form-select"  formControlName="department" (click)="getDepartment()">
                 <option value="" selected disabled hidden>Escoge una opcion</option>
                 <option *ngFor="let Departamento of Departamentos" >
@@ -222,7 +222,7 @@
 
               <div class="row mb-3">
                 <div class="input-group mb-3">
-                  <label class="input-group-text" for="roles">Municipio<label style="color: red;">*</label></label>
+                  <label class="input-group-text" for="roles">Municipio De Residencia<label style="color: red;">*</label></label>
                   <select class="form-select"  formControlName="municipio">
                 <option value="" selected disabled hidden>Escoge una opcion</option>
                 <option *ngFor="let Municipio of MunicipiosLst" >

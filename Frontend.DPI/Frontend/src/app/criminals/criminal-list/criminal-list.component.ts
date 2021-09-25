@@ -7,7 +7,7 @@ import { Criminal } from '../Interfaces/criminal-interface';
   templateUrl: './criminal-list.component.html',
   styleUrls: ['./criminal-list.component.css']
 })
-export class CriminalListComponent implements OnInit {
+export class  HistorialCriminalListComponent implements OnInit {
 
   totalRecords :number;
   page:number =1;

@@ -28,11 +28,11 @@ export class SospechosoCreateComponent  {
       firstName: ['',Validators.required],
       middleName:[''],
       thirdName: ['',Validators.required],
-      lastName: ['',Validators.required],
+      lastName: [''],
       alias: [''],
       sex: ['',Validators.required],
-      height: ['',Validators.required],
-      weight: ['',Validators.required],
+      height: [''],
+      weight: [''],
       eyesColor: ['',Validators.required],
       build: ['',Validators.required],
       personFrom: ['',Validators.required],
@@ -40,8 +40,8 @@ export class SospechosoCreateComponent  {
       passportNumber: [''],
       particularSign: ['',Validators.required],
       tattoo: [''],
-      operationPlace: [''],
-      dateOfBirth: ['',Validators.required],
+      operationPlace: ['',Validators.required],
+      dateOfBirth: [''],
       nationaliy: ['',Validators.required],
       age: ['',Validators.required],
       civilStatus: ['',Validators.required],
@@ -50,12 +50,11 @@ export class SospechosoCreateComponent  {
       avenue: [''],
       village:[''],
       caserio: [''],
-      houseNumber: ['0'],
+      houseNumber: [''],
       pasaje: [''],
       referenceAddress: [''],
       department: ['',Validators.required],
       municipio: ['',Validators.required],
-     // recordStatus: [''],
       usernameRegistryData: [''],
       departmentIdDepartment: [''],
       
@@ -67,8 +66,23 @@ export class SospechosoCreateComponent  {
 
   onSubmit(){
     this.suspect = this.suspectForm.getRawValue();
-    this.suspect.usernameRegistryData = this.auth.actualUser.username;
-    this.suspect.departmentIdDepartment = this.auth.actualUser.idDepartment;
+      this.suspect.deleted = 0;
+      if (this.suspect.dateOfBirth.toString() == "") {
+        delete this.suspect.dateOfBirth;
+      }
+      if (this.suspect.weight.toString() == "") {
+        delete this.suspect.weight;
+      }
+      if (this.suspect.houseNumber.toString() == "") {
+        delete this.suspect.houseNumber;
+      }
+      if (this.suspect.height.toString() == "") {
+        delete this.suspect.height;
+      }
+    this.suspect.usernameRegistryData = this.auth.currentUser.username;
+    this.suspect.departmentIdDepartment = this.auth.currentUser.departmentIdDepartment;
+
+    console.log(this.suspectForm.getRawValue())
      this.suspectService.addSuspect(this.suspect).then((resp) => {
       if (resp == true) {
         this.suspectForm.reset();

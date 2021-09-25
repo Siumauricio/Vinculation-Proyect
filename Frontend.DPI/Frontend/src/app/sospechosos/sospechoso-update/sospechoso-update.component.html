@@ -38,8 +38,8 @@
             <td *ngIf="suspectData.firstName">
                 {{suspectData.firstName}} {{suspectData.middleName}} {{suspectData.thirdName}} {{suspectData.lastName}}
             </td>
-            <td *ngIf="suspectData.dateOfBirth">{{ suspectData.dateOfBirth | date: "dd/MM/yyyy" }}</td>
-            <td *ngIf="suspectData.dateOfBirth">{{ suspectData.alias}}</td>
+            <td *ngIf="suspectData.dniSuspect">{{ suspectData.dateOfBirth | date: "dd/MM/yyyy" }}</td>
+            <td *ngIf="suspectData.dniSuspect">{{ suspectData.alias}}</td>
             <td *ngIf="suspectData.firstName">
               <button class="btn" (click)="ShowModal()">
                 <i class="fa fa-edit"></i>
@@ -92,7 +92,7 @@
                 <div class="col-md">
                   <div class="form-floating">
                     <input type="text"  formControlName="lastName" (keypress)="keyPressAlphanumeric($event)" maxlength="15"  class="form-control" />
-                    <label for="floatingPassword">Segundo Apellido<label style="color: red;">*</label></label>
+                    <label for="floatingPassword">Segundo Apellido</label>
                   </div>
                 </div>
               </div>
@@ -115,11 +115,11 @@
 
               <div class="form-floating mb-3">
                 <input  type="number" step="0.01" formControlName="height" maxlength="6"  autocomplete="off" class="form-control" />
-                <label for="floatingUser">Altura en Metros<label style="color: red;">*</label></label>
+                <label for="floatingUser">Altura en Metros</label>
               </div>
               <div class="form-floating mb-3">
                 <input  type="number"  formControlName="weight"  maxlength="6" autocomplete="off" class="form-control" />
-                <label for="floatingUser">Peso en LBS<label style="color: red;">*</label></label>
+                <label for="floatingUser">Peso en LBS</label>
               </div>
 
                   <div class="form-floating mb-3">
@@ -164,7 +164,7 @@
               <!-- value="{{ this.newSuspect.dateOfBirth | date:'yyyy-MM-dd' }}" -->
               <div class="form-floating mb-3">
                 <input  type="date" [ngModel]="this.newSuspect.dateOfBirth | date:'yyyy-MM-dd'"   [ngModelOptions]="{standalone: true}"  (ngModelChange)="onChange($event)"  (keypress)="keyPressAlphanumeric($event)"  autocomplete="off" class="form-control" />
-                <label for="floatingUser">Fecha de nacimiento<label style="color: red;">*</label></label>
+                <label for="floatingUser">Fecha de nacimiento</label>
               </div>
 
 
@@ -241,7 +241,7 @@
 
               <div class="row mb-3">
                 <div class="input-group mb-3">
-                  <label class="input-group-text" for="roles">Departamento<label style="color: red;">*</label></label>
+                  <label class="input-group-text" for="roles">Departamento De Residencia<label style="color: red;">*</label></label>
                   <select    class="form-select"  id="roles"  formControlName="department" (click)="getDepartment()" >
                     <option *ngFor="let department of Departamentos" [value]="department">
                       {{ department }}
@@ -253,7 +253,7 @@
 
               <div class="row mb-3">
                 <div class="input-group mb-3">
-                  <label class="input-group-text" for="roles">Municipio<label style="color: red;">*</label></label>
+                  <label class="input-group-text" for="roles">Municipio De Residencia<label style="color: red;">*</label></label>
                   <select    class="form-select"  id="roles"  formControlName="municipio" >
                     <option *ngFor="let municipio of MunicipiosLst" [value]="municipio">
                       {{ municipio }}

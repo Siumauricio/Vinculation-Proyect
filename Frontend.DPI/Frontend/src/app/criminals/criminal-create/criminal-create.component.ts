@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, PatternValidator, Validators } from '@angular/forms';
-import { AuthenticationService } from 'src/app/authentication.service';
 import { CriminalsService } from '../criminals.service';
 import { CriminalGroup } from '../Interfaces/criminal-interface';
 
@@ -9,7 +8,7 @@ import { CriminalGroup } from '../Interfaces/criminal-interface';
   templateUrl: './criminal-create.component.html',
   styleUrls: ['./criminal-create.component.css']
 })
-export class CriminalCreateComponent implements OnInit {
+export class HistorialCriminalCreateComponent implements OnInit {
 
   validForm:boolean =true;
   criminalForm : FormGroup;
