@@ -278,5 +278,7 @@ const Icons =  {
     'Usuarios' : 'fa fa-user',
     'Roles' : 'fa fa-sitemap',
     'Grupos Criminales' : 'fa fa-users',
-    'Historial Delictivo': 'fa fa-address-book'
+    'Historial Delictivo': 'fa fa-address-book',
+    'Historial Criminal': 'fa fa-book',
+    'Historial Policial': 'fa fa-clipboard',
   }

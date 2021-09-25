@@ -1,8 +1,8 @@
+import { PoliceRecord } from './../criminals/Interfaces/criminal-interface';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import Swal from 'sweetalert2';
 import { WEB_SERVICE } from '../configurations/config';
-import { PoliceRecord } from '../criminals/Interfaces/criminal-interface';
 
 @Injectable({
   providedIn: 'root'
@@ -56,8 +56,8 @@ export class PoliceRecordService {
     return answer;
   }
 
-  async getCriminalByDNI(dni: string) {
-    const url = `${WEB_SERVICE}CriminalDatum/GetCriminalDAtaByDni?DNI=${dni}`;
+  async getPoliceRecordByDNI(dni: string) {
+    const url = `${WEB_SERVICE}PoliceRecord/GetPoliceRecordsByDNI?dniSuspect=${dni}`;
     let answer: any = {};
     await this.http
       .get(url)
@@ -91,38 +91,45 @@ export class PoliceRecordService {
     return answer;
   }
 
-  // async updtCriminalData(criminal:Criminal) {
-  //   let body = {
-  //     idCriminalData: criminal.idCriminalData,
-  //     incidenceType: criminal.incidenceType,
-  //     incidenceZone: criminal.incidenceZone,
-  //     hierarchyCriminalGroup: criminal.hierarchyCriminalGroup,
-  //     periodBelong: String(criminal.periodBelong) + ' MESES',
-  //     operationPlace: criminal.operationPlace.toUpperCase(),
-  //     tatooType: criminal.tatooType,
-  //     suspectDni: criminal.suspectDni,
-  //     criminalGroupIdCg: Number(criminal.criminalGroupIdCg),
-  //   };
+  async updatePoliceRecord(policeRecord:PoliceRecord) {
 
-  //   console.log(JSON.stringify(body));
+    const url = `${WEB_SERVICE}PoliceRecord/ModifyPoliceRecord`;
+    let answer: any = {};
+    await this.http
+      .post(url, policeRecord)
+      .toPromise()
+      .then(async (ApiAnswer: any) => {
+        answer = ApiAnswer;
+        if (answer)
+          this.succesMessage('¡Se han modificado los datos con exito!');
+      })
+      .catch(async (error) => {
+        this.errorMessage('Erro al modificar los datos');
+      });
 
-  //   const url = `${WEB_SERVICE}CriminalDatum/UpdateCriminalDataById`;
-  //   let answer: any = {};
-  //   await this.http
-  //     .put(url, body)
-  //     .toPromise()
-  //     .then(async (ApiAnswer: any) => {
-  //       answer = ApiAnswer;
-  //       if (answer)
-  //         this.succesMessage('¡Se han modificado los datos con exito!');
-  //     })
-  //     .catch(async (error) => {
-  //       this.errorMessage('Erro al modificar los datos');
-  //     });
+    return answer;
+  }
 
-  //   return answer;
-  // }
 
+  
+  async deletePoliceRecord(policeRecordid) {
+
+    const url = `${WEB_SERVICE}PoliceRecord/DeletePoliceRecord?idPoliceRecord=${policeRecordid}`;
+    let answer: any = {};
+    await this.http
+      .delete(url)
+      .toPromise()
+      .then(async (ApiAnswer: any) => {
+        answer = ApiAnswer;
+        if (answer)
+          this.succesMessage('¡Se han modificado los datos con exito!');
+      })
+      .catch(async (error) => {
+        this.errorMessage('Erro al modificar los datos');
+      });
+
+    return answer;
+  }
 
 
   succesMessage(message) {

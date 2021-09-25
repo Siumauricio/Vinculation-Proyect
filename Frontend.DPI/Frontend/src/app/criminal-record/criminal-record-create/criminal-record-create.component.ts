@@ -61,6 +61,11 @@ export class CriminalRecordCreateComponent implements OnInit {
         delete result.sentenceStartDate;
       }
       this.criminalService.createRecordCriminal(result).then(resp=>{
+      
+        if (resp==true) {
+          console.log(resp)
+          this.criminalForm.reset();
+        }
      })
     }else{
       this.validForm = false;

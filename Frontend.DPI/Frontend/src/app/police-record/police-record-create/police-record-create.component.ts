@@ -2,6 +2,7 @@ import { PoliceRecordService } from './../police.record.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PoliceRecord } from '../../criminals/Interfaces/criminal-interface';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-police-record-create',
@@ -57,14 +58,23 @@ export class PoliceRecordCreateComponent implements OnInit {
       }
     
       this.police.createPoliceRecord(result).then(resp=>{
-        console.log(result)
-        if (result == true) {
+        if (resp == true) {
        this.criminalForm.reset();
+        }else{
+          this.errorMessage('No existe el DNI');
         }
      })
     }else{
       this.validForm = false;
     }
+  }
+  
+  errorMessage(message) {
+    Swal.fire({
+      title: 'Error',
+      text: message,
+      icon: 'error',
+    });
   }
 
 }

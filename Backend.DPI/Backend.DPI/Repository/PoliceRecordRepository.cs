@@ -12,13 +12,13 @@ namespace Backend.DPI.Repository
 
         public async Task<bool> CreatePoliceRecord(PoliceRecord policeRecord)
         {
-            await dpiContext.PoliceRecords.AddAsync(policeRecord);
-             
-            if (await dpiContext.SaveChangesAsync() > 0)
-            {
-                return true;
+            var result = await dpiContext.Suspects.FirstOrDefaultAsync(x => x.DniSuspect == policeRecord.SuspectDni);
+            if (result == null) {
+                return false;
             }
-            return false;
+            await dpiContext.PoliceRecords.AddAsync(policeRecord);
+            await dpiContext.SaveChangesAsync();
+            return true;
         }
 
         public async Task<bool> DeletePoliceRecord(int idPoliceRecord)
@@ -55,7 +55,18 @@ namespace Backend.DPI.Repository
             {
                 return false;
             }
-            result = police;
+            result.DetentionDate = police.DetentionDate;
+            result.ConfiscationType = police.ConfiscationType;
+            result.ConfiscationQuantity = police.ConfiscationQuantity;
+            result.ConfiscationDescription = police.ConfiscationDescription;
+            result.DetentionDepartment = police.DetentionDepartment;
+            result.DetentionMunicipio = police.DetentionMunicipio;
+            result.ReasonDetention = police.ReasonDetention;
+            result.SuspectDni = police.SuspectDni;
+            result.Village = police.Village;
+            result.Colonia = police.Colonia;
+            result.Caserio = police.Caserio;
+            result.CapturedByOrganization = police.CapturedByOrganization;
             await this.dpiContext.SaveChangesAsync();
             return true;
         }

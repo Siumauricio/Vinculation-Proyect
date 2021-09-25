@@ -1,1 +1,63 @@
-<p>police-record-delete works!</p>
+<div class="container">
+    <h1 style="text-align: left;">Eliminacion De Antecedentes Policiales</h1>
+  
+    <div class="row mb-3">
+        <div class="col-md-4">
+          <div class="input-group mb-3">
+            <input  type="text"  class="form-control" [(ngModel)]="userFilterSelected"  (keypress)="keyPressAlphanumeric($event)"  placeholder="DNI"/>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <button  class="btn btn-primary btn-block"(click)="getPoliceRecords(userFilterSelected)"   >
+            Buscar Antecedentes Policiales
+          </button>
+        </div>
+      </div>
+    <div class="col-md-12 table-responsive">
+      <table class="table table-striped table-md">
+        <thead class="bg-primary">
+            <tr>
+                <th></th>
+
+                <th>DNI SOSPECHOSO</th>
+                <th>RAZON DE DETENCION</th>
+                <th>DEPARTAMENTO DE DETENCION</th>
+                <th>MUNICIPIO DE DETENCION</th>
+                <th>COLONIA</th>
+                <th>ORGANIZACION QUE LO CAPTURO</th>
+                <th>FECHA DE DETENCION</th>
+                <th>TIPO DE CONFISCACION</th>
+                <th>DESCRIPCION</th>
+                <th>CANTIDAD DE CONFISCACION</th>
+                <th>CASERIO</th>
+                <th>ALDEA</th>
+              </tr>
+            </thead>
+            <tbody *ngIf="policeRecord!=null">
+                <tr *ngFor="let policeRecord of policeRecord | policeRecordFilter: userFilterSelected | paginate: {  itemsPerPage:10, currentPage:page, totalItems:totalRecords }">
+            <td>
+                <button class="btn" (click)="DeletePoliceRecord(policeRecord.idPoliceRecord)">
+                    <i class="fa fa-trash text-danger"></i>
+                </button>
+            </td>
+            <td>{{ policeRecord.suspectDni }}</td>
+            <td>{{ policeRecord.reasonDetention  }}</td>
+            <td>{{ policeRecord.detentionDepartment  }}</td>
+            <td>{{ policeRecord.detentionMunicipio  }}</td>
+            <td>{{ policeRecord.colonia   != "" ? policeRecord.colonia : 'No hay informacion' }}</td>
+            <td>{{ policeRecord.capturedByOrganization    }}</td>
+            <td>{{ policeRecord.detentionDate   | date: "dd/MM/yyyy"   }}</td>
+            <td>{{ policeRecord.confiscationType != "" ? policeRecord.confiscationType : 'No hay informacion'  }}</td>
+            <td>{{ policeRecord.confiscationDescription != "" ? policeRecord.confiscationDescription : 'No hay informacion'    }}</td>
+            <td>{{ policeRecord.confiscationQuantity   != "" ? policeRecord.confiscationQuantity : 'No hay informacion'   }}</td>
+            <td>{{ policeRecord.caserio   != "" ? policeRecord.caserio : 'No hay informacion'  }}</td>
+            <td>{{ policeRecord.village   != "" ? policeRecord.village : 'No hay informacion'  }}</td>
+              
+                
+              </tr>
+        </tbody>
+      </table>
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+  </div>
+  

@@ -115,6 +115,16 @@
               </div>
             </div>
 
+            <div class="row mb-3">
+              <div class="col-md">
+                  <div class="form-floating">
+                    <input  type="text" formControlName="village" (keypress)="keyPressAlphanumeric($event)"
+                    class="form-control" maxlength="30" />
+                    <label for="floatingPassword">Aldea De Detencion</label>
+                  </div>
+                </div>
+              </div>
+
             </div>
               <div class="row py-3 pull-right">
                 <button  class="btn btn-success" type="submit"  >

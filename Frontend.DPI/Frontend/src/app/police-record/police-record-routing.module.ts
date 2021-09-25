@@ -1,10 +1,10 @@
-import { PoliceRecordUpdateComponent } from './police-record-update/police-record-update.component';
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PoliceRecordCreateComponent } from './police-record-create/police-record-create.component';
 import { PoliceRecordDeleteComponent } from './police-record-delete/police-record-delete.component';
 import { PoliceRecordListComponent } from './police-record-list/police-record-list.component';
+import { PoliceRecordUpdateComponent } from './police-record-update/police-record-update.component';
 
 
 const routes: Routes = [

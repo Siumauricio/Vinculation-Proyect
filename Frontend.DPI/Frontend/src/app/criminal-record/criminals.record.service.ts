@@ -71,27 +71,9 @@ export class CriminalRecordService {
     return answer;
   }
 
-  async getCriminalGroups(){
 
-    const url = `${WEB_SERVICE}CriminalGroup/GetCriminalGroups`;
-
-    let answer: any;
-
-    await this.http.get(url).toPromise()
-      .then(async (ApiAnswer: any) => {
-        Swal.close();
-        answer = ApiAnswer;
-      })
-      .catch(async (ApiAnswer) => {
-        Swal.close();
-        this.errorMessage('Error extrayendo datos');
-      });
-    return answer;
-  }
 
   async updtCriminalRecord(criminal:CriminalRecord) {
-
-  
 
     const url = `${WEB_SERVICE}CriminalRecord/UpdateCriminalRecordByDni`;
     let answer: any = {};
@@ -105,6 +87,26 @@ export class CriminalRecordService {
       })
       .catch(async (error) => {
         this.errorMessage('Erro al modificar los datos');
+      });
+
+    return answer;
+  }
+
+  async deleteCriminalRecord(criminalRecord) {
+
+    const url = `${WEB_SERVICE}CriminalRecord/DeleteCriminalRecord?IdCriminalRecord=${criminalRecord}`;
+    console.log(url)
+    let answer: any = {};
+    await this.http
+      .delete(url)
+      .toPromise()
+      .then(async (ApiAnswer: any) => {
+        answer = ApiAnswer;
+        if (answer)
+          this.succesMessage('¡Se han Eliminado los datos con exito!');
+      })
+      .catch(async (error) => {
+        this.errorMessage('Error al Eliminar los datos');
       });
 
     return answer;

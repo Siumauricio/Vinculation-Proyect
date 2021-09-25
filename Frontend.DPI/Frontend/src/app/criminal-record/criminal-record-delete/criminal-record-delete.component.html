@@ -1,1 +1,49 @@
-<p>criminal-record-delete works!</p>
+<div class="container">
+    <h1 style="text-align: left;">Eliminacion De Antecedentes Criminal</h1>
+  
+    <div class="row mb-3">
+        <div class="col-md-4">
+          <div class="input-group mb-3">
+            <input  type="text"  class="form-control" [(ngModel)]="userFilterSelected"  (keypress)="keyPressAlphanumeric($event)"  placeholder="DNI"/>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <button  class="btn btn-primary btn-block"(click)="getCriminalRecordByDNI(userFilterSelected)"   >
+            Buscar Antecedentes
+          </button>
+        </div>
+      </div>
+    <div class="col-md-12 table-responsive">
+      <table class="table table-striped table-md">
+        <thead class="bg-primary">
+          <tr>
+            <th>DNI SOSPECHOSO</th>
+            <th>CRIMEN</th>
+            <th>CELDA MODULO DE PRISION</th>
+            <th>CENTRO PENITENCIARIO</th>
+            <th>INICIO DE SENTENCIA</th>
+            <th>FINAL DE SENTENCIA</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody *ngIf="criminalRecords!=null">
+          <tr *ngFor="let criminalRecord of criminalRecords | criminalRecordFilter: userFilterSelected | paginate: {  itemsPerPage:10, currentPage:page, totalItems:totalRecords }">
+            <td>{{ criminalRecord.suspectDni }}</td>
+            <td>{{ criminalRecord.crime  != "" ? criminalRecord.crime : 'No hay informacion'}}</td>
+            <td>{{ criminalRecord.moduleCellPrison != "" ? criminalRecord.moduleCellPrison : 'No hay informacion' }}</td>
+            <td>{{ criminalRecord.penitentiaryCenter != "" ? criminalRecord.penitentiaryCenter : 'No hay informacion' }}</td>
+            <td>{{ criminalRecord.sentenceFinalDate != null ? (criminalRecord.sentenceFinalDate | date: "dd/MM/yyyy" ): 'No hay informacion'  }}</td>
+            <td>{{ criminalRecord.sentenceStartDate  != null ? (criminalRecord.sentenceStartDate | date: "dd/MM/yyyy" ): 'No hay informacion' }}</td>
+          
+            <td>
+                <button class="btn" (click)="DeleteCriminalRecord(criminalRecord.idCriminalRecord)">
+                  <i class="fa fa-trash text-danger"></i>
+                </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+  </div>
+  

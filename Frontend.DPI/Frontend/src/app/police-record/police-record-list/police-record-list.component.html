@@ -41,7 +41,7 @@
             <td>{{ policeRecord.capturedByOrganization    }}</td>
             <td>{{ policeRecord.detentionDate   | date: "dd/MM/yyyy"   }}</td>
             <td>{{ policeRecord.confiscationType != "" ? policeRecord.confiscationType : 'No hay informacion'  }}</td>
-            <td>{{ policeRecord.confiscationDescription != "" ? policeRecord.confiscationQuantity : 'No hay informacion'    }}</td>
+            <td>{{ policeRecord.confiscationDescription != "" ? policeRecord.confiscationDescription : 'No hay informacion'    }}</td>
             <td>{{ policeRecord.confiscationQuantity   != "" ? policeRecord.confiscationQuantity : 'No hay informacion'   }}</td>
             <td>{{ policeRecord.caserio   != "" ? policeRecord.caserio : 'No hay informacion'  }}</td>
             <td>{{ policeRecord.village   != "" ? policeRecord.village : 'No hay informacion'  }}</td>
