@@ -17,6 +17,7 @@ import { TokenInterceptorProviders } from './TokenInterceptor.service';
 
 
 
+
 export function tokenGetter(){
   return localStorage.getItem("Token");
 } 
@@ -27,9 +28,7 @@ export function tokenGetter(){
     NavbarComponent,
     HomeComponent,
     PagenotfoundComponent,
-    LoginComponent
-
-    
+    LoginComponent,
   ],
   
   imports: [

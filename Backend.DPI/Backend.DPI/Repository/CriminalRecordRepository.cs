@@ -30,9 +30,9 @@ namespace Backend.DPI.Repository
             return true;
         }
 
-        public async Task<CriminalRecord> GetCriminalRecordByDNIAsync(string DNI)
+        public async Task<IReadOnlyList<CriminalRecord>> GetCriminalRecordByDNIAsync(string DNI)
         {
-            var result = await _dpiContext.CriminalRecords.FirstOrDefaultAsync(x=>x.SuspectDni==DNI);
+            var result = await _dpiContext.CriminalRecords.Where(x=>x.SuspectDni==DNI).ToListAsync();
             if (result == null) return null;
             return result;
         }

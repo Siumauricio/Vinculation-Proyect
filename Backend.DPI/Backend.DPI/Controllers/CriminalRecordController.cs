@@ -12,7 +12,7 @@ namespace Backend.DPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-  //  [Authorize]
+   [Authorize]
     public class CriminalRecordController : Controller
     {
         private readonly ICriminalRecordRepository criminalRecord;
@@ -55,17 +55,9 @@ namespace Backend.DPI.Controllers
 
         [HttpGet("GetCriminalRecordByDNI")]
 
-        public async Task<ActionResult<CriminalRecordDto>> GetCriminalRecordByDNI(string DNI) {
+        public async Task<IReadOnlyList<CriminalRecord>> GetCriminalRecordByDNI(string DNI) {
             var result = await criminalRecord.GetCriminalRecordByDNIAsync(DNI);
-            return Ok(new CriminalRecordDto { 
-                Crime=result.Crime,
-                IdCriminalRecord=result.IdCriminalRecord,
-                ModuleCellPrison=result.ModuleCellPrison,
-                PenitentiaryCenter=result.PenitentiaryCenter,
-                SentenceFinalDate=result.SentenceFinalDate,
-                SentenceStartDate=result.SentenceStartDate,
-                SuspectDni=result.SuspectDni
-            });
+            return result;
         
         }
 

@@ -2,18 +2,20 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import Swal from 'sweetalert2';
 import { WEB_SERVICE } from '../configurations/config';
-import { CriminalRecord } from '../criminals/Interfaces/criminal-interface';
+import { PoliceRecord } from '../criminals/Interfaces/criminal-interface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CriminalRecordService {
+export class PoliceRecordService {
 
   constructor(private http: HttpClient) { }
 
 
-  async createRecordCriminal(criminal:CriminalRecord ) {
-    const url = `${WEB_SERVICE}CriminalRecord/AddCriminalRecord`;
+  async createPoliceRecord(criminal:PoliceRecord ) {
+
+
+    const url = `${WEB_SERVICE}PoliceRecord/CreatePoliceRecord`;
     let answer: any = {};
     await this.http
       .post(url, criminal)
@@ -30,7 +32,7 @@ export class CriminalRecordService {
   }
 
 
-  async getCriminalRecords(){
+  async getPoliceRecords(){
     Swal.fire({
       title: 'Espere un momento',
       html: 'Cargando usuarios',
@@ -38,7 +40,7 @@ export class CriminalRecordService {
         Swal.showLoading();
       },
     });
-    const url = `${WEB_SERVICE}CriminalRecord/GetCriminalRecords`;
+    const url = `${WEB_SERVICE}PoliceRecord/GetPoliceRecords`;
 
     let answer: any;
 
@@ -55,7 +57,7 @@ export class CriminalRecordService {
   }
 
   async getCriminalByDNI(dni: string) {
-    const url = `${WEB_SERVICE}CriminalRecord/GetCriminalRecordByDNI?DNI=${dni}`;
+    const url = `${WEB_SERVICE}CriminalDatum/GetCriminalDAtaByDni?DNI=${dni}`;
     let answer: any = {};
     await this.http
       .get(url)
@@ -89,26 +91,37 @@ export class CriminalRecordService {
     return answer;
   }
 
-  async updtCriminalRecord(criminal:CriminalRecord) {
+  // async updtCriminalData(criminal:Criminal) {
+  //   let body = {
+  //     idCriminalData: criminal.idCriminalData,
+  //     incidenceType: criminal.incidenceType,
+  //     incidenceZone: criminal.incidenceZone,
+  //     hierarchyCriminalGroup: criminal.hierarchyCriminalGroup,
+  //     periodBelong: String(criminal.periodBelong) + ' MESES',
+  //     operationPlace: criminal.operationPlace.toUpperCase(),
+  //     tatooType: criminal.tatooType,
+  //     suspectDni: criminal.suspectDni,
+  //     criminalGroupIdCg: Number(criminal.criminalGroupIdCg),
+  //   };
 
-  
+  //   console.log(JSON.stringify(body));
 
-    const url = `${WEB_SERVICE}CriminalRecord/UpdateCriminalRecordByDni`;
-    let answer: any = {};
-    await this.http
-      .put(url, criminal)
-      .toPromise()
-      .then(async (ApiAnswer: any) => {
-        answer = ApiAnswer;
-        if (answer)
-          this.succesMessage('¡Se han modificado los datos con exito!');
-      })
-      .catch(async (error) => {
-        this.errorMessage('Erro al modificar los datos');
-      });
+  //   const url = `${WEB_SERVICE}CriminalDatum/UpdateCriminalDataById`;
+  //   let answer: any = {};
+  //   await this.http
+  //     .put(url, body)
+  //     .toPromise()
+  //     .then(async (ApiAnswer: any) => {
+  //       answer = ApiAnswer;
+  //       if (answer)
+  //         this.succesMessage('¡Se han modificado los datos con exito!');
+  //     })
+  //     .catch(async (error) => {
+  //       this.errorMessage('Erro al modificar los datos');
+  //     });
 
-    return answer;
-  }
+  //   return answer;
+  // }
 
 
 

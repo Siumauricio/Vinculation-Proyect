@@ -1,1 +1,151 @@
-<p>criminal-record-update works!</p>
+<div class="container">
+    <h1 style="text-align: left;">MODIFICACIÓN ANTECEDENTES CRIMINALES</h1>
+  
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <div class="input-group mb-3">
+            <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="dniCriminal"
+            placeholder="DNI"
+            (keyup.enter)="getCriminalRecordByDNI(dniCriminal)"
+            />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <button
+          class="btn btn-primary btn-block"
+          (click)="getCriminalRecordByDNI(dniCriminal)"
+          >
+          Buscar
+        </button>
+      </div>
+      </div>
+  
+    <div *ngIf="criminalData !=null" class="col-md-12 table-responsive">
+      <table class="table table-striped table-sm">
+        <thead class="bg-primary">
+          <tr>
+            <th>DNI SOSPECHOSO</th>
+            <th>CRIMEN</th>
+            <th>CELDA MODULO DE PRISION</th>
+            <th>CENTRO PENITENCIARIO</th>
+            <th>INICIO DE SENTENCIA</th>
+            <th>FINAL DE SENTENCIA</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let criminal of criminalData" >
+            <td>{{ criminal.suspectDni }}</td>
+            <td>{{ criminal.crime  != "" ? criminal.crime : 'No hay informacion'}}</td>
+            <td>{{ criminal.moduleCellPrison != "" ? criminal.moduleCellPrison : 'No hay informacion' }}</td>
+            <td>{{ criminal.penitentiaryCenter != "" ? criminal.penitentiaryCenter : 'No hay informacion' }}</td>
+            <td>{{ criminal.sentenceStartDate  != null ? (criminal.sentenceStartDate | date: "dd/MM/yyyy" ): 'No hay informacion' }}</td>
+            <td>{{ criminal.sentenceFinalDate != null ? (criminal.sentenceFinalDate | date: "dd/MM/yyyy" ): 'No hay informacion'  }}</td>
+            <td>
+              <button class="btn" (click)="ShowModal(criminal)">
+                <i class="fa fa-edit"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+ <div
+    bsModal
+    #updateCriminalModal="bs-modal"
+    class="modal fade fondomodall"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="myModalLabel"
+    data-backdrop="static"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-primary">
+          <h3>EDICION DE DATOS</h3>
+          <button
+            type="button"
+            class="btn-close"
+            data-dismiss="modal"
+            aria-label="Close"
+            (click)="updateCriminalModal.hide()"
+          ></button>
+        </div>
+        <form [formGroup]="criminalForm" (ngSubmit)="onSubmit()" [ngClass]=" !this.validForm?'was-validated':''">
+          <div class="modal-body">
+            <div class="container p-4">
+  
+
+              <div class="form-floating mb-3">
+                <input id="floatingDNI" type="text" formControlName="suspectDni"
+                (keypress)="keyPressAlphanumeric($event)" minlength="13" autocomplete="off" class="form-control"
+                maxlength="16" pattern="[0-9]+" required/>
+                <label for="floatingDNI">DNI<label style="color: red;">*</label></label>
+                <div class="invalid-feedback">
+                </div>
+              </div>
+  
+  
+              <div class="row mb-3">
+                <div class="col-md">
+                  <div class="form-floating">
+                    <input  type="text" formControlName="crime" (keypress)="keyPressAlphanumeric($event)"
+                    class="form-control" maxlength="65" />
+                    <label for="floatingPassword">Crimen </label>
+                  </div>
+                </div>
+              </div>
+  
+  
+              <div class="form-floating mb-3">
+                <input type="text"  formControlName="penitentiaryCenter" (keypress)="keyPressAlphanumeric($event)"
+                  class="form-control" maxlength="35"/>
+                <label for="floatingPassword">Centro Penitenciario</label>
+              </div>
+
+              <div class="row mb-3">
+                <div class="col-md">
+                  <div class="form-floating">
+                    <input  type="text" formControlName="moduleCellPrison" (keypress)="keyPressAlphanumeric($event)"
+                    class="form-control"  maxlength="10"/>
+                    <label for="floatingPassword">Modulo de celda</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <div class="col-md">
+                  <div class="form-floating">
+                    <input  type="date" [ngModel]="this.newSuspect.sentenceStartDate | date:'yyyy-MM-dd'"  [ngModelOptions]="{standalone: true}" (ngModelChange)="onChange($event)" (keypress)="keyPressAlphanumeric($event)"
+                    class="form-control"  />
+                    <label for="floatingPassword">Fecha De Inicio De Sentencia </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md">
+                <div class="form-floating">
+                  <input  type="date"  [ngModel]="this.newSuspect.sentenceFinalDate | date:'yyyy-MM-dd'"  [ngModelOptions]="{standalone: true}" (ngModelChange)="onChange2($event)" (keypress)="keyPressAlphanumeric($event)"
+                  class="form-control"  />
+                  <label for="floatingPassword">Fecha Final De Sentencia </label>
+                </div>
+              </div>
+            
+  
+              <div class="row py-3 pull-right">
+                <button  class="btn btn-success" type="submit"  >
+                 Actualizar datos
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

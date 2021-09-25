@@ -1,1 +1,79 @@
-<p>criminal-record-create works!</p>
+<div class="container">
+    <div class="card">
+      <div class="card-header bg-primary">
+        AGREGAR HISTORIAL CRIMINAL
+      </div>
+      <div class="card-body">
+        <form [formGroup]="criminalForm" (ngSubmit)="onSubmit()" [ngClass]=" !this.validForm?'was-validated':''">
+          <div class="modal-body">
+            <div class="container p-4">
+  
+              <div class="form-floating mb-3">
+                <input id="floatingDNI" type="text" formControlName="suspectDni"
+                (keypress)="keyPressAlphanumeric($event)" minlength="13" autocomplete="off" class="form-control"
+                maxlength="16" pattern="[0-9]+" required/>
+                <label for="floatingDNI">DNI<label style="color: red;">*</label></label>
+                <div class="invalid-feedback">
+                </div>
+              </div>
+  
+  
+              <div class="row mb-3">
+                <div class="col-md">
+                  <div class="form-floating">
+                    <input  type="text" formControlName="crime" (keypress)="keyPressAlphanumeric($event)"
+                    class="form-control" maxlength="65" />
+                    <label for="floatingPassword">Crimen </label>
+                  </div>
+                </div>
+              </div>
+  
+  
+              <div class="form-floating mb-3">
+                <input type="text"  formControlName="penitentiaryCenter" (keypress)="keyPressAlphanumeric($event)"
+                  class="form-control" maxlength="35"/>
+                <label for="floatingPassword">Centro Penitenciario</label>
+              </div>
+
+              <div class="row mb-3">
+                <div class="col-md">
+                  <div class="form-floating">
+                    <input  type="text" formControlName="moduleCellPrison" (keypress)="keyPressAlphanumeric($event)"
+                    class="form-control"  maxlength="10"/>
+                    <label for="floatingPassword">Modulo de celda</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <div class="col-md">
+                  <div class="form-floating">
+                    <input  type="date" formControlName="sentenceStartDate" (keypress)="keyPressAlphanumeric($event)"
+                    class="form-control"  />
+                    <label for="floatingPassword">Fecha De Inicio De Sentencia </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md">
+                <div class="form-floating">
+                  <input  type="date" formControlName="sentenceFinalDate" (keypress)="keyPressAlphanumeric($event)"
+                  class="form-control"  />
+                  <label for="floatingPassword">Fecha Final De Sentencia </label>
+                </div>
+              </div>
+            </div>
+
+  
+              <div class="row py-3 pull-right">
+                <button  class="btn btn-success" type="submit"  >
+                 Registrar datos
+                </button>
+              </div>
+            </div>
+        </form>
+      </div>
+    </div>
+  
+  </div>
+  

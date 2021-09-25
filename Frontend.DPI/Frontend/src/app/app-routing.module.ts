@@ -86,6 +86,14 @@ const routes: Routes = [
         loadChildren: () =>
           import('./criminal-record/criminals-record.module').then((m)=> m.CriminalRecordModule),
       },
+      {
+        path: 'privileges',
+        canActivate: [UserAuthenticationGuard],
+        canActivateChild:[UserAuthenticationGuard],
+
+        loadChildren: () =>
+          import('./police-record/police-record.module').then((m)=> m.PoliceRecordModule),
+      },
       
 
 ],

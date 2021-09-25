@@ -46,8 +46,8 @@ import { User } from "src/app/users/interfaces/user";
   export interface CriminalRecord {
       idCriminalRecord: number;
       crime: string;
-      sentenceStartDate: Date;
-      sentenceFinalDate: Date;
+      sentenceStartDate?: Date;
+      sentenceFinalDate?: Date;
       penitentiaryCenter: string;
       moduleCellPrison: string;
       suspectDni: string;

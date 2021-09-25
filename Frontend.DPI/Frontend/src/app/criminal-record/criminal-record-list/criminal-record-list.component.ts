@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { CriminalRecord } from '../../criminals/Interfaces/criminal-interface';
 import { Department } from '../../users/interfaces/user';
 import { UsersService } from '../../users/users.service';
+import { CriminalRecordService } from '../criminals.record.service';
 
 @Component({
   selector: 'app-criminal-record-list',
@@ -12,16 +14,17 @@ export class CriminalRecordListComponent implements OnInit {
   page:number =1;
   userFilterSelected: string = '';
 
-  Departments: Department[];
-  constructor(private userService: UsersService) {}
+  criminalRecords: CriminalRecord[];
+  constructor(private criminalRecord: CriminalRecordService) {}
 
   async ngOnInit() {
     await this.getDepartments();
   }
 
   async getDepartments() {
-    await this.userService.getDepartments().then((resp) => {
-      this.Departments = resp;
+    await this.criminalRecord.getCriminalRecords().then((resp) => {
+      this.criminalRecords = resp;
+      console.log(this.criminalRecords)
     });
   }
 

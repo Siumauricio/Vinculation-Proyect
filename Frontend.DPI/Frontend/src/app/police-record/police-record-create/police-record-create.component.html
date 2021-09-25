@@ -1,0 +1,130 @@
+<div class="container">
+    <div class="card">
+      <div class="card-header bg-primary">
+        AGREGAR HISTORIAL POLICIAL
+      </div>
+      <div class="card-body">
+        <form [formGroup]="criminalForm" (ngSubmit)="onSubmit()" [ngClass]=" !this.validForm?'was-validated':''">
+          <div class="modal-body">
+            <div class="container p-4">
+  
+              <div class="form-floating mb-3">
+                <input id="floatingDNI" type="text" formControlName="suspectDni"
+                (keypress)="keyPressAlphanumeric($event)" minlength="13" autocomplete="off" class="form-control"
+                maxlength="16" pattern="[0-9]+" required/>
+                <label for="floatingDNI">DNI<label style="color: red;">*</label></label>
+                <div class="invalid-feedback">
+                </div>
+              </div>
+  
+  
+              <div class="row mb-3">
+                <div class="col-md">
+                  <div class="form-floating">
+                    <input  type="text" formControlName="capturedByOrganization" (keypress)="keyPressAlphanumeric($event)"
+                    class="form-control"  required maxlength="6"/>
+                    <label for="floatingPassword">Organizacion Quien lo Capturo</label>
+                  </div>
+                </div>
+              </div>
+  
+  
+              <div class="form-floating mb-3">
+                <input type="text"  formControlName="confiscationDescription" (keypress)="keyPressAlphanumeric($event)"
+                  class="form-control" maxlength="65"/>
+                <label for="floatingPassword">Descripcion De Confiscacion</label>
+              </div>
+
+              <div class="row mb-3">
+                <div class="col-md">
+                  <div class="form-floating">
+                    <input  type="text" formControlName="confiscationQuantity" (keypress)="keyPressAlphanumeric($event)"
+                    class="form-control" maxlength="65" />
+                    <label for="floatingPassword">Cantidad De Confiscacion</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mb-3">
+              <div class="col-md">
+                <div class="form-floating">
+                  <input  type="text" formControlName="confiscationType" (keypress)="keyPressAlphanumeric($event)"
+                  class="form-control" maxlength="40" />
+                  <label for="floatingPassword">Tipo De Confisco </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+            <div class="col-md">
+                <div class="form-floating">
+                  <input  type="date" formControlName="detentionDate" (keypress)="keyPressAlphanumeric($event)"
+                  class="form-control" required />
+                  <label for="floatingPassword">Fecha De Detencion</label>
+                </div>
+              </div>
+            </div>
+
+              <div class="row mb-3">
+            <div class="col-md">
+                <div class="form-floating">
+                  <input  type="text" formControlName="detentionDepartment" (keypress)="keyPressAlphanumeric($event)"
+                  class="form-control"  required maxlength="17"/>
+                  <label for="floatingPassword">Departamento De Detencion </label>
+                </div>
+              </div>
+            </div>
+
+              <div class="row mb-3">
+            <div class="col-md">
+                <div class="form-floating">
+                  <input  type="text" formControlName="detentionMunicipio" (keypress)="keyPressAlphanumeric($event)"
+                  class="form-control"  required maxlength="30"/>
+                  <label for="floatingPassword">Municipio De Detencion </label>
+                </div>
+              </div>
+            </div>
+
+              <div class="row mb-3">
+            <div class="col-md">
+                <div class="form-floating">
+                  <input  type="text" formControlName="reasonDetention" (keypress)="keyPressAlphanumeric($event)"
+                  class="form-control" required maxlength="65"/>
+                  <label for="floatingPassword">Razon De Detencion </label>
+                </div>
+              </div>
+            </div>
+
+              <div class="row mb-3">
+            <div class="col-md">
+                <div class="form-floating">
+                  <input  type="text" formControlName="colonia" (keypress)="keyPressAlphanumeric($event)"
+                  class="form-control" maxlength="30" />
+                  <label for="floatingPassword">Colonia De Deteccion</label>
+                </div>
+            </div>
+        </div>
+
+            <div class="row mb-3">
+            <div class="col-md">
+                <div class="form-floating">
+                  <input  type="text" formControlName="caserio" (keypress)="keyPressAlphanumeric($event)"
+                  class="form-control" maxlength="30" />
+                  <label for="floatingPassword">Caserio De Detencion</label>
+                </div>
+              </div>
+            </div>
+
+            </div>
+              <div class="row py-3 pull-right">
+                <button  class="btn btn-success" type="submit"  >
+                 Registrar datos
+                </button>
+              </div>
+            </div>
+        </form>
+      </div>
+    </div>
+  
+  </div>
+  

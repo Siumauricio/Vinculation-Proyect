@@ -10,7 +10,7 @@ namespace Backend.DPI.Repository
     {
         Task<IReadOnlyList<CriminalRecord>> GetCriminalRecordsAsync();
 
-        Task<CriminalRecord> GetCriminalRecordByDNIAsync(string DNI);
+        Task<IReadOnlyList<CriminalRecord>> GetCriminalRecordByDNIAsync(string DNI);
 
         Task<bool> AddCriminalRecordAsync(CriminalRecord CriminalRecord);
 
