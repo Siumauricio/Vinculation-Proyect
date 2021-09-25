@@ -1,0 +1,2262 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Backend.DPI",
+    "version": "v1"
+  },
+  "paths": {
+    "/CriminalDatum/GetCriminalDataByDNI": {
+      "get": {
+        "tags": [
+          "CriminalDatum"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "DNI",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": { }
+            }
+          }
+        }
+      }
+    },
+    "/CriminalDatum/AddCriminalData": {
+      "post": {
+        "tags": [
+          "CriminalDatum"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/CriminalHistory"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/CriminalDatum/DeleteCriminalDataById": {
+      "delete": {
+        "tags": [
+          "CriminalDatum"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "Id",
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/CriminalDatum/GetCriminalData": {
+      "get": {
+        "tags": [
+          "CriminalDatum"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": { }
+            }
+          }
+        }
+      }
+    },
+    "/CriminalDatum/UpdateCriminalDataById": {
+      "put": {
+        "tags": [
+          "CriminalDatum"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/CriminalHistory"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/CriminalGroup/GetCriminalGroups": {
+      "get": {
+        "tags": [
+          "CriminalGroup"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/CriminalGroupDto"
+            }
+          }
+        }
+      }
+    },
+    "/CriminalRecord/GetCriminalRecords": {
+      "get": {
+        "tags": [
+          "CriminalRecord"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/CriminalRecordDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CriminalRecord/AddCriminalRecord": {
+      "post": {
+        "tags": [
+          "CriminalRecord"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/CriminalRecord"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/CriminalRecord/DeleteCriminalRecord": {
+      "delete": {
+        "tags": [
+          "CriminalRecord"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "IdCriminalRecord",
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/CriminalRecord/GetCriminalRecordByDNI": {
+      "get": {
+        "tags": [
+          "CriminalRecord"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "DNI",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/CriminalRecordDto"
+            }
+          }
+        }
+      }
+    },
+    "/CriminalRecord/UpdateCriminalRecordByDni": {
+      "put": {
+        "tags": [
+          "CriminalRecord"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/CriminalRecord"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/Department/AddDepartment": {
+      "post": {
+        "tags": [
+          "Department"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "name",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/DepartmentDto"
+            }
+          }
+        }
+      }
+    },
+    "/Department/GetDepartments": {
+      "get": {
+        "tags": [
+          "Department"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/DepartmentDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Department/GetDepartmentByName": {
+      "get": {
+        "tags": [
+          "Department"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "departmentName",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Department"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Department/DeleteDepartment": {
+      "delete": {
+        "tags": [
+          "Department"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "departmentName",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/PoliceRecord/GetPoliceRecords": {
+      "get": {
+        "tags": [
+          "PoliceRecord"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PoliceRecord"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/PoliceRecord/GetPoliceRecordsByDNI": {
+      "get": {
+        "tags": [
+          "PoliceRecord"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "dniSuspect",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PoliceRecord"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/PoliceRecord/CreatePoliceRecord": {
+      "post": {
+        "tags": [
+          "PoliceRecord"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/PoliceRecord"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PoliceRecord"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/PoliceRecord/DeletePoliceRecord": {
+      "delete": {
+        "tags": [
+          "PoliceRecord"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "idPoliceRecord",
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PoliceRecord"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/PoliceRecord/ModifyPoliceRecord": {
+      "post": {
+        "tags": [
+          "PoliceRecord"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/PoliceRecord"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PoliceRecord"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Privilege/CreatePrivilege": {
+      "post": {
+        "tags": [
+          "Privilege"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/Privilege"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/PrivilegeDto"
+            }
+          }
+        }
+      }
+    },
+    "/Privilege/CreateRolPrivilege": {
+      "post": {
+        "tags": [
+          "Privilege"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/RolPrivilege"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RolPrivilegeDto"
+            }
+          }
+        }
+      }
+    },
+    "/Privilege/GetPrivileges": {
+      "get": {
+        "tags": [
+          "Privilege"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PrivilegeDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Privilege/GetRolPrivileges": {
+      "get": {
+        "tags": [
+          "Privilege"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/RolPrivilegeDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Privilege/AddUserRolPrivilege": {
+      "post": {
+        "tags": [
+          "Privilege"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/UserRolPrivilege"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UserRolPrivilegeDto"
+            }
+          }
+        }
+      }
+    },
+    "/Privilege/GetUserRolPrivileges": {
+      "get": {
+        "tags": [
+          "Privilege"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/UserRolPrivilegeDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Privilege/GetRolPrivilegeByName": {
+      "get": {
+        "tags": [
+          "Privilege"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "NameRolPrivilege",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RolPrivilegeDto"
+            }
+          }
+        }
+      }
+    },
+    "/Privilege/GetUserRolPrivilegesByUser": {
+      "post": {
+        "tags": [
+          "Privilege"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "username",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/RolPrivilegeDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Privilege/DeleteRolPrivilegeById": {
+      "delete": {
+        "tags": [
+          "Privilege"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "IdRolPrivilege",
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/Privilege/DeleteUserRolPrivilegeById": {
+      "delete": {
+        "tags": [
+          "Privilege"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "IdUserRolPrivilege",
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/Roles/GetRols": {
+      "get": {
+        "tags": [
+          "Roles"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Rol"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Roles/GetRolByName": {
+      "get": {
+        "tags": [
+          "Roles"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "rolName",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Rol"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Roles/CreateRol": {
+      "post": {
+        "tags": [
+          "Roles"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "rolName",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Rol"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Roles/DeleteRol": {
+      "delete": {
+        "tags": [
+          "Roles"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "nameRol",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Rol"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Suspect/GetSuspects": {
+      "get": {
+        "tags": [
+          "Suspect"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Suspect"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Suspect/AddSuspect": {
+      "post": {
+        "tags": [
+          "Suspect"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/Suspect"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/Suspect/GetRegisterPerDayPerUser": {
+      "get": {
+        "tags": [
+          "Suspect"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "username",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Suspect"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Suspect/GetRegisterPerDay": {
+      "get": {
+        "tags": [
+          "Suspect"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Suspect"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Suspect/GetSuspectByDNI": {
+      "get": {
+        "tags": [
+          "Suspect"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "dni",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Suspect"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Suspect/DeleteSuspect": {
+      "delete": {
+        "tags": [
+          "Suspect"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "DNI",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Suspect/UpdateSuspect": {
+      "post": {
+        "tags": [
+          "Suspect"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "lastDNI",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/Suspect"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/User/GetUsers": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/User/UserById": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "username",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/User/AddUser": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/UserDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/User/UpdatePassword": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "username",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "password",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/User/UpdateRol": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "username",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "rol",
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/User/UpdateDepartment": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "username",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "department",
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/User/UpdateUser": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/UserDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/User/DeleteUser": {
+      "delete": {
+        "tags": [
+          "User"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "username",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/User/Login": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/UserDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/User/UpdateToken": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "Token",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "CriminalGroup": {
+      "type": "object",
+      "properties": {
+        "idCg": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "nombreGrupoCriminal": {
+          "type": "string"
+        },
+        "criminalHistories": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CriminalHistory"
+          }
+        }
+      }
+    },
+    "Privilege": {
+      "type": "object",
+      "properties": {
+        "idPrivilege": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "tipoPrivilegio": {
+          "type": "string"
+        },
+        "rolPrivileges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RolPrivilege"
+          }
+        }
+      }
+    },
+    "RolPrivilege": {
+      "type": "object",
+      "properties": {
+        "idRolPrivilege": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "privilegeIdPrivilege": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "rolIdRol": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "privilegeIdPrivilegeNavigation": {
+          "$ref": "#/definitions/Privilege"
+        },
+        "rolIdRolNavigation": {
+          "$ref": "#/definitions/Rol"
+        }
+      }
+    },
+    "Rol": {
+      "type": "object",
+      "properties": {
+        "idRol": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "rolPrivileges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RolPrivilege"
+          }
+        },
+        "users": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/User"
+          }
+        }
+      }
+    },
+    "UserRolPrivilege": {
+      "type": "object",
+      "properties": {
+        "idUserRolPrivilege": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "specialPrivilege": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "userUsername": {
+          "type": "string"
+        },
+        "idRolPrivilege": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "userUsernameNavigation": {
+          "$ref": "#/definitions/User"
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "creationDatetime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "departmentIdDepartment": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "rolIdRol": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "departmentIdDepartmentNavigation": {
+          "$ref": "#/definitions/Department"
+        },
+        "rolIdRolNavigation": {
+          "$ref": "#/definitions/Rol"
+        },
+        "userRolPrivileges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UserRolPrivilege"
+          }
+        }
+      }
+    },
+    "Department": {
+      "type": "object",
+      "properties": {
+        "idDepartment": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "suspects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Suspect"
+          }
+        },
+        "users": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/User"
+          }
+        }
+      }
+    },
+    "CriminalRecord": {
+      "type": "object",
+      "properties": {
+        "idCriminalRecord": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "crime": {
+          "type": "string"
+        },
+        "sentenceStartDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "sentenceFinalDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "penitentiaryCenter": {
+          "type": "string"
+        },
+        "moduleCellPrison": {
+          "type": "string"
+        },
+        "suspectDni": {
+          "type": "string"
+        },
+        "suspectDniNavigation": {
+          "$ref": "#/definitions/Suspect"
+        }
+      }
+    },
+    "PoliceRecord": {
+      "type": "object",
+      "properties": {
+        "idPoliceRecord": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "reasonDetention": {
+          "type": "string"
+        },
+        "detentionDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "detentionDepartment": {
+          "type": "string"
+        },
+        "capturedByOrganization": {
+          "type": "string"
+        },
+        "confiscationType": {
+          "type": "string"
+        },
+        "confiscationQuantity": {
+          "type": "string"
+        },
+        "confiscationDescription": {
+          "type": "string"
+        },
+        "detentionMunicipio": {
+          "type": "string"
+        },
+        "colonia": {
+          "type": "string"
+        },
+        "caserio": {
+          "type": "string"
+        },
+        "village": {
+          "type": "string"
+        },
+        "suspectDni": {
+          "type": "string"
+        },
+        "suspectDniNavigation": {
+          "$ref": "#/definitions/Suspect"
+        }
+      }
+    },
+    "Suspect": {
+      "type": "object",
+      "properties": {
+        "dniSuspect": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "middleName": {
+          "type": "string"
+        },
+        "thirdName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "alias": {
+          "type": "string"
+        },
+        "sex": {
+          "type": "string"
+        },
+        "height": {
+          "format": "float",
+          "type": "number"
+        },
+        "weight": {
+          "format": "float",
+          "type": "number"
+        },
+        "eyesColor": {
+          "type": "string"
+        },
+        "build": {
+          "type": "string"
+        },
+        "personFrom": {
+          "type": "string"
+        },
+        "ocupattion": {
+          "type": "string"
+        },
+        "passportNumber": {
+          "type": "string"
+        },
+        "particularSign": {
+          "type": "string"
+        },
+        "tattoo": {
+          "type": "string"
+        },
+        "operationPlace": {
+          "type": "string"
+        },
+        "dateOfBirth": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "nationaliy": {
+          "type": "string"
+        },
+        "age": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "civilStatus": {
+          "type": "string"
+        },
+        "colonia": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        },
+        "avenue": {
+          "type": "string"
+        },
+        "village": {
+          "type": "string"
+        },
+        "caserio": {
+          "type": "string"
+        },
+        "houseNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pasaje": {
+          "type": "string"
+        },
+        "referenceAddress": {
+          "type": "string"
+        },
+        "department": {
+          "type": "string"
+        },
+        "municipio": {
+          "type": "string"
+        },
+        "deleted": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "usernameRegistryData": {
+          "type": "string"
+        },
+        "departmentIdDepartment": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "creationDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "lastModificationUser": {
+          "type": "string"
+        },
+        "departmentIdDepartmentNavigation": {
+          "$ref": "#/definitions/Department"
+        },
+        "criminalHistories": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CriminalHistory"
+          }
+        },
+        "criminalRecords": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CriminalRecord"
+          }
+        },
+        "policeRecords": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PoliceRecord"
+          }
+        }
+      }
+    },
+    "CriminalHistory": {
+      "type": "object",
+      "properties": {
+        "idCriminalHistory": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "incidenceType": {
+          "type": "string"
+        },
+        "incidenceZone": {
+          "type": "string"
+        },
+        "hierarchyCriminalGroup": {
+          "type": "string"
+        },
+        "periodBelong": {
+          "type": "string"
+        },
+        "operationPlace": {
+          "type": "string"
+        },
+        "tatooType": {
+          "type": "string"
+        },
+        "suspectDni": {
+          "type": "string"
+        },
+        "criminalGroupIdCg": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "criminalGroupIdCgNavigation": {
+          "$ref": "#/definitions/CriminalGroup"
+        },
+        "suspectDniNavigation": {
+          "$ref": "#/definitions/Suspect"
+        }
+      }
+    },
+    "SuspectDto": {
+      "type": "object",
+      "properties": {
+        "dniSuspect": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "middleName": {
+          "type": "string"
+        },
+        "thirdName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "alias": {
+          "type": "string"
+        },
+        "sex": {
+          "type": "string"
+        },
+        "height": {
+          "format": "float",
+          "type": "number"
+        },
+        "weight": {
+          "format": "float",
+          "type": "number"
+        },
+        "eyesColor": {
+          "type": "string"
+        },
+        "build": {
+          "type": "string"
+        },
+        "personFrom": {
+          "type": "string"
+        },
+        "ocupattion": {
+          "type": "string"
+        },
+        "passportNumber": {
+          "type": "string"
+        },
+        "particularSign": {
+          "type": "string"
+        },
+        "tattoo": {
+          "type": "string"
+        },
+        "operationPlace": {
+          "type": "string"
+        },
+        "dateOfBirth": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "nationaliy": {
+          "type": "string"
+        },
+        "age": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "civilStatus": {
+          "type": "string"
+        },
+        "colonia": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        },
+        "avenue": {
+          "type": "string"
+        },
+        "village": {
+          "type": "string"
+        },
+        "caserio": {
+          "type": "string"
+        },
+        "houseNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pasaje": {
+          "type": "string"
+        },
+        "referenceAddress": {
+          "type": "string"
+        },
+        "department": {
+          "type": "string"
+        },
+        "municipio": {
+          "type": "string"
+        },
+        "recordStatus": {
+          "type": "string"
+        },
+        "usernameRegistryData": {
+          "type": "string"
+        },
+        "departmentIdDepartment": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "creationDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "lastModificationUser": {
+          "type": "string"
+        }
+      }
+    },
+    "CriminalHistoryDto": {
+      "type": "object",
+      "properties": {
+        "idCriminalData": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "incidenceType": {
+          "type": "string"
+        },
+        "incidenceZone": {
+          "type": "string"
+        },
+        "hierarchyCriminalGroup": {
+          "type": "string"
+        },
+        "periodBelong": {
+          "type": "string"
+        },
+        "operationPlace": {
+          "type": "string"
+        },
+        "tatooType": {
+          "type": "string"
+        },
+        "suspectDni": {
+          "type": "string"
+        },
+        "criminalGroupIdCg": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "criminalGroupDto": {
+          "$ref": "#/definitions/CriminalGroupDto"
+        },
+        "suspectDniNavigation": {
+          "$ref": "#/definitions/SuspectDto"
+        }
+      }
+    },
+    "CriminalGroupDto": {
+      "type": "object",
+      "properties": {
+        "idCg": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "nombreGrupoCriminal": {
+          "type": "string"
+        },
+        "criminalData": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CriminalHistoryDto"
+          }
+        }
+      }
+    },
+    "CriminalRecordDto": {
+      "type": "object",
+      "properties": {
+        "idCriminalRecord": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "crime": {
+          "type": "string"
+        },
+        "sentenceStartDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "sentenceFinalDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "penitentiaryCenter": {
+          "type": "string"
+        },
+        "moduleCellPrison": {
+          "type": "string"
+        },
+        "suspectDni": {
+          "type": "string"
+        },
+        "suspectDniNavigation": {
+          "$ref": "#/definitions/SuspectDto"
+        }
+      }
+    },
+    "UserDto": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "departmentIdDepartment": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "rolIdRol": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "DepartmentDto": {
+      "type": "object",
+      "properties": {
+        "idDepartment": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "users": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UserDto"
+          }
+        }
+      }
+    },
+    "RolDto": {
+      "type": "object",
+      "properties": {
+        "idRol": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "RolPrivilegeDto": {
+      "type": "object",
+      "properties": {
+        "idRolPrivilege": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "privilegeIdPrivilege": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "rolIdRol": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "privilegeIdPrivilegeNavigation": {
+          "$ref": "#/definitions/PrivilegeDto"
+        },
+        "rolIdRolNavigation": {
+          "$ref": "#/definitions/RolDto"
+        }
+      }
+    },
+    "PrivilegeDto": {
+      "type": "object",
+      "properties": {
+        "idPrivilege": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "rolPrivileges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RolPrivilegeDto"
+          }
+        }
+      }
+    },
+    "UserRolPrivilegeDto": {
+      "type": "object",
+      "properties": {
+        "idUserRolPrivilege": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "specialPrivilege": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "userUsername": {
+          "type": "string"
+        },
+        "idRolPrivilege": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "userUsernameNavigation": {
+          "$ref": "#/definitions/UserDto"
+        }
+      }
+    }
+  }
+}

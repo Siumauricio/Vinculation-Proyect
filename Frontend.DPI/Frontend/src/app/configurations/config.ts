@@ -1,3 +1,3 @@
 
 
-export const WEB_SERVICE ="http://localhost:54856/"
+export const WEB_SERVICE ="https://backenddpi.azurewebsites.net/"
