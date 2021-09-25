@@ -63,7 +63,7 @@ namespace Backend.DPI
             services.AddDbContext<DPIContext>((s, o) => o.UseSqlServer(Configuration.GetSection("ConnectionDBSqlServer").Get<string>()));
             services.AddScoped<IPrivilegeRepository, PrivilegeRepository>();
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
-            services.AddScoped<ICriminalDataRepository, CriminalDataRepository>();
+            services.AddScoped<ICriminalHistoryRepository, CriminalHistoryRepository>();
             services.AddScoped<ICriminalGroupRepository, CriminalGroupRepository>();
 
         }

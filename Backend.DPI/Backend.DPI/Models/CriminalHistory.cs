@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace Backend.DPI.ModelDto
+namespace Backend.DPI.Models
 {
-    public partial class CriminalDatumDto
+    public partial class CriminalHistory
     {
-        public int IdCriminalData { get; set; }
+        public int IdCriminalHistory { get; set; }
         public string IncidenceType { get; set; }
         public string IncidenceZone { get; set; }
         public string HierarchyCriminalGroup { get; set; }
@@ -17,7 +17,7 @@ namespace Backend.DPI.ModelDto
         public string SuspectDni { get; set; }
         public int CriminalGroupIdCg { get; set; }
 
-        public virtual CriminalGroupDto CriminalGroupDto { get; set; }
-        public  virtual SuspectDto SuspectDniNavigation { get; set; }
+        public virtual CriminalGroup CriminalGroupIdCgNavigation { get; set; }
+        public virtual Suspect SuspectDniNavigation { get; set; }
     }
 }

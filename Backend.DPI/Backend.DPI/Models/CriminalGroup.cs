@@ -9,12 +9,12 @@ namespace Backend.DPI.Models
     {
         public CriminalGroup()
         {
-            CriminalData = new HashSet<CriminalDatum>();
+            CriminalHistories = new HashSet<CriminalHistory>();
         }
 
         public int IdCg { get; set; }
         public string NombreGrupoCriminal { get; set; }
 
-        public virtual ICollection<CriminalDatum> CriminalData { get; set; }
+        public virtual ICollection<CriminalHistory> CriminalHistories { get; set; }
     }
 }

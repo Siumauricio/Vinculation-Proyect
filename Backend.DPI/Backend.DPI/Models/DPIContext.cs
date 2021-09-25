@@ -17,8 +17,8 @@ namespace Backend.DPI.Models
         {
         }
 
-        public virtual DbSet<CriminalDatum> CriminalData { get; set; }
         public virtual DbSet<CriminalGroup> CriminalGroups { get; set; }
+        public virtual DbSet<CriminalHistory> CriminalHistories { get; set; }
         public virtual DbSet<CriminalRecord> CriminalRecords { get; set; }
         public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<PoliceRecord> PoliceRecords { get; set; }
@@ -42,14 +42,30 @@ namespace Backend.DPI.Models
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
 
-            modelBuilder.Entity<CriminalDatum>(entity =>
+            modelBuilder.Entity<CriminalGroup>(entity =>
             {
-                entity.HasKey(e => e.IdCriminalData)
-                    .HasName("criminal_data_pk");
+                entity.HasKey(e => e.IdCg)
+                    .HasName("criminal_group_pk");
 
-                entity.ToTable("criminal_data");
+                entity.ToTable("criminal_group");
 
-                entity.Property(e => e.IdCriminalData).HasColumnName("id_criminal_data");
+                entity.Property(e => e.IdCg).HasColumnName("id_cg");
+
+                entity.Property(e => e.NombreGrupoCriminal)
+                    .IsRequired()
+                    .HasMaxLength(30)
+                    .IsUnicode(false)
+                    .HasColumnName("nombre_grupo_criminal");
+            });
+
+            modelBuilder.Entity<CriminalHistory>(entity =>
+            {
+                entity.HasKey(e => e.IdCriminalHistory)
+                    .HasName("criminal_history_pk");
+
+                entity.ToTable("criminal_history");
+
+                entity.Property(e => e.IdCriminalHistory).HasColumnName("id_criminal_history");
 
                 entity.Property(e => e.CriminalGroupIdCg).HasColumnName("criminal_group_id_cg");
 
@@ -93,32 +109,16 @@ namespace Backend.DPI.Models
                     .HasColumnName("tatoo_type");
 
                 entity.HasOne(d => d.CriminalGroupIdCgNavigation)
-                    .WithMany(p => p.CriminalData)
+                    .WithMany(p => p.CriminalHistories)
                     .HasForeignKey(d => d.CriminalGroupIdCg)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("criminal_data_cg_fk");
+                    .HasConstraintName("criminal_history_cg_fk");
 
                 entity.HasOne(d => d.SuspectDniNavigation)
-                    .WithMany(p => p.CriminalData)
+                    .WithMany(p => p.CriminalHistories)
                     .HasForeignKey(d => d.SuspectDni)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("criminal_data_suspect_fk");
-            });
-
-            modelBuilder.Entity<CriminalGroup>(entity =>
-            {
-                entity.HasKey(e => e.IdCg)
-                    .HasName("criminal_group_pk");
-
-                entity.ToTable("criminal_group");
-
-                entity.Property(e => e.IdCg).HasColumnName("id_cg");
-
-                entity.Property(e => e.NombreGrupoCriminal)
-                    .IsRequired()
-                    .HasMaxLength(30)
-                    .IsUnicode(false)
-                    .HasColumnName("nombre_grupo_criminal");
+                    .HasConstraintName("criminal_history_suspect_fk");
             });
 
             modelBuilder.Entity<CriminalRecord>(entity =>
@@ -379,6 +379,8 @@ namespace Backend.DPI.Models
                     .HasColumnType("date")
                     .HasColumnName("date_of_birth");
 
+                entity.Property(e => e.Deleted).HasColumnName("deleted");
+
                 entity.Property(e => e.Department)
                     .IsRequired()
                     .HasMaxLength(17)
@@ -409,7 +411,6 @@ namespace Backend.DPI.Models
                     .HasColumnName("last_modification_user");
 
                 entity.Property(e => e.LastName)
-                    .IsRequired()
                     .HasMaxLength(15)
                     .IsUnicode(false)
                     .HasColumnName("last_name");
@@ -438,6 +439,7 @@ namespace Backend.DPI.Models
                     .HasColumnName("ocupattion");
 
                 entity.Property(e => e.OperationPlace)
+                    .IsRequired()
                     .HasMaxLength(60)
                     .IsUnicode(false)
                     .HasColumnName("operation_place");
@@ -531,7 +533,7 @@ namespace Backend.DPI.Models
 
                 entity.Property(e => e.Password)
                     .IsRequired()
-                    .HasMaxLength(30)
+                    .HasMaxLength(65)
                     .IsUnicode(false)
                     .HasColumnName("password");
 

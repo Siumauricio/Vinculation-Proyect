@@ -17,8 +17,8 @@ namespace Backend.DPI.Controllers
     [Authorize]
     public class CriminalDatumController : Controller
     {
-        private readonly ICriminalDataRepository _criminalDataRepository;
-        public CriminalDatumController(ICriminalDataRepository criminalDataRepository)
+        private readonly ICriminalHistoryRepository _criminalDataRepository;
+        public CriminalDatumController(ICriminalHistoryRepository criminalDataRepository)
         {
             this._criminalDataRepository = criminalDataRepository;
         }
@@ -27,23 +27,23 @@ namespace Backend.DPI.Controllers
         [HttpGet("GetCriminalDataByDNI")]
         public async Task<ActionResult<IEnumerable<object>>> GetCriminalDataByDNI(string DNI)
         {
-            var result = await _criminalDataRepository.GetCriminalDataByDNIAsync(DNI);
+            var result = await _criminalDataRepository.GetCriminalHistoryByDNIAsync(DNI);
             if (result == null) return NotFound();
             return Ok(result);
         }
 
         
         [HttpPost("AddCriminalData")]
-        public async Task<ActionResult<bool>> AddCriminalData([FromBody] CriminalDatum CriminalDatum)
+        public async Task<ActionResult<bool>> AddCriminalData([FromBody] CriminalHistory CriminalHistory)
         {
-            var result = await _criminalDataRepository.AddCriminalDataAsync(CriminalDatum);
+            var result = await _criminalDataRepository.AddCriminalHistoryAsync(CriminalHistory);
             return Ok(result);
         }
 
         [HttpDelete("DeleteCriminalDataById")]
         public async Task<ActionResult<bool>> DeleteCriminalDataById(int Id)
         {
-            var result = await _criminalDataRepository.DeleteCriminalDataByIdAsync(Id);
+            var result = await _criminalDataRepository.DeleteCriminalHistoryByIdAsync(Id);
             return Ok(result);
         }
         
@@ -51,16 +51,16 @@ namespace Backend.DPI.Controllers
         [HttpGet("GetCriminalData")]
         public async Task<ActionResult<IEnumerable<object>>> GetCriminalData()
         {
-            var result = await _criminalDataRepository.GetCriminalDataAsync();
+            var result = await _criminalDataRepository.GetCriminalHistoryAsync();
             if (result == null) return NotFound();
             return Ok(result);
         }
 
 
         [HttpPut("UpdateCriminalDataById")]
-        public async Task<ActionResult<bool>> UpdateCriminalDataById([FromBody] CriminalDatum CriminalDatum)
+        public async Task<ActionResult<bool>> UpdateCriminalDataById([FromBody] CriminalHistory CriminalDatum)
         {
-            var result = await _criminalDataRepository.UpdateCriminalDataByIdAsync(CriminalDatum);
+            var result = await _criminalDataRepository.UpdateCriminalHistoryByIdAsync(CriminalDatum);
             return Ok(result);
         }
         

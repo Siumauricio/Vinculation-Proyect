@@ -9,7 +9,7 @@ namespace Backend.DPI.Models
     {
         public Suspect()
         {
-            CriminalData = new HashSet<CriminalDatum>();
+            CriminalHistories = new HashSet<CriminalHistory>();
             CriminalRecords = new HashSet<CriminalRecord>();
             PoliceRecords = new HashSet<PoliceRecord>();
         }
@@ -21,8 +21,8 @@ namespace Backend.DPI.Models
         public string LastName { get; set; }
         public string Alias { get; set; }
         public string Sex { get; set; }
-        public float Height { get; set; }
-        public float Weight { get; set; }
+        public float? Height { get; set; }
+        public float? Weight { get; set; }
         public string EyesColor { get; set; }
         public string Build { get; set; }
         public string PersonFrom { get; set; }
@@ -31,7 +31,7 @@ namespace Backend.DPI.Models
         public string ParticularSign { get; set; }
         public string Tattoo { get; set; }
         public string OperationPlace { get; set; }
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
         public string Nationaliy { get; set; }
         public int Age { get; set; }
         public string CivilStatus { get; set; }
@@ -45,13 +45,14 @@ namespace Backend.DPI.Models
         public string ReferenceAddress { get; set; }
         public string Department { get; set; }
         public string Municipio { get; set; }
+        public int? Deleted { get; set; }
         public string UsernameRegistryData { get; set; }
         public int DepartmentIdDepartment { get; set; }
         public DateTime CreationDate { get; set; }
         public string LastModificationUser { get; set; }
 
         public virtual Department DepartmentIdDepartmentNavigation { get; set; }
-        public virtual ICollection<CriminalDatum> CriminalData { get; set; }
+        public virtual ICollection<CriminalHistory> CriminalHistories { get; set; }
         public virtual ICollection<CriminalRecord> CriminalRecords { get; set; }
         public virtual ICollection<PoliceRecord> PoliceRecords { get; set; }
     }

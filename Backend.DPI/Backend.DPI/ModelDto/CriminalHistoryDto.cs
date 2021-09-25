@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace Backend.DPI.Models
+namespace Backend.DPI.ModelDto
 {
-    public partial class CriminalDatum
+    public partial class CriminalHistoryDto
     {
         public int IdCriminalData { get; set; }
         public string IncidenceType { get; set; }
@@ -17,7 +17,7 @@ namespace Backend.DPI.Models
         public string SuspectDni { get; set; }
         public int CriminalGroupIdCg { get; set; }
 
-        public virtual CriminalGroup CriminalGroupIdCgNavigation { get; set; }
-        public virtual Suspect SuspectDniNavigation { get; set; }
+        public virtual CriminalGroupDto CriminalGroupDto { get; set; }
+        public  virtual SuspectDto SuspectDniNavigation { get; set; }
     }
 }
