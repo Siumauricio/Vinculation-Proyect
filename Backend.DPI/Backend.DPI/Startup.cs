@@ -65,6 +65,7 @@ namespace Backend.DPI
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
             services.AddScoped<ICriminalHistoryRepository, CriminalHistoryRepository>();
             services.AddScoped<ICriminalGroupRepository, CriminalGroupRepository>();
+            services.AddScoped<ICriminalRecordRepository, CriminalRecordRepository>();
 
         }
 
