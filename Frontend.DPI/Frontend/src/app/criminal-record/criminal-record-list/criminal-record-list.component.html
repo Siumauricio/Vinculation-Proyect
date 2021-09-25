@@ -30,8 +30,8 @@
             <td>{{ criminalRecord.crime  != "" ? criminalRecord.crime : 'No hay informacion'}}</td>
             <td>{{ criminalRecord.moduleCellPrison != "" ? criminalRecord.moduleCellPrison : 'No hay informacion' }}</td>
             <td>{{ criminalRecord.penitentiaryCenter != "" ? criminalRecord.penitentiaryCenter : 'No hay informacion' }}</td>
-            <td>{{ criminalRecord.sentenceFinalDate != null ? (criminalRecord.sentenceFinalDate | date: "dd/MM/yyyy" ): 'No hay informacion'  }}</td>
             <td>{{ criminalRecord.sentenceStartDate  != null ? (criminalRecord.sentenceStartDate | date: "dd/MM/yyyy" ): 'No hay informacion' }}</td>
+            <td>{{ criminalRecord.sentenceFinalDate != null ? (criminalRecord.sentenceFinalDate | date: "dd/MM/yyyy" ): 'No hay informacion'  }}</td>
           </tr>
         </tbody>
       </table>
