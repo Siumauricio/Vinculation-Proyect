@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import Swal from 'sweetalert2';
@@ -19,6 +19,7 @@ export class AuthenticationService {
   openSidebar:boolean=false;
   public isLoggedIn:boolean;
   public privileges:RolPrivilege[];
+
 
   constructor(private http: HttpClient,
               private jwtHelper: JwtHelperService) {

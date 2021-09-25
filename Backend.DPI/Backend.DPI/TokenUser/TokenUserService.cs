@@ -13,7 +13,7 @@ namespace Backend.DPI.TokenUser
 {
     public class TokenUserService
     {
-        private readonly string ServerFrontEnd = "http://localhost:4200";
+        private readonly string ServerFrontEnd = "https://dpihn.azurewebsites.net";
 
 
         public async Task<bool> TokenValidationUserAsync(string Token) {

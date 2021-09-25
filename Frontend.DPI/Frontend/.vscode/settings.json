@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/cc3b05d8-cb61-4be2-954d-f74b48818c32/resourceGroups/Dpi_Deployment/providers/Microsoft.Web/sites/dpihn",
+    "appService.deploySubpath": "dist\\Frontend"
+}

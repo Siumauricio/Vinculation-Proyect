@@ -51,9 +51,21 @@ namespace Backend.DPI
            });
 
 
-            services.AddCors(options => {
-                options.AddPolicy("CorsPolicy", builder => builder.WithOrigins(Configuration["Front-Server"]).AllowAnyMethod().AllowAnyHeader().AllowCredentials());
+            //services.AddCors(options => {
+            //    options.AddPolicy("CorsPolicy", builder => builder.WithOrigins(Configuration["Front-Server"]).AllowAnyMethod().AllowAnyHeader().AllowCredentials());
+            //});
+
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder =>
+                {
+                    builder
+                            .WithOrigins(Configuration.GetSection("Front-Server").Get<String>())
+                           .WithHeaders(Configuration.GetSection("Access-Control-Allow-Headers").Get<String[]>())
+                           .WithMethods(Configuration.GetSection("Access-Control-Allow-Methods").Get<String[]>());
+                });
             });
+
             services.AddControllers();
          
             services.AddSwaggerGen(c =>
@@ -76,13 +88,16 @@ namespace Backend.DPI
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Backend.DPI v1"));
+                app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "Backend.DPI v1");
+                 //   c.RoutePrefix = String.Empty;
+                });
+
             }
             //
             //Scaffold-DbContext "Data Source=dpi.database.windows.net;Initial Catalog=DPI;User ID=admindpi;Password:dpiadmin1$;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -f
-
+           // app.UseHttpsRedirection();
             app.UseRouting();
-            app.UseCors("CorsPolicy");
+            app.UseCors();
             app.UseAuthentication();
             app.UseAuthorization();
             
